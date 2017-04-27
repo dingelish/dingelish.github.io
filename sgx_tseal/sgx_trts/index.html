@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `sgx_trts` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, sgx_trts">
+
+    <title>sgx_trts - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_trts', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>sgx_trts</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#29-392' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><h1 id="trusted-runtime-system" class="section-header"><a href="#trusted-runtime-system">Trusted Runtime System</a></h1>
+<p>The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK.
+It provides the enclave entry point logic as well as other functions to be used by enclave developers.</p>
+<p><strong>Intel(R) Software Guard Extensions Helper Functions</strong></p>
+<p><strong>CustomExceptionHandling</strong></p>
+<h1 id="intelr-software-guard-extensions-helper-functions" class="section-header"><a href="#intelr-software-guard-extensions-helper-functions">Intel(R) Software Guard Extensions Helper Functions</a></h1>
+<p>The tRTS provides the helper functions for you to determine whether a given address is within or outside
+enclave memory.</p>
+<p>The tRTS provides a wrapper to the RDRAND instruction to generate a true random number from hardware.
+enclave developers should use the rsgx_read_rand function to get true random numbers.</p>
+<h1 id="customexceptionhandling" class="section-header"><a href="#customexceptionhandling">CustomExceptionHandling</a></h1>
+<p>The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers,
+to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within
+the enclave, the registered exception handlers will be called in a specific order until an exception handler reports
+that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault
+(Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type
+sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R)
+Software Guard Extensions Programming Reference.</p>
+<p><strong>Note</strong></p>
+<p>Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode,
+the exceptions cannot be caught and handled within the enclave.</p>
+<p><strong>Note</strong></p>
+<p>OCALLs are not allowed in the exception handler.</p>
+<p><strong>Note</strong></p>
+<p>Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching
+other registers in the exception handlers.</p>
+<p><strong>Note</strong></p>
+<p>If the exception handlers can not handle the exceptions, abort() is called.
+abort() makes the enclave unusable and generates another exception.</p>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_data_is_outside_enclave.html"
+                                  title='fn sgx_trts::rsgx_data_is_outside_enclave'>rsgx_data_is_outside_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_data_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_data_is_within_enclave.html"
+                                  title='fn sgx_trts::rsgx_data_is_within_enclave'>rsgx_data_is_within_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_data_is_within_enclave checks whether a given address is within enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_enclave_base.html"
+                                  title='fn sgx_trts::rsgx_get_enclave_base'>rsgx_get_enclave_base</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_enclave_base is to get enclave image base address.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_heap_base.html"
+                                  title='fn sgx_trts::rsgx_get_heap_base'>rsgx_get_heap_base</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_heap_base is to get enclave heap base address.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_heap_size.html"
+                                  title='fn sgx_trts::rsgx_get_heap_size'>rsgx_get_heap_size</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_heap_size is to get enclave heap size.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_thread_data.html"
+                                  title='fn sgx_trts::rsgx_get_thread_data'>rsgx_get_thread_data</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_thread_data is to get TD base address per thread.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_raw_is_outside_enclave.html"
+                                  title='fn sgx_trts::rsgx_raw_is_outside_enclave'>rsgx_raw_is_outside_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_raw_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_raw_is_within_enclave.html"
+                                  title='fn sgx_trts::rsgx_raw_is_within_enclave'>rsgx_raw_is_within_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_raw_is_within_enclave checks whether a given address is within enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_read_rand.html"
+                                  title='fn sgx_trts::rsgx_read_rand'>rsgx_read_rand</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_read_rand function is used to generate a random number inside the enclave.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_register_exception_handler.html"
+                                  title='fn sgx_trts::rsgx_register_exception_handler'>rsgx_register_exception_handler</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_register_exception_handler register an exception handler.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_slice_is_outside_enclave.html"
+                                  title='fn sgx_trts::rsgx_slice_is_outside_enclave'>rsgx_slice_is_outside_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_slice_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_slice_is_within_enclave.html"
+                                  title='fn sgx_trts::rsgx_slice_is_within_enclave'>rsgx_slice_is_within_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_slice_is_within_enclave checks whether a given address is within enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_unregister_exception_handler.html"
+                                  title='fn sgx_trts::rsgx_unregister_exception_handler'>rsgx_unregister_exception_handler</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_unregister_exception_handler is used to unregister a custom exception handler.</p>
+
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.exception_handle.html"
+                                  title='type sgx_trts::exception_handle'>exception_handle</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "sgx_trts";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SgxSealedData","The structure about the sealed data. "],["SgxUnsealedData","The structure about the unsealed data."]]});
