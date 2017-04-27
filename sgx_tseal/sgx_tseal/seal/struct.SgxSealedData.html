@@ -72,7 +72,7 @@
 <div class='docblock'><p>This function is used to AES-GCM encrypt the input data. Two input data sets
 are provided: one is the data to be encrypted; the second is optional additional data
 that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</p>
-<h1 id="descryption" class="section-header"><a href="#descryption">Descryption</a></h1>
+<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
 <p>The seal_data function retrieves a key unique to the enclave and uses
 that key to encrypt the input data buffer. This function can be utilized to preserve secret
 data after the enclave is destroyed. The sealed data blob can be
@@ -113,7 +113,7 @@ are provided: one is the data to be encrypted; the second is optional additional
 data that will not be encrypted but will be part of the GCM MAC calculation
 which also covers the data to be encrypted. This is the expert mode
 version of function <code>seal_data</code>.</p>
-<h1 id="descryption-1" class="section-header"><a href="#descryption-1">Descryption</a></h1>
+<h1 id="descryption" class="section-header"><a href="#descryption">Descryption</a></h1>
 <p>The <code>seal_data_ex</code> is an extended version of <code>seal_data</code>. It
 provides parameters for you to identify how to derive the sealing key (key
 policy and attributes_mask). Typical callers of the seal library should be
@@ -162,7 +162,7 @@ Two output data sets result: one is the decrypted data; the second is the
 optional additional data that was part of the GCM MAC calculation but was not
 encrypted. This function provides the converse of seal_data and
 seal_data_ex.</p>
-<h1 id="descryption-2" class="section-header"><a href="#descryption-2">Descryption</a></h1>
+<h1 id="descryption-1" class="section-header"><a href="#descryption-1">Descryption</a></h1>
 <p>The unseal_data function AES-GCM decrypts the sealed data so that
 the enclave data can be restored. This function can be utilized to restore
 secret data that was preserved after an earlier instantiation of this enclave
@@ -208,7 +208,7 @@ random number.</p>
 <div class='docblock'><p>This function is used to AES-GCM encrypt the input data. Two input data sets
 are provided: one is the data to be encrypted; the second is optional additional data
 that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</p>
-<h1 id="descryption-3" class="section-header"><a href="#descryption-3">Descryption</a></h1>
+<h1 id="descryption-2" class="section-header"><a href="#descryption-2">Descryption</a></h1>
 <p>The seal_data function retrieves a key unique to the enclave and uses
 that key to encrypt the input data buffer. This function can be utilized to preserve secret
 data after the enclave is destroyed. The sealed data blob can be
@@ -249,7 +249,7 @@ are provided: one is the data to be encrypted; the second is optional additional
 data that will not be encrypted but will be part of the GCM MAC calculation
 which also covers the data to be encrypted. This is the expert mode
 version of function <code>seal_data</code>.</p>
-<h1 id="descryption-4" class="section-header"><a href="#descryption-4">Descryption</a></h1>
+<h1 id="descryption-3" class="section-header"><a href="#descryption-3">Descryption</a></h1>
 <p>The <code>seal_data_ex</code> is an extended version of <code>seal_data</code>. It
 provides parameters for you to identify how to derive the sealing key (key
 policy and attributes_mask). Typical callers of the seal library should be
@@ -298,7 +298,7 @@ Two output data sets result: one is the decrypted data; the second is the
 optional additional data that was part of the GCM MAC calculation but was not
 encrypted. This function provides the converse of seal_data and
 seal_data_ex.</p>
-<h1 id="descryption-5" class="section-header"><a href="#descryption-5">Descryption</a></h1>
+<h1 id="descryption-4" class="section-header"><a href="#descryption-4">Descryption</a></h1>
 <p>The unseal_data function AES-GCM decrypts the sealed data so that
 the enclave data can be restored. This function can be utilized to restore
 secret data that was preserved after an earlier instantiation of this enclave
