@@ -342,8 +342,8 @@
 
 <span class="doccomment">//! # Trusted Key Exchange Library</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The library allow an ISV to exchange secrets between its server and its enclaves. They are used in </span>
-<span class="doccomment">//! concert with untrusted Key Exchange functions. </span>
+<span class="doccomment">//! The library allow an ISV to exchange secrets between its server and its enclaves. They are used in</span>
+<span class="doccomment">//! concert with untrusted Key Exchange functions.</span>
 <span class="doccomment">//!</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tkey_exchange&quot;</span>]</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
@@ -358,7 +358,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This is the first API user should call for a key exchange process. The context returned from this </span>
+<span class="doccomment">/// This is the first API user should call for a key exchange process. The context returned from this</span>
 <span class="doccomment">/// function is used as a handle for other APIs in the key exchange library.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
@@ -369,8 +369,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// **b_pse**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If true, platform service information is needed in message 3. The caller should make sure a PSE session </span>
-<span class="doccomment">/// has been established using rsgx_create_pse_session before attempting to establish a remote attestation </span>
+<span class="doccomment">/// If true, platform service information is needed in message 3. The caller should make sure a PSE session</span>
+<span class="doccomment">/// has been established using rsgx_create_pse_session before attempting to establish a remote attestation</span>
 <span class="doccomment">/// and key exchange session involving platform service information.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
@@ -381,7 +381,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Return value</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The output context for the subsequent remote attestation and key exchange process, to be used in </span>
+<span class="doccomment">/// The output context for the subsequent remote attestation and key exchange process, to be used in</span>
 <span class="doccomment">/// sgx_ra_get_msg1 and sgx_ra_proc_msg2.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
@@ -402,12 +402,12 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Indicates that an unexpected error occurred.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_ra_init</span>(<span class="ident">p_pub_key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_public_t</span>, <span class="ident">b_pse</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ra_context_t</span><span class="op">&gt;</span> {    
-    
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_ra_init</span>(<span class="ident">p_pub_key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_public_t</span>, <span class="ident">b_pse</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ra_context_t</span><span class="op">&gt;</span> {
+
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">context</span>: <span class="ident">sgx_ra_context_t</span> <span class="op">=</span> <span class="number">0</span>;
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">sgx_ra_init</span>(<span class="ident">p_pub_key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_ec256_public_t</span>, 
-                    <span class="ident">b_pse</span>, 
+        <span class="ident">sgx_ra_init</span>(<span class="ident">p_pub_key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_ec256_public_t</span>,
+                    <span class="ident">b_pse</span>,
                     <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">context</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ra_context_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
@@ -417,12 +417,12 @@
 }
 
 <span class="doccomment">///</span>
-<span class="doccomment">/// The rsgx_ra_init_ex function creates a context for the remote attestation and key exchange process </span>
+<span class="doccomment">/// The rsgx_ra_init_ex function creates a context for the remote attestation and key exchange process</span>
 <span class="doccomment">/// while it allows the use of a custom defined Key Derivation Function (KDF).</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This is the first API user should call for a key exchange process. The context returned from this </span>
+<span class="doccomment">/// This is the first API user should call for a key exchange process. The context returned from this</span>
 <span class="doccomment">/// function is used as a handle for other APIs in the key exchange library.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
@@ -433,14 +433,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// **b_pse**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If true, platform service information is needed in message 3. The caller should make sure a PSE session </span>
-<span class="doccomment">/// has been established using rsgx_create_pse_session before attempting to establish a remote attestation </span>
+<span class="doccomment">/// If true, platform service information is needed in message 3. The caller should make sure a PSE session</span>
+<span class="doccomment">/// has been established using rsgx_create_pse_session before attempting to establish a remote attestation</span>
 <span class="doccomment">/// and key exchange session involving platform service information.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **derive_key_cb**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This a pointer to a call back routine matching the funtion prototype of sgx_ra_derive_secret_keys_t. </span>
-<span class="doccomment">/// This function takes the Diffie-Hellman shared secret as input to allow the ISV enclave to generate </span>
+<span class="doccomment">/// This a pointer to a call back routine matching the funtion prototype of sgx_ra_derive_secret_keys_t.</span>
+<span class="doccomment">/// This function takes the Diffie-Hellman shared secret as input to allow the ISV enclave to generate</span>
 <span class="doccomment">/// their own derived shared keys (SMK, SK, MK and VK).</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
@@ -451,7 +451,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Return value</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The output context for the subsequent remote attestation and key exchange process, to be used in </span>
+<span class="doccomment">/// The output context for the subsequent remote attestation and key exchange process, to be used in</span>
 <span class="doccomment">/// sgx_ra_get_msg1 and sgx_ra_proc_msg2.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
@@ -474,7 +474,7 @@
 <span class="doccomment">///</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_ra_init_ex</span>(<span class="ident">p_pub_key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_public_t</span>,
                        <span class="ident">b_pse</span>: <span class="ident">i32</span>,
-                       <span class="ident">derive_key_cb</span>: <span class="ident">sgx_ra_derive_secret_keys_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ra_context_t</span><span class="op">&gt;</span> {  
+                       <span class="ident">derive_key_cb</span>: <span class="ident">sgx_ra_derive_secret_keys_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ra_context_t</span><span class="op">&gt;</span> {
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">context</span>: <span class="ident">sgx_ra_context_t</span> <span class="op">=</span> <span class="number">0</span>;
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
@@ -486,18 +486,18 @@
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">context</span>),
         _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
-    }  
+    }
 }
 
 <span class="doccomment">///</span>
-<span class="doccomment">/// The sgx_ra_get_keys function is used to get the negotiated keys of a remote attestation and key exchange session. </span>
+<span class="doccomment">/// The sgx_ra_get_keys function is used to get the negotiated keys of a remote attestation and key exchange session.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This function should only be called after the service provider accepts the remote attestation and key exchange </span>
+<span class="doccomment">/// This function should only be called after the service provider accepts the remote attestation and key exchange</span>
 <span class="doccomment">/// protocol message 3 produced by sgx_ra_proc_msg2.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// After a successful key exchange process, this API can be used in the enclave to get specific key associated </span>
+<span class="doccomment">/// After a successful key exchange process, this API can be used in the enclave to get specific key associated</span>
 <span class="doccomment">/// with this remote attestation and key exchange session.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
@@ -528,7 +528,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// **SGX_ERROR_INVALID_STATE**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Indicates this API is invoked in incorrect order, it can be called only after a success session has been established. </span>
+<span class="doccomment">/// Indicates this API is invoked in incorrect order, it can be called only after a success session has been established.</span>
 <span class="doccomment">/// In other words, sgx_ra_proc_msg2 should have been called and no error returned.</span>
 <span class="doccomment">///</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_ra_get_keys</span>(<span class="ident">context</span>: <span class="ident">sgx_ra_context_t</span>, <span class="ident">keytype</span>: <span class="ident">sgx_ra_key_type_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ra_key_128_t</span><span class="op">&gt;</span> {
@@ -546,12 +546,12 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// rsgx_ra_close release context created by rsgx_ra_init or rsgx_ra_init_ex.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Call the rsgx_ra_close function to release the remote attestation and key exchange context after </span>
+<span class="doccomment">/// Call the rsgx_ra_close function to release the remote attestation and key exchange context after</span>
 <span class="doccomment">/// the process is done and the context isn’t needed anymore.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// At the end of a key exchange process, the caller needs to use this API in an enclave to clear and </span>
+<span class="doccomment">/// At the end of a key exchange process, the caller needs to use this API in an enclave to clear and</span>
 <span class="doccomment">/// free memory associated with this remote attestation session.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
@@ -638,7 +638,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tkey_exchange";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

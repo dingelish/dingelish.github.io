@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SgxShaHandle` struct in crate `sgx_tcrypto`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SgxShaHandle">
+
+    <title>sgx_tcrypto::SgxShaHandle - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct SgxShaHandle</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>sgx_tcrypto</a></p><script>window.sidebarCurrent = {name: 'SgxShaHandle', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sgx_tcrypto</a>::<wbr><a class="struct" href=''>SgxShaHandle</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#175-178' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SgxShaHandle { /* fields omitted */ }</pre><div class='docblock'><p>SHA algorithm context state.</p>
+
+<p>This is a handle to the context state used by the cryptography library to perform an iterative SHA256 hash.
+The algorithm stores the intermediate results of performing the hash calculation over data sets.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tcrypto/struct.SgxShaHandle.html" title="struct sgx_tcrypto::SgxShaHandle">SgxShaHandle</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#180-397' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Constructs a new, empty SgxShaHandle.</p>
+</div><h4 id='method.init' class="method"><span id='init.v' class='invisible'><code>fn <a href='#method.init' class='fnname'>init</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span></h4>
+<div class='docblock'><p>init returns an allocated and initialized SHA algorithm context state.</p>
+
+<p>This should be part of the Init, Update … Update, Final process when the SHA hash is to be performed
+over multiple datasets. If a complete dataset is available, the recommend call is rsgx_sha256_msg to
+perform the hash in a single call.</p>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
+<p>Calling init is the first set in performing a SHA256 hash over multiple datasets. The caller does not
+allocate memory for the SHA256 state that this function returns. The state is specific to the implementation
+of the cryptography library; thus the allocation is performed by the library itself. If the hash over the
+desired datasets is completed or any error occurs during the hash calculation process, sgx_sha256_close should
+be called to free the state allocated by this algorithm.</p>
+
+<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<p>Library: libsgx_tcrypto.a</p>
+
+<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+
+<p>The pointer is invalid.</p>
+
+<p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+
+<p>Not enough memory is available to complete this operation.</p>
+
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+
+<p>The SHA256 state is not initialized properly due to an internal cryptography library failure.</p>
+</div><h4 id='method.update_msg' class="method"><span id='update_msg.v' class='invisible'><code>fn <a href='#method.update_msg' class='fnname'>update_msg</a>&lt;T&gt;(&amp;self, src: &amp;T) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>update_msg performs a SHA256 hash over the input dataset provided.</p>
+
+<p>This function supports an iterative calculation of the hash over multiple datasets where the
+sha_handle contains the intermediate results of the hash calculation over previous datasets.</p>
+
+<h1 id='description-1' class='section-header'><a href='#description-1'>Description</a></h1>
+<p>This function should be used as part of a SHA256 calculation over multiple datasets.
+If a SHA256 hash is needed over a single data set, function rsgx_sha256_msg should be used instead.
+Prior to calling this function on the first dataset, the init function must be called first to allocate
+and initialize the SHA256 state structure which will hold intermediate hash results over earlier datasets.
+The function get_hash should be used to obtain the hash after the final dataset has been processed
+by this function.</p>
+
+<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<p><strong>src</strong></p>
+
+<p>A pointer to the input data stream to be hashed.</p>
+
+<h1 id='requirements-1' class='section-header'><a href='#requirements-1'>Requirements</a></h1>
+<p>Library: libsgx_tcrypto.a</p>
+
+<h1 id='errors-1' class='section-header'><a href='#errors-1'>Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+
+<p>The pointer is invalid.</p>
+
+<p><strong>SGX_ERROR_INVALID_STATE</strong></p>
+
+<p>The SHA256 state is not initialized.</p>
+
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+
+<p>An internal cryptography library failure occurred while performing the SHA256 hash calculation.</p>
+</div><h4 id='method.update_slice' class="method"><span id='update_slice.v' class='invisible'><code>fn <a href='#method.update_slice' class='fnname'>update_slice</a>&lt;T&gt;(&amp;self, src: &amp;[T]) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span></h4>
+<div class='docblock'><p>update_slice performs a SHA256 hash over the input dataset provided.</p>
+</div><h4 id='method.get_hash' class="method"><span id='get_hash.v' class='invisible'><code>fn <a href='#method.get_hash' class='fnname'>get_hash</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="type" href="../sgx_types/types/type.sgx_sha256_hash_t.html" title="type sgx_types::types::sgx_sha256_hash_t">sgx_sha256_hash_t</a>&gt;</code></span></h4>
+<div class='docblock'><p>get_hash obtains the SHA256 hash after the final dataset has been processed.</p>
+
+<h1 id='description-2' class='section-header'><a href='#description-2'>Description</a></h1>
+<p>This function returns the hash after performing the SHA256 calculation over one or more datasets
+using the update function.</p>
+
+<h1 id='requirements-2' class='section-header'><a href='#requirements-2'>Requirements</a></h1>
+<p>Library: libsgx_tcrypto.a</p>
+
+<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
+<p>The 256-bit hash that has been SHA256 calculated</p>
+
+<h1 id='errors-2' class='section-header'><a href='#errors-2'>Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+
+<p>The pointer is invalid.</p>
+
+<p><strong>SGX_ERROR_INVALID_STATE</strong></p>
+
+<p>The SHA256 state is not initialized.</p>
+
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+
+<p>The SHA256 state passed in is likely problematic causing an internal cryptography library failure.</p>
+</div><h4 id='method.close' class="method"><span id='close.v' class='invisible'><code>fn <a href='#method.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span></h4>
+<div class='docblock'><p>close cleans up and deallocates the SHA256 state that was allocated in function init.</p>
+
+<h1 id='description-3' class='section-header'><a href='#description-3'>Description</a></h1>
+<p>Calling close is the last step after performing a SHA256 hash over multiple datasets.
+The caller uses this function to deallocate memory used to store the SHA256 calculation state.</p>
+
+<h1 id='requirements-3' class='section-header'><a href='#requirements-3'>Requirements</a></h1>
+<p>Library: libsgx_tcrypto.a</p>
+
+<h1 id='errors-3' class='section-header'><a href='#errors-3'>Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+
+<p>The input handle is invalid.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxShaHandle.html" title="struct sgx_tcrypto::SgxShaHandle">SgxShaHandle</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#399-403' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxShaHandle.html" title="struct sgx_tcrypto::SgxShaHandle">SgxShaHandle</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#405-413' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>drop cleans up and deallocates the SHA256 state that was allocated in function init.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "sgx_tcrypto";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

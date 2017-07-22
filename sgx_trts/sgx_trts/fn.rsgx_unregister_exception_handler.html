@@ -48,21 +48,30 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#216-220' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_trts/veh.rs.html#118-122' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn rsgx_unregister_exception_handler(handle: <a class="type" href="../sgx_trts/type.exception_handle.html" title="type sgx_trts::exception_handle">exception_handle</a>) -&gt; bool</pre><div class='docblock'><p>rsgx_unregister_exception_handler is used to unregister a custom exception handler.</p>
-<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
 <p>The Intel(R) SGX SDK supports the registration of custom exception handler functions. An enclave developer
 can write their own code to handle a limited set of hardware exceptions.</p>
+
 <p>Calling rsgx_unregister_exception_handler allows developers to unregister an exception handler that was registered earlier.</p>
-<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
+
+<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
 <p><strong>handle</strong></p>
+
 <p>A handle to the custom exception handler previously registered using the rsgx_register_exception_handler function.</p>
-<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
+
+<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
 <p>Library: libsgx_trts.a</p>
-<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+
+<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
 <p><strong>true</strong></p>
+
 <p>The custom exception handler is unregistered successfully.</p>
+
 <p><strong>false</strong></p>
+
 <p>The exception handler was not unregistered (not a valid pointer, handler not found).</p>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -121,7 +130,6 @@ can write their own code to handle a limited set of hardware exceptions.</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_trts";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

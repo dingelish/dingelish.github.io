@@ -874,6 +874,55 @@
 <span id="829">829</span>
 <span id="830">830</span>
 <span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
+<span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
+<span id="842">842</span>
+<span id="843">843</span>
+<span id="844">844</span>
+<span id="845">845</span>
+<span id="846">846</span>
+<span id="847">847</span>
+<span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
+<span id="854">854</span>
+<span id="855">855</span>
+<span id="856">856</span>
+<span id="857">857</span>
+<span id="858">858</span>
+<span id="859">859</span>
+<span id="860">860</span>
+<span id="861">861</span>
+<span id="862">862</span>
+<span id="863">863</span>
+<span id="864">864</span>
+<span id="865">865</span>
+<span id="866">866</span>
+<span id="867">867</span>
+<span id="868">868</span>
+<span id="869">869</span>
+<span id="870">870</span>
+<span id="871">871</span>
+<span id="872">872</span>
+<span id="873">873</span>
+<span id="874">874</span>
+<span id="875">875</span>
+<span id="876">876</span>
+<span id="877">877</span>
+<span id="878">878</span>
+<span id="879">879</span>
+<span id="880">880</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -904,6 +953,7 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="kw">use</span> <span class="ident">error</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="kw">super</span>::<span class="ident">marker</span>::<span class="ident">ContiguousMemory</span>;
 
 <span class="comment">//</span>
 <span class="comment">// sgx_attributes.h</span>
@@ -912,17 +962,17 @@
 
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">sgx_misc_select_t</span> <span class="op">=</span> ::<span class="ident">uint32_t</span>;
 
-<span class="comment">// Enclave Flags Bit Masks </span>
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_INITTED</span>: ::<span class="ident">uint64_t</span>         <span class="op">=</span> <span class="number">0x0000000000000001</span>;    <span class="comment">//If set, then the enclave is initialized </span>
+<span class="comment">// Enclave Flags Bit Masks</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_INITTED</span>: ::<span class="ident">uint64_t</span>         <span class="op">=</span> <span class="number">0x0000000000000001</span>;    <span class="comment">//If set, then the enclave is initialized</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_DEBUG</span>: ::<span class="ident">uint64_t</span>           <span class="op">=</span> <span class="number">0x0000000000000002</span>;    <span class="comment">//If set, then the enclave is debug</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_MODE64BIT</span>: ::<span class="ident">uint64_t</span>       <span class="op">=</span> <span class="number">0x0000000000000004</span>;    <span class="comment">//If set, then the enclave is 64 bit</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_PROVISION_KEY</span>: ::<span class="ident">uint64_t</span>   <span class="op">=</span> <span class="number">0x0000000000000010</span>;    <span class="comment">//If set, then the enclave has access to provision key</span>
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_LICENSE_KEY</span>: ::<span class="ident">uint64_t</span>     <span class="op">=</span> <span class="number">0x0000000000000020</span>;    <span class="comment">//If set, then the enclave has access to License key</span>
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_RESERVED</span>: ::<span class="ident">uint64_t</span>        <span class="op">=</span> (<span class="op">!</span>(<span class="ident">SGX_FLAGS_INITTED</span> 
-                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_DEBUG</span> 
-                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_MODE64BIT</span> 
-                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_PROVISION_KEY</span> 
-                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_LICENSE_KEY</span>));
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_EINITTOKEN_KEY</span>: ::<span class="ident">uint64_t</span>  <span class="op">=</span> <span class="number">0x0000000000000020</span>;    <span class="comment">//If set, then the enclave has access to EINITTOKEN key</span>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_FLAGS_RESERVED</span>: ::<span class="ident">uint64_t</span>        <span class="op">=</span> (<span class="op">!</span>(<span class="ident">SGX_FLAGS_INITTED</span>
+                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_DEBUG</span>
+                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_MODE64BIT</span>
+                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_PROVISION_KEY</span>
+                                                <span class="op">|</span> <span class="ident">SGX_FLAGS_EINITTOKEN_KEY</span>));
 
 <span class="comment">// XSAVE Feature Request Mask</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_XFRM_LEGACY</span>: ::<span class="ident">uint64_t</span>           <span class="op">=</span> <span class="number">0x0000000000000003</span>;  <span class="comment">//Legacy XFRM</span>
@@ -936,12 +986,12 @@
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_attributes_t</span> {
         <span class="kw">pub</span> <span class="ident">flags</span>: ::<span class="ident">uint64_t</span>,
         <span class="kw">pub</span> <span class="ident">xfrm</span>: ::<span class="ident">uint64_t</span>,
-    }  
+    }
 
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_misc_attribute_t</span> {
         <span class="kw">pub</span> <span class="ident">secs_attr</span>: <span class="ident">sgx_attributes_t</span>,
         <span class="kw">pub</span> <span class="ident">misc_select</span>: <span class="ident">sgx_misc_select_t</span>,
-    } 
+    }
 }
 
 <span class="comment">//</span>
@@ -955,9 +1005,9 @@
 
     <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">packed</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_dh_msg1_t</span> {
-        <span class="kw">pub</span> <span class="ident">g_a</span>: <span class="ident">sgx_ec256_public_t</span>, 
+        <span class="kw">pub</span> <span class="ident">g_a</span>: <span class="ident">sgx_ec256_public_t</span>,
         <span class="kw">pub</span> <span class="ident">target</span>: <span class="ident">sgx_target_info_t</span>,
-    } 
+    }
 }
 
 <span class="macro">impl_copy_clone</span><span class="macro">!</span> {
@@ -991,7 +1041,7 @@
         <span class="kw">pub</span> <span class="ident">mr_enclave</span>: <span class="ident">sgx_measurement_t</span>,
         <span class="kw">pub</span> <span class="ident">reserved_2</span>: [::<span class="ident">uint8_t</span>; <span class="number">32</span>],
         <span class="kw">pub</span> <span class="ident">mr_signer</span>: <span class="ident">sgx_measurement_t</span>,
-        <span class="kw">pub</span> <span class="ident">reserved_3</span>: [::<span class="ident">uint8_t</span>; <span class="number">96</span>], 
+        <span class="kw">pub</span> <span class="ident">reserved_3</span>: [::<span class="ident">uint8_t</span>; <span class="number">96</span>],
         <span class="kw">pub</span> <span class="ident">isv_prod_id</span>: ::<span class="ident">sgx_prod_id_t</span>,
         <span class="kw">pub</span> <span class="ident">isv_svn</span>: ::<span class="ident">sgx_isv_svn_t</span>,
     }
@@ -1010,6 +1060,13 @@
     <span class="ident">sgx_dh_session_t</span>, <span class="number">200</span>;
 }
 
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_dh_msg2_t</span>;
+    <span class="ident">sgx_dh_msg3_body_t</span>;
+    <span class="ident">sgx_dh_msg3_t</span>;
+    <span class="ident">sgx_dh_session_enclave_identity_t</span>;
+    <span class="ident">sgx_dh_session_t</span>;
+}
 
 <span class="macro">impl_enum</span><span class="macro">!</span> {
 
@@ -1102,6 +1159,10 @@
     <span class="ident">sgx_key_request_t</span>, <span class="number">512</span>;
 }
 
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_key_request_t</span>;
+}
+
 <span class="comment">//</span>
 <span class="comment">// sgx_key_exchange.h</span>
 <span class="comment">//</span>
@@ -1152,6 +1213,10 @@
 
 <span class="macro">impl_struct_default</span><span class="macro">!</span> {
     <span class="ident">sgx_ra_msg3_t</span>, <span class="number">336</span>;
+}
+
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_ra_msg3_t</span>;
 }
 
 <span class="comment">//</span>
@@ -1224,6 +1289,11 @@
     <span class="ident">sgx_platform_info_t</span>, <span class="number">101</span>;
 }
 
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_quote_t</span>;
+    <span class="ident">sgx_platform_info_t</span>;
+}
+
 <span class="comment">//</span>
 <span class="comment">// sgx_report.h</span>
 <span class="comment">//</span>
@@ -1244,7 +1314,7 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">sgx_mac_t</span> <span class="op">=</span> [::<span class="ident">uint8_t</span>; <span class="ident">SGX_MAC_SIZE</span>];
 
 <span class="macro">impl_copy_clone</span><span class="macro">!</span> {
-    
+
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_report_data_t</span> {
         <span class="kw">pub</span> <span class="ident">d</span>: [::<span class="ident">uint8_t</span>; <span class="ident">SGX_REPORT_DATA_SIZE</span>],
     }
@@ -1252,6 +1322,10 @@
 
 <span class="macro">impl_struct_default</span><span class="macro">!</span> {
     <span class="ident">sgx_report_data_t</span>, <span class="number">64</span>;
+}
+
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_report_data_t</span>;
 }
 
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">sgx_prod_id_t</span> <span class="op">=</span> ::<span class="ident">uint16_t</span>;
@@ -1297,6 +1371,12 @@
     <span class="ident">sgx_report_t</span>, <span class="number">432</span>;
 }
 
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_target_info_t</span>;
+    <span class="ident">sgx_report_body_t</span>;
+    <span class="ident">sgx_report_t</span>;
+}
+
 <span class="comment">//</span>
 <span class="comment">// sgx_spinlock.h</span>
 <span class="comment">//</span>
@@ -1332,10 +1412,23 @@
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_ps_sec_prop_desc_t</span> {
         <span class="kw">pub</span> <span class="ident">sgx_ps_sec_prop_desc</span>: [::<span class="ident">uint8_t</span>; <span class="number">256</span>],
     }
+
+    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span> {
+        <span class="kw">pub</span> <span class="ident">ps_sec_prop_desc</span>: <span class="ident">sgx_ps_sec_prop_desc_t</span>,
+        <span class="kw">pub</span> <span class="ident">pse_mrsigner</span>: <span class="ident">sgx_measurement_t</span>,
+        <span class="kw">pub</span> <span class="ident">pse_prod_id</span>: <span class="ident">sgx_prod_id_t</span>,
+        <span class="kw">pub</span> <span class="ident">pse_isv_svn</span>: <span class="ident">sgx_isv_svn_t</span>,
+    }
 }
 
 <span class="macro">impl_struct_default</span><span class="macro">!</span> {
     <span class="ident">sgx_ps_sec_prop_desc_t</span>, <span class="number">256</span>;
+    <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>, <span class="number">292</span>;
+}
+
+<span class="macro">impl_struct_ContiguousMemory</span><span class="macro">!</span> {
+    <span class="ident">sgx_ps_sec_prop_desc_t</span>;
+    <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>;
 }
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SGX_MC_POLICY_SIGNER</span>: ::<span class="ident">uint16_t</span>   <span class="op">=</span> <span class="number">0x01</span>;
@@ -1360,6 +1453,11 @@
 
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_ec256_dh_shared_t</span> {
         <span class="kw">pub</span> <span class="ident">s</span>: [::<span class="ident">uint8_t</span>; <span class="ident">SGX_ECP256_KEY_SIZE</span>],
+    }
+
+    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_ec256_dh_shared512_t</span> {
+        <span class="kw">pub</span> <span class="ident">x</span>: [::<span class="ident">uint8_t</span>; <span class="ident">SGX_ECP256_KEY_SIZE</span>],
+        <span class="kw">pub</span> <span class="ident">y</span>: [::<span class="ident">uint8_t</span>; <span class="ident">SGX_ECP256_KEY_SIZE</span>],
     }
 
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_ec256_private_t</span> {
@@ -1434,11 +1532,11 @@
     }
 }
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THREAD_SELF_ADDR</span>:         ::<span class="ident">size_t</span> <span class="op">=</span> <span class="number">0</span>;
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THREAD_LAST_SP_ADDR</span>:      ::<span class="ident">size_t</span> <span class="op">=</span> (<span class="ident">SE_WORDSIZE</span> <span class="op">*</span> <span class="number">1</span>);
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THREAD_STACK_BASE_ADDR</span>:   ::<span class="ident">size_t</span> <span class="op">=</span> (<span class="ident">SE_WORDSIZE</span> <span class="op">*</span> <span class="number">2</span>);
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THREAD_STACK_LIMIT_ADDR</span>:  ::<span class="ident">size_t</span> <span class="op">=</span> (<span class="ident">SE_WORDSIZE</span> <span class="op">*</span> <span class="number">3</span>);
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THREAD_STACK_SSA_GPR</span>:     ::<span class="ident">size_t</span> <span class="op">=</span> (<span class="ident">SE_WORDSIZE</span> <span class="op">*</span> <span class="number">4</span>);
+<span class="comment">//pub const THREAD_SELF_ADDR:         ::size_t = 0;</span>
+<span class="comment">//pub const THREAD_LAST_SP_ADDR:      ::size_t = (SE_WORDSIZE * 1);</span>
+<span class="comment">//pub const THREAD_STACK_BASE_ADDR:   ::size_t = (SE_WORDSIZE * 2);</span>
+<span class="comment">//pub const THREAD_STACK_LIMIT_ADDR:  ::size_t = (SE_WORDSIZE * 3);</span>
+<span class="comment">//pub const THREAD_STACK_SSA_GPR:     ::size_t = (SE_WORDSIZE * 4);</span>
 
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">sgx_thread_queue_t</span> {
     <span class="kw">pub</span> <span class="ident">m_first</span>: <span class="ident">sgx_thread_t</span>,
@@ -1526,7 +1624,7 @@
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">EXCEPTION_CONTINUE_EXECUTION</span>: ::<span class="ident">uint32_t</span>   <span class="op">=</span> <span class="number">0xFFFFFFFF</span>;
 
 <span class="macro">impl_enum</span><span class="macro">!</span> {
-    
+
     <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
     <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">sgx_exception_vector_t</span> {
@@ -1542,7 +1640,7 @@
 }
 
 <span class="macro">impl_enum</span><span class="macro">!</span>{
-    
+
     <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
     <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">sgx_exception_type_t</span> {
@@ -1705,7 +1803,8 @@
 <span class="comment">//    } else {</span>
 <span class="comment">//        pub const SGX_DEBUG_FLAG: ::int32_t   = 0;</span>
 <span class="comment">//    }</span>
-<span class="comment">//}</span></pre>
+<span class="comment">//}</span>
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -1763,7 +1862,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_types";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

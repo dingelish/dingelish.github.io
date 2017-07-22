@@ -48,23 +48,31 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#119-126' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_trts/trts.rs.html#64-71' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn rsgx_read_rand(rand: &amp;mut [u8]) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></pre><div class='docblock'><p>rsgx_read_rand function is used to generate a random number inside the enclave.</p>
-<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
 <p>The rsgx_read_rand function is provided to replace the standard pseudo-random sequence generation functions
 inside the enclave, since these standard functions are not supported in the enclave, such as rand, srand, etc.
 For HW mode, the function generates a real-random sequence; while for simulation mode, the function generates
 a pseudo-random sequence.</p>
-<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
+
+<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
 <p><strong>rand</strong></p>
+
 <p>A pointer to the buffer that receives the random number. The rand buffer can be either within or outside the enclave,
 but it is not allowed to be across the enclave boundary or wrapped around.</p>
-<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
+
+<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
 <p>Library: libsgx_trts.a</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+
+<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+
 <p>Invalid input parameters detected.</p>
+
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+
 <p>Indicates an unexpected error occurs during the valid random number gen- eration process.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -123,7 +131,6 @@ but it is not allowed to be across the enclave boundary or wrapped around.</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_trts";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

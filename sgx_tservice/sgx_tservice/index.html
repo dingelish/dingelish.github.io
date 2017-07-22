@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tservice', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_tservice</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tservice', ty: 'mod', relpath: '../'};</script>
     </nav>
 
     <nav class="sub">
@@ -49,20 +49,56 @@
                        [<span class='inner'>&#x2212;</span>]
                    </a>
                </span><a class='srclink' href='../src/sgx_tservice/lib.rs.html#29-50' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><h1 id="trust-service-library" class="section-header"><a href="#trust-service-library">Trust Service Library</a></h1>
+<div class='docblock'>
+<h1 id='trust-service-library' class='section-header'><a href='#trust-service-library'>Trust Service Library</a></h1>
 <p>The Intel(R) Software Guard Extensions SDK provides a trusted library named
 sgx_tservice for secure data manipulation and protection. The sgx_tservice library
 provides the following modules:</p>
+
 <p><strong>Trust Platform Service Functions</strong></p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::<a class="mod" href="../sgx_tservice/tae/index.html" title="mod sgx_tservice::tae">tae</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="tae/index.html"
-                                  title='mod sgx_tservice::tae'>tae</a></td>
+                           <td><a class="struct" href="struct.SgxMonotonicCounter.html"
+                                  title='struct sgx_tservice::SgxMonotonicCounter'>SgxMonotonicCounter</a></td>
                            <td class='docblock-short'>
-                                <p>Trust Platform Service Functions</p>
-
+                                <p>Monotonic counter ID</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_close_pse_session.html"
+                                  title='fn sgx_tservice::rsgx_close_pse_session'>rsgx_close_pse_session</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_close_pse_session closes a session created by rsgx_create_pse_ session.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_create_pse_session.html"
+                                  title='fn sgx_tservice::rsgx_create_pse_session'>rsgx_create_pse_session</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_create_pse_session creates a session with the PSE.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_ps_sec_prop.html"
+                                  title='fn sgx_tservice::rsgx_get_ps_sec_prop'>rsgx_get_ps_sec_prop</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_ps_sec_prop gets a data structure describing the security property of the platform service.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_ps_sec_prop_ex.html"
+                                  title='fn sgx_tservice::rsgx_get_ps_sec_prop_ex'>rsgx_get_ps_sec_prop_ex</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_ps_sec_prop_ex gets a data structure describing the security property of the platform service.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_get_trusted_time.html"
+                                  title='fn sgx_tservice::rsgx_get_trusted_time'>rsgx_get_trusted_time</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_get_trusted_time gets trusted time from the AE service.</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -121,7 +157,6 @@ provides the following modules:</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_tservice";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

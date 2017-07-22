@@ -828,6 +828,62 @@
 <span id="783">783</span>
 <span id="784">784</span>
 <span id="785">785</span>
+<span id="786">786</span>
+<span id="787">787</span>
+<span id="788">788</span>
+<span id="789">789</span>
+<span id="790">790</span>
+<span id="791">791</span>
+<span id="792">792</span>
+<span id="793">793</span>
+<span id="794">794</span>
+<span id="795">795</span>
+<span id="796">796</span>
+<span id="797">797</span>
+<span id="798">798</span>
+<span id="799">799</span>
+<span id="800">800</span>
+<span id="801">801</span>
+<span id="802">802</span>
+<span id="803">803</span>
+<span id="804">804</span>
+<span id="805">805</span>
+<span id="806">806</span>
+<span id="807">807</span>
+<span id="808">808</span>
+<span id="809">809</span>
+<span id="810">810</span>
+<span id="811">811</span>
+<span id="812">812</span>
+<span id="813">813</span>
+<span id="814">814</span>
+<span id="815">815</span>
+<span id="816">816</span>
+<span id="817">817</span>
+<span id="818">818</span>
+<span id="819">819</span>
+<span id="820">820</span>
+<span id="821">821</span>
+<span id="822">822</span>
+<span id="823">823</span>
+<span id="824">824</span>
+<span id="825">825</span>
+<span id="826">826</span>
+<span id="827">827</span>
+<span id="828">828</span>
+<span id="829">829</span>
+<span id="830">830</span>
+<span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
+<span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -861,168 +917,121 @@
 <span class="doccomment">//! Intel(R) Software Guard Extensions Sealing and Unsealing Functions</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Intel(R) Software Guard Extensions Sealing and Unsealing Functions</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! The API of the model provides the following functions:</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! * Exposes APIs to create sealed data which is both confidentiality andintegrity protected.</span>
 <span class="doccomment">//! * Exposes an API to unseal sealed data inside the enclave.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The library also provides APIs to help calculate the sealed data size, encrypt text length, and Message Authentication Code (MAC) text length.</span>
 <span class="doccomment">//!</span>
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>;
+<span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="ident">marker</span>::<span class="ident">ContiguousMemory</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">slice</span>;
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">marker</span>::<span class="ident">PhantomData</span>;
 <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">internal</span>::<span class="kw-2">*</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">boxed</span>::<span class="ident">Box</span>;
 
 <span class="doccomment">/// The structure about the unsealed data.</span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> {
     <span class="kw">pub</span> <span class="ident">payload_size</span>: <span class="ident">u32</span>,
     <span class="kw">pub</span> <span class="ident">decrypt</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
     <span class="kw">pub</span> <span class="ident">additional</span>: <span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>,
+    <span class="ident">marker</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">/// </span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Get the payload size of the SgxUnsealedData.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_payload_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
         <span class="self">self</span>.<span class="ident">payload_size</span>
     }
     <span class="doccomment">///</span>
     <span class="doccomment">/// Get the pointer of decrypt buffer in SgxUnsealedData.</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_decrypt_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">T</span> {
         <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>.<span class="ident">decrypt</span>
     }
     <span class="doccomment">///</span>
     <span class="doccomment">/// Get the pointer of additional buffer in SgxUnsealedData.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_additional_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
         <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="self">self</span>.<span class="ident">additional</span>
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Default</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="ident">Default</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SgxUnsealedData</span> {
             <span class="ident">payload_size</span>: <span class="number">0_u32</span>,
             <span class="ident">decrypt</span>: <span class="ident">Box</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>::<span class="ident">default</span>(),
-            <span class="ident">additional</span>: <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>::<span class="ident">default</span>()
+            <span class="ident">additional</span>: <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>::<span class="ident">default</span>(),
+            <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="ident">Default</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, [<span class="ident">T</span>]<span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, [<span class="ident">T</span>]<span class="op">&gt;</span> {
         <span class="ident">SgxUnsealedData</span> {
             <span class="ident">payload_size</span>: <span class="number">0_u32</span>,
             <span class="ident">decrypt</span>: <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span>::<span class="ident">default</span>(),
-            <span class="ident">additional</span>: <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>::<span class="ident">default</span>()
+            <span class="ident">additional</span>: <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>::<span class="ident">default</span>(),
+            <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Clone</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="ident">Clone</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SgxUnsealedData</span> {
            <span class="ident">payload_size</span>: <span class="self">self</span>.<span class="ident">payload_size</span>,
            <span class="ident">decrypt</span>: <span class="self">self</span>.<span class="ident">decrypt</span>.<span class="ident">clone</span>(),
-           <span class="ident">additional</span>: <span class="self">self</span>.<span class="ident">additional</span>.<span class="ident">clone</span>()
+           <span class="ident">additional</span>: <span class="self">self</span>.<span class="ident">additional</span>.<span class="ident">clone</span>(),
+           <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
         }
     }
 }
 
-<span class="doccomment">/// The structure about the sealed data. </span>
-<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> {
+<span class="doccomment">/// The structure about the sealed data.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> {
     <span class="ident">inner</span>: <span class="ident">SgxInternalSealedData</span>,
-    <span class="ident">marker</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">T</span>,
+    <span class="ident">marker</span>: <span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SgxSealedData</span> {
             <span class="ident">inner</span>: <span class="ident">SgxInternalSealedData</span>::<span class="ident">new</span>(),
-            <span class="ident">marker</span>: <span class="ident">ptr</span>::<span class="ident">null</span>(), 
+            <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
         }
     }
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span>::<span class="ident">default</span>();
-        <span class="ident">SgxSealedData</span> {
-            <span class="ident">inner</span>: <span class="ident">SgxInternalSealedData</span>::<span class="ident">new</span>(),
-            <span class="ident">marker</span>: <span class="ident">Box</span>::<span class="ident">into_raw</span>(<span class="ident">p</span>),
-        }
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="ident">Clone</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SgxSealedData</span> {
            <span class="ident">inner</span>: <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">clone</span>(),
-           <span class="ident">marker</span>: <span class="self">self</span>.<span class="ident">marker</span>,
+           <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
         }
     }
 }
 
-<span class="doccomment">/// The encrypt_text to seal is T, and T must have Copy trait. </span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Copy</span><span class="op">&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Create a SgxSealedData with default values.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="ident">SgxSealedData</span>::<span class="ident">default</span>()
-    }
+<span class="doccomment">/// The encrypt_text to seal is T, and T must have Copy and ContiguousMemory trait.</span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span><span class="op">&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
 
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Convert a pointer of sgx_sealed_data_t buffer to SgxSealedData.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
-    <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **p**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The mutable pointer of sgx_sealed_data_t buffer.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **len**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The size of the parameter `p`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **Some(SgxSealedData)**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Indicates the conversion is successfully. The return value is SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **None**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Maybe the size of T is zero.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_sealed_data_t</span>(<span class="ident">p</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span>, <span class="ident">len</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-        
-        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
-        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="prelude-val">None</span>;
-        } 
-        <span class="ident">SgxInternalSealedData</span>::<span class="ident">from_raw_sealed_data_t</span>(<span class="ident">p</span>, <span class="ident">len</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">SgxSealedData</span>{<span class="ident">inner</span>: <span class="ident">x</span>, <span class="ident">marker</span>: <span class="ident">ptr</span>::<span class="ident">null</span>()})
-    }
-
-    <span class="doccomment">/// </span>
     <span class="doccomment">/// This function is used to AES-GCM encrypt the input data. Two input data sets</span>
-    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional data </span>
+    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional data</span>
     <span class="doccomment">/// that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The seal_data function retrieves a key unique to the enclave and uses</span>
-    <span class="doccomment">/// that key to encrypt the input data buffer. This function can be utilized to preserve secret </span>
+    <span class="doccomment">/// that key to encrypt the input data buffer. This function can be utilized to preserve secret</span>
     <span class="doccomment">/// data after the enclave is destroyed. The sealed data blob can be</span>
     <span class="doccomment">/// unsealed on future instantiations of the enclave.</span>
     <span class="doccomment">/// The additional data buffer will not be encrypted but will be part of the MAC</span>
@@ -1032,60 +1041,67 @@
     <span class="doccomment">/// Use `calc_raw_sealed_data_size` to calculate the number of bytes to</span>
     <span class="doccomment">/// allocate for the `SgxSealedData` structure. The input sealed data buffer and</span>
     <span class="doccomment">/// text2encrypt buffers must be allocated within the enclave.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **additional_text**</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data. </span>
+    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data.</span>
     <span class="doccomment">/// This additional data is optional and no data is necessary.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **encrypt_text**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Pointer to the data stream to be encrypted, which is &amp;T. Must be within the enclave.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
+    <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The sealed data in SgxSealedData.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates an error if the parameters do not meet any of the following conditions:</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</span>
     <span class="doccomment">/// * encrypt_text must be non-zero.</span>
     <span class="doccomment">/// * encrypt_text buffer must be within the enclave.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
     <span class="doccomment">/// random number.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data</span>(<span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data</span>(<span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
 
         <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
         <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
-        } 
-        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span>{<span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span>)};      
+        }
+        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">mem</span>::<span class="ident">size_of_val</span>(<span class="ident">encrypt_text</span>))
+        };
         <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data</span>(<span class="ident">additional_text</span>, <span class="ident">encrypt_slice</span>);
-        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">SgxSealedData</span> {<span class="ident">inner</span>: <span class="ident">x</span>, <span class="ident">marker</span>: <span class="ident">ptr</span>::<span class="ident">null</span>()})
+        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
+            <span class="ident">SgxSealedData</span> {
+                <span class="ident">inner</span>: <span class="ident">x</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
+            }
+        })
     }
 
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// This function is used to AES-GCM encrypt the input data. Two input data sets</span>
-    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional </span>
-    <span class="doccomment">/// data that will not be encrypted but will be part of the GCM MAC calculation </span>
+    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional</span>
+    <span class="doccomment">/// data that will not be encrypted but will be part of the GCM MAC calculation</span>
     <span class="doccomment">/// which also covers the data to be encrypted. This is the expert mode</span>
     <span class="doccomment">/// version of function `seal_data`.</span>
     <span class="doccomment">///</span>
@@ -1096,83 +1112,90 @@
     <span class="doccomment">/// policy and attributes_mask). Typical callers of the seal library should be</span>
     <span class="doccomment">/// able to use `seal_data` and the default values provided for key_</span>
     <span class="doccomment">/// policy (MR_SIGNER) and an attribute mask which includes the RESERVED,</span>
-    <span class="doccomment">/// INITED and DEBUG bits. Users of this function should have a clear understanding </span>
+    <span class="doccomment">/// INITED and DEBUG bits. Users of this function should have a clear understanding</span>
     <span class="doccomment">/// of the impact on using a policy and/or attribute_mask that is different from that in seal_data.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
-    <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **key_policy**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Specifies the policy to use in the key derivation. Function sgx_seal_data uses the MRSIGNER policy. </span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Key policy name | Value | Description </span>
+    <span class="doccomment">/// # Requirements</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Parameters</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **key_policy**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Specifies the policy to use in the key derivation. Function sgx_seal_data uses the MRSIGNER policy.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Key policy name | Value | Description</span>
     <span class="doccomment">/// ---|---|---</span>
-    <span class="doccomment">/// KEYPOLICY_MRENCLAVE | 0x0001 | -Derive key using the enclave??s ENCLAVE measurement register  </span>
-    <span class="doccomment">/// KEYPOLICY_MRSIGNER |0x0002 | -Derive key using the enclave??s SIGNER measurement register </span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">/// KEYPOLICY_MRENCLAVE | 0x0001 | -Derive key using the enclave??s ENCLAVE measurement register</span>
+    <span class="doccomment">/// KEYPOLICY_MRSIGNER |0x0002 | -Derive key using the enclave??s SIGNER measurement register</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **attribute_mask**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Identifies which platform/enclave attributes to use in the key derivation. See  </span>
-    <span class="doccomment">/// the definition of sgx_attributes_t to determine which attributes will be  </span>
-    <span class="doccomment">/// checked.  Function sgx_seal_data uses flags=0xfffffffffffffff3,?xfrm=0. </span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Identifies which platform/enclave attributes to use in the key derivation. See</span>
+    <span class="doccomment">/// the definition of sgx_attributes_t to determine which attributes will be</span>
+    <span class="doccomment">/// checked.  Function sgx_seal_data uses flags=0xfffffffffffffff3,?xfrm=0.</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **misc_mask**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The misc mask bits for the enclave. Reserved for future function extension.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **additional_text**</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data. </span>
+    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data.</span>
     <span class="doccomment">/// This additional data is optional and no data is necessary.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **encrypt_text**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Pointer to the data stream to be encrypted, which is &amp;T. Must not be NULL. Must be within the enclave.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
+    <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The sealed data in SgxSealedData.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates an error if the parameters do not meet any of the following conditions:</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</span>
     <span class="doccomment">/// * encrypt_text must be non-zero.</span>
     <span class="doccomment">/// * encrypt_text buffer must be within the enclave.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
     <span class="doccomment">/// random number.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>: <span class="ident">u16</span>,
                         <span class="ident">attribute_mask</span>: <span class="ident">sgx_attributes_t</span>,
                         <span class="ident">misc_mask</span>: <span class="ident">sgx_misc_select_t</span>,
-                        <span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], 
-                        <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                        <span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                        <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
 
         <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
         <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
-        } 
-        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span>{<span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span>)};
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>, 
-                                                         <span class="ident">attribute_mask</span>, 
-                                                         <span class="ident">misc_mask</span>, 
-                                                         <span class="ident">additional_text</span>, 
+        }
+        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">mem</span>::<span class="ident">size_of_val</span>(<span class="ident">encrypt_text</span>))
+        };
+        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>,
+                                                         <span class="ident">attribute_mask</span>,
+                                                         <span class="ident">misc_mask</span>,
+                                                         <span class="ident">additional_text</span>,
                                                          <span class="ident">encrypt_slice</span>);
-        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="ident">SgxSealedData</span> {<span class="ident">inner</span>: <span class="ident">x</span>, <span class="ident">marker</span>: <span class="ident">ptr</span>::<span class="ident">null</span>()})
+        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
+            <span class="ident">SgxSealedData</span> {
+                <span class="ident">inner</span>: <span class="ident">x</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
+            }
+        })
     }
 
     <span class="doccomment">///</span>
@@ -1181,49 +1204,49 @@
     <span class="doccomment">/// optional additional data that was part of the GCM MAC calculation but was not</span>
     <span class="doccomment">/// encrypted. This function provides the converse of seal_data and</span>
     <span class="doccomment">/// seal_data_ex.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Descryption</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The unseal_data function AES-GCM decrypts the sealed data so that</span>
     <span class="doccomment">/// the enclave data can be restored. This function can be utilized to restore</span>
     <span class="doccomment">/// secret data that was preserved after an earlier instantiation of this enclave</span>
     <span class="doccomment">/// saved this data.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
+    <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The unsealed data in SgxUnsealedData.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The size of T may be zero.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_CPUSVN**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The CPUSVN in the sealed data blob is beyond the CPUSVN value of the platform.</span>
     <span class="doccomment">/// SGX_ERROR_INVALID_ISVSVN The ISVSVN in the sealed data blob is greater than the ISVSVN value of the enclave.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_MAC_MISMATCH**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The tag verification failed during unsealing. The error may be caused by a platform update, </span>
-    <span class="doccomment">/// software update, or sealed data blob corruption. This error is also reported if other corruption </span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The tag verification failed during unsealing. The error may be caused by a platform update,</span>
+    <span class="doccomment">/// software update, or sealed data blob corruption. This error is also reported if other corruption</span>
     <span class="doccomment">/// of the sealed data structure is detected.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
     <span class="doccomment">/// random number.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unseal_data</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;&gt;</span> {
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unseal_data</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;&gt;</span> {
 
         <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
         <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
@@ -1237,29 +1260,20 @@
             <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">into_raw</span>(<span class="ident">x</span>.<span class="ident">decrypt</span>);
             <span class="ident">SgxUnsealedData</span> {
                 <span class="ident">payload_size</span>: <span class="ident">x</span>.<span class="ident">payload_size</span>,
-                <span class="ident">decrypt</span>: <span class="kw">unsafe</span>{<span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">T</span>)},
+                <span class="ident">decrypt</span>: <span class="kw">unsafe</span>{<span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">T</span>)},
                 <span class="ident">additional</span>: <span class="ident">x</span>.<span class="ident">additional</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
             }
         })
     }
-}
 
-<span class="doccomment">/// The encrypt_text to seal is [T], and T must have Copy trait. </span>
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Copy</span><span class="op">&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span> {
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Create a SgxSealedData with default values.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="ident">SgxSealedData</span>::<span class="ident">default</span>()
-    }
-
-    <span class="doccomment">/// </span>
     <span class="doccomment">/// Convert a pointer of sgx_sealed_data_t buffer to SgxSealedData.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **p**</span>
@@ -1270,323 +1284,30 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The size of the parameter `p`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
+    <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **Some(SgxSealedData)**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates the conversion is successfully. The return value is SgxSealedData.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **None**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Maybe the size of T is zero.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_sealed_data_t</span>(<span class="ident">p</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span>, <span class="ident">len</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-        
+
         <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
         <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
-        } 
+        }
         <span class="kw">let</span> <span class="ident">opt</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">from_raw_sealed_data_t</span>(<span class="ident">p</span>, <span class="ident">len</span>);
         <span class="ident">opt</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span>::<span class="ident">default</span>();
-            <span class="ident">SgxSealedData</span>{<span class="ident">inner</span>: <span class="ident">x</span>, <span class="ident">marker</span>: <span class="ident">Box</span>::<span class="ident">into_raw</span>(<span class="ident">p</span>)}
-        })
-    }
-
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// This function is used to AES-GCM encrypt the input data. Two input data sets</span>
-    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional data </span>
-    <span class="doccomment">/// that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Descryption</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The seal_data function retrieves a key unique to the enclave and uses</span>
-    <span class="doccomment">/// that key to encrypt the input data buffer. This function can be utilized to preserve secret </span>
-    <span class="doccomment">/// data after the enclave is destroyed. The sealed data blob can be</span>
-    <span class="doccomment">/// unsealed on future instantiations of the enclave.</span>
-    <span class="doccomment">/// The additional data buffer will not be encrypted but will be part of the MAC</span>
-    <span class="doccomment">/// calculation that covers the encrypted data as well. This data may include</span>
-    <span class="doccomment">/// information about the application, version, data, etc which can be utilized to</span>
-    <span class="doccomment">/// identify the sealed data blob since it will remain plain text</span>
-    <span class="doccomment">/// Use `calc_raw_sealed_data_size` to calculate the number of bytes to</span>
-    <span class="doccomment">/// allocate for the `SgxSealedData` structure. The input sealed data buffer and</span>
-    <span class="doccomment">/// text2encrypt buffers must be allocated within the enclave.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
-    <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **additional_text**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data. </span>
-    <span class="doccomment">/// This additional data is optional and no data is necessary.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **encrypt_text**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Pointer to the data stream to be encrypted, which is &amp;[T]. Must be within the enclave.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The sealed data in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Indicates an error if the parameters do not meet any of the following conditions:</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// * additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</span>
-    <span class="doccomment">/// * encrypt_text must be non-zero.</span>
-    <span class="doccomment">/// * encrypt_text buffer must be within the enclave.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
-    <span class="doccomment">/// random number.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data</span>(<span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>]) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-
-        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">*</span> <span class="ident">encrypt_text</span>.<span class="ident">len</span>();
-        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
-        }
-        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span>{<span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span>)};      
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data</span>(<span class="ident">additional_text</span>, <span class="ident">encrypt_slice</span>);
-        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span>::<span class="ident">default</span>();
-            <span class="ident">SgxSealedData</span> {
+            <span class="ident">SgxSealedData</span>{
                 <span class="ident">inner</span>: <span class="ident">x</span>,
-                <span class="ident">marker</span>: <span class="ident">Box</span>::<span class="ident">into_raw</span>(<span class="ident">p</span>),
-            }
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>}
         })
     }
 
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// This function is used to AES-GCM encrypt the input data. Two input data sets</span>
-    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional </span>
-    <span class="doccomment">/// data that will not be encrypted but will be part of the GCM MAC calculation </span>
-    <span class="doccomment">/// which also covers the data to be encrypted. This is the expert mode</span>
-    <span class="doccomment">/// version of function `seal_data`.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Descryption</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The `seal_data_ex` is an extended version of `seal_data`. It</span>
-    <span class="doccomment">/// provides parameters for you to identify how to derive the sealing key (key</span>
-    <span class="doccomment">/// policy and attributes_mask). Typical callers of the seal library should be</span>
-    <span class="doccomment">/// able to use `seal_data` and the default values provided for key_</span>
-    <span class="doccomment">/// policy (MR_SIGNER) and an attribute mask which includes the RESERVED,</span>
-    <span class="doccomment">/// INITED and DEBUG bits. Users of this function should have a clear understanding </span>
-    <span class="doccomment">/// of the impact on using a policy and/or attribute_mask that is different from that in seal_data.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
-    <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **key_policy**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Specifies the policy to use in the key derivation. Function sgx_seal_data uses the MRSIGNER policy. </span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Key policy name | Value | Description </span>
-    <span class="doccomment">/// ---|---|---</span>
-    <span class="doccomment">/// KEYPOLICY_MRENCLAVE | 0x0001 | -Derive key using the enclave??s ENCLAVE measurement register  </span>
-    <span class="doccomment">/// KEYPOLICY_MRSIGNER |0x0002 | -Derive key using the enclave??s SIGNER measurement register </span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **attribute_mask**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Identifies which platform/enclave attributes to use in the key derivation. See  </span>
-    <span class="doccomment">/// the definition of sgx_attributes_t to determine which attributes will be  </span>
-    <span class="doccomment">/// checked.  Function sgx_seal_data uses flags=0xfffffffffffffff3,?xfrm=0. </span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **misc_mask**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The misc mask bits for the enclave. Reserved for future function extension.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **additional_text**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data. </span>
-    <span class="doccomment">/// This additional data is optional and no data is necessary.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// **encrypt_text**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Pointer to the data stream to be encrypted, which is &amp;[T]. Must not be NULL. Must be within the enclave.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The sealed data in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Indicates an error if the parameters do not meet any of the following conditions:</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// * additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</span>
-    <span class="doccomment">/// * encrypt_text must be non-zero.</span>
-    <span class="doccomment">/// * encrypt_text buffer must be within the enclave.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
-    <span class="doccomment">/// random number.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>: <span class="ident">u16</span>,
-                        <span class="ident">attribute_mask</span>: <span class="ident">sgx_attributes_t</span>,
-                        <span class="ident">misc_mask</span>: <span class="ident">sgx_misc_select_t</span>,
-                        <span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], 
-                        <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>]) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-
-        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">*</span> <span class="ident">encrypt_text</span>.<span class="ident">len</span>();
-        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
-        }
-        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span>{<span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span>)};
-        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>, 
-                                                         <span class="ident">attribute_mask</span>, 
-                                                         <span class="ident">misc_mask</span>, 
-                                                         <span class="ident">additional_text</span>, 
-                                                         <span class="ident">encrypt_slice</span>);
-        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">p</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;</span>::<span class="ident">default</span>();
-            <span class="ident">SgxSealedData</span> {
-                <span class="ident">inner</span>: <span class="ident">x</span>,
-                <span class="ident">marker</span>: <span class="ident">Box</span>::<span class="ident">into_raw</span>(<span class="ident">p</span>),
-            }
-        })
-    }
-
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// This function is used to AES-GCM decrypt the input sealed data structure.</span>
-    <span class="doccomment">/// Two output data sets result: one is the decrypted data; the second is the</span>
-    <span class="doccomment">/// optional additional data that was part of the GCM MAC calculation but was not</span>
-    <span class="doccomment">/// encrypted. This function provides the converse of seal_data and</span>
-    <span class="doccomment">/// seal_data_ex.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// # Descryption</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The unseal_data function AES-GCM decrypts the sealed data so that</span>
-    <span class="doccomment">/// the enclave data can be restored. This function can be utilized to restore</span>
-    <span class="doccomment">/// secret data that was preserved after an earlier instantiation of this enclave</span>
-    <span class="doccomment">/// saved this data.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Return value </span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// The unsealed data in SgxUnsealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The size of T may be zero.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_INVALID_CPUSVN**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The CPUSVN in the sealed data blob is beyond the CPUSVN value of the platform.</span>
-    <span class="doccomment">/// SGX_ERROR_INVALID_ISVSVN The ISVSVN in the sealed data blob is greater than the ISVSVN value of the enclave.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_MAC_MISMATCH**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The tag verification failed during unsealing. The error may be caused by a platform update, </span>
-    <span class="doccomment">/// software update, or sealed data blob corruption. This error is also reported if other corruption </span>
-    <span class="doccomment">/// of the sealed data structure is detected.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
-    <span class="doccomment">/// random number.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unseal_data</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">SgxUnsealedData</span><span class="op">&lt;</span>[<span class="ident">T</span>]<span class="op">&gt;&gt;</span> {
-
-        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
-        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
-        }
-        <span class="kw">let</span> <span class="ident">encrypt_len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_encrypt_txt_len</span>() <span class="kw">as</span> <span class="ident">usize</span>;
-        <span class="kw">if</span> <span class="ident">size</span> <span class="op">&gt;</span> <span class="ident">encrypt_len</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
-        }
-        <span class="kw">if</span> (<span class="ident">encrypt_len</span> <span class="op">%</span> <span class="ident">size</span>) <span class="op">!=</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
-        }
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">unseal_data</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
-            <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">into_raw</span>(<span class="ident">x</span>.<span class="ident">decrypt</span>);
-            <span class="ident">SgxUnsealedData</span> {
-                <span class="ident">payload_size</span>: <span class="ident">x</span>.<span class="ident">payload_size</span>,
-                <span class="ident">decrypt</span>: <span class="kw">unsafe</span>{<span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">ptr</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> [<span class="ident">T</span>])},
-                <span class="ident">additional</span>: <span class="ident">x</span>.<span class="ident">additional</span>,
-            }
-        })
-    }
-}
-
-<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get the size of payload in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_payload_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_payload_size</span>()
-    }
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get a slice of payload in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_payload_tag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="ident">SGX_SEAL_TAG_SIZE</span>] {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_payload_tag</span>()
-    }
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get the pointer of sgx_key_request_t in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_key_request</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">sgx_key_request_t</span> {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_key_request</span>()
-    }
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get a slice of encrypt text in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_encrypt_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_encrypt_txt</span>()
-    }
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get a slice of additional text in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_additional_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_additional_txt</span>()
-    }
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Calculate the size of the sealed data in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">calc_raw_sealed_data_size</span>(<span class="ident">add_mac_txt_size</span>: <span class="ident">u32</span>, <span class="ident">encrypt_txt_size</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">u32</span>  {
-        <span class="ident">SgxInternalSealedData</span>::<span class="ident">calc_raw_sealed_data_size</span>(<span class="ident">add_mac_txt_size</span>, <span class="ident">encrypt_txt_size</span>)
-    }
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get the size of the additional mactext in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_add_mac_txt_len</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_add_mac_txt_len</span>()
-    } 
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// Get the size of the encrypt text in SgxSealedData.</span>
-    <span class="doccomment">///</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_encrypt_txt_len</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
-        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_encrypt_txt_len</span>()
-    }
     <span class="doccomment">///</span>
     <span class="doccomment">/// Convert SgxSealedData to the pointer of sgx_sealed_data_t.</span>
     <span class="doccomment">///</span>
@@ -1613,7 +1334,399 @@
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">to_raw_sealed_data_t</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">p</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span>, <span class="ident">len</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">to_raw_sealed_data_t</span>(<span class="ident">p</span>, <span class="ident">len</span>)
     }
-}</pre>
+}
+
+<span class="doccomment">/// The encrypt_text to seal is [T], and T must have Copy and ContiguousMemory trait.</span>
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span><span class="op">&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, [<span class="ident">T</span>]<span class="op">&gt;</span> {
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is used to AES-GCM encrypt the input data. Two input data sets</span>
+    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional data</span>
+    <span class="doccomment">/// that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Descryption</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The seal_data function retrieves a key unique to the enclave and uses</span>
+    <span class="doccomment">/// that key to encrypt the input data buffer. This function can be utilized to preserve secret</span>
+    <span class="doccomment">/// data after the enclave is destroyed. The sealed data blob can be</span>
+    <span class="doccomment">/// unsealed on future instantiations of the enclave.</span>
+    <span class="doccomment">/// The additional data buffer will not be encrypted but will be part of the MAC</span>
+    <span class="doccomment">/// calculation that covers the encrypted data as well. This data may include</span>
+    <span class="doccomment">/// information about the application, version, data, etc which can be utilized to</span>
+    <span class="doccomment">/// identify the sealed data blob since it will remain plain text</span>
+    <span class="doccomment">/// Use `calc_raw_sealed_data_size` to calculate the number of bytes to</span>
+    <span class="doccomment">/// allocate for the `SgxSealedData` structure. The input sealed data buffer and</span>
+    <span class="doccomment">/// text2encrypt buffers must be allocated within the enclave.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Requirements</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Parameters</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **additional_text**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data.</span>
+    <span class="doccomment">/// This additional data is optional and no data is necessary.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **encrypt_text**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Pointer to the data stream to be encrypted, which is &amp;[T]. Must be within the enclave.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Return value</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The sealed data in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates an error if the parameters do not meet any of the following conditions:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</span>
+    <span class="doccomment">/// * encrypt_text must be non-zero.</span>
+    <span class="doccomment">/// * encrypt_text buffer must be within the enclave.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The enclave is out of memory.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
+    <span class="doccomment">/// random number.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data</span>(<span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">T</span>]) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+
+        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
+        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of_val</span>(<span class="ident">encrypt_text</span>);
+        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> <span class="op">||</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+        }
+        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">len</span>)
+        };
+
+        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data</span>(<span class="ident">additional_text</span>, <span class="ident">encrypt_slice</span>);
+        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
+            <span class="ident">SgxSealedData</span> {
+                <span class="ident">inner</span>: <span class="ident">x</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
+            }
+        })
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is used to AES-GCM encrypt the input data. Two input data sets</span>
+    <span class="doccomment">/// are provided: one is the data to be encrypted; the second is optional additional</span>
+    <span class="doccomment">/// data that will not be encrypted but will be part of the GCM MAC calculation</span>
+    <span class="doccomment">/// which also covers the data to be encrypted. This is the expert mode</span>
+    <span class="doccomment">/// version of function `seal_data`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Descryption</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The `seal_data_ex` is an extended version of `seal_data`. It</span>
+    <span class="doccomment">/// provides parameters for you to identify how to derive the sealing key (key</span>
+    <span class="doccomment">/// policy and attributes_mask). Typical callers of the seal library should be</span>
+    <span class="doccomment">/// able to use `seal_data` and the default values provided for key_</span>
+    <span class="doccomment">/// policy (MR_SIGNER) and an attribute mask which includes the RESERVED,</span>
+    <span class="doccomment">/// INITED and DEBUG bits. Users of this function should have a clear understanding</span>
+    <span class="doccomment">/// of the impact on using a policy and/or attribute_mask that is different from that in seal_data.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Requirements</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Parameters</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **key_policy**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Specifies the policy to use in the key derivation. Function sgx_seal_data uses the MRSIGNER policy.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Key policy name | Value | Description</span>
+    <span class="doccomment">/// ---|---|---</span>
+    <span class="doccomment">/// KEYPOLICY_MRENCLAVE | 0x0001 | -Derive key using the enclave??s ENCLAVE measurement register</span>
+    <span class="doccomment">/// KEYPOLICY_MRSIGNER |0x0002 | -Derive key using the enclave??s SIGNER measurement register</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **attribute_mask**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Identifies which platform/enclave attributes to use in the key derivation. See</span>
+    <span class="doccomment">/// the definition of sgx_attributes_t to determine which attributes will be</span>
+    <span class="doccomment">/// checked.  Function sgx_seal_data uses flags=0xfffffffffffffff3,?xfrm=0.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **misc_mask**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The misc mask bits for the enclave. Reserved for future function extension.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **additional_text**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Pointer to the additional Message Authentication Code (MAC) data.</span>
+    <span class="doccomment">/// This additional data is optional and no data is necessary.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **encrypt_text**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Pointer to the data stream to be encrypted, which is &amp;[T]. Must not be NULL. Must be within the enclave.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Return value</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The sealed data in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates an error if the parameters do not meet any of the following conditions:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</span>
+    <span class="doccomment">/// * encrypt_text must be non-zero.</span>
+    <span class="doccomment">/// * encrypt_text buffer must be within the enclave.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The enclave is out of memory.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
+    <span class="doccomment">/// random number.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>: <span class="ident">u16</span>,
+                        <span class="ident">attribute_mask</span>: <span class="ident">sgx_attributes_t</span>,
+                        <span class="ident">misc_mask</span>: <span class="ident">sgx_misc_select_t</span>,
+                        <span class="ident">additional_text</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                        <span class="ident">encrypt_text</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">T</span>]) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+
+        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
+        <span class="kw">let</span> <span class="ident">len</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of_val</span>(<span class="ident">encrypt_text</span>);
+        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> <span class="op">||</span> <span class="ident">len</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+        }
+        <span class="kw">let</span> <span class="ident">encrypt_slice</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] <span class="op">=</span> <span class="kw">unsafe</span> {
+            <span class="ident">slice</span>::<span class="ident">from_raw_parts</span>(<span class="ident">encrypt_text</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">len</span>)
+        };
+
+        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">seal_data_ex</span>(<span class="ident">key_policy</span>,
+                                                         <span class="ident">attribute_mask</span>,
+                                                         <span class="ident">misc_mask</span>,
+                                                         <span class="ident">additional_text</span>,
+                                                         <span class="ident">encrypt_slice</span>);
+        <span class="ident">result</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
+            <span class="ident">SgxSealedData</span> {
+                <span class="ident">inner</span>: <span class="ident">x</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
+            }
+        })
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This function is used to AES-GCM decrypt the input sealed data structure.</span>
+    <span class="doccomment">/// Two output data sets result: one is the decrypted data; the second is the</span>
+    <span class="doccomment">/// optional additional data that was part of the GCM MAC calculation but was not</span>
+    <span class="doccomment">/// encrypted. This function provides the converse of seal_data and</span>
+    <span class="doccomment">/// seal_data_ex.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Descryption</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The unseal_data function AES-GCM decrypts the sealed data so that</span>
+    <span class="doccomment">/// the enclave data can be restored. This function can be utilized to restore</span>
+    <span class="doccomment">/// secret data that was preserved after an earlier instantiation of this enclave</span>
+    <span class="doccomment">/// saved this data.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Requirements</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Return value</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The unsealed data in SgxUnsealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The size of T may be zero.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_INVALID_CPUSVN**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The CPUSVN in the sealed data blob is beyond the CPUSVN value of the platform.</span>
+    <span class="doccomment">/// SGX_ERROR_INVALID_ISVSVN The ISVSVN in the sealed data blob is greater than the ISVSVN value of the enclave.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_MAC_MISMATCH**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The tag verification failed during unsealing. The error may be caused by a platform update,</span>
+    <span class="doccomment">/// software update, or sealed data blob corruption. This error is also reported if other corruption</span>
+    <span class="doccomment">/// of the sealed data structure is detected.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The enclave is out of memory.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates a crypto library failure or the RDRAND instruction fails to generate a</span>
+    <span class="doccomment">/// random number.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unseal_data</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">SgxUnsealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, [<span class="ident">T</span>]<span class="op">&gt;&gt;</span> {
+
+        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
+        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+        }
+        <span class="kw">let</span> <span class="ident">encrypt_len</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_encrypt_txt_len</span>() <span class="kw">as</span> <span class="ident">usize</span>;
+        <span class="kw">if</span> <span class="ident">size</span> <span class="op">&gt;</span> <span class="ident">encrypt_len</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
+        }
+        <span class="kw">if</span> (<span class="ident">encrypt_len</span> <span class="op">%</span> <span class="ident">size</span>) <span class="op">!=</span> <span class="number">0</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
+        }
+
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">unseal_data</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">ptr</span> <span class="op">=</span> (<span class="ident">x</span>.<span class="ident">decrypt</span>).<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">T</span>;
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">slice</span> <span class="op">=</span> <span class="kw">unsafe</span>{<span class="ident">slice</span>::<span class="ident">from_raw_parts_mut</span>(<span class="ident">ptr</span>, <span class="ident">encrypt_len</span><span class="op">/</span><span class="ident">size</span>)};
+            <span class="ident">SgxUnsealedData</span> {
+                <span class="ident">payload_size</span>: <span class="ident">x</span>.<span class="ident">payload_size</span>,
+                <span class="ident">decrypt</span>: <span class="kw">unsafe</span>{<span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">slice</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> [<span class="ident">T</span>])},
+                <span class="ident">additional</span>: <span class="ident">x</span>.<span class="ident">additional</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>,
+            }
+        })
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Convert a pointer of sgx_sealed_data_t buffer to SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Requirements</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Parameters</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **p**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The mutable pointer of sgx_sealed_data_t buffer.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **len**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The size of the parameter `p`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Return value</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **Some(SgxSealedData)**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates the conversion is successfully. The return value is SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **None**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Maybe the size of T is zero.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_sealed_data_t</span>(<span class="ident">p</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span>, <span class="ident">len</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+
+        <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
+        <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
+            <span class="kw">return</span> <span class="prelude-val">None</span>;
+        }
+        <span class="kw">let</span> <span class="ident">opt</span> <span class="op">=</span> <span class="ident">SgxInternalSealedData</span>::<span class="ident">from_raw_sealed_data_t</span>(<span class="ident">p</span>, <span class="ident">len</span>);
+        <span class="ident">opt</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> {
+            <span class="ident">SgxSealedData</span>{
+                <span class="ident">inner</span>: <span class="ident">x</span>,
+                <span class="ident">marker</span>: <span class="ident">PhantomData</span>}
+        })
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Convert SgxSealedData to the pointer of sgx_sealed_data_t.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Parameters</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **p**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The pointer of sgx_sealed_data_t to save the data in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **len**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The size of the pointer of sgx_sealed_data_t.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Error</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **Some(* mut sgx_sealed_data_t)**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Indicates the conversion is successfully. The return value is the pointer of sgx_sealed_data_t.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// **None**</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// May be the parameter p and len is not avaliable.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">to_raw_sealed_data_t</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">p</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span>, <span class="ident">len</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">to_raw_sealed_data_t</span>(<span class="ident">p</span>, <span class="ident">len</span>)
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="lifetime">&#39;a</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">SgxSealedData</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Create a SgxSealedData with default values.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="ident">SgxSealedData</span>::<span class="ident">default</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get the size of payload in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_payload_size</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_payload_size</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get a slice of payload in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_payload_tag</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>; <span class="ident">SGX_SEAL_TAG_SIZE</span>] {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_payload_tag</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get the pointer of sgx_key_request_t in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_key_request</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">sgx_key_request_t</span> {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_key_request</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get a slice of encrypt text in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_encrypt_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_encrypt_txt</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get a slice of additional text in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_additional_txt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_additional_txt</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Calculate the size of the sealed data in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">calc_raw_sealed_data_size</span>(<span class="ident">add_mac_txt_size</span>: <span class="ident">u32</span>, <span class="ident">encrypt_txt_size</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">u32</span>  {
+        <span class="ident">SgxInternalSealedData</span>::<span class="ident">calc_raw_sealed_data_size</span>(<span class="ident">add_mac_txt_size</span>, <span class="ident">encrypt_txt_size</span>)
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get the size of the additional mactext in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_add_mac_txt_len</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_add_mac_txt_len</span>()
+    }
+
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Get the size of the encrypt text in SgxSealedData.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_encrypt_txt_len</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u32</span> {
+        <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_encrypt_txt_len</span>()
+    }
+}
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -1671,7 +1784,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tseal";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

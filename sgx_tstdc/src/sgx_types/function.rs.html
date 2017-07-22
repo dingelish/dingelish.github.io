@@ -420,6 +420,13 @@
 <span id="375">375</span>
 <span id="376">376</span>
 <span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -471,14 +478,14 @@
     <span class="comment">//</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_mutex_init</span>(<span class="ident">mutex</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>, <span class="ident">unused</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_thread_mutexattr_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_mutex_destroy</span>(<span class="ident">mutex</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
-    
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_mutex_lock</span>(<span class="ident">mutex</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_mutex_trylock</span>(<span class="ident">mutex</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_mutex_unlock</span>(<span class="ident">mutex</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
-    
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_cond_init</span>(<span class="ident">cond</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>, <span class="ident">unused</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_thread_condattr_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_cond_destroy</span>(<span class="ident">cond</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
-    
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_cond_wait</span>(<span class="ident">cond</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>, <span class="ident">mutex</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_cond_signal</span>(<span class="ident">cond</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_thread_cond_broadcast</span>(<span class="ident">cond</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
@@ -496,13 +503,13 @@
     <span class="comment">//</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_dh_init_session</span>(<span class="ident">role</span>: <span class="ident">sgx_dh_session_role_t</span>, <span class="ident">session</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_session_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_dh_responder_gen_msg1</span>(<span class="ident">msg1</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_msg1_t</span>, 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_dh_responder_gen_msg1</span>(<span class="ident">msg1</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_msg1_t</span>,
                                      <span class="ident">dh_session</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_session_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_dh_initiator_proc_msg1</span>(<span class="ident">msg1</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_dh_msg1_t</span>, 
-                                      <span class="ident">msg2</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_msg2_t</span>, 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_dh_initiator_proc_msg1</span>(<span class="ident">msg1</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_dh_msg1_t</span>,
+                                      <span class="ident">msg2</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_msg2_t</span>,
                                       <span class="ident">dh_session</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_session_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
-    
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_dh_responder_proc_msg2</span>(<span class="ident">msg2</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_dh_msg2_t</span>,
                                       <span class="ident">msg3</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_msg3_t</span>,
                                       <span class="ident">dh_session</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_session_t</span>,
@@ -520,6 +527,8 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_create_pse_session</span>() <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_close_pse_session</span>() <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_ps_sec_prop</span>(<span class="ident">security_property</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+    <span class="comment">/* intel sgx sdk 1.8 */</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_ps_sec_prop_ex</span>(<span class="ident">security_property</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_trusted_time</span>(<span class="ident">current_time</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>, <span class="ident">time_source_nonce</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_create_monotonic_counter_ex</span>(<span class="ident">owner_policy</span>: ::<span class="ident">uint16_t</span>,
@@ -532,7 +541,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_increment_monotonic_counter</span>(<span class="ident">counter_uuid</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_mc_uuid_t</span>, <span class="ident">counter_value</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_read_monotonic_counter</span>(<span class="ident">counter_uuid</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_mc_uuid_t</span>, <span class="ident">counter_value</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
-    
+
     <span class="comment">//</span>
     <span class="comment">// sgx_tseal.h</span>
     <span class="comment">//</span>
@@ -576,16 +585,16 @@
                              <span class="ident">sealed_data_size</span>: ::<span class="ident">uint32_t</span>,
                              <span class="ident">p_sealed_data</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sealed_data_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_unmac_aadata</span>(<span class="ident">p_sealed_data</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_sealed_data_t</span>, 
-                            <span class="ident">p_additional_MACtext</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint8_t</span>, 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_unmac_aadata</span>(<span class="ident">p_sealed_data</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_sealed_data_t</span>,
+                            <span class="ident">p_additional_MACtext</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint8_t</span>,
                             <span class="ident">p_additional_MACtext_length</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
 
     <span class="comment">//</span>
     <span class="comment">// sgx_utils.h</span>
     <span class="comment">//</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_create_report</span>(<span class="ident">target_info</span> : <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_target_info_t</span>, 
-                             <span class="ident">report_data</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_report_data_t</span>, 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_create_report</span>(<span class="ident">target_info</span> : <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_target_info_t</span>,
+                             <span class="ident">report_data</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_report_data_t</span>,
                              <span class="ident">report</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_report_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_verify_report</span>(<span class="ident">report</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_report_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
@@ -604,7 +613,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_sha256_update</span>(<span class="ident">p_src</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>, <span class="ident">src_len</span>: ::<span class="ident">uint32_t</span>, <span class="ident">sha_handle</span>: <span class="ident">sgx_sha_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_sha256_get_hash</span>(<span class="ident">sha_handle</span>: <span class="ident">sgx_sha_state_handle_t</span>, <span class="ident">p_hash</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sha256_hash_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_sha256_close</span>(<span class="ident">sha_handle</span>: <span class="ident">sgx_sha_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
-    
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_rijndael128GCM_encrypt</span>(<span class="ident">p_key</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_aes_gcm_128bit_key_t</span>,
                                       <span class="ident">p_src</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
                                       <span class="ident">src_len</span>: ::<span class="ident">uint32_t</span>,
@@ -630,7 +639,7 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_cmac128_update</span>(<span class="ident">p_src</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>, <span class="ident">src_len</span>: ::<span class="ident">uint32_t</span>, <span class="ident">cmac_handle</span>: <span class="ident">sgx_cmac_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_cmac128_final</span>(<span class="ident">cmac_handle</span>: <span class="ident">sgx_cmac_state_handle_t</span>, <span class="ident">p_hash</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_cmac_128bit_tag_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_cmac128_close</span>(<span class="ident">cmac_handle</span>: <span class="ident">sgx_cmac_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
-    
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_aes_ctr_encrypt</span>(<span class="ident">p_key</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_aes_ctr_128bit_key_t</span>,
                                <span class="ident">p_src</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
                                <span class="ident">src_len</span>: ::<span class="ident">uint32_t</span>,
@@ -655,6 +664,11 @@
                                            <span class="ident">p_public_ga</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_public_t</span>,
                                            <span class="ident">p_shared_key</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared_t</span>,
                                            <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+    <span class="comment">/* intel sgx sdk 1.8 */</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ecc256_compute_shared_dhkey512</span>(<span class="ident">p_private_b</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
+                                              <span class="ident">p_public_ga</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_public_t</span>,
+                                              <span class="ident">p_shared_key</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared512_t</span>,
+                                              <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ecdsa_sign</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
                           <span class="ident">data_size</span>: ::<span class="ident">uint32_t</span>,
@@ -662,11 +676,11 @@
                           <span class="ident">p_signature</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
                           <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ecdsa_verify</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>, 
-                            <span class="ident">data_size</span>: :: <span class="ident">uint32_t</span>, 
-                            <span class="ident">p_public</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_ec256_public_t</span>, 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ecdsa_verify</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
+                            <span class="ident">data_size</span>: :: <span class="ident">uint32_t</span>,
+                            <span class="ident">p_public</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_ec256_public_t</span>,
                             <span class="ident">p_signature</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
-                            <span class="ident">p_result</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint8_t</span>, 
+                            <span class="ident">p_result</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint8_t</span>,
                             <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 }
 
@@ -707,9 +721,9 @@
     <span class="comment">//</span>
     <span class="comment">// sgx_trts_exception.h</span>
     <span class="comment">//</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_register_exception_handler</span>(<span class="ident">is_first_handler</span>: ::<span class="ident">uint32_t</span>, 
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_register_exception_handler</span>(<span class="ident">is_first_handler</span>: ::<span class="ident">uint32_t</span>,
                                           <span class="ident">exception_handler</span>: <span class="ident">sgx_exception_handler_t</span>) <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_void</span>;
-                                          
+
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_unregister_exception_handler</span>(<span class="ident">handler</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_void</span>) <span class="op">-&gt;</span> ::<span class="ident">uint32_t</span>;
 
     <span class="comment">//</span>
@@ -717,7 +731,7 @@
     <span class="comment">//</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ocalloc</span>(<span class="ident">size</span>: ::<span class="ident">size_t</span>) <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">c_void</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_sgx_ocfree</span>();
- 
+
     <span class="comment">//</span>
     <span class="comment">// trts_pic.S</span>
     <span class="comment">//</span>
@@ -753,9 +767,9 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_whitelist_size</span>(<span class="ident">p_whitelist_size</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_whitelist</span>(<span class="ident">p_whitelist</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint8_t</span>, <span class="ident">whitelist_size</span>: ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_extended_epid_group_id</span>(<span class="ident">p_extended_epid_group_id</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
-    
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_report_attestation_status</span>(<span class="ident">p_platform_info</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_platform_info_t</span>, 
-                                         <span class="ident">attestation_status</span>: <span class="ident">i32</span>, 
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_report_attestation_status</span>(<span class="ident">p_platform_info</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_platform_info_t</span>,
+                                         <span class="ident">attestation_status</span>: <span class="ident">i32</span>,
                                          <span class="ident">p_update_info</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_update_info_bit_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 }
 
@@ -797,7 +811,8 @@
                               <span class="ident">misc_attr</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_misc_attribute_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_destroy_enclave</span>(<span class="ident">enclave_id</span>: <span class="ident">sgx_enclave_id_t</span>);
-}</pre>
+}
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -855,7 +870,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_types";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

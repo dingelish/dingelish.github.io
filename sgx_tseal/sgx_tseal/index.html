@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tseal', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_tseal</p><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tseal', ty: 'mod', relpath: '../'};</script>
     </nav>
 
     <nav class="sub">
@@ -48,26 +48,32 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tseal/lib.rs.html#29-114' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><h1 id="intelr-software-guard-extensions-sealing-and-unsealing-functions" class="section-header"><a href="#intelr-software-guard-extensions-sealing-and-unsealing-functions">Intel(R) Software Guard Extensions Sealing and Unsealing Functions</a></h1>
+               </span><a class='srclink' href='../src/sgx_tseal/lib.rs.html#29-115' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id='intelr-software-guard-extensions-sealing-and-unsealing-functions' class='section-header'><a href='#intelr-software-guard-extensions-sealing-and-unsealing-functions'>Intel(R) Software Guard Extensions Sealing and Unsealing Functions</a></h1>
 <p>The library provides the following functions:</p>
+
 <ul>
 <li>Exposes APIs to create sealed data which is both confidentiality andintegrity protected.</li>
 <li>Exposes an API to unseal sealed data inside the enclave.</li>
 <li>Provides APIs to authenticate and verify the input data with AES-GMAC.</li>
 </ul>
+
 <p>The library also provides APIs to help calculate the sealed data size, encrypt text length, and Message Authentication Code (MAC) text length.</p>
-<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
 <p>When an enclave is instantiated, it provides protections (confidentiality and
 integrity) to the data by keeping it within the boundary of the enclave. Enclave
 developers should identify enclave data and/or state that is considered secret
 and potentially needs preservation across the following enclave destruction
 events:</p>
+
 <ul>
 <li>Application is done with the enclave and closes it.</li>
 <li>Application itself is closed.</li>
 <li>The platform is hibernated or shutdown.</li>
 </ul>
+
 <p>In general, the secrets provisioned within an enclave are lost when the enclave
 is closed. However if the secret data needs to be preserved during one of
 these events for future use within an enclave, it must be stored outside the
@@ -78,11 +84,13 @@ that particular platform. Enclave software uses that key to encrypt data to the
 platform or to decrypt data already on the platform. Refer to these encrypt
 and decrypt operations as sealing and unsealing respectively as the data is
 cryptographically sealed to the enclave and platform.</p>
+
 <p>To provide strong protection against potential key-wear-out attacks, a unique
 seal key is generated for each data blob encrypted with the seal_data
 API call. A key ID for each encrypted data blob is stored in clear alongside the
 encrypted data blob. The key ID is used to re-generate the seal key to decrypt
 the data blob.</p>
+
 <p>AES-GCM (AES – Advanced Encryption Standard) is utilized to encrypt and
 MAC-protect the payload. To protect against software-based side channel
 attacks, the crypto implementation of AES-GCM utilizes AES-NI, which is
@@ -98,23 +106,27 @@ called GMAC (Galois Message Authentication Code), is simply an authentication
 mode for the input data. The mac_aadata API call restricts the input to
 non-confidential data to provide data origin authentication only. The single
 output of this function is the authentication tag.</p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::<a class="mod" href="../sgx_tseal/seal/index.html" title="mod sgx_tseal::seal">seal</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../sgx_tseal/aad/index.html" title="mod sgx_tseal::aad">aad</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="aad/index.html"
-                                  title='mod sgx_tseal::aad'>aad</a></td>
+                           <td><a class="struct" href="struct.SgxMacAadata.html"
+                                  title='struct sgx_tseal::SgxMacAadata'>SgxMacAadata</a></td>
                            <td class='docblock-short'>
-                                <p>Provides APIs to authenticate and verify the input data with AES-GMAC.</p>
-
+                                <p>The structure about sealed data, for authenticate and verify.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="seal/index.html"
-                                  title='mod sgx_tseal::seal'>seal</a></td>
+                           <td><a class="struct" href="struct.SgxSealedData.html"
+                                  title='struct sgx_tseal::SgxSealedData'>SgxSealedData</a></td>
                            <td class='docblock-short'>
-                                <p>Intel(R) Software Guard Extensions Sealing and Unsealing Functions</p>
-
+                                <p>The structure about the sealed data.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxUnsealedData.html"
+                                  title='struct sgx_tseal::SgxUnsealedData'>SgxUnsealedData</a></td>
+                           <td class='docblock-short'>
+                                <p>The structure about the unsealed data.</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -173,7 +185,6 @@ output of this function is the authentication tag.</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_tseal";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

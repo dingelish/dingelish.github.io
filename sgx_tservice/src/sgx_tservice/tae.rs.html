@@ -814,6 +814,27 @@
 <span id="769">769</span>
 <span id="770">770</span>
 <span id="771">771</span>
+<span id="772">772</span>
+<span id="773">773</span>
+<span id="774">774</span>
+<span id="775">775</span>
+<span id="776">776</span>
+<span id="777">777</span>
+<span id="778">778</span>
+<span id="779">779</span>
+<span id="780">780</span>
+<span id="781">781</span>
+<span id="782">782</span>
+<span id="783">783</span>
+<span id="784">784</span>
+<span id="785">785</span>
+<span id="786">786</span>
+<span id="787">787</span>
+<span id="788">788</span>
+<span id="789">789</span>
+<span id="790">790</span>
+<span id="791">791</span>
+<span id="792">792</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -845,31 +866,27 @@
 
 <span class="doccomment">//! Trust Platform Service Functions</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The sgx_tservice library provides the following functions that allow an ISV </span>
+<span class="doccomment">//! The sgx_tservice library provides the following functions that allow an ISV</span>
 <span class="doccomment">//! to use platform services and get platform services security property.</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! This API is only available in simulation mode.</span>
 <span class="doccomment">//!</span>
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">cell</span>::<span class="ident">Cell</span>;
 
 <span class="doccomment">///</span>
-<span class="doccomment">/// rsgx_create_pse_session creates a session with the PSE. </span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This API is only available in simulation mode.</span>
+<span class="doccomment">/// rsgx_create_pse_session creates a session with the PSE.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// An Intel(R) SGX enclave first calls rsgx_create_pse_session() in the process to request platform service.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// It&#39;s suggested that the caller should wait (typically several seconds to tens of seconds) and retry </span>
+<span class="doccomment">/// It&#39;s suggested that the caller should wait (typically several seconds to tens of seconds) and retry</span>
 <span class="doccomment">/// this API if SGX_ERROR_BUSY is returned.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Header: sgx_tae_service.edl</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+<span class="doccomment">/// Library: libsgx_tservice.a</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
 <span class="doccomment">///</span>
@@ -917,8 +934,6 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// rsgx_close_pse_session closes a session created by rsgx_create_pse_ session.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This API is only available in simulation mode.</span>
-<span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// An Intel(R) SGX enclave calls rsgx_close_pse_session() when there is no need to request platform service.</span>
@@ -927,7 +942,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Header: sgx_tae_service.edl</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+<span class="doccomment">/// Library: libsgx_tservice.a</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
 <span class="doccomment">///</span>
@@ -955,26 +970,24 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// rsgx_get_ps_sec_prop gets a data structure describing the security property of the platform service.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This API is only available in simulation mode.</span>
-<span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Gets a data structure that describes the security property of the platform service.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+<span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
 <span class="doccomment">/// before calling this API.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **security_property**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to the buffer that receives the security property descriptor of the platform service. </span>
+<span class="doccomment">/// A pointer to the buffer that receives the security property descriptor of the platform service.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Header: sgx_tae_service.edl</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+<span class="doccomment">/// Library: libsgx_tservice.a</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
 <span class="doccomment">///</span>
@@ -996,26 +1009,65 @@
 }
 
 <span class="doccomment">///</span>
-<span class="doccomment">/// rsgx_get_trusted_time gets trusted time from the AE service.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// This API is only available in simulation mode.</span>
+<span class="doccomment">/// rsgx_get_ps_sec_prop_ex gets a data structure describing the security property of the platform service.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// current_time contains time in seconds and time_source_nonce contains nonce associate with the time. </span>
-<span class="doccomment">/// The caller should compare time_ source_nonce against the value returned from the previous call of </span>
-<span class="doccomment">/// this API if it needs to calculate the time passed between two readings of the Trusted Timer. If the </span>
-<span class="doccomment">/// time_source_nonce of the two readings do not match, the difference between the two readings does not </span>
+<span class="doccomment">/// Gets a data structure that describes the security property of the platform service.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
+<span class="doccomment">/// before calling this API.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Parameters</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// **security_property**</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A pointer to the buffer that receives the security property descriptor of the platform service.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Requirements</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Header: sgx_tae_service.edl</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Library: libsgx_tservice.a</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Errors</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Any of the pointers is invalid.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// **SGX_ERROR_AE_SESSION_INVALID**</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Session is not created or has been closed by architectural enclave service.</span>
+<span class="doccomment">///</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_ps_sec_prop_ex</span>(<span class="ident">security_property</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_ps_sec_prop_ex</span>(<span class="ident">security_property</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>) };
+    <span class="kw">match</span> <span class="ident">ret</span> {
+        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
+        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+    }
+}
+
+<span class="doccomment">///</span>
+<span class="doccomment">/// rsgx_get_trusted_time gets trusted time from the AE service.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Description</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// current_time contains time in seconds and time_source_nonce contains nonce associate with the time.</span>
+<span class="doccomment">/// The caller should compare time_ source_nonce against the value returned from the previous call of</span>
+<span class="doccomment">/// this API if it needs to calculate the time passed between two readings of the Trusted Timer. If the</span>
+<span class="doccomment">/// time_source_nonce of the two readings do not match, the difference between the two readings does not</span>
 <span class="doccomment">/// necessarily reflect time passed.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+<span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
 <span class="doccomment">/// before calling this API.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **current_time**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Trusted Time Stamp in seconds relative to a reference point. The reference point does not change as long as </span>
+<span class="doccomment">/// Trusted Time Stamp in seconds relative to a reference point. The reference point does not change as long as</span>
 <span class="doccomment">/// the time_source_nonce has not changed.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **time_source_nonce**</span>
@@ -1026,7 +1078,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Header: sgx_tae_service.edl</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+<span class="doccomment">/// Library: libsgx_tservice.a</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
 <span class="doccomment">///</span>
@@ -1062,7 +1114,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Indicates an unexpected error occurs.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_trusted_time</span>(<span class="ident">current_time</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>, 
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_trusted_time</span>(<span class="ident">current_time</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>,
                              <span class="ident">time_source_nonce</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
 
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_trusted_time</span>(<span class="ident">current_time</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>, <span class="ident">time_source_nonce</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) };
@@ -1080,7 +1132,7 @@
     <span class="kw">unsafe</span> {
         <span class="ident">sgx_create_monotonic_counter_ex</span>(<span class="ident">owner_policy</span>,
                                         <span class="ident">owner_attribute_mask</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_attributes_t</span>,
-                                        <span class="ident">counter_uuid</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_mc_uuid_t</span>,                                                  
+                                        <span class="ident">counter_uuid</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_mc_uuid_t</span>,
                                         <span class="ident">counter_value</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u32</span>)
     }
 }
@@ -1107,7 +1159,7 @@
 }
 
 <span class="kw">fn</span> <span class="ident">rsgx_read_monotonic_counter</span>(<span class="ident">counter_uuid</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_mc_uuid_t</span>, <span class="ident">counter_value</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
-    
+
     <span class="kw">unsafe</span> {
         <span class="ident">sgx_read_monotonic_counter</span>(<span class="ident">counter_uuid</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_mc_uuid_t</span>, <span class="ident">counter_value</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u32</span>)
     }
@@ -1124,25 +1176,23 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// creates a monotonic counter with default owner policy and default user attribute mask.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This API is only available in simulation mode.</span>
-    <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Call new to create a monotonic counter with the default owner policy 0x1, which means enclaves </span>
+    <span class="doccomment">/// Call new to create a monotonic counter with the default owner policy 0x1, which means enclaves</span>
     <span class="doccomment">/// with same signing key can access the monotonic counter and default owner_attribute_mask 0xFFFFFFFFFFFFFFCB.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
     <span class="doccomment">/// before calling this API.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Creating a monotonic counter (MC) involves writing to the non-volatile memory available in the platform. </span>
-    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform. </span>
-    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed </span>
+    <span class="doccomment">/// Creating a monotonic counter (MC) involves writing to the non-volatile memory available in the platform.</span>
+    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.</span>
+    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed</span>
     <span class="doccomment">/// the limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Intel(R) SGX limits the number of MCs an enclave can create. To avoid exhausting the available quota, </span>
-    <span class="doccomment">/// an SGX application should record the MC UUID that rsgx_create_monotonic_counter returns and destroy a MC </span>
-    <span class="doccomment">/// when it is not needed any more. If an enclave reaches its quota and previously created MC UUIDs have not </span>
-    <span class="doccomment">/// been recorded, you may restore the MC service after uninstalling the SGX PSW and installing it again. </span>
+    <span class="doccomment">/// Intel(R) SGX limits the number of MCs an enclave can create. To avoid exhausting the available quota,</span>
+    <span class="doccomment">/// an SGX application should record the MC UUID that rsgx_create_monotonic_counter returns and destroy a MC</span>
+    <span class="doccomment">/// when it is not needed any more. If an enclave reaches its quota and previously created MC UUIDs have not</span>
+    <span class="doccomment">/// been recorded, you may restore the MC service after uninstalling the SGX PSW and installing it again.</span>
     <span class="doccomment">/// This procedure deletes all MCs created by any enclave in that system.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
@@ -1155,7 +1205,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// Header: sgx_tae_service.edl</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
@@ -1208,7 +1258,7 @@
     <span class="doccomment">/// Indicates an unexpected error occurs.</span>
     <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">counter_value</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-         
+
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">counter_uuid</span> <span class="op">=</span> <span class="ident">sgx_mc_uuid_t</span>::<span class="ident">default</span>();
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_create_monotonic_counter</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">counter_uuid</span>, <span class="ident">counter_value</span>);
 
@@ -1221,24 +1271,22 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// creates a monotonic counter.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This API is only available in simulation mode.</span>
-    <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Call new_ex to create a monotonic counter with the given owner_policy and owner_attribute_mask.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
     <span class="doccomment">/// before calling this API.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Creating a monotonic counter (MC) involves writing to the non-volatile memory available in the platform. </span>
-    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform. </span>
-    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed </span>
+    <span class="doccomment">/// Creating a monotonic counter (MC) involves writing to the non-volatile memory available in the platform.</span>
+    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.</span>
+    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed</span>
     <span class="doccomment">/// the limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Intel(R) SGX limits the number of MCs an enclave can create. To avoid exhausting the available quota, </span>
-    <span class="doccomment">/// an SGX application should record the MC UUID that rsgx_create_monotonic_counter_ex returns and destroy a MC </span>
-    <span class="doccomment">/// when it is not needed any more. If an enclave reaches its quota and previously created MC UUIDs have not </span>
-    <span class="doccomment">/// been recorded, you may restore the MC service after uninstalling the SGX PSW and installing it again. </span>
+    <span class="doccomment">/// Intel(R) SGX limits the number of MCs an enclave can create. To avoid exhausting the available quota,</span>
+    <span class="doccomment">/// an SGX application should record the MC UUID that rsgx_create_monotonic_counter_ex returns and destroy a MC</span>
+    <span class="doccomment">/// when it is not needed any more. If an enclave reaches its quota and previously created MC UUIDs have not</span>
+    <span class="doccomment">/// been recorded, you may restore the MC service after uninstalling the SGX PSW and installing it again.</span>
     <span class="doccomment">/// This procedure deletes all MCs created by any enclave in that system.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
@@ -1259,12 +1307,12 @@
     <span class="doccomment">/// **counter_value**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A pointer to the buffer that receives the monotonic counter value.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Header: sgx_tae_service.edl</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
@@ -1329,29 +1377,27 @@
 
     <span class="doccomment">///</span>
     <span class="doccomment">/// destroys a monotonic counter created by new or new_ex.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// This API is only available in simulation mode.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Calling destory after a monotonic counter is not needed anymore.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
     <span class="doccomment">/// before calling this API.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// destory fails if the calling enclave does not match the owner policy and the attributes specified in the</span>
     <span class="doccomment">/// call that created the monotonic counter.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Destroying a Monotonic Counter (MC) involves writing to the non-volatile memory available in the platform. </span>
-    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform. </span>
-    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed the </span>
+    <span class="doccomment">/// Destroying a Monotonic Counter (MC) involves writing to the non-volatile memory available in the platform.</span>
+    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.</span>
+    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed the</span>
     <span class="doccomment">/// limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Header: sgx_tae_service.edl</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
@@ -1372,7 +1418,7 @@
     <span class="doccomment">/// The enclave doesn&#39;t have the access right to specified Monotonic Counter.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_AE_SESSION_INVALID**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Session is not created or has been closed by architectural enclave service.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_SERVICE_UNAVAILABLE**</span>
@@ -1382,21 +1428,21 @@
     <span class="doccomment">/// **SGX_ERROR_SERVICE_TIMEOUT**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A request to the AE service timed out.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_NETWORK_FAILURE**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Network connecting or proxy setting issue was encountered.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Not enough memory is available to complete this operation.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_EPC**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates an unexpected error occurs.</span>
     <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">destory</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
@@ -1416,29 +1462,27 @@
 
     <span class="doccomment">///</span>
     <span class="doccomment">/// increments a monotonic counter value by 1.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// This API is only available in simulation mode.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Call increment to increase a monotonic counter value by 1.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
     <span class="doccomment">/// before calling this API.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// increment fails if the calling enclave does not match the owner policy and the attributes specified in the </span>
+    <span class="doccomment">/// increment fails if the calling enclave does not match the owner policy and the attributes specified in the</span>
     <span class="doccomment">/// call that created the monotonic counter.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Incrementing a monotonic counter (MC) involves writing to the non-volatile memory available in the platform. </span>
-    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform. </span>
-    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed the limit, </span>
+    <span class="doccomment">/// Incrementing a monotonic counter (MC) involves writing to the non-volatile memory available in the platform.</span>
+    <span class="doccomment">/// Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.</span>
+    <span class="doccomment">/// Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed the limit,</span>
     <span class="doccomment">/// the MC operation may return SGX_ERROR_BUSY for several minutes.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Header: sgx_tae_service.edl</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
@@ -1459,7 +1503,7 @@
     <span class="doccomment">/// The enclave doesn&#39;t have the access right to specified Monotonic Counter.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_AE_SESSION_INVALID**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Session is not created or has been closed by architectural enclave service.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_SERVICE_UNAVAILABLE**</span>
@@ -1469,21 +1513,21 @@
     <span class="doccomment">/// **SGX_ERROR_SERVICE_TIMEOUT**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A request to the AE service timed out.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_NETWORK_FAILURE**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Network connecting or proxy setting issue was encountered.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Not enough memory is available to complete this operation.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_EPC**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates an unexpected error occurs.</span>
     <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">increment</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
@@ -1502,24 +1546,22 @@
 
     <span class="doccomment">///</span>
     <span class="doccomment">/// returns the value of a monotonic counter.</span>
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// This API is only available in simulation mode.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Call read to read the value of a monotonic counter.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave </span>
+    <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
     <span class="doccomment">/// before calling this API.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// read fails if the calling enclave does not match the owner policy and the attributes specified in the </span>
+    <span class="doccomment">/// read fails if the calling enclave does not match the owner policy and the attributes specified in the</span>
     <span class="doccomment">/// call that created the monotonic counter.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Header: sgx_tae_service.edl</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Library: libsgx_tservice_sim.a (simulation)</span>
+    <span class="doccomment">/// Library: libsgx_tservice.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
@@ -1536,7 +1578,7 @@
     <span class="doccomment">/// The Monotonic Counter does not exist or has been invalidated.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_AE_SESSION_INVALID**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Session is not created or has been closed by architectural enclave service.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_SERVICE_UNAVAILABLE**</span>
@@ -1546,23 +1588,23 @@
     <span class="doccomment">/// **SGX_ERROR_SERVICE_TIMEOUT**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A request to the AE service timed out.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_NETWORK_FAILURE**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Network connecting or proxy setting issue was encountered.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Not enough memory is available to complete this operation.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_EPC**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates an unexpected error occurs.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">read</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
 
         <span class="kw">if</span> <span class="self">self</span>.<span class="ident">initflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">false</span> {
@@ -1585,7 +1627,8 @@
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
         <span class="kw">let</span> _ <span class="op">=</span> <span class="self">self</span>.<span class="ident">destory</span>();
     }
-}</pre>
+}
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -1643,7 +1686,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tservice";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

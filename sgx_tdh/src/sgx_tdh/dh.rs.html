@@ -859,6 +859,12 @@
 <span id="814">814</span>
 <span id="815">815</span>
 <span id="816">816</span>
+<span id="817">817</span>
+<span id="818">818</span>
+<span id="819">819</span>
+<span id="820">820</span>
+<span id="821">821</span>
+<span id="822">822</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -889,11 +895,13 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="doccomment">//! # Diffie–Hellman (DH) Session Establishment Functions</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! These functions allow an ISV to establish secure session between two enclaves using the EC DH Key exchange protocol.</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="ident">marker</span>::<span class="ident">ContiguousMemory</span>;
 <span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">memeq</span>::<span class="ident">ConsttimeMemEq</span>;
 <span class="kw">use</span> <span class="ident">sgx_tcrypto</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">sgx_tse</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
@@ -925,17 +933,17 @@
 }
 
 <span class="kw">impl</span> <span class="ident">SgxDhMsg3</span> {
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Create a SgxDhMsg3 with default values.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="kw">let</span> <span class="ident">dh_msg3</span> <span class="op">=</span> <span class="ident">SgxDhMsg3</span>::<span class="ident">default</span>();
         <span class="ident">dh_msg3</span>
     }
 
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Calculate the size of sgx_dh_msg3_t converted from SgxDhMsg3, really add the size of struct sgx_dh_msg3_t and msg3_body.additional_prop.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The size of sgx_dh_msg3_t needed.</span>
@@ -949,21 +957,21 @@
         <span class="kw">if</span> <span class="ident">additional_prop_len</span> <span class="op">&gt;</span> (<span class="ident">max</span> <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">-</span> <span class="ident">dh_msg3_size</span> {
             <span class="kw">return</span> <span class="ident">max</span>;
         }
-     
+
         (<span class="ident">dh_msg3_size</span> <span class="op">+</span> <span class="ident">additional_prop_len</span>) <span class="kw">as</span> <span class="ident">u32</span>
     }
 
     <span class="doccomment">///</span>
     <span class="doccomment">/// Convert SgxDhMsg3 to sgx_dh_msg3_t, this is an unsafe function.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **p**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The pointer of a sgx_dh_msg3_t buffer to save the buffer of SgxDhMsg3.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **len**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The size of the sgx_dh_msg3_t buffer.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
@@ -1001,34 +1009,34 @@
 
         <span class="kw">if</span> <span class="ident">additional_prop_len</span> <span class="op">&gt;</span> <span class="number">0</span> {
             <span class="kw">let</span> <span class="ident">raw_msg3</span> <span class="op">=</span> <span class="ident">slice</span>::<span class="ident">from_raw_parts_mut</span>(<span class="ident">p</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
-            <span class="ident">raw_msg3</span>[<span class="ident">dh_msg3_size</span>..].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span>); 
+            <span class="ident">raw_msg3</span>[<span class="ident">dh_msg3_size</span>..].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span>);
         }
 
-        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">dh_msg3</span>); 
+        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">dh_msg3</span>);
         <span class="prelude-val">Some</span>(<span class="ident">p</span>)
     }
 
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Convert sgx_dh_msg3_t to SgxDhMsg3, this is an unsafe function.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **p**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The pointer of a sgx_dh_msg3_t buffer.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **len**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The size of the sgx_dh_msg3_t buffer.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **Some(SgxDhMsg3)**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates the conversion is successfully. The return value is SgxDhMsg3.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **None**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The parameters p and len are not available for the conversion.</span>
     <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">from_raw_dh_msg3_t</span>(<span class="ident">p</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_dh_msg3_t</span>, <span class="ident">len</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
@@ -1039,7 +1047,7 @@
         <span class="kw">if</span> <span class="ident">rsgx_raw_is_within_enclave</span>(<span class="ident">p</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
-        
+
         <span class="kw">let</span> <span class="ident">raw_msg3</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">p</span>);
         <span class="kw">let</span> <span class="ident">additional_prop_len</span> <span class="op">=</span> <span class="ident">raw_msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop_length</span>;
         <span class="kw">let</span> <span class="ident">dh_msg3_size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">sgx_dh_msg3_t</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>;
@@ -1057,7 +1065,7 @@
         <span class="kw">if</span> <span class="ident">additional_prop_len</span> <span class="op">&gt;</span> <span class="number">0</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">additional_prop</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="number">0_u8</span>; <span class="ident">additional_prop_len</span> <span class="kw">as</span> <span class="ident">usize</span>];
             <span class="kw">let</span> <span class="ident">ptr_additional_prop</span> <span class="op">=</span> <span class="ident">p</span>.<span class="ident">offset</span>(<span class="number">1</span>) <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>;
-            <span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(<span class="ident">ptr_additional_prop</span>, <span class="ident">additional_prop</span>.<span class="ident">as_mut_ptr</span>(), <span class="ident">additional_prop_len</span> <span class="kw">as</span> <span class="ident">usize</span>); 
+            <span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(<span class="ident">ptr_additional_prop</span>, <span class="ident">additional_prop</span>.<span class="ident">as_mut_ptr</span>(), <span class="ident">additional_prop_len</span> <span class="kw">as</span> <span class="ident">usize</span>);
             <span class="ident">dh_msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span> <span class="op">=</span> <span class="ident">additional_prop</span>.<span class="ident">into_boxed_slice</span>();
         }
 
@@ -1081,7 +1089,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxDhResponder</span> {
     <span class="ident">state</span>: <span class="ident">SgxDhSessionState</span>,
     <span class="ident">prv_key</span>: <span class="ident">sgx_ec256_private_t</span>,
-    <span class="ident">pub_key</span>: <span class="ident">sgx_ec256_public_t</span>, 
+    <span class="ident">pub_key</span>: <span class="ident">sgx_ec256_public_t</span>,
     <span class="ident">smk_aek</span>: <span class="ident">sgx_key_128bit_t</span>,
     <span class="ident">shared_key</span>: <span class="ident">sgx_ec256_dh_shared_t</span>,
 }
@@ -1098,28 +1106,30 @@
     }
 }
 
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">ContiguousMemory</span> <span class="kw">for</span> <span class="ident">SgxDhResponder</span> {}
+
 <span class="kw">impl</span> <span class="ident">SgxDhResponder</span> {
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Initialize DH secure session responder.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates role of responder  the caller plays in the secure session establishment.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The value of role of the responder of the session establishment must be `SGX_DH_SESSION_RESPONDER`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">init_session</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span>::<span class="ident">default</span>()
     }
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Generates MSG1 for the responder of DH secure session establishment and records ECC key pair in session structure. </span>
+    <span class="doccomment">/// Generates MSG1 for the responder of DH secure session establishment and records ECC key pair in session structure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **msg1**</span>
@@ -1128,25 +1138,25 @@
     <span class="doccomment">/// message, which is referenced by this parameter, must be within the enclave.</span>
     <span class="doccomment">/// The DH msg1 contains the responder’s public key and report based target</span>
     <span class="doccomment">/// info.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Any of the input parameters is incorrect.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_STATE**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The API is invoked in incorrect order or state.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// An unexpected error occurred.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">gen_msg1</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">msg1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">SgxDhMsg1</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
 
         <span class="kw">if</span> <span class="ident">rsgx_data_is_within_enclave</span>(<span class="self">self</span>) <span class="op">==</span> <span class="bool-val">false</span> {
@@ -1172,78 +1182,78 @@
             },
             _ <span class="op">=&gt;</span> (),
         };
-        
+
         <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">SgxDhSessionState</span>::<span class="ident">SGX_DH_SESSION_RESPONDER_WAIT_M2</span>;
         <span class="prelude-val">Ok</span>(())
     }
-    
-    <span class="doccomment">/// </span>
+
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The responder handles msg2 sent by initiator and then derives AEK, updates session information and generates msg3.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **msg2**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Point to dh message 2 buffer generated by session initiator, and the buffer must be in enclave address space.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **msg3**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Point to dh message 3 buffer generated by session responder in this function, and the buffer must be in enclave address space.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **aek**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// A pointer that points to instance of sgx_key_128bit_t. The aek is derived as follows:</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// KDK := CMAC(key0, LittleEndian(gab x-coordinate))</span>
     <span class="doccomment">/// AEK = AES-CMAC(KDK, 0x01||&quot;AEK&quot;||0x00||0x80||0x00)</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// The key0 used in the key extraction operation is 16 bytes of 0x00. The plain</span>
     <span class="doccomment">/// text used in the AES-CMAC calculation of the KDK is the Diffie-Hellman shared</span>
-    <span class="doccomment">/// secret elliptic curve field element in Little Endian format.The plain text used </span>
+    <span class="doccomment">/// secret elliptic curve field element in Little Endian format.The plain text used</span>
     <span class="doccomment">/// in the AEK calculation includes:</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * a counter (0x01)</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * a label: the ASCII representation of the string &#39;AEK&#39; in Little Endian format</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * a bit length (0x80)</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **initiator_identity**</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// A pointer that points to instance of sgx_dh_session_enclave_identity_t. </span>
+    <span class="doccomment">/// A pointer that points to instance of sgx_dh_session_enclave_identity_t.</span>
     <span class="doccomment">/// Identity information of initiator includes isv svn, isv product id, the</span>
     <span class="doccomment">/// enclave attributes, MRSIGNER, and MRENCLAVE. The buffer must be in</span>
     <span class="doccomment">/// enclave address space. The caller should check the identity of the peer and</span>
     <span class="doccomment">/// decide whether to trust the peer and use the aek.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Any of the input parameters is incorrect.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_STATE**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The API is invoked in incorrect order or state.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_KDF_MISMATCH**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates the key derivation function does not match.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// An unexpected error occurred.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">proc_msg2</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, 
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">proc_msg2</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
                      <span class="ident">msg2</span>: <span class="kw-2">&amp;</span><span class="ident">SgxDhMsg2</span>,
                      <span class="ident">msg3</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">SgxDhMsg3</span>,
                      <span class="ident">aek</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_key_128bit_t</span>,
@@ -1274,7 +1284,7 @@
             <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">SgxDhSessionState</span>::<span class="ident">SGX_DH_SESSION_STATE_ERROR</span>;
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_STATE</span>);
         }
-   
+
         <span class="kw">let</span> <span class="ident">ecc_state</span> <span class="op">=</span> <span class="ident">SgxEccHandle</span>::<span class="ident">new</span>();
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">ecc_state</span>.<span class="ident">open</span>().<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">ret</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">set_error</span>(<span class="ident">ret</span>)));
         <span class="self">self</span>.<span class="ident">shared_key</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">ecc_state</span>.<span class="ident">compute_shared_dhkey</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">prv_key</span>, <span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">g_b</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">ret</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">set_error</span>(<span class="ident">ret</span>)));
@@ -1302,7 +1312,7 @@
     <span class="kw">fn</span> <span class="ident">dh_generate_message1</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">msg1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">SgxDhMsg1</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
 
         <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="ident">sgx_target_info_t</span>::<span class="ident">default</span>();
-        <span class="kw">let</span> <span class="ident">report_data</span> <span class="op">=</span> <span class="ident">sgx_report_data_t</span>::<span class="ident">default</span>(); 
+        <span class="kw">let</span> <span class="ident">report_data</span> <span class="op">=</span> <span class="ident">sgx_report_data_t</span>::<span class="ident">default</span>();
 
         <span class="kw">let</span> <span class="ident">report</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_create_report</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>, <span class="kw-2">&amp;</span><span class="ident">report_data</span>));
 
@@ -1314,13 +1324,13 @@
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">ecc_state</span>.<span class="ident">open</span>());
         <span class="kw">let</span> (<span class="ident">prv_key</span>, <span class="ident">pub_key</span>) <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">ecc_state</span>.<span class="ident">create_key_pair</span>());
 
-        <span class="self">self</span>.<span class="ident">prv_key</span> <span class="op">=</span> <span class="ident">prv_key</span>;                                                                    
+        <span class="self">self</span>.<span class="ident">prv_key</span> <span class="op">=</span> <span class="ident">prv_key</span>;
         <span class="self">self</span>.<span class="ident">pub_key</span> <span class="op">=</span> <span class="ident">pub_key</span>;
-        <span class="ident">msg1</span>.<span class="ident">g_a</span> <span class="op">=</span> <span class="ident">pub_key</span>; 
+        <span class="ident">msg1</span>.<span class="ident">g_a</span> <span class="op">=</span> <span class="ident">pub_key</span>;
 
         <span class="prelude-val">Ok</span>(())
     }
-    
+
     <span class="kw">fn</span> <span class="ident">dh_verify_message2</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">msg2</span>: <span class="kw-2">&amp;</span><span class="ident">SgxDhMsg2</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
 
         <span class="kw">let</span> <span class="ident">kdf_id</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">report</span>.<span class="ident">body</span>.<span class="ident">report_data</span>.<span class="ident">d</span>[<span class="ident">SGX_SHA256_HASH_SIZE</span>..<span class="ident">SGX_SHA256_HASH_SIZE</span> <span class="op">+</span> <span class="number">2</span>];
@@ -1331,7 +1341,7 @@
         }
 
         <span class="kw">let</span> <span class="ident">data_mac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_rijndael128_cmac_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>, <span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">report</span>));
-        <span class="kw">if</span> <span class="ident">data_mac</span>.<span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">cmac</span>) <span class="op">==</span> <span class="bool-val">false</span> {
+        <span class="kw">if</span> <span class="ident">data_mac</span>.<span class="ident">consttime_memeq</span>(<span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">cmac</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
         }
 
@@ -1346,7 +1356,7 @@
         <span class="kw">if</span> <span class="ident">msg_hash</span>.<span class="ident">eq</span>(<span class="ident">data_hash</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
         }
-        
+
         <span class="prelude-val">Ok</span>(())
     }
 
@@ -1369,20 +1379,20 @@
         <span class="ident">target</span>.<span class="ident">mr_enclave</span> <span class="op">=</span> <span class="ident">msg2</span>.<span class="ident">report</span>.<span class="ident">body</span>.<span class="ident">mr_enclave</span>;
         <span class="ident">target</span>.<span class="ident">misc_select</span> <span class="op">=</span> <span class="ident">msg2</span>.<span class="ident">report</span>.<span class="ident">body</span>.<span class="ident">misc_select</span>;
         <span class="ident">msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">report</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_create_report</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>, <span class="kw-2">&amp;</span><span class="ident">report_data</span>));
-        
+
         <span class="kw">let</span> <span class="ident">add_prop_len</span> <span class="op">=</span> <span class="ident">msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">u32</span>;
         <span class="kw">let</span> <span class="ident">cmac_handle</span> <span class="op">=</span> <span class="ident">SgxCmacHandle</span>::<span class="ident">new</span>();
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">cmac_handle</span>.<span class="ident">init</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>));
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">cmac_handle</span>.<span class="ident">update_msg</span>(<span class="kw-2">&amp;</span><span class="ident">msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">report</span>));
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">cmac_handle</span>.<span class="ident">update_msg</span>(<span class="kw-2">&amp;</span><span class="ident">add_prop_len</span>));
-        <span class="kw">if</span> <span class="ident">add_prop_len</span> <span class="op">&gt;</span> <span class="number">0</span> { 
+        <span class="kw">if</span> <span class="ident">add_prop_len</span> <span class="op">&gt;</span> <span class="number">0</span> {
             <span class="macro">try</span><span class="macro">!</span>(<span class="ident">cmac_handle</span>.<span class="ident">update_slice</span>(<span class="kw-2">&amp;</span><span class="ident">msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span>));
         }
         <span class="ident">msg3</span>.<span class="ident">cmac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">cmac_handle</span>.<span class="ident">get_hash</span>());
-        
+
         <span class="prelude-val">Ok</span>(())
     }
-    
+
     <span class="kw">fn</span> <span class="ident">set_error</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">sgx_ret</span>: <span class="ident">sgx_status_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
 
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="self">Self</span>::<span class="ident">default</span>();
@@ -1392,7 +1402,7 @@
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_KDF_MISMATCH</span> <span class="op">=&gt;</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_KDF_MISMATCH</span>,
             _ <span class="op">=&gt;</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNEXPECTED</span>,
         };
-        <span class="ident">ret</span>   
+        <span class="ident">ret</span>
     }
 }
 
@@ -1401,7 +1411,7 @@
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxDhInitiator</span> {
     <span class="ident">state</span>: <span class="ident">SgxDhSessionState</span>,
     <span class="ident">smk_aek</span>: <span class="ident">sgx_key_128bit_t</span>,
-    <span class="ident">pub_key</span>: <span class="ident">sgx_ec256_public_t</span>, 
+    <span class="ident">pub_key</span>: <span class="ident">sgx_ec256_public_t</span>,
     <span class="ident">peer_pub_key</span>: <span class="ident">sgx_ec256_public_t</span>,
     <span class="ident">shared_key</span>: <span class="ident">sgx_ec256_dh_shared_t</span>,
 }
@@ -1418,54 +1428,56 @@
     }
 }
 
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">ContiguousMemory</span> <span class="kw">for</span> <span class="ident">SgxDhInitiator</span> {}
+
 <span class="kw">impl</span> <span class="ident">SgxDhInitiator</span> {
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Initialize DH secure session Initiator.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Indicates role of initiator the caller plays in the secure session establishment.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The value of role of the initiator of the session establishment must be `SGX_DH_SESSION_INITIATOR`.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">init_session</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="self">Self</span>::<span class="ident">default</span>()
     }
 
-    <span class="doccomment">/// </span>
-    <span class="doccomment">/// The initiator of DH secure session establishment handles msg1 sent by responder and then generates msg2, </span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The initiator of DH secure session establishment handles msg1 sent by responder and then generates msg2,</span>
     <span class="doccomment">/// and records initiator’s ECC key pair in DH session structure.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **msg1**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Point to dh message 1 buffer generated by session responder, and the buffer must be in enclave address space.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **msg2**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Point to dh message 2 buffer, and the buffer must be in enclave address space.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Any of the input parameters is incorrect.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_STATE**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// The API is invoked in incorrect order or state.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// An unexpected error occurred.</span>
@@ -1509,65 +1521,65 @@
     <span class="doccomment">/// session information and gets responder’s identity information.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</span>
-    <span class="doccomment">///  </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Parameters</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **msg3**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Point to dh message 3 buffer generated by session responder, and the buffer must be in enclave address space.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **aek**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// A pointer that points to instance of sgx_key_128bit_t. The aek is derived as follows:</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// KDK:= CMAC(key0, LittleEndian(gab x-coordinate))</span>
     <span class="doccomment">/// AEK = AES-CMAC(KDK, 0x01||&quot;AEK&quot;||0x00||0x80||0x00)</span>
     <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The key0 used in the key extraction operation is 16 bytes of 0x00. The plain</span>
     <span class="doccomment">/// text used in the AES-CMAC calculation of the KDK is the Diffie-Hellman shared</span>
     <span class="doccomment">/// secret elliptic curve field element in Little Endian format.</span>
     <span class="doccomment">/// The plain text used in the AEK calculation includes:</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * a counter (0x01)</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * a label: the ASCII representation of the string &#39;AEK&#39; in Little Endian format</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// * a bit length (0x80)</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **responder_identity**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Identity information of responder including isv svn, isv product id, the enclave</span>
-    <span class="doccomment">/// attributes, MRSIGNER, and MRENCLAVE. The buffer must be in enclave address space. </span>
-    <span class="doccomment">/// The caller should check the identity of the peer and decide whether to trust the </span>
+    <span class="doccomment">/// attributes, MRSIGNER, and MRENCLAVE. The buffer must be in enclave address space.</span>
+    <span class="doccomment">/// The caller should check the identity of the peer and decide whether to trust the</span>
     <span class="doccomment">/// peer and use the aek or the msg3_body.additional_prop field of msg3.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Any of the input parameters is incorrect.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_INVALID_STATE**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The API is invoked in incorrect order or state.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The enclave is out of memory.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// An unexpected error occurred.</span>
-    <span class="doccomment">/// </span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">proc_msg3</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, 
-                     <span class="ident">msg3</span>: <span class="kw-2">&amp;</span><span class="ident">SgxDhMsg3</span>, 
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">proc_msg3</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>,
+                     <span class="ident">msg3</span>: <span class="kw-2">&amp;</span><span class="ident">SgxDhMsg3</span>,
                      <span class="ident">aek</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_key_128bit_t</span>,
                      <span class="ident">responder_identity</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_dh_session_enclave_identity_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
-        
+
         <span class="kw">if</span> <span class="ident">rsgx_data_is_within_enclave</span>(<span class="self">self</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
         }
@@ -1595,7 +1607,7 @@
 
         <span class="macro">try</span><span class="macro">!</span>(<span class="self">self</span>.<span class="ident">dh_verify_message3</span>(<span class="ident">msg3</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">ret</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">set_error</span>(<span class="ident">ret</span>)));
         <span class="op">*</span> <span class="ident">aek</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">derive_key</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">shared_key</span>, <span class="kw-2">&amp;</span><span class="ident">EC_AEK_LABEL</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">ret</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">set_error</span>(<span class="ident">ret</span>)));
-       
+
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="self">Self</span>::<span class="ident">default</span>();
         <span class="self">self</span>.<span class="ident">state</span> <span class="op">=</span> <span class="ident">SgxDhSessionState</span>::<span class="ident">SGX_DH_SESSION_ACTIVE</span>;
 
@@ -1625,7 +1637,7 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">report_data</span> <span class="op">=</span> <span class="ident">sgx_report_data_t</span>::<span class="ident">default</span>();
         <span class="ident">report_data</span>.<span class="ident">d</span>[..<span class="ident">SGX_SHA256_HASH_SIZE</span>].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">msg_hash</span>);
         <span class="ident">report_data</span>.<span class="ident">d</span>[<span class="ident">SGX_SHA256_HASH_SIZE</span>..<span class="ident">SGX_SHA256_HASH_SIZE</span> <span class="op">+</span> <span class="number">2</span>].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">AES_CMAC_KDF_ID</span>);
-        
+
         <span class="ident">msg2</span>.<span class="ident">report</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_create_report</span>(<span class="kw-2">&amp;</span><span class="ident">msg1</span>.<span class="ident">target</span>, <span class="kw-2">&amp;</span><span class="ident">report_data</span>));
         <span class="ident">msg2</span>.<span class="ident">cmac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_rijndael128_cmac_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>, <span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">report</span>));
 
@@ -1645,18 +1657,18 @@
         }
         <span class="kw">let</span> <span class="ident">data_mac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">cmac_handle</span>.<span class="ident">get_hash</span>());
 
-        <span class="kw">if</span> <span class="ident">data_mac</span>.<span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="ident">msg3</span>.<span class="ident">cmac</span>) <span class="op">==</span> <span class="bool-val">false</span> {
+        <span class="kw">if</span> <span class="ident">data_mac</span>.<span class="ident">consttime_memeq</span>(<span class="kw-2">&amp;</span><span class="ident">msg3</span>.<span class="ident">cmac</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
         }
 
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_verify_report</span>(<span class="kw-2">&amp;</span><span class="ident">msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">report</span>));
-    
+
         <span class="kw">let</span> <span class="ident">sha_handle</span> <span class="op">=</span> <span class="ident">SgxShaHandle</span>::<span class="ident">new</span>();
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">sha_handle</span>.<span class="ident">init</span>());
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">sha_handle</span>.<span class="ident">update_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">pub_key</span>));
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">sha_handle</span>.<span class="ident">update_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">peer_pub_key</span>));
         <span class="kw">let</span> <span class="ident">msg_hash</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">sha_handle</span>.<span class="ident">get_hash</span>());
-        
+
         <span class="kw">let</span> <span class="ident">data_hash</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">report</span>.<span class="ident">body</span>.<span class="ident">report_data</span>.<span class="ident">d</span>[..<span class="ident">SGX_SHA256_HASH_SIZE</span>];
         <span class="kw">if</span> <span class="ident">msg_hash</span>.<span class="ident">eq</span>(<span class="ident">data_hash</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
@@ -1673,7 +1685,7 @@
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_MEMORY</span> <span class="op">=&gt;</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_MEMORY</span>,
             _ <span class="op">=&gt;</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNEXPECTED</span>,
         };
-        <span class="ident">ret</span>   
+        <span class="ident">ret</span>
     }
 }
 </pre>
@@ -1734,7 +1746,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tdh";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

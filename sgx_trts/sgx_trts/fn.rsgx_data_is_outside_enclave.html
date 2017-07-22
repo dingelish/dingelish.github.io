@@ -48,8 +48,8 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#287-290' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn rsgx_data_is_outside_enclave&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a>&gt;(data: &amp;T) -&gt; bool</pre><div class='docblock'><p>rsgx_data_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+               </span><a class='srclink' href='../src/sgx_trts/trts.rs.html#138-141' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn rsgx_data_is_outside_enclave&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;T<br>) -&gt; bool</pre><div class='docblock'><p>rsgx_data_is_outside_enclave checks whether a given address is outside enclave memory.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -107,7 +107,6 @@
         window.rootPath = "../";
         window.currentCrate = "sgx_trts";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

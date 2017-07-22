@@ -122,7 +122,7 @@
 
 <span class="doccomment">//! # Cryptography Library</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto. </span>
+<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto.</span>
 <span class="doccomment">//! It includes the cryptographic functions used by other trusted libraries included in the SDK</span>
 <span class="doccomment">//!</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tcrypto&quot;</span>]</span>
@@ -138,8 +138,9 @@
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_types</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">crypto</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">crypto</span>::<span class="kw-2">*</span>;</pre>
+<span class="kw">mod</span> <span class="ident">crypto</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">crypto</span>::<span class="kw-2">*</span>;
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -197,7 +198,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tcrypto";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

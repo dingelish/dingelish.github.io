@@ -295,7 +295,7 @@
 
 <span class="doccomment">//! # Trusted SE Library</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The library provides functions for getting specific keys and for creating and verifying an enclave report. </span>
+<span class="doccomment">//! The library provides functions for getting specific keys and for creating and verifying an enclave report.</span>
 <span class="doccomment">//!</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tse&quot;</span>]</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
@@ -306,32 +306,32 @@
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">///</span>
-<span class="doccomment">/// The rsgx_create_report function tries to use the information of the target enclave and other information </span>
+<span class="doccomment">/// The rsgx_create_report function tries to use the information of the target enclave and other information</span>
 <span class="doccomment">/// to create a cryptographic report of the enclave.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This function is a wrapper for the SGX EREPORT instruction.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
-<span class="doccomment">/// </span>
-<span class="doccomment">/// Use the function rsgx_create_report to create a cryptographic report that describes the contents of the </span>
-<span class="doccomment">/// calling enclave. The report can be used by other enclaves to verify that the enclave is running on the </span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Use the function rsgx_create_report to create a cryptographic report that describes the contents of the</span>
+<span class="doccomment">/// calling enclave. The report can be used by other enclaves to verify that the enclave is running on the</span>
 <span class="doccomment">/// same platform. When an enclave calls rsgx_verify_report to verify a report, it will succeed only if</span>
-<span class="doccomment">/// the report was generated using the target_info for said enclave. This function is a wrapper for the SGX EREPORT </span>
+<span class="doccomment">/// the report was generated using the target_info for said enclave. This function is a wrapper for the SGX EREPORT</span>
 <span class="doccomment">/// instruction.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Before the source enclave calls rsgx_create_report to generate a report, it needs to populate target_info with </span>
-<span class="doccomment">/// information about the target enclave that will verify the report. The target enclave may obtain this information </span>
-<span class="doccomment">/// calling rsgx_create_report with a default value for target_info and pass it to the source enclave at the beginning </span>
+<span class="doccomment">/// Before the source enclave calls rsgx_create_report to generate a report, it needs to populate target_info with</span>
+<span class="doccomment">/// information about the target enclave that will verify the report. The target enclave may obtain this information</span>
+<span class="doccomment">/// calling rsgx_create_report with a default value for target_info and pass it to the source enclave at the beginning</span>
 <span class="doccomment">/// of the inter-enclave attestation process.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **target_info**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to the sgx_target_info_t object that contains the information of the target enclave, </span>
+<span class="doccomment">/// A pointer to the sgx_target_info_t object that contains the information of the target enclave,</span>
 <span class="doccomment">/// which will be able to cryptographically verify the report calling rsgx_verify_report.efore calling this function.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If value is default, sgx_create_report retrieves information about the calling enclave, </span>
+<span class="doccomment">/// If value is default, sgx_create_report retrieves information about the calling enclave,</span>
 <span class="doccomment">/// but the generated report cannot be verified by any enclave.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **report_data**</span>
@@ -350,7 +350,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// An error is reported if any of the parameters memory is not within the enclave or the reserved fields </span>
+<span class="doccomment">/// An error is reported if any of the parameters memory is not within the enclave or the reserved fields</span>
 <span class="doccomment">/// of the data structure are not set to zero.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
@@ -369,24 +369,24 @@
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">report</span>),
         _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
-    }  
+    }
 }
 
 <span class="doccomment">///</span>
-<span class="doccomment">/// The rsgx_verify_report function provides software verification for the report which is expected to be </span>
+<span class="doccomment">/// The rsgx_verify_report function provides software verification for the report which is expected to be</span>
 <span class="doccomment">/// generated by the rsgx_create_report function.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
-<span class="doccomment">/// </span>
-<span class="doccomment">/// The rsgx_verify_report performs a cryptographic CMAC function of the input sgx_report_data_t object </span>
-<span class="doccomment">/// in the report using the report key. Then the function compares the input report MAC value with the </span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The rsgx_verify_report performs a cryptographic CMAC function of the input sgx_report_data_t object</span>
+<span class="doccomment">/// in the report using the report key. Then the function compares the input report MAC value with the</span>
 <span class="doccomment">/// calculated MAC value to determine whether the report is valid or not.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **report**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to an sgx_report_t object that contains the cryptographic report to be verified. </span>
+<span class="doccomment">/// A pointer to an sgx_report_t object that contains the cryptographic report to be verified.</span>
 <span class="doccomment">/// The report buffer must be within the enclave.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
@@ -422,17 +422,17 @@
 <span class="doccomment">/// This function is a wrapper for the SGX EGETKEY instruction.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
-<span class="doccomment">/// </span>
-<span class="doccomment">/// The rsgx_get_key function generates a 128-bit secret key from the processor specific key hierarchy with </span>
-<span class="doccomment">/// the key_request information. If the function fails with an error code, the key buffer will be filled with </span>
-<span class="doccomment">/// random numbers. The key_request structure needs to be initialized properly to obtain the requested key type. </span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The rsgx_get_key function generates a 128-bit secret key from the processor specific key hierarchy with</span>
+<span class="doccomment">/// the key_request information. If the function fails with an error code, the key buffer will be filled with</span>
+<span class="doccomment">/// random numbers. The key_request structure needs to be initialized properly to obtain the requested key type.</span>
 <span class="doccomment">/// See sgx_key_request_t for structure details.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **key_request**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to a sgx_key_request_t object used for selecting the appropriate key and any additional parameters </span>
+<span class="doccomment">/// A pointer to a sgx_key_request_t object used for selecting the appropriate key and any additional parameters</span>
 <span class="doccomment">/// required in the derivation of that key. The pointer must be located within the enclave.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// See details on the sgx_key_request_t to understand initializing this structure before calling this function.</span>
@@ -544,7 +544,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tse";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

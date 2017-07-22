@@ -273,6 +273,18 @@
 <span id="228">228</span>
 <span id="229">229</span>
 <span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -361,6 +373,18 @@
         <span class="ident">SGX_ERROR_MC_USED_UP</span>                <span class="op">=</span> <span class="number">0x0000400e</span>,   <span class="comment">/* Monotonic counters are used out */</span>
         <span class="ident">SGX_ERROR_MC_OVER_QUOTA</span>             <span class="op">=</span> <span class="number">0x0000400f</span>,   <span class="comment">/* Monotonic counters exceeds quota limitation */</span>
         <span class="ident">SGX_ERROR_KDF_MISMATCH</span>              <span class="op">=</span> <span class="number">0x00004011</span>,   <span class="comment">/* Key derivation function doesn&#39;t match during key exchange */</span>
+        <span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span>     <span class="op">=</span> <span class="number">0x00004012</span>,   <span class="comment">/* EPID Provisioning failed due to platform not recognized by backend server*/</span>
+
+        <span class="comment">/* SGX errors are only used in the file API when there is no appropriate EXXX (EINVAL, EIO etc.) error code */</span>
+        <span class="ident">SGX_ERROR_FILE_BAD_STATUS</span>               <span class="op">=</span> <span class="number">0x00007001</span>,	<span class="comment">/* The file is in bad status, run sgx_clearerr to try and fix it */</span>
+        <span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span>                <span class="op">=</span> <span class="number">0x00007002</span>,	<span class="comment">/* The Key ID field is all zeros, can&#39;t re-generate the encryption key */</span>
+        <span class="ident">SGX_ERROR_FILE_NAME_MISMATCH</span>            <span class="op">=</span> <span class="number">0x00007003</span>,	<span class="comment">/* The current file name is different then the original file name (not allowed, substitution attack) */</span>
+        <span class="ident">SGX_ERROR_FILE_NOT_SGX_FILE</span>             <span class="op">=</span> <span class="number">0x00007004</span>,   <span class="comment">/* The file is not an SGX file */</span>
+        <span class="ident">SGX_ERROR_FILE_CANT_OPEN_RECOVERY_FILE</span>  <span class="op">=</span> <span class="number">0x00007005</span>,	<span class="comment">/* A recovery file can&#39;t be opened, so flush operation can&#39;t continue (only used when no EXXX is returned)  */</span>
+        <span class="ident">SGX_ERROR_FILE_CANT_WRITE_RECOVERY_FILE</span> <span class="op">=</span> <span class="number">0x00007006</span>,   <span class="comment">/* A recovery file can&#39;t be written, so flush operation can&#39;t continue (only used when no EXXX is returned)  */</span>
+        <span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span>          <span class="op">=</span> <span class="number">0x00007007</span>,	<span class="comment">/* When openeing the file, recovery is needed, but the recovery process failed */</span>
+        <span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span>             <span class="op">=</span> <span class="number">0x00007008</span>,	<span class="comment">/* fflush operation (to disk) failed (only used when no EXXX is returned) */</span>
+        <span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span>             <span class="op">=</span> <span class="number">0x00007009</span>,	<span class="comment">/* fclose operation (to disk) failed (only used when no EXXX is returned) */</span>
     }
 }
 
@@ -562,7 +586,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_types";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

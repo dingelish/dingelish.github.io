@@ -50,30 +50,46 @@
                    </a>
                </span><a class='srclink' href='../src/sgx_tkey_exchange/lib.rs.html#91-103' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn rsgx_ra_init(<br>&nbsp;&nbsp;&nbsp;&nbsp;p_pub_key: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;b_pse: i32<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="type" href="../sgx_types/types/type.sgx_ra_context_t.html" title="type sgx_types::types::sgx_ra_context_t">sgx_ra_context_t</a>&gt;</pre><div class='docblock'><p>The rsgx_ra_init function creates a context for the remote attestation and key exchange process.</p>
-<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
 <p>This is the first API user should call for a key exchange process. The context returned from this
 function is used as a handle for other APIs in the key exchange library.</p>
-<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
+
+<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
 <p><strong>p_pub_key</strong></p>
+
 <p>The EC public key of the service provider based on the NIST P-256 elliptic curve.</p>
+
 <p><strong>b_pse</strong></p>
+
 <p>If true, platform service information is needed in message 3. The caller should make sure a PSE session
 has been established using rsgx_create_pse_session before attempting to establish a remote attestation
 and key exchange session involving platform service information.</p>
-<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
+
+<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
 <p>Header: sgx_tkey_exchange.edl</p>
+
 <p>Library: libsgx_tkey_exchange.a</p>
-<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+
+<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
 <p>The output context for the subsequent remote attestation and key exchange process, to be used in
 sgx_ra_get_msg1 and sgx_ra_proc_msg2.</p>
-<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+
+<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+
 <p>Indicates an error that the input parameters are invalid.</p>
+
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+
 <p>Not enough memory is available to complete this operation, or contexts reach the limits.</p>
+
 <p><strong>SGX_ERROR_AE_SESSION_INVALID</strong></p>
+
 <p>The session is invalid or ended by the server.</p>
+
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+
 <p>Indicates that an unexpected error occurred.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -132,7 +148,6 @@ sgx_ra_get_msg1 and sgx_ra_proc_msg2.</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_tkey_exchange";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

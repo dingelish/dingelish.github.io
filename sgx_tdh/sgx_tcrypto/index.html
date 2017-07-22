@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tcrypto', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_tcrypto</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tcrypto', ty: 'mod', relpath: '../'};</script>
     </nav>
 
     <nav class="sub">
@@ -49,18 +49,104 @@
                        [<span class='inner'>&#x2212;</span>]
                    </a>
                </span><a class='srclink' href='../src/sgx_tcrypto/lib.rs.html#29-48' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><h1 id="cryptography-library" class="section-header"><a href="#cryptography-library">Cryptography Library</a></h1>
+<div class='docblock'>
+<h1 id='cryptography-library' class='section-header'><a href='#cryptography-library'>Cryptography Library</a></h1>
 <p>The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto.
 It includes the cryptographic functions used by other trusted libraries included in the SDK</p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::<a class="mod" href="../sgx_tcrypto/crypto/index.html" title="mod sgx_tcrypto::crypto">crypto</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="crypto/index.html"
-                                  title='mod sgx_tcrypto::crypto'>crypto</a></td>
+                           <td><a class="struct" href="struct.SgxCmacHandle.html"
+                                  title='struct sgx_tcrypto::SgxCmacHandle'>SgxCmacHandle</a></td>
                            <td class='docblock-short'>
-                                <p>Cryptographic Functions</p>
-
+                                <p>CMAC algorithm context state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxEccHandle.html"
+                                  title='struct sgx_tcrypto::SgxEccHandle'>SgxEccHandle</a></td>
+                           <td class='docblock-short'>
+                                <p>ECC GF(p) context state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxShaHandle.html"
+                                  title='struct sgx_tcrypto::SgxShaHandle'>SgxShaHandle</a></td>
+                           <td class='docblock-short'>
+                                <p>SHA algorithm context state.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SGX_AESCTR_CTR_SIZE.html"
+                                  title='constant sgx_tcrypto::SGX_AESCTR_CTR_SIZE'>SGX_AESCTR_CTR_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_aes_ctr_decrypt.html"
+                                  title='fn sgx_tcrypto::rsgx_aes_ctr_decrypt'>rsgx_aes_ctr_decrypt</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_aes_ctr_decrypt performs a Rijndael AES-CTR decryption operation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_aes_ctr_encrypt.html"
+                                  title='fn sgx_tcrypto::rsgx_aes_ctr_encrypt'>rsgx_aes_ctr_encrypt</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_aes_ctr_encrypt performs a Rijndael AES-CTR encryption operation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rijndael128GCM_decrypt.html"
+                                  title='fn sgx_tcrypto::rsgx_rijndael128GCM_decrypt'>rsgx_rijndael128GCM_decrypt</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_rijndael128GCM_decrypt performs a Rijndael AES-GCM decryption operation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rijndael128GCM_encrypt.html"
+                                  title='fn sgx_tcrypto::rsgx_rijndael128GCM_encrypt'>rsgx_rijndael128GCM_encrypt</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_rijndael128GCM_encrypt performs a Rijndael AES-GCM encryption operation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rijndael128_cmac_msg.html"
+                                  title='fn sgx_tcrypto::rsgx_rijndael128_cmac_msg'>rsgx_rijndael128_cmac_msg</a></td>
+                           <td class='docblock-short'>
+                                <p>The rsgx_rijndael128_cmac_msg function performs a standard 128bit CMAC hash over the input data buffer.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rijndael128_cmac_slice.html"
+                                  title='fn sgx_tcrypto::rsgx_rijndael128_cmac_slice'>rsgx_rijndael128_cmac_slice</a></td>
+                           <td class='docblock-short'>
+                                <p>The rsgx_rijndael128_cmac_slice function performs a standard 128bit CMAC hash over the input data buffer.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_sha256_msg.html"
+                                  title='fn sgx_tcrypto::rsgx_sha256_msg'>rsgx_sha256_msg</a></td>
+                           <td class='docblock-short'>
+                                <p>The rsgx_sha256_msg function performs a standard SHA256 hash over the input data buffer.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_sha256_slice.html"
+                                  title='fn sgx_tcrypto::rsgx_sha256_slice'>rsgx_sha256_slice</a></td>
+                           <td class='docblock-short'>
+                                <p>The rsgx_sha256_slice function performs a standard SHA256 hash over the input data buffer.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.sgx_aes_ctr_128bit_ctr_t.html"
+                                  title='type sgx_tcrypto::sgx_aes_ctr_128bit_ctr_t'>sgx_aes_ctr_128bit_ctr_t</a></td>
+                           <td class='docblock-short'>
+                                
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -119,7 +205,6 @@ It includes the cryptographic functions used by other trusted libraries included
         window.rootPath = "../";
         window.currentCrate = "sgx_tcrypto";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

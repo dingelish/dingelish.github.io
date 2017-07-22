@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Crate sgx_tstdc</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tstdc', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_tstdc</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tstdc', ty: 'mod', relpath: '../'};</script>
     </nav>
 
     <nav class="sub">
@@ -48,46 +48,116 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tstdc/lib.rs.html#29-273' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_tstdc/lib.rs.html#29-87' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>The library is named sgx_tstdc, provides the following functions:</p>
 
 <ul>
 <li>Mutex</li>
 <li>Condition</li>
+<li>Rwlock</li>
+<li>Once call</li>
+<li>thread</li>
 <li>Query CPUID inside Enclave</li>
 <li>Spin lock</li>
 </ul>
 </div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::<a class="mod" href="../sgx_tstdc/mutex/index.html" title="mod sgx_tstdc::mutex">mutex</a>::*;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="../sgx_tstdc/cond/index.html" title="mod sgx_tstdc::cond">cond</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table><tr><td><code>pub use self::<a class="mod" href="./thread/index.html">thread</a>::<a class="struct" href="../sgx_tstdc/thread/struct.SgxThread.html" title="struct sgx_tstdc::thread::SgxThread">SgxThread</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="./thread/index.html">thread</a>::<a class="fn" href="../sgx_tstdc/thread/fn.rsgx_thread_self.html" title="fn sgx_tstdc::thread::rsgx_thread_self">rsgx_thread_self</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="./thread/index.html">thread</a>::<a class="fn" href="../sgx_tstdc/thread/fn.rsgx_thread_equal.html" title="fn sgx_tstdc::thread::rsgx_thread_equal">rsgx_thread_equal</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="cond/index.html"
-                                  title='mod sgx_tstdc::cond'>cond</a></td>
+                           <td><a class="mod" href="once/index.html"
+                                  title='mod sgx_tstdc::once'>once</a></td>
                            <td class='docblock-short'>
-                                <p>The Intel(R) Software Guard Extensions SDK already supports mutex and conditional 
-variable synchronization mechanisms by means of the following APIand data types 
-defined in the Types and Enumerations section. Some functions included in the 
-trusted Thread Synchronization library may make calls outside the enclave (OCALLs).
-If you use any of the APIs below, you must first import the needed OCALL functions
-from sgx_tstdc.edl. Otherwise, you will get a linker error when the enclave is
-being built; see Calling Functions outside the Enclave for additional details. 
-The table below illustrates the primitives that the Intel(R) SGX Thread 
-Synchronization library supports, as well as the OCALLs that each API function needs.</p>
+                                <p>A &quot;once initialization&quot; primitive</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="mutex/index.html"
-                                  title='mod sgx_tstdc::mutex'>mutex</a></td>
+                           <td><a class="mod" href="thread/index.html"
+                                  title='mod sgx_tstdc::thread'>thread</a></td>
                            <td class='docblock-short'>
-                                <p>The Intel(R) Software Guard Extensions SDK already supports mutex and conditional 
-variable synchronization mechanisms by means of the following APIand data types 
-defined in the Types and Enumerations section. Some functions included in the 
-trusted Thread Synchronization library may make calls outside the enclave (OCALLs).
-If you use any of the APIs below, you must first import the needed OCALL functions
-from sgx_tstdc.edl. Otherwise, you will get a linker error when the enclave is
-being built; see Calling Functions outside the Enclave for additional details. 
-The table below illustrates the primitives that the Intel(R) SGX Thread 
-Synchronization library supports, as well as the OCALLs that each API function needs.</p>
+                                <p>Native threads.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="thread_info/index.html"
+                                  title='mod sgx_tstdc::thread_info'>thread_info</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.PoisonError.html"
+                                  title='struct sgx_tstdc::PoisonError'>PoisonError</a></td>
+                           <td class='docblock-short'>
+                                <p>A type of error which can be returned whenever a lock is acquired.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxCond.html"
+                                  title='struct sgx_tstdc::SgxCond'>SgxCond</a></td>
+                           <td class='docblock-short'>
+                                <p>A Condition Variable</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxMutex.html"
+                                  title='struct sgx_tstdc::SgxMutex'>SgxMutex</a></td>
+                           <td class='docblock-short'>
+                                <p>A mutual exclusion primitive useful for protecting shared data</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxMutexGuard.html"
+                                  title='struct sgx_tstdc::SgxMutexGuard'>SgxMutexGuard</a></td>
+                           <td class='docblock-short'>
+                                <p>An RAII implementation of a &quot;scoped lock&quot; of a mutex. When this structure is
+dropped (falls out of scope), the lock will be unlocked.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxRwLock.html"
+                                  title='struct sgx_tstdc::SgxRwLock'>SgxRwLock</a></td>
+                           <td class='docblock-short'>
+                                <p>A reader-writer lock</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxRwLockReadGuard.html"
+                                  title='struct sgx_tstdc::SgxRwLockReadGuard'>SgxRwLockReadGuard</a></td>
+                           <td class='docblock-short'>
+                                <p>RAII structure used to release the shared read access of a lock when
+dropped.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxRwLockWriteGuard.html"
+                                  title='struct sgx_tstdc::SgxRwLockWriteGuard'>SgxRwLockWriteGuard</a></td>
+                           <td class='docblock-short'>
+                                <p>RAII structure used to release the exclusive write access of a lock when
+dropped.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxSpinlock.html"
+                                  title='struct sgx_tstdc::SgxSpinlock'>SgxSpinlock</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxSpinlockGuard.html"
+                                  title='struct sgx_tstdc::SgxSpinlockGuard'>SgxSpinlockGuard</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.TryLockError.html"
+                                  title='enum sgx_tstdc::TryLockError'>TryLockError</a></td>
+                           <td class='docblock-short'>
+                                <p>An enumeration of possible errors which can occur while calling the
+[<code>try_lock</code>] method.</p>
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -108,33 +178,20 @@ the information about supported features.</p>
 intrinisic which executes the CPUID instruction to query the host processor for
 the information about supported features.</p>
                            </td>
-                       </tr>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
                        <tr class=' module-item'>
-                           <td><a class="fn" href="fn.rsgx_spin_lock.html"
-                                  title='fn sgx_tstdc::rsgx_spin_lock'>rsgx_spin_lock</a></td>
+                           <td><a class="type" href="type.LockResult.html"
+                                  title='type sgx_tstdc::LockResult'>LockResult</a></td>
                            <td class='docblock-short'>
-                                <p>The rsgx_spin_lock function acquires a spin lock within the enclave.</p>
+                                <p>A type alias for the result of a lock method which can be poisoned.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="fn" href="fn.rsgx_spin_unlock.html"
-                                  title='fn sgx_tstdc::rsgx_spin_unlock'>rsgx_spin_unlock</a></td>
+                           <td><a class="type" href="type.TryLockResult.html"
+                                  title='type sgx_tstdc::TryLockResult'>TryLockResult</a></td>
                            <td class='docblock-short'>
-                                <p>The rsgx_spin_unlock function releases a spin lock within the enclave.</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="fn" href="fn.rsgx_thread_equal.html"
-                                  title='fn sgx_tstdc::rsgx_thread_equal'>rsgx_thread_equal</a></td>
-                           <td class='docblock-short'>
-                                <p>The rsgx_thread_equal function compares two thread identifiers.</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="fn" href="fn.rsgx_thread_self.html"
-                                  title='fn sgx_tstdc::rsgx_thread_self'>rsgx_thread_self</a></td>
-                           <td class='docblock-short'>
-                                <p>The rsgx_thread_self function returns the unique thread identification.</p>
+                                <p>A type alias for the result of a nonblocking locking method.</p>
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -193,7 +250,6 @@ the information about supported features.</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_tstdc";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

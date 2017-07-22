@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `rsgx_close_pse_session` fn in crate `sgx_tservice`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, rsgx_close_pse_session">
+
+    <title>sgx_tservice::rsgx_close_pse_session - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc fn">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>sgx_tservice</a></p><script>window.sidebarCurrent = {name: 'rsgx_close_pse_session', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Function <a href='index.html'>sgx_tservice</a>::<wbr><a class="fn" href=''>rsgx_close_pse_session</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/sgx_tservice/tae.rs.html#123-130' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn rsgx_close_pse_session() -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></pre><div class='docblock'><p>rsgx_close_pse_session closes a session created by rsgx_create_pse_ session.</p>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
+<p>An Intel(R) SGX enclave calls rsgx_close_pse_session() when there is no need to request platform service.</p>
+
+<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<p>Header: sgx_tae_service.edl</p>
+
+<p>Library: libsgx_tservice.a</p>
+
+<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<p><strong>SGX_ERROR_SERVICE_UNAVAILABLE</strong></p>
+
+<p>The AE service did not respond or the requested service is not supported.</p>
+
+<p><strong>SGX_ERROR_SERVICE_TIMEOUT</strong></p>
+
+<p>A request to the AE service timed out.</p>
+
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+
+<p>Indicates an unexpected error occurs.</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "sgx_tservice";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

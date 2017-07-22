@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title># Stable SGX APIs</title>
+<title>index</title>
 <style>
 @font-face {
   font-family: octicons-anchor;
@@ -709,7 +709,7 @@ body {
   margin: 0.3em 0 0.25em -1.6em;
   vertical-align: middle;
 }
-
+table td{ word-wrap: break-word !important; word-break: break-all !important; }
 /*
 
 github.com style (c) Vasily Polovnyov <vast@whiteants.net>
@@ -846,7 +846,7 @@ c:[{cN:"comment",b:/\(\*/,e:/\*\)/},e.ASM,e.QSM,e.CNM,{cN:"list",b:/\{/,e:/\}/,i
 
 <h2 id="toc_1">sgx_tkey_exchange</h2>
 
-<pre><code>fn rsgx_ra_init(p_pub_key: &amp;sgx_ec256_public_t, b_pse: i32) 
+<pre><code>fn rsgx_ra_init(p_pub_key: &amp;sgx_ec256_public_t, b_pse: i32)
                 -&gt; SgxResult&lt;sgx_ra_context_t&gt;
 
 fn rsgx_ra_init_ex(p_pub_key: &amp;sgx_ec256_public_t,
@@ -862,9 +862,11 @@ fn rsgx_ra_close(context: sgx_ra_context_t) -&gt; SgxError
 
 <h2 id="toc_2">sgx_tcrypto</h2>
 
-<pre><code>fn rsgx_sha256_msg&lt;T: Copy&gt;(src: &amp;T) -&gt; SgxResult&lt;sgx_sha256_hash_t&gt;
+<pre><code>fn rsgx_sha256_msg&lt;T&gt;(src: &amp;T) -&gt; SgxResult&lt;sgx_sha256_hash_t&gt;
+       where T: Copy + ContiguousMemory
 
-fn rsgx_sha256_slice&lt;T: Copy&gt;(src: &amp;[T]) -&gt; SgxResult&lt;sgx_sha256_hash_t&gt;
+fn rsgx_sha256_slice&lt;T&gt;(src: &amp;[T]) -&gt; SgxResult&lt;sgx_sha256_hash_t&gt;
+       where T: Copy + ContiguousMemory
 
 fn rsgx_rijndael128GCM_encrypt(key: &amp;sgx_aes_gcm_128bit_key_t,
                                src: &amp;[u8],
@@ -872,33 +874,35 @@ fn rsgx_rijndael128GCM_encrypt(key: &amp;sgx_aes_gcm_128bit_key_t,
                                aad: &amp;[u8],
                                dst: &amp;mut [u8],
                                mac: &amp;mut sgx_aes_gcm_128bit_tag_t) -&gt; SgxError
-                                  
+
 fn rsgx_rijndael128GCM_decrypt(key: &amp;sgx_aes_gcm_128bit_key_t,
                                src: &amp;[u8],
                                iv: &amp;[u8],
                                aad: &amp;[u8],
                                mac: &amp;sgx_aes_gcm_128bit_tag_t,
                                dst: &amp;mut [u8]) -&gt; SgxError
-                                  
-fn rsgx_rijndael128_cmac_msg&lt;T: Copy&gt;(key: &amp;sgx_cmac_128bit_key_t, 
-                                      src: &amp;T)
-                                     -&gt; SgxResult&lt;sgx_cmac_128bit_tag_t&gt;
 
-fn rsgx_rijndael128_cmac_slice&lt;T: Copy&gt;(key: &amp;sgx_cmac_128bit_key_t,
-                                        src: &amp;[T])
-                                       -&gt; SgxResult&lt;sgx_cmac_128bit_tag_t&gt;
+fn rsgx_rijndael128_cmac_msg&lt;T&gt;(key: &amp;sgx_cmac_128bit_key_t,
+                                src: &amp;T)
+                                -&gt; SgxResult&lt;sgx_cmac_128bit_tag_t&gt;
+       where T: Copy + ContiguousMemory
 
-fn rsgx_aes_ctr_encrypt(key: &amp;sgx_aes_ctr_128bit_key_t, 
-                        src: &amp;[u8], 
-                        ctr: &amp;sgx_aes_ctr_128bit_ctr_t, 
+fn rsgx_rijndael128_cmac_slice&lt;T&gt;(key: &amp;sgx_cmac_128bit_key_t,
+                                  src: &amp;[T])
+                                  -&gt; SgxResult&lt;sgx_cmac_128bit_tag_t&gt;
+       where T: Copy + ContiguousMemory
+
+fn rsgx_aes_ctr_encrypt(key: &amp;sgx_aes_ctr_128bit_key_t,
+                        src: &amp;[u8],
+                        ctr: &amp;sgx_aes_ctr_128bit_ctr_t,
                         ctr_inc_bits: u32,
-                        dst: &amp;mut [u8]) -&gt; SgxError   
-                           
+                        dst: &amp;mut [u8]) -&gt; SgxError
+
 fn rsgx_aes_ctr_decrypt(key: &amp;sgx_aes_ctr_128bit_key_t,
                         src: &amp;[u8],
                         ctr: &amp;sgx_aes_ctr_128bit_ctr_t,
                         ctr_inc_bits: u32,
-                        dst: &amp;mut [u8]) -&gt; SgxError    
+                        dst: &amp;mut [u8]) -&gt; SgxError
 </code></pre>
 
 <pre><code>struct SgxShaHandle
@@ -906,8 +910,10 @@ fn rsgx_aes_ctr_decrypt(key: &amp;sgx_aes_ctr_128bit_key_t,
 impl SgxShaHandle {
     fn new() -&gt; Self
     fn init(&amp;self) -&gt; SgxError
-    fn update_msg&lt;T: Copy&gt;(&amp;self, src: &amp;T) -&gt; SgxError
-    fn update_slice&lt;T: Copy&gt;(&amp;self, src: &amp;[T]) -&gt; SgxError
+    fn update_msg&lt;T&gt;(&amp;self, src: &amp;T) -&gt; SgxError
+       where T: Copy + ContiguousMemory
+    fn update_slice&lt;T&gt;(&amp;self, src: &amp;[T]) -&gt; SgxError
+       where T: Copy + ContiguousMemory
     fn get_hash(&amp;self) -&gt; SgxResult&lt;sgx_sha256_hash_t&gt;
     fn close(&amp;self) -&gt; SgxError
 }
@@ -921,8 +927,10 @@ impl Drop for SgxShaHandle
 impl SgxCmacHandle {
     fn new() -&gt; Self
     fn init(&amp;self, key: &amp;sgx_cmac_128bit_key_t) -&gt; SgxError
-    fn update_msg&lt;T: Copy&gt;(&amp;self, src: &amp;T) -&gt; SgxError
-    fn update_slice&lt;T: Copy&gt;(&amp;self, src: &amp;[T]) -&gt; SgxError
+    fn update_msg&lt;T&gt;(&amp;self, src: &amp;T) -&gt; SgxError
+       where T: Copy + ContiguousMemory
+    fn update_slice&lt;T&gt;(&amp;self, src: &amp;[T]) -&gt; SgxError
+       where T: Copy + ContiguousMemory
     fn get_hash(&amp;self) -&gt; SgxResult&lt;sgx_cmac_128bit_tag_t&gt;
     fn close(&amp;self) -&gt; SgxError
 }
@@ -938,28 +946,36 @@ impl SgxEccHandle {
     fn open(&amp;self) -&gt; SgxError
     fn create_key_pair(&amp;self) -&gt; SgxResult&lt;(sgx_ec256_private_t, sgx_ec256_public_t)&gt;
     fn check_point(&amp;self, point: &amp;sgx_ec256_public_t) -&gt; SgxResult&lt;bool&gt;
-    fn compute_shared_dhkey(&amp;self, 
+    fn compute_shared_dhkey(&amp;self,
                             private_b: &amp;sgx_ec256_private_t,
                             public_ga: &amp;sgx_ec256_public_t)
                            -&gt; SgxResult&lt;sgx_ec256_dh_shared_t&gt;
-    fn ecdsa_sign_msg&lt;T: Copy&gt;(&amp;self, 
-                               data: &amp;T, 
-                               private: &amp;sgx_ec256_private_t)
-                               -&gt; SgxResult&lt;sgx_ec256_signature_t&gt;
-    fn ecdsa_sign_slice&lt;T: Copy&gt;(&amp;self,
-                                 data: &amp;[T],
-                                 private: &amp;sgx_ec256_private_t)
-                                 -&gt; SgxResult&lt;sgx_ec256_signature_t&gt;
-    fn ecdsa_verify_msg&lt;T: Copy&gt;(&amp;self,
-                                 data: &amp;T,
-                                 public: &amp;sgx_ec256_public_t,
-                                 signature: &amp;sgx_ec256_signature_t)
-                                 -&gt; SgxResult&lt;bool&gt;
-    fn ecdsa_verify_slice&lt;T: Copy&gt;(&amp;self,
-                                   data: &amp;[T],
-                                   public: &amp;sgx_ec256_public_t,
-                                   signature: &amp;sgx_ec256_signature_t)
-                                   -&gt; SgxResult&lt;bool&gt;
+    fn ecdsa_sign_msg&lt;T&gt;(&amp;self,
+                         data: &amp;T,
+                         private: &amp;sgx_ec256_private_t)
+                         -&gt; SgxResult&lt;sgx_ec256_signature_t&gt;
+       where T: Copy + ContiguousMemory
+    fn ecdsa_sign_slice&lt;T&gt;(&amp;self,
+                           data: &amp;[T],
+                           private: &amp;sgx_ec256_private_t)
+                           -&gt; SgxResult&lt;sgx_ec256_signature_t&gt;
+       where T: Copy + ContiguousMemory
+    fn ecdsa_verify_msg&lt;T&gt;(&amp;self,
+                           data: &amp;T,
+                           public: &amp;sgx_ec256_public_t,
+                           signature: &amp;sgx_ec256_signature_t)
+                           -&gt; SgxResult&lt;bool&gt;
+       where T: Copy + ContiguousMemory
+    fn ecdsa_verify_slice&lt;T&gt;(&amp;self,
+                             data: &amp;[T],
+                             public: &amp;sgx_ec256_public_t,
+                             signature: &amp;sgx_ec256_signature_t)
+                             -&gt; SgxResult&lt;bool&gt;
+       where T: Copy + ContiguousMemory
+    fn compute_shared_dhkey512(&amp;self,
+                               private_b: &amp;sgx_ec256_private_t,
+                               public_ga: &amp;sgx_ec256_public_t)
+                               -&gt; SgxResult&lt;sgx_ec256_dh_shared512_t&gt;
     fn close(&amp;self) -&gt; SgxError
 }
 
@@ -971,19 +987,19 @@ impl Drop for SgxEccHandle
 
 <pre><code>fn rsgx_read_rand(rand: &amp;mut [u8]) -&gt; SgxError
 
-fn rsgx_register_exception_handler(is_first_handler: u32, exception_handler: sgx_exception_handler_t) -&gt; Option&lt;exception_handle&gt;   
+fn rsgx_register_exception_handler(is_first_handler: u32, exception_handler: sgx_exception_handler_t) -&gt; Option&lt;exception_handle&gt;
 
 fn rsgx_unregister_exception_handler(handle: exception_handle) -&gt; bool
 
-fn rsgx_data_is_within_enclave&lt;T: Copy&gt;(data: &amp;T) -&gt; bool
+fn rsgx_data_is_within_enclave&lt;T: Copy + ContiguousMemory&gt;(data: &amp;T) -&gt; bool
 
-fn rsgx_slice_is_within_enclave&lt;T: Copy&gt;(data: &amp;[T]) -&gt; bool
+fn rsgx_slice_is_within_enclave&lt;T: Copy + ContiguousMemory&gt;(data: &amp;[T]) -&gt; bool
 
 fn rsgx_raw_is_within_enclave(addr: * const u8, size: usize) -&gt; bool
 
-fn rsgx_data_is_outside_enclave&lt;T: Copy&gt;(data: &amp;T) -&gt; bool
+fn rsgx_data_is_outside_enclave&lt;T: Copy + ContiguousMemory&gt;(data: &amp;T) -&gt; bool
 
-fn rsgx_slice_is_outside_enclave&lt;T: Copy&gt;(data: &amp;[T]) -&gt; bool
+fn rsgx_slice_is_outside_enclave&lt;T: Copy + ContiguousMemory&gt;(data: &amp;[T]) -&gt; bool
 
 fn rsgx_raw_is_outside_enclave(addr: * const u8, size: usize) -&gt; bool
 </code></pre>
@@ -996,9 +1012,9 @@ fn rsgx_close_pse_session() -&gt; SgxError
 
 fn rsgx_get_ps_sec_prop(security_property: &amp;mut sgx_ps_sec_prop_desc_t) -&gt; SgxError
 
-fn rsgx_get_trusted_time(current_time: &amp;mut sgx_time_t, 
+fn rsgx_get_trusted_time(current_time: &amp;mut sgx_time_t,
                             time_source_nonce: &amp;mut sgx_time_source_nonce_t) -&gt; SgxError
-                            
+
 struct SgxMonotonicCounter
 
 impl SgxMonotonicCounter {
@@ -1009,7 +1025,7 @@ impl SgxMonotonicCounter {
     fn destory(&amp;self) -&gt; SgxError
     fn increment(&amp;self) -&gt; SgxResult&lt;u32&gt;
     fn read(&amp;self) -&gt; SgxResult&lt;u32&gt;
-}        
+}
 
 impl Drop for SgxMonotonicCounter
 </code></pre>
@@ -1017,11 +1033,11 @@ impl Drop for SgxMonotonicCounter
 <h2 id="toc_5">sgx_tse</h2>
 
 <pre><code>fn rsgx_create_report(target_info: &amp;sgx_target_info_t,
-                      report_data: &amp;sgx_report_data_t) -&gt; SgxResult&lt;sgx_report_t&gt;   
+                      report_data: &amp;sgx_report_data_t) -&gt; SgxResult&lt;sgx_report_t&gt;
 
 fn rsgx_verify_report(report: &amp;sgx_report_t) -&gt; SgxError
 
-fn rsgx_get_key(key_request: &amp;sgx_key_request_t) -&gt; SgxResult&lt;sgx_key_128bit_t&gt;   
+fn rsgx_get_key(key_request: &amp;sgx_key_request_t) -&gt; SgxResult&lt;sgx_key_128bit_t&gt;
 </code></pre>
 
 <h2 id="toc_6">sgx_tstdc</h2>
@@ -1047,7 +1063,7 @@ impl SgxThreadMutex {
     fn trylock(&amp;self) -&gt; SysError
     fn unlock(&amp;self) -&gt; SysError
     fn destory(&amp;self) -&gt; SysError
-    fn get_raw(&amp;self) -&gt; &amp;sgx_thread_mutex_t 
+    fn get_raw(&amp;self) -&gt; &amp;sgx_thread_mutex_t
 }
 
 impl Send for SgxThreadMutex
@@ -1069,17 +1085,17 @@ impl&lt;T: ?Sized&gt; SgxMutex&lt;T&gt; {
 
 impl&lt;T: ?Sized + Send&gt; Send for SgxMutex&lt;T&gt;
 impl&lt;T: ?Sized + Send&gt; Sync for SgxMutex&lt;T&gt;
-impl&lt;T: ?Sized&gt; Drop for SgxMutex&lt;T&gt; 
-impl&lt;T: ?Sized + Default&gt; Default for SgxMutex&lt;T&gt; 
+impl&lt;T: ?Sized&gt; Drop for SgxMutex&lt;T&gt;
+impl&lt;T: ?Sized + Default&gt; Default for SgxMutex&lt;T&gt;
 </code></pre>
 
 <pre><code>struct SgxMutexGuard&lt;&#39;a, T: ?Sized + &#39;a&gt;
 
 impl&lt;&#39;a, T: ?Sized&gt; !Send for SgxMutexGuard&lt;&#39;a, T&gt;
 
-impl&lt;&#39;mutex, T: ?Sized&gt; Deref for SgxMutexGuard&lt;&#39;mutex, T&gt; 
+impl&lt;&#39;mutex, T: ?Sized&gt; Deref for SgxMutexGuard&lt;&#39;mutex, T&gt;
 
-impl&lt;&#39;mutex, T: ?Sized&gt; DerefMut for SgxMutexGuard&lt;&#39;mutex, T&gt; 
+impl&lt;&#39;mutex, T: ?Sized&gt; DerefMut for SgxMutexGuard&lt;&#39;mutex, T&gt;
 
 impl&lt;&#39;a, T: ?Sized&gt; Drop for SgxMutexGuard&lt;&#39;a, T&gt;
 </code></pre>
@@ -1117,7 +1133,7 @@ impl SgxCond {
     fn broadcast(&amp;self) -&gt; SysError
 }
 
-impl Drop for SgxCond 
+impl Drop for SgxCond
 impl Default for SgxCond
 </code></pre>
 
@@ -1187,7 +1203,7 @@ impl Default for SgxDhResponder
 
 <pre><code>struct SgxSealedData&lt;T: ?Sized&gt;
 
-impl&lt;T: Copy&gt; SgxSealedData&lt;T&gt; {
+impl&lt;&#39;a, T: &#39;a + Copy + ContiguousMemory&gt; SgxSealedData&lt;&#39;a, T&gt; {
     fn new() -&gt; Self
     unsafe fn from_raw_sealed_data_t(p: *mut sgx_sealed_data_t, len: u32) -&gt; Option&lt;Self&gt;
     fn seal_data(additional_text: &amp;[u8], encrypt_text: &amp;T) -&gt; SgxResult&lt;Self&gt;
@@ -1195,7 +1211,7 @@ impl&lt;T: Copy&gt; SgxSealedData&lt;T&gt; {
     fn unseal_data(&amp;self) -&gt; SgxResult&lt;SgxUnsealedData&lt;T&gt;&gt;
 }
 
-impl&lt;T: Copy&gt; SgxSealedData&lt;[T]&gt; {
+impl&lt;&#39;a, T: &#39;a + Copy + ContiguousMemory&gt; SgxSealedData&lt;&#39;a, T&gt; {
     fn new() -&gt; Self
     unsafe fn from_raw_sealed_data_t(p: *mut sgx_sealed_data_t, len: u32) -&gt; Option&lt;Self&gt;
     fn seal_data(additional_text: &amp;[u8], encrypt_text: &amp;[T]) -&gt; SgxResult&lt;Self&gt;
@@ -1238,13 +1254,13 @@ impl&lt;T: Clone + ?Sized&gt; Clone for SgxUnsealedData&lt;T&gt;
 
 <h2 id="toc_10">sgx_trts</h2>
 
-<pre><code>fn rsgx_get_thread_data() -&gt; * const u8
-
-fn rsgx_get_enclave_base() -&gt; * const u8
-
-fn rsgx_get_heap_base() -&gt; * const u8
-
-fn rsgx_get_heap_size() -&gt; usize
+<pre><code>pub fn rsgx_get_thread_data() -&gt; * const u8
+pub fn rsgx_get_enclave_base() -&gt; * const u8
+pub fn rsgx_get_enclave_size() -&gt; usize
+pub fn rsgx_get_heap_base() -&gt; * const u8
+pub fn rsgx_get_heap_offset() -&gt; usize
+pub fn rsgx_get_heap_size() -&gt; usize
+pub fn rsgx_get_thread_policy() -&gt; SgxThreadPolicy
 </code></pre>
 
 <h2 id="toc_11">sgx_types</h2>

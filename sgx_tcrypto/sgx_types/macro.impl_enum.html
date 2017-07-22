@@ -48,17 +48,17 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_types/macros.rs.html#123-163' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_types/macros.rs.html#132-172' title='goto source code'>[src]</a></span></h1>
 <pre class="rust macro">
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">impl_enum</span> {
     (
         <span class="attribute">#[<span class="ident">repr</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">repr</span>:<span class="ident">ident</span>)]</span>
         <span class="attribute">#[<span class="ident">derive</span>($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">derive</span>:<span class="ident">meta</span>),<span class="kw-2">*</span>)]</span>
-		<span class="kw">pub</span> <span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> {
+        <span class="kw">pub</span> <span class="kw">enum</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span> {
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">key</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">val</span>:<span class="ident">expr</span>,
-			$(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">keys</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vals</span>:<span class="ident">expr</span>,)<span class="op">*</span>
-		}
-	) <span class="op">=&gt;</span> { ... };
+            $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">keys</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">vals</span>:<span class="ident">expr</span>,)<span class="op">*</span>
+        }
+    ) <span class="op">=&gt;</span> { ... };
 }</pre>
 </section>
     <section id='search' class="content hidden"></section>
@@ -117,7 +117,6 @@
         window.rootPath = "../";
         window.currentCrate = "sgx_types";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

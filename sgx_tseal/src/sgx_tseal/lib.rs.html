@@ -157,6 +157,7 @@
 <span id="112">112</span>
 <span id="113">113</span>
 <span id="114">114</span>
+<span id="115">115</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -187,15 +188,15 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="doccomment">//! # Intel(R) Software Guard Extensions Sealing and Unsealing Functions</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! The library provides the following functions:</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! * Exposes APIs to create sealed data which is both confidentiality andintegrity protected.</span>
 <span class="doccomment">//! * Exposes an API to unseal sealed data inside the enclave.</span>
 <span class="doccomment">//! * Provides APIs to authenticate and verify the input data with AES-GMAC.</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! The library also provides APIs to help calculate the sealed data size, encrypt text length, and Message Authentication Code (MAC) text length.</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! # Description</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! When an enclave is instantiated, it provides protections (confidentiality and</span>
@@ -234,7 +235,7 @@
 <span class="doccomment">//! hash function. GCM can also provide authentication assurance for additional</span>
 <span class="doccomment">//! data (of practically unlimited length per invocation) that is not encrypted. GCM</span>
 <span class="doccomment">//! can also provide authentication assurance for additional data (of practically</span>
-<span class="doccomment">//! unlimited length per invocation) that is not encrypted. If the GCM input contains </span>
+<span class="doccomment">//! unlimited length per invocation) that is not encrypted. If the GCM input contains</span>
 <span class="doccomment">//! only data that is not to be encrypted, the resulting specialization of GCM,</span>
 <span class="doccomment">//! called GMAC (Galois Message Authentication Code), is simply an authentication</span>
 <span class="doccomment">//! mode for the input data. The mac_aadata API call restricts the input to</span>
@@ -249,6 +250,7 @@
 
 <span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">unused_assignments</span>)]</span>
+<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">std</span> <span class="kw">as</span> <span class="ident">core</span>;
@@ -265,13 +267,14 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tcrypto</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tse</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">seal</span>;
+<span class="kw">mod</span> <span class="ident">seal</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">seal</span>::<span class="kw-2">*</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">aad</span>;
+<span class="kw">mod</span> <span class="ident">aad</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">aad</span>::<span class="kw-2">*</span>;
 
-<span class="kw">mod</span> <span class="ident">internal</span>;</pre>
+<span class="kw">mod</span> <span class="ident">internal</span>;
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -329,7 +332,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tseal";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

@@ -48,24 +48,35 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#336-340' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_trts/trts.rs.html#187-191' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn rsgx_raw_is_outside_enclave(addr: *const u8, size: usize) -&gt; bool</pre><div class='docblock'><p>rsgx_raw_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
 <p>The rsgx_raw_is_outside_enclave function checks that the buffer located at the pointer addr with its
 length of size is an address that is strictly outside the calling enclave address space.</p>
-<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
+
+<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
 <p>rsgx_raw_is_outside_enclave simply compares the start and end address of the buffer with the calling
 enclave address space. It does not check the property of the address.</p>
-<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
+
+<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
 <p><strong>addr</strong></p>
+
 <p>The start address of the buffer.</p>
+
 <p><strong>size</strong></p>
+
 <p>The size of the buffer.</p>
-<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
+
+<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
 <p>Library: libsgx_trts.a</p>
-<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+
+<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
 <p><strong>true</strong></p>
+
 <p>The buffer is strictly outside the enclave address space.</p>
+
 <p><strong>false</strong></p>
+
 <p>The whole buffer or part of the buffer is not outside the enclave, or the buffer is wrapped around.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -124,7 +135,6 @@ enclave address space. It does not check the property of the address.</p>
         window.rootPath = "../";
         window.currentCrate = "sgx_trts";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     <script defer src="../search-index.js"></script>
 </body>

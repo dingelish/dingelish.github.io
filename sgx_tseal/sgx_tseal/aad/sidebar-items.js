@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["SgxMacAadata","The structure about sealed data, for authenticate and verify."]]});

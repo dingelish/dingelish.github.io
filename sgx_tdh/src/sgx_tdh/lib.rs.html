@@ -137,18 +137,18 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="doccomment">//! # Diffie–Hellman (DH) Session Establishment Functions</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! These functions allow an ISV to establish secure session between two enclaves using the EC DH Key exchange protocol.</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tdh&quot;</span>]</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
 
 <span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">no_std</span>)]</span>
 
 <span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">alloc</span>, <span class="ident">collections</span>))]</span>
-
 <span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">unused_assignments</span>)]</span>
+<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
@@ -166,7 +166,7 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tcrypto</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tse</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">dh</span>;
+<span class="kw">mod</span> <span class="ident">dh</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">dh</span>::<span class="kw-2">*</span>;
 
 <span class="kw">mod</span> <span class="ident">ecp</span>;
@@ -230,7 +230,6 @@
         window.rootPath = "../../";
         window.currentCrate = "sgx_tdh";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
     <script defer src="../../search-index.js"></script>
 </body>

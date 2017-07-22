@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["rsgx_abort",""],["rust_begin_panic",""],["rust_eh_personality",""],["rust_eh_unwind_resume",""],["set_panic_handler",""]]});

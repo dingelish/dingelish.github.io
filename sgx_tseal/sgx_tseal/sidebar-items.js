@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["aad",""],["seal",""]]});
+initSidebarItems({"struct":[["SgxMacAadata","The structure about sealed data, for authenticate and verify."],["SgxSealedData","The structure about the sealed data."],["SgxUnsealedData","The structure about the unsealed data."]]});
