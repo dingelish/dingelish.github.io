@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Error` trait in crate `sgx_tstd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Error">
+
+    <title>sgx_tstd::error::Error - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Trait Error</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#provided-methods">Provided Methods</a></li><li><a href="#methods">Methods</a></li><li><a href="#foreign-impls">Implementations on Foreign Types</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>error</a></p><script>window.sidebarCurrent = {name: 'Error', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>error</a>::<wbr><a class="trait" href=''>Error</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tstd/error.rs.html#42-53' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Error: <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> + <a class="trait" href="../../sgx_tstd/fmt/trait.Display.html" title="trait sgx_tstd::fmt::Display">Display</a> {
+    fn <a href='#tymethod.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;str;
+
+    fn <a href='#method.cause' class='fnname'>cause</a>(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a>&gt; { ... }
+<div class='item-spacer'></div>    fn <a href='#method.type_id' class='fnname'>type_id</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_tstd/any/struct.TypeId.html" title="struct sgx_tstd::any::TypeId">TypeId</a><br>&nbsp;&nbsp;&nbsp; <span class="where">where<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Self: 'static</span>,
+    { ... }
+}</pre><div class='docblock'><p>Base functionality for all errors in Rust.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.description' class='method'><span id='description.v' class='invisible'><code>fn <a href='#tymethod.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;str</code></span></h3><div class='docblock'><p>A short description of the error.</p>
+</div></div>
+            <h2 id='provided-methods' class='small-section-header'>
+              Provided Methods<a href='#provided-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='method.cause' class='method'><span id='cause.v' class='invisible'><code>fn <a href='#method.cause' class='fnname'>cause</a>(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a>&gt;</code></span></h3><div class='docblock'><p>The lower-level cause of this error, if any.</p>
+</div><h3 id='method.type_id' class='method'><span id='type_id.v' class='invisible'><code>fn <a href='#method.type_id' class='fnname'>type_id</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_tstd/any/struct.TypeId.html" title="struct sgx_tstd::any::TypeId">TypeId</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: 'static,&nbsp;</span></code></span></h3><div class='docblock'><p>Get the <code>TypeId</code> of <code>self</code></p>
+</div></div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#227-266' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.is' class="method"><span id='is.v' class='invisible'><code>pub fn <a href='#method.is' class='fnname'>is</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;self) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#230-239' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns true if the boxed type is the same as <code>T</code></p>
+</div><h4 id='method.downcast_ref' class="method"><span id='downcast_ref.v' class='invisible'><code>pub fn <a href='#method.downcast_ref' class='fnname'>downcast_ref</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#244-252' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns some reference to the boxed value if it is of type <code>T</code>, or
+<code>None</code> if it isn&#39;t.</p>
+</div><h4 id='method.downcast_mut' class="method"><span id='downcast_mut.v' class='invisible'><code>pub fn <a href='#method.downcast_mut' class='fnname'>downcast_mut</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;mut self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;mut T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#257-265' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns some mutable reference to the boxed value if it is of type <code>T</code>, or
+<code>None</code> if it isn&#39;t.</p>
+</div></div><h3 id='impl-1' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> + 'static</code><a href='#impl-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#268-286' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.is-1' class="method"><span id='is.v-1' class='invisible'><code>pub fn <a href='#method.is-1' class='fnname'>is</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;self) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#271-273' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Forwards to the method defined on the type <code>Any</code>.</p>
+</div><h4 id='method.downcast_ref-1' class="method"><span id='downcast_ref.v-1' class='invisible'><code>pub fn <a href='#method.downcast_ref-1' class='fnname'>downcast_ref</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#277-279' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Forwards to the method defined on the type <code>Any</code>.</p>
+</div><h4 id='method.downcast_mut-1' class="method"><span id='downcast_mut.v-1' class='invisible'><code>pub fn <a href='#method.downcast_mut-1' class='fnname'>downcast_mut</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;mut self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;mut T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#283-285' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Forwards to the method defined on the type <code>Any</code>.</p>
+</div></div><h3 id='impl-2' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Sync.html" title="trait sgx_tstd::marker::Sync">Sync</a> + 'static</code><a href='#impl-2' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#288-306' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.is-2' class="method"><span id='is.v-2' class='invisible'><code>pub fn <a href='#method.is-2' class='fnname'>is</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;self) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#291-293' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Forwards to the method defined on the type <code>Any</code>.</p>
+</div><h4 id='method.downcast_ref-2' class="method"><span id='downcast_ref.v-2' class='invisible'><code>pub fn <a href='#method.downcast_ref-2' class='fnname'>downcast_ref</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#297-299' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Forwards to the method defined on the type <code>Any</code>.</p>
+</div><h4 id='method.downcast_mut-2' class="method"><span id='downcast_mut.v-2' class='invisible'><code>pub fn <a href='#method.downcast_mut-2' class='fnname'>downcast_mut</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(&amp;mut self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;mut T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#303-305' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Forwards to the method defined on the type <code>Any</code>.</p>
+</div></div><h3 id='impl-3' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a></code><a href='#impl-3' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#308-321' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.downcast' class="method"><span id='downcast.v' class='invisible'><code>pub fn <a href='#method.downcast' class='fnname'>downcast</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;self: <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;Self&gt;<br>) -&gt; <a class="enum" href="../../sgx_tstd/result/enum.Result.html" title="enum sgx_tstd::result::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;, <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a>&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#311-320' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attempt to downcast the box to a concrete type.</p>
+</div></div><h3 id='impl-4' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a></code><a href='#impl-4' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#323-334' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.downcast-1' class="method"><span id='downcast.v-1' class='invisible'><code>pub fn <a href='#method.downcast-1' class='fnname'>downcast</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;self: <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;Self&gt;<br>) -&gt; <a class="enum" href="../../sgx_tstd/result/enum.Result.html" title="enum sgx_tstd::result::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;, <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#326-333' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attempt to downcast the box to a concrete type.</p>
+</div></div><h3 id='impl-5' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> + <a class="trait" href="../../sgx_tstd/marker/trait.Sync.html" title="trait sgx_tstd::marker::Sync">Sync</a></code><a href='#impl-5' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#336-347' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.downcast-2' class="method"><span id='downcast.v-2' class='invisible'><code>pub fn <a href='#method.downcast-2' class='fnname'>downcast</a>&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> + 'static&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;self: <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;Self&gt;<br>) -&gt; <a class="enum" href="../../sgx_tstd/result/enum.Result.html" title="enum sgx_tstd::result::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;, <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;Self&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#339-346' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attempt to downcast the box to a concrete type.</p>
+</div></div>
+                <h2 id='foreign-impls' class='section-header'>
+                  Implementations on Foreign Types<a href='#foreign-impls' class='anchor'></a>
+                </h2>
+            <h3 id='impl-Error' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a> for <a class="enum" href="../../sgx_types/error/enum.sgx_status_t.html" title="enum sgx_types::error::sgx_status_t">sgx_status_t</a></code><a href='#impl-Error' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/error.rs.html#396-400' title='goto source code'>[src]</a></span></h3>
+<span class='docblock autohide'><div class='impl-items'><h4 id='method.description' class="method"><span id='description.v-1' class='invisible'><code>fn <a href='#method.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;str</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/error.rs.html#397-399' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.cause-1' class="method"><span id='cause.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/error/trait.Error.html#method.cause' class='fnname'>cause</a>(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;&amp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#47' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.type_id-1' class="method"><span id='type_id.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/error/trait.Error.html#method.type_id' class='fnname'>type_id</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_tstd/any/struct.TypeId.html" title="struct sgx_tstd::any::TypeId">TypeId</a> <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: 'static,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/error.rs.html#50-52' title='goto source code'>[src]</a></span></h4>
+</div></span>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl Error for <a class="struct" href="../../sgx_tstd/env/struct.JoinPathsError.html" title="struct sgx_tstd::env::JoinPathsError">JoinPathsError</a></code></li>
+<li><code>impl Error for !</code></li>
+<li><code>impl Error for <a class="enum" href="../../sgx_tstd/heap/enum.AllocErr.html" title="enum sgx_tstd::heap::AllocErr">AllocErr</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/heap/struct.CannotReallocInPlace.html" title="struct sgx_tstd::heap::CannotReallocInPlace">CannotReallocInPlace</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/str/struct.ParseBoolError.html" title="struct sgx_tstd::str::ParseBoolError">ParseBoolError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/str/struct.Utf8Error.html" title="struct sgx_tstd::str::Utf8Error">Utf8Error</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/num/struct.TryFromIntError.html" title="struct sgx_tstd::num::TryFromIntError">TryFromIntError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/num/struct.ParseFloatError.html" title="struct sgx_tstd::num::ParseFloatError">ParseFloatError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/string/struct.FromUtf8Error.html" title="struct sgx_tstd::string::FromUtf8Error">FromUtf8Error</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/string/struct.FromUtf16Error.html" title="struct sgx_tstd::string::FromUtf16Error">FromUtf16Error</a></code></li>
+<li><code>impl Error for <a class="enum" href="../../sgx_tstd/string/enum.ParseError.html" title="enum sgx_tstd::string::ParseError">ParseError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/char/struct.DecodeUtf16Error.html" title="struct sgx_tstd::char::DecodeUtf16Error">DecodeUtf16Error</a></code></li>
+<li><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/error/trait.Error.html" title="trait sgx_tstd::error::Error">Error</a>&gt; Error for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;</code></li>
+<li><code>impl Error for sgx_tstd::fmt::<a class="struct" href="../../sgx_tstd/fmt/struct.Error.html" title="struct sgx_tstd::fmt::Error">Error</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/cell/struct.BorrowError.html" title="struct sgx_tstd::cell::BorrowError">BorrowError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/cell/struct.BorrowMutError.html" title="struct sgx_tstd::cell::BorrowMutError">BorrowMutError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/char/struct.CharTryFromError.html" title="struct sgx_tstd::char::CharTryFromError">CharTryFromError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/char/struct.ParseCharError.html" title="struct sgx_tstd::char::ParseCharError">ParseCharError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/ffi/struct.NulError.html" title="struct sgx_tstd::ffi::NulError">NulError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/ffi/struct.FromBytesWithNulError.html" title="struct sgx_tstd::ffi::FromBytesWithNulError">FromBytesWithNulError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/ffi/struct.IntoStringError.html" title="struct sgx_tstd::ffi::IntoStringError">IntoStringError</a></code></li>
+<li><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> + <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a>&gt; Error for <a class="struct" href="../../sgx_tstd/io/struct.IntoInnerError.html" title="struct sgx_tstd::io::IntoInnerError">IntoInnerError</a>&lt;W&gt;</code></li>
+<li><code>impl Error for sgx_tstd::io::<a class="struct" href="../../sgx_tstd/io/struct.Error.html" title="struct sgx_tstd::io::Error">Error</a></code></li>
+<li><code>impl Error for <a class="enum" href="../../sgx_tstd/io/enum.CharsError.html" title="enum sgx_tstd::io::CharsError">CharsError</a></code></li>
+<li><code>impl Error for <a class="struct" href="../../sgx_tstd/path/struct.StripPrefixError.html" title="struct sgx_tstd::path::StripPrefixError">StripPrefixError</a></code></li>
+<li><code>impl&lt;T&gt; Error for <a class="struct" href="../../sgx_tstd/sync/struct.PoisonError.html" title="struct sgx_tstd::sync::PoisonError">PoisonError</a>&lt;T&gt;</code></li>
+<li><code>impl&lt;T&gt; Error for <a class="enum" href="../../sgx_tstd/sync/enum.TryLockError.html" title="enum sgx_tstd::sync::TryLockError">TryLockError</a>&lt;T&gt;</code></li>
+</ul><script type="text/javascript" async
+                         src="../../implementors/sgx_tstd/error/trait.Error.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tstd";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

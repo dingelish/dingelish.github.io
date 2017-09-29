@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `AssertUnwindSafe` struct in crate `sgx_tstd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, AssertUnwindSafe">
+
+    <title>sgx_tstd::panic::AssertUnwindSafe - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct AssertUnwindSafe</p><div class="block items"><ul><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>panic</a></p><script>window.sidebarCurrent = {name: 'AssertUnwindSafe', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>panic</a>::<wbr><a class="struct" href=''>AssertUnwindSafe</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#139-141' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct AssertUnwindSafe&lt;T&gt;(pub T);</pre><div class='docblock'><p>A simple wrapper around a type to assert that it is unwind safe.</p>
+
+<p>When using <code>catch_unwind</code> it may be the case that some of the closed over
+variables are not unwind safe. For example if <code>&amp;mut T</code> is captured the
+compiler will generate a warning indicating that it is not unwind safe. It
+may not be the case, however, that this is actually a problem due to the
+specific usage of <code>catch_unwind</code> if unwind safety is specifically taken into
+account. This wrapper struct is useful for a quick and lightweight
+annotation that a variable is indeed unwind safe.</p>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-UnwindSafe' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/panic/trait.UnwindSafe.html" title="trait sgx_tstd::panic::UnwindSafe">UnwindSafe</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-UnwindSafe' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#157' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-RefUnwindSafe' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/panic/trait.RefUnwindSafe.html" title="trait sgx_tstd::panic::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-RefUnwindSafe' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#171' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Deref' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/ops/trait.Deref.html" title="trait sgx_tstd::ops::Deref">Deref</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-Deref' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#203-209' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Target' class="type"><span id='Target.t' class='invisible'><code>type <a href='../../sgx_tstd/ops/trait.Deref.html#associatedtype.Target' class="type">Target</a> = T</code></span></h4>
+<div class='docblock'><p>The resulting type after dereferencing.</p>
+</div><h4 id='method.deref' class="method"><span id='deref.v' class='invisible'><code>fn <a href='../../sgx_tstd/ops/trait.Deref.html#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;T</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#206-208' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Dereferences the value.</p>
+</div></div><h3 id='impl-DerefMut' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/ops/trait.DerefMut.html" title="trait sgx_tstd::ops::DerefMut">DerefMut</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-DerefMut' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#211-215' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.deref_mut' class="method"><span id='deref_mut.v' class='invisible'><code>fn <a href='../../sgx_tstd/ops/trait.DerefMut.html#tymethod.deref_mut' class='fnname'>deref_mut</a>(&amp;mut self) -&gt; &amp;mut T</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#212-214' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Mutably dereferences the value.</p>
+</div></div><h3 id='impl-FnOnce&lt;()&gt;' class='impl'><span class='in-band'><code>impl&lt;R, F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() -&gt; R&gt; <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;()&gt; for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;F&gt;</code><a href='#impl-FnOnce&lt;()&gt;' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#217-223' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output' class="type"><span id='Output.t' class='invisible'><code>type <a href='../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output' class="type">Output</a> = R</code></span></h4>
+<div class='docblock'><p>The returned type after the call operator is used.</p>
+</div><h4 id='method.call_once' class="method"><span id='call_once.v' class='invisible'><code>extern &quot;rust-call&quot; fn <a href='../../sgx_tstd/ops/trait.FnOnce.html#tymethod.call_once' class='fnname'>call_once</a>(self, _args: ()) -&gt; R</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#220-222' title='goto source code'>[src]</a></span></h4>
+<div class='stability'><div class='stab unstable'><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>fn_traits</code>)</div></div><div class='docblock'><p>Performs the call operation.</p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a>&gt; <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#225-231' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#226-230' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tstd";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

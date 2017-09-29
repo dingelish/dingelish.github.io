@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `BufReader` struct in crate `sgx_tstd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, BufReader">
+
+    <title>sgx_tstd::io::BufReader - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct BufReader</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'BufReader', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a>::<wbr><a class="struct" href=''>BufReader</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#49-54' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct BufReader&lt;R&gt; { /* fields omitted */ }</pre><div class='docblock'><p>The <code>BufReader</code> struct adds buffering to any reader.</p>
+
+<p>It can be excessively inefficient to work directly with a <a href="../../std/io/trait.Read.html"><code>Read</code></a> instance.
+For example, every call to <a href="../../std/net/struct.TcpStream.html#method.read"><code>read</code></a> on <a href="../../std/net/struct.TcpStream.html"><code>TcpStream</code></a>
+results in a system call. A <code>BufReader</code> performs large, infrequent reads on
+the underlying <a href="../../std/io/trait.Read.html"><code>Read</code></a> and maintains an in-memory buffer of the results.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a>&gt; <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#56-96' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(inner: R) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#59-61' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a new <code>BufReader</code> with a default buffer capacity.</p>
+</div><h4 id='method.with_capacity' class="method"><span id='with_capacity.v' class='invisible'><code>pub fn <a href='#method.with_capacity' class='fnname'>with_capacity</a>(cap: usize, inner: R) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#65-77' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a new <code>BufReader</code> with the specified buffer capacity.</p>
+</div><h4 id='method.get_ref' class="method"><span id='get_ref.v' class='invisible'><code>pub fn <a href='#method.get_ref' class='fnname'>get_ref</a>(&amp;self) -&gt; &amp;R</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#83' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Gets a reference to the underlying reader.</p>
+
+<p>It is inadvisable to directly read from the underlying reader.</p>
+</div><h4 id='method.get_mut' class="method"><span id='get_mut.v' class='invisible'><code>pub fn <a href='#method.get_mut' class='fnname'>get_mut</a>(&amp;mut self) -&gt; &amp;mut R</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#89' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Gets a mutable reference to the underlying reader.</p>
+
+<p>It is inadvisable to directly read from the underlying reader.</p>
+</div><h4 id='method.into_inner' class="method"><span id='into_inner.v' class='invisible'><code>pub fn <a href='#method.into_inner' class='fnname'>into_inner</a>(self) -&gt; R</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#95' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Unwraps this <code>BufReader</code>, returning the underlying reader.</p>
+
+<p>Note that any leftover data in the internal buffer is lost.</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Read' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a>&gt; <a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a> for <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code><a href='#impl-Read' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#98-118' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#tymethod.read' class='fnname'>read</a>(&amp;mut self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#99-112' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Pull some bytes from this source into the specified buffer, returning how many bytes were read. <a href="../../sgx_tstd/io/trait.Read.html#tymethod.read">Read more</a></p>
+</div><h4 id='method.initializer' class="method"><span id='initializer.v' class='invisible'><code>unsafe fn <a href='../../sgx_tstd/io/trait.Read.html#method.initializer' class='fnname'>initializer</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Initializer.html" title="struct sgx_tstd::io::Initializer">Initializer</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#115-117' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Determines if this <code>Read</code>er can work with buffers of uninitialized memory. <a href="../../sgx_tstd/io/trait.Read.html#method.initializer">Read more</a></p>
+</div><h4 id='method.read_to_end' class="method"><span id='read_to_end.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_to_end' class='fnname'>read_to_end</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#251-253' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until EOF in this source, placing them into <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_to_end">Read more</a></p>
+</div><h4 id='method.read_to_string' class="method"><span id='read_to_string.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_to_string' class='fnname'>read_to_string</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#269-280' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until EOF in this source, placing them into <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_to_string">Read more</a></p>
+</div><h4 id='method.read_exact' class="method"><span id='read_exact.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_exact' class='fnname'>read_exact</a>(&amp;mut self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#309-324' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read the exact number of bytes required to fill <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_exact">Read more</a></p>
+</div><h4 id='method.by_ref' class="method"><span id='by_ref.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#331' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a &quot;by reference&quot; adaptor for this instance of <code>Read</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.by_ref">Read more</a></p>
+</div><h4 id='method.bytes' class="method"><span id='bytes.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.bytes' class='fnname'>bytes</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Bytes.html" title="struct sgx_tstd::io::Bytes">Bytes</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#340-342' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Transforms this <code>Read</code> instance to an <code>Iterator</code> over its bytes. <a href="../../sgx_tstd/io/trait.Read.html#method.bytes">Read more</a></p>
+</div><h4 id='method.chars' class="method"><span id='chars.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.chars' class='fnname'>chars</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Chars.html" title="struct sgx_tstd::io::Chars">Chars</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#355-357' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Transforms this <code>Read</code> instance to an <code>Iterator</code> over <code>char</code>s. <a href="../../sgx_tstd/io/trait.Read.html#method.chars">Read more</a></p>
+</div><h4 id='method.chain' class="method"><span id='chain.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.chain' class='fnname'>chain</a>&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a>&gt;(self, next: R) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Chain.html" title="struct sgx_tstd::io::Chain">Chain</a>&lt;Self, R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#365-367' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates an adaptor which will chain this stream with another. <a href="../../sgx_tstd/io/trait.Read.html#method.chain">Read more</a></p>
+</div><h4 id='method.take' class="method"><span id='take.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.take' class='fnname'>take</a>(self, limit: u64) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Take.html" title="struct sgx_tstd::io::Take">Take</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#376-378' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates an adaptor which will read at most <code>limit</code> bytes from it. <a href="../../sgx_tstd/io/trait.Read.html#method.take">Read more</a></p>
+</div></div><h3 id='impl-BufRead' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a>&gt; <a class="trait" href="../../sgx_tstd/io/trait.BufRead.html" title="trait sgx_tstd::io::BufRead">BufRead</a> for <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code><a href='#impl-BufRead' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#120-137' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fill_buf' class="method"><span id='fill_buf.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.BufRead.html#tymethod.fill_buf' class='fnname'>fill_buf</a>(&amp;mut self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;&amp;[u8]&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#121-132' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Fills the internal buffer of this object, returning the buffer contents. <a href="../../sgx_tstd/io/trait.BufRead.html#tymethod.fill_buf">Read more</a></p>
+</div><h4 id='method.consume' class="method"><span id='consume.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.BufRead.html#tymethod.consume' class='fnname'>consume</a>(&amp;mut self, amt: usize)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#134-136' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Tells this buffer that <code>amt</code> bytes have been consumed from the buffer, so they should no longer be returned in calls to <code>read</code>. <a href="../../sgx_tstd/io/trait.BufRead.html#tymethod.consume">Read more</a></p>
+</div><h4 id='method.read_until' class="method"><span id='read_until.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.BufRead.html#method.read_until' class='fnname'>read_until</a>(&amp;mut self, byte: u8, buf: &amp;mut <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#713-715' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes into <code>buf</code> until the delimiter <code>byte</code> or EOF is reached. <a href="../../sgx_tstd/io/trait.BufRead.html#method.read_until">Read more</a></p>
+</div><h4 id='method.read_line' class="method"><span id='read_line.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.BufRead.html#method.read_line' class='fnname'>read_line</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#734-739' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until a newline (the 0xA byte) is reached, and append them to the provided buffer. <a href="../../sgx_tstd/io/trait.BufRead.html#method.read_line">Read more</a></p>
+</div><h4 id='method.split' class="method"><span id='split.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.BufRead.html#method.split' class='fnname'>split</a>(self, byte: u8) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Split.html" title="struct sgx_tstd::io::Split">Split</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#755-757' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns an iterator over the contents of this reader split on the byte <code>byte</code>. <a href="../../sgx_tstd/io/trait.BufRead.html#method.split">Read more</a></p>
+</div><h4 id='method.lines' class="method"><span id='lines.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.BufRead.html#method.lines' class='fnname'>lines</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Lines.html" title="struct sgx_tstd::io::Lines">Lines</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#773-775' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns an iterator over the lines of this reader. <a href="../../sgx_tstd/io/trait.BufRead.html#method.lines">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;R&gt; <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;R: <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a>,&nbsp;</span></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#139-146' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#140-145' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-Seek' class='impl'><span class='in-band'><code>impl&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a>&gt; <a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a> for <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code><a href='#impl-Seek' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#148-191' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.seek' class="method"><span id='seek.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Seek.html#tymethod.seek' class='fnname'>seek</a>(&amp;mut self, pos: <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;u64&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#167-190' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Seek to an offset, in bytes, in the underlying reader.</p>
+
+<p>The position used for seeking with <code>SeekFrom::Current(_)</code> is the
+position the underlying reader would be at if the <code>BufReader</code> had no
+internal buffer.</p>
+
+<p>Seeking always discards the internal buffer, even if the seek position
+would otherwise fall within it. This guarantees that calling
+<code>.into_inner()</code> immediately after a seek yields the underlying reader
+at the same position.</p>
+
+<p>See <code>std::io::Seek</code> for more details.</p>
+
+<p>Note: In the edge case where you&#39;re seeking with <code>SeekFrom::Current(n)</code>
+where <code>n</code> minus the internal buffer length underflows an <code>i64</code>, two
+seeks will be performed instead of one. If the second seek returns
+<code>Err</code>, the underlying reader will be left at the same position it would
+have if you seeked to <code>SeekFrom::Current(0)</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tstd";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

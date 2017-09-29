@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["DeSerializeHelper","DeSerializeHelper make it easy to obtain deserialize function."],["SerializeHelper","SerializeHelper make it easy to obtain serialize function."]],"trait":[["DeSerializable",""],["Decoder",""],["Encoder",""],["Serializable",""]]});

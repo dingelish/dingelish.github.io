@@ -297,10 +297,10 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The library provides functions for getting specific keys and for creating and verifying an enclave report.</span>
 <span class="doccomment">//!</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tse&quot;</span>]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tse&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">no_std</span>)]</span>
+<span class="attribute">#![<span class="ident">no_std</span>]</span>
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_types</span>;
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;

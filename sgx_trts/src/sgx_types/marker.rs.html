@@ -121,6 +121,12 @@
 <span id="76">76</span>
 <span id="77">77</span>
 <span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
 </pre><pre class="rust ">
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">impl_marker_for</span> {
@@ -175,7 +181,13 @@
     <span class="number">60</span> <span class="number">61</span> <span class="number">62</span> <span class="number">63</span> <span class="number">64</span>
 }
 
-
+<span class="doccomment">/// Trait for demonstrating one structure locates in contiguous memory.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is required for SGX related operations, e.g. crypto related</span>
+<span class="doccomment">/// computations. Many of these APIs require the input data locates in</span>
+<span class="doccomment">/// a contiguous area of memory inside the enclave. Developer needs to</span>
+<span class="doccomment">/// implement this trait as a marker for the data structure he/she wants</span>
+<span class="doccomment">/// to feed into SGX apis.</span>
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">trait</span> <span class="ident">ContiguousMemory</span> { }
 
 <span class="macro">impl_unsafe_marker_for</span><span class="macro">!</span>(<span class="ident">ContiguousMemory</span>,

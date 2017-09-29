@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SgxFile` struct in crate `sgx_tstd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SgxFile">
+
+    <title>sgx_tstd::fs::SgxFile - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct SgxFile</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>fs</a></p><script>window.sidebarCurrent = {name: 'SgxFile', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>fs</a>::<wbr><a class="struct" href=''>SgxFile</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#44-46' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SgxFile { /* fields omitted */ }</pre><div class='docblock'><p>A reference to an open file on the filesystem.</p>
+
+<p>An instance of a <code>File</code> can be read and/or written depending on what options
+it was opened with. Files also implement [<code>Seek</code>] to alter the logical cursor
+that the file contains internally.</p>
+
+<p>Files are automatically closed when they go out of scope.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#58-100' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.open' class="method"><span id='open.v' class='invisible'><code>pub fn <a href='#method.open' class='fnname'>open</a>&lt;P:&nbsp;<a class="trait" href="../../sgx_tstd/convert/trait.AsRef.html" title="trait sgx_tstd::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>&gt;&gt;(path: P) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#68-70' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attempts to open a file in read-only mode.</p>
+
+<p>See the [<code>OpenOptions::open</code>] method for more details.</p>
+
+<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<p>This function will return an error if <code>path</code> does not already exist.
+Other errors may also be returned according to [<code>OpenOptions::open</code>].</p>
+</div><h4 id='method.create' class="method"><span id='create.v' class='invisible'><code>pub fn <a href='#method.create' class='fnname'>create</a>&lt;P:&nbsp;<a class="trait" href="../../sgx_tstd/convert/trait.AsRef.html" title="trait sgx_tstd::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>&gt;&gt;(path: P) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#77-79' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Opens a file in write-only mode.</p>
+
+<p>This function will create a file if it does not exist,
+and will truncate it if it does.</p>
+</div><h4 id='method.open_ex' class="method"><span id='open_ex.v' class='invisible'><code>pub fn <a href='#method.open_ex' class='fnname'>open_ex</a>&lt;P:&nbsp;<a class="trait" href="../../sgx_tstd/convert/trait.AsRef.html" title="trait sgx_tstd::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;path: P, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="type" href="../../sgx_types/types/type.sgx_key_128bit_t.html" title="type sgx_types::types::sgx_key_128bit_t">sgx_key_128bit_t</a><br>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#81-83' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.create_ex' class="method"><span id='create_ex.v' class='invisible'><code>pub fn <a href='#method.create_ex' class='fnname'>create_ex</a>&lt;P:&nbsp;<a class="trait" href="../../sgx_tstd/convert/trait.AsRef.html" title="trait sgx_tstd::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;path: P, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="type" href="../../sgx_types/types/type.sgx_key_128bit_t.html" title="type sgx_types::types::sgx_key_128bit_t">sgx_key_128bit_t</a><br>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;<a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#85-87' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.is_eof' class="method"><span id='is_eof.v' class='invisible'><code>pub fn <a href='#method.is_eof' class='fnname'>is_eof</a>(&amp;self) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#89-91' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.clearerr' class="method"><span id='clearerr.v' class='invisible'><code>pub fn <a href='#method.clearerr' class='fnname'>clearerr</a>(&amp;self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#93-95' title='goto source code'>[src]</a></span></h4>
+<h4 id='method.clear_cache' class="method"><span id='clear_cache.v' class='invisible'><code>pub fn <a href='#method.clear_cache' class='fnname'>clear_cache</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#97-99' title='goto source code'>[src]</a></span></h4>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Read' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a> for <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl-Read' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#116-125' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#tymethod.read' class='fnname'>read</a>(&amp;mut self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#117-119' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Pull some bytes from this source into the specified buffer, returning how many bytes were read. <a href="../../sgx_tstd/io/trait.Read.html#tymethod.read">Read more</a></p>
+</div><h4 id='method.initializer' class="method"><span id='initializer.v' class='invisible'><code>unsafe fn <a href='../../sgx_tstd/io/trait.Read.html#method.initializer' class='fnname'>initializer</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Initializer.html" title="struct sgx_tstd::io::Initializer">Initializer</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#122-124' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Determines if this <code>Read</code>er can work with buffers of uninitialized memory. <a href="../../sgx_tstd/io/trait.Read.html#method.initializer">Read more</a></p>
+</div><h4 id='method.read_to_end' class="method"><span id='read_to_end.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_to_end' class='fnname'>read_to_end</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#251-253' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until EOF in this source, placing them into <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_to_end">Read more</a></p>
+</div><h4 id='method.read_to_string' class="method"><span id='read_to_string.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_to_string' class='fnname'>read_to_string</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#269-280' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until EOF in this source, placing them into <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_to_string">Read more</a></p>
+</div><h4 id='method.read_exact' class="method"><span id='read_exact.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_exact' class='fnname'>read_exact</a>(&amp;mut self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#309-324' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read the exact number of bytes required to fill <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_exact">Read more</a></p>
+</div><h4 id='method.by_ref' class="method"><span id='by_ref.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#331' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a &quot;by reference&quot; adaptor for this instance of <code>Read</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.by_ref">Read more</a></p>
+</div><h4 id='method.bytes' class="method"><span id='bytes.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.bytes' class='fnname'>bytes</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Bytes.html" title="struct sgx_tstd::io::Bytes">Bytes</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#340-342' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Transforms this <code>Read</code> instance to an <code>Iterator</code> over its bytes. <a href="../../sgx_tstd/io/trait.Read.html#method.bytes">Read more</a></p>
+</div><h4 id='method.chars' class="method"><span id='chars.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.chars' class='fnname'>chars</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Chars.html" title="struct sgx_tstd::io::Chars">Chars</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#355-357' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Transforms this <code>Read</code> instance to an <code>Iterator</code> over <code>char</code>s. <a href="../../sgx_tstd/io/trait.Read.html#method.chars">Read more</a></p>
+</div><h4 id='method.chain' class="method"><span id='chain.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.chain' class='fnname'>chain</a>&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a>&gt;(self, next: R) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Chain.html" title="struct sgx_tstd::io::Chain">Chain</a>&lt;Self, R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#365-367' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates an adaptor which will chain this stream with another. <a href="../../sgx_tstd/io/trait.Read.html#method.chain">Read more</a></p>
+</div><h4 id='method.take' class="method"><span id='take.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.take' class='fnname'>take</a>(self, limit: u64) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Take.html" title="struct sgx_tstd::io::Take">Take</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#376-378' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates an adaptor which will read at most <code>limit</code> bytes from it. <a href="../../sgx_tstd/io/trait.Read.html#method.take">Read more</a></p>
+</div></div><h3 id='impl-Write' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> for <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl-Write' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#127-132' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.write' class="method"><span id='write.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#tymethod.write' class='fnname'>write</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#128-130' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Write a buffer into this object, returning how many bytes were written. <a href="../../sgx_tstd/io/trait.Write.html#tymethod.write">Read more</a></p>
+</div><h4 id='method.flush' class="method"><span id='flush.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#tymethod.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#131' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Flush this output stream, ensuring that all intermediately buffered contents reach their destination. <a href="../../sgx_tstd/io/trait.Write.html#tymethod.flush">Read more</a></p>
+</div><h4 id='method.write_all' class="method"><span id='write_all.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#method.write_all' class='fnname'>write_all</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#496-507' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attempts to write an entire buffer into this write. <a href="../../sgx_tstd/io/trait.Write.html#method.write_all">Read more</a></p>
+</div><h4 id='method.write_fmt' class="method"><span id='write_fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#method.write_fmt' class='fnname'>write_fmt</a>(&amp;mut self, fmt: <a class="struct" href="../../sgx_tstd/fmt/struct.Arguments.html" title="struct sgx_tstd::fmt::Arguments">Arguments</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#531-563' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Writes a formatted string into this writer, returning any error encountered. <a href="../../sgx_tstd/io/trait.Write.html#method.write_fmt">Read more</a></p>
+</div><h4 id='method.by_ref-1' class="method"><span id='by_ref.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#570' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a &quot;by reference&quot; adaptor for this instance of <code>Write</code>. <a href="../../sgx_tstd/io/trait.Write.html#method.by_ref">Read more</a></p>
+</div></div><h3 id='impl-Seek' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a> for <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl-Seek' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#134-138' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.seek' class="method"><span id='seek.v' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Seek.html#tymethod.seek' class='fnname'>seek</a>(&amp;mut self, pos: <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;u64&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#135-137' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Seek to an offset, in bytes, in a stream. <a href="../../sgx_tstd/io/trait.Seek.html#tymethod.seek">Read more</a></p>
+</div></div><h3 id='impl-Read-1' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a> for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl-Read-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#140-149' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.read-1' class="method"><span id='read.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#tymethod.read' class='fnname'>read</a>(&amp;mut self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#141-143' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Pull some bytes from this source into the specified buffer, returning how many bytes were read. <a href="../../sgx_tstd/io/trait.Read.html#tymethod.read">Read more</a></p>
+</div><h4 id='method.initializer-1' class="method"><span id='initializer.v-1' class='invisible'><code>unsafe fn <a href='../../sgx_tstd/io/trait.Read.html#method.initializer' class='fnname'>initializer</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Initializer.html" title="struct sgx_tstd::io::Initializer">Initializer</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#146-148' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Determines if this <code>Read</code>er can work with buffers of uninitialized memory. <a href="../../sgx_tstd/io/trait.Read.html#method.initializer">Read more</a></p>
+</div><h4 id='method.read_to_end-1' class="method"><span id='read_to_end.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_to_end' class='fnname'>read_to_end</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#251-253' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until EOF in this source, placing them into <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_to_end">Read more</a></p>
+</div><h4 id='method.read_to_string-1' class="method"><span id='read_to_string.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_to_string' class='fnname'>read_to_string</a>(&amp;mut self, buf: &amp;mut <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#269-280' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read all bytes until EOF in this source, placing them into <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_to_string">Read more</a></p>
+</div><h4 id='method.read_exact-1' class="method"><span id='read_exact.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.read_exact' class='fnname'>read_exact</a>(&amp;mut self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#309-324' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Read the exact number of bytes required to fill <code>buf</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.read_exact">Read more</a></p>
+</div><h4 id='method.by_ref-2' class="method"><span id='by_ref.v-2' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#331' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a &quot;by reference&quot; adaptor for this instance of <code>Read</code>. <a href="../../sgx_tstd/io/trait.Read.html#method.by_ref">Read more</a></p>
+</div><h4 id='method.bytes-1' class="method"><span id='bytes.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.bytes' class='fnname'>bytes</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Bytes.html" title="struct sgx_tstd::io::Bytes">Bytes</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#340-342' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Transforms this <code>Read</code> instance to an <code>Iterator</code> over its bytes. <a href="../../sgx_tstd/io/trait.Read.html#method.bytes">Read more</a></p>
+</div><h4 id='method.chars-1' class="method"><span id='chars.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.chars' class='fnname'>chars</a>(self) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Chars.html" title="struct sgx_tstd::io::Chars">Chars</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#355-357' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Transforms this <code>Read</code> instance to an <code>Iterator</code> over <code>char</code>s. <a href="../../sgx_tstd/io/trait.Read.html#method.chars">Read more</a></p>
+</div><h4 id='method.chain-1' class="method"><span id='chain.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.chain' class='fnname'>chain</a>&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Read.html" title="trait sgx_tstd::io::Read">Read</a>&gt;(self, next: R) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Chain.html" title="struct sgx_tstd::io::Chain">Chain</a>&lt;Self, R&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#365-367' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates an adaptor which will chain this stream with another. <a href="../../sgx_tstd/io/trait.Read.html#method.chain">Read more</a></p>
+</div><h4 id='method.take-1' class="method"><span id='take.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Read.html#method.take' class='fnname'>take</a>(self, limit: u64) -&gt; <a class="struct" href="../../sgx_tstd/io/struct.Take.html" title="struct sgx_tstd::io::Take">Take</a>&lt;Self&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#376-378' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates an adaptor which will read at most <code>limit</code> bytes from it. <a href="../../sgx_tstd/io/trait.Read.html#method.take">Read more</a></p>
+</div></div><h3 id='impl-Write-1' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl-Write-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#151-156' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.write-1' class="method"><span id='write.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#tymethod.write' class='fnname'>write</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#152-154' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Write a buffer into this object, returning how many bytes were written. <a href="../../sgx_tstd/io/trait.Write.html#tymethod.write">Read more</a></p>
+</div><h4 id='method.flush-1' class="method"><span id='flush.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#tymethod.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#155' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Flush this output stream, ensuring that all intermediately buffered contents reach their destination. <a href="../../sgx_tstd/io/trait.Write.html#tymethod.flush">Read more</a></p>
+</div><h4 id='method.write_all-1' class="method"><span id='write_all.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#method.write_all' class='fnname'>write_all</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#496-507' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Attempts to write an entire buffer into this write. <a href="../../sgx_tstd/io/trait.Write.html#method.write_all">Read more</a></p>
+</div><h4 id='method.write_fmt-1' class="method"><span id='write_fmt.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#method.write_fmt' class='fnname'>write_fmt</a>(&amp;mut self, fmt: <a class="struct" href="../../sgx_tstd/fmt/struct.Arguments.html" title="struct sgx_tstd::fmt::Arguments">Arguments</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#531-563' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Writes a formatted string into this writer, returning any error encountered. <a href="../../sgx_tstd/io/trait.Write.html#method.write_fmt">Read more</a></p>
+</div><h4 id='method.by_ref-3' class="method"><span id='by_ref.v-3' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Write.html#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#570' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Creates a &quot;by reference&quot; adaptor for this instance of <code>Write</code>. <a href="../../sgx_tstd/io/trait.Write.html#method.by_ref">Read more</a></p>
+</div></div><h3 id='impl-Seek-1' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a> for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code><a href='#impl-Seek-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#158-162' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.seek-1' class="method"><span id='seek.v-1' class='invisible'><code>fn <a href='../../sgx_tstd/io/trait.Seek.html#tymethod.seek' class='fnname'>seek</a>(&amp;mut self, pos: <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;u64&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#159-161' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Seek to an offset, in bytes, in a stream. <a href="../../sgx_tstd/io/trait.Seek.html#tymethod.seek">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tstd";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -418,7 +418,6 @@
 <span id="373">373</span>
 <span id="374">374</span>
 <span id="375">375</span>
-<span id="376">376</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -448,17 +447,16 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="doccomment">//! Get metadata</span>
+<span class="doccomment">//! Get the metadata of the current enclave.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This mod has clear interface and is easy to understand. Currently we don&#39;t</span>
+<span class="doccomment">//! have time for its documents.</span>
 
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_tservice&quot;</span>)]</span>
-<span class="kw">extern</span> {
-    <span class="kw">static</span> <span class="ident">g_global_data</span>: <span class="ident">global_data_t</span>;
-}
-
 <span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_trts&quot;</span>)]</span>
 <span class="kw">extern</span> {
+    <span class="kw">static</span> <span class="ident">g_global_data</span>: <span class="ident">global_data_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_thread_data</span>() <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">c_void</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_enclave_base</span>() <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">c_void</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_heap_base</span>() <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">c_void</span>;

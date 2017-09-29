@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["derive_deserialize","`derive_deserialize` provides the `DeSerializable` macro for `sgx_serialize"],["derive_serialize","`derive_serialize` provides the `Serializable` macro for `sgx_serialize"]]});

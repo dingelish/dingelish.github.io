@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["SgxThreadPolicy",""]],"fn":[["get_enclave_base",""],["get_enclave_id",""],["get_enclave_path",""],["get_enclave_size",""],["get_heap_base",""],["get_heap_size",""],["get_thread_policy",""],["set_enclave_id",""],["set_enclave_path",""]]});

@@ -48,10 +48,10 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tcrypto/lib.rs.html#29-48' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_tcrypto/lib.rs.html#29-45' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id='cryptography-library' class='section-header'><a href='#cryptography-library'>Cryptography Library</a></h1>
-<p>The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto.
+<p>The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto. 
 It includes the cryptographic functions used by other trusted libraries included in the SDK</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -125,6 +125,34 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rijndael128_cmac_slice'>rsgx_rijndael128_cmac_slice</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_rijndael128_cmac_slice function performs a standard 128bit CMAC hash over the input data buffer.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rsa3072_sign_msg.html"
+                                  title='fn sgx_tcrypto::rsgx_rsa3072_sign_msg'>rsgx_rsa3072_sign_msg</a></td>
+                           <td class='docblock-short'>
+                                <p>The rsgx_rsa3072_sign_msg computes a digital signature for a given dataset based on RSA 3072 private key.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rsa3072_sign_slice.html"
+                                  title='fn sgx_tcrypto::rsgx_rsa3072_sign_slice'>rsgx_rsa3072_sign_slice</a></td>
+                           <td class='docblock-short'>
+                                <p>The rsgx_rsa3072_sign_slice computes a digital signature for a given dataset based on RSA 3072 private key.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rsa3072_verify_msg.html"
+                                  title='fn sgx_tcrypto::rsgx_rsa3072_verify_msg'>rsgx_rsa3072_verify_msg</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_rsa3072_verify_msg verifies the input digital signature for the given data- set based on the RSA 3072 public key.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_rsa3072_verify_slice.html"
+                                  title='fn sgx_tcrypto::rsgx_rsa3072_verify_slice'>rsgx_rsa3072_verify_slice</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_rsa3072_verify_slice verifies the input digital signature for the given data- set based on the RSA 3072 public key.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>

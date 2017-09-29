@@ -285,14 +285,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The rsgx_read_rand function is provided to replace the standard pseudo-random sequence generation functions</span>
 <span class="doccomment">/// inside the enclave, since these standard functions are not supported in the enclave, such as rand, srand, etc.</span>
-<span class="doccomment">/// For HW mode, the function generates a real-random sequence; while for simulation mode, the function generates</span>
+<span class="doccomment">/// For HW mode, the function generates a real-random sequence; while in simulation mode, the function generates</span>
 <span class="doccomment">/// a pseudo-random sequence.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **rand**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to the buffer that receives the random number. The rand buffer can be either within or outside the enclave,</span>
+<span class="doccomment">/// A pointer to the buffer that stores the generated random number. The rand buffer can be either within or outside the enclave,</span>
 <span class="doccomment">/// but it is not allowed to be across the enclave boundary or wrapped around.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
@@ -307,7 +307,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// **SGX_ERROR_UNEXPECTED**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Indicates an unexpected error occurs during the valid random number gen- eration process.</span>
+<span class="doccomment">/// Indicates an unexpected error occurs during the valid random number generation process.</span>
 <span class="doccomment">///</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_read_rand</span>(<span class="ident">rand</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
 

@@ -48,9 +48,18 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_types/marker.rs.html#55' title='goto source code'>[src]</a></span></h1>
-<pre class='rust trait'>pub unsafe trait ContiguousMemory { }</pre>
-        <h2 id='implementors'>Implementors</h2>
+               </span><a class='srclink' href='../../src/sgx_types/marker.rs.html#61' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub unsafe trait ContiguousMemory { }</pre><div class='docblock'><p>Trait for demonstrating one structure locates in contiguous memory.</p>
+
+<p>This is required for SGX related operations, e.g. crypto related
+computations. Many of these APIs require the input data locates in
+a contiguous area of memory inside the enclave. Developer needs to
+implement this trait as a marker for the data structure he/she wants
+to feed into SGX apis.</p>
+</div>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
         <ul class='item-list' id='implementors-list'>
     <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_attributes_t.html" title="struct sgx_types::sgx_attributes_t">sgx_attributes_t</a></code></li>
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_misc_attribute_t.html" title="struct sgx_types::sgx_misc_attribute_t">sgx_misc_attribute_t</a></code></li>
@@ -86,6 +95,9 @@
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_ec256_private_t.html" title="struct sgx_types::sgx_ec256_private_t">sgx_ec256_private_t</a></code></li>
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_ec256_public_t.html" title="struct sgx_types::sgx_ec256_public_t">sgx_ec256_public_t</a></code></li>
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::sgx_ec256_signature_t">sgx_ec256_signature_t</a></code></li>
+<li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_rsa3072_public_key_t.html" title="struct sgx_types::sgx_rsa3072_public_key_t">sgx_rsa3072_public_key_t</a></code></li>
+<li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_rsa3072_private_key_t.html" title="struct sgx_types::sgx_rsa3072_private_key_t">sgx_rsa3072_private_key_t</a></code></li>
+<li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_rsa3072_signature_t.html" title="struct sgx_types::sgx_rsa3072_signature_t">sgx_rsa3072_signature_t</a></code></li>
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_thread_mutexattr_t.html" title="struct sgx_types::sgx_thread_mutexattr_t">sgx_thread_mutexattr_t</a></code></li>
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_thread_condattr_t.html" title="struct sgx_types::sgx_thread_condattr_t">sgx_thread_condattr_t</a></code></li>
 <li><code>impl ContiguousMemory for <a class="struct" href="../../sgx_types/struct.sgx_cpu_context_t.html" title="struct sgx_types::sgx_cpu_context_t">sgx_cpu_context_t</a></code></li>

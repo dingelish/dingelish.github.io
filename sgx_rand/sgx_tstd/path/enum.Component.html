@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Component` enum in crate `sgx_tstd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Component">
+
+    <title>sgx_tstd::path::Component - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Enum Component</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>path</a></p><script>window.sidebarCurrent = {name: 'Component', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>path</a>::<wbr><a class="enum" href=''>Component</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tstd/path.rs.html#352-379' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Component&lt;'a&gt; {
+    Prefix(<a class="struct" href="../../sgx_tstd/path/struct.PrefixComponent.html" title="struct sgx_tstd::path::PrefixComponent">PrefixComponent</a>&lt;'a&gt;),
+    RootDir,
+    CurDir,
+    ParentDir,
+    Normal(&amp;'a <a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a>),
+}</pre><div class='docblock'><p>A single component of a path.</p>
+
+<p>A <code>Component</code> roughtly corresponds to a substring between path separators
+(<code>/</code> or <code>\</code>).</p>
+
+<p>This <code>enum</code> is created by iterating over [<code>Components</code>], which in turn is
+created by the [<code>components</code>][<code>Path::components</code>] method on [<code>Path</code>].</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.Prefix" class="variant small-section-header"><a href="#variant.Prefix" class="anchor field"></a><span id='Prefix.v' class='invisible'><code>Prefix(<a class="struct" href="../../sgx_tstd/path/struct.PrefixComponent.html" title="struct sgx_tstd::path::PrefixComponent">PrefixComponent</a>&lt;'a&gt;)</code></span></span><div class='docblock'><p>A Windows path prefix, e.g. <code>C:</code> or <code>\\server\share</code>.</p>
+
+<p>There is a large variety of prefix types, see <a href="enum.Prefix.html"><code>Prefix</code></a>&#39;s documentation
+for more.</p>
+
+<p>Does not occur on Unix.</p>
+</div><span id="variant.RootDir" class="variant small-section-header"><a href="#variant.RootDir" class="anchor field"></a><span id='RootDir.v' class='invisible'><code>RootDir</code></span></span><div class='docblock'><p>The root directory component, appears after any prefix and before anything else.</p>
+
+<p>It represents a separator that designates that a path starts from root.</p>
+</div><span id="variant.CurDir" class="variant small-section-header"><a href="#variant.CurDir" class="anchor field"></a><span id='CurDir.v' class='invisible'><code>CurDir</code></span></span><div class='docblock'><p>A reference to the current directory, i.e. <code>.</code>. </p>
+</div><span id="variant.ParentDir" class="variant small-section-header"><a href="#variant.ParentDir" class="anchor field"></a><span id='ParentDir.v' class='invisible'><code>ParentDir</code></span></span><div class='docblock'><p>A reference to the parent directory, i.e. <code>..</code>. </p>
+</div><span id="variant.Normal" class="variant small-section-header"><a href="#variant.Normal" class="anchor field"></a><span id='Normal.v' class='invisible'><code>Normal(&amp;'a <a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a>)</code></span></span><div class='docblock'><p>A normal component, e.g. <code>a</code> and <code>b</code> in <code>a/b</code>.</p>
+
+<p>This variant is the most common one, it represents references to files
+or directories.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#381-393' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_os_str' class="method"><span id='as_os_str.v' class='invisible'><code>pub fn <a href='#method.as_os_str' class='fnname'>as_os_str</a>(self) -&gt; &amp;'a <a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#384-392' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Extracts the underlying [<code>OsStr</code>] slice.</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/marker/trait.Copy.html" title="trait sgx_tstd::marker::Copy">Copy</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='../../sgx_tstd/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="../../sgx_tstd/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='../../sgx_tstd/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="../../sgx_tstd/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/cmp/trait.PartialEq.html" title="trait sgx_tstd::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="../../sgx_tstd/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/cmp/trait.Eq.html" title="trait sgx_tstd::cmp::Eq">Eq</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-PartialOrd' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/cmp/trait.PartialOrd.html" title="trait sgx_tstd::cmp::PartialOrd">PartialOrd</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-PartialOrd' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.partial_cmp' class="method"><span id='partial_cmp.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialOrd.html#tymethod.partial_cmp' class='fnname'>partial_cmp</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;<a class="enum" href="../../sgx_tstd/cmp/enum.Ordering.html" title="enum sgx_tstd::cmp::Ordering">Ordering</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method returns an ordering between <code>self</code> and <code>other</code> values if one exists. <a href="../../sgx_tstd/cmp/trait.PartialOrd.html#tymethod.partial_cmp">Read more</a></p>
+</div><h4 id='method.lt' class="method"><span id='lt.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialOrd.html#method.lt' class='fnname'>lt</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests less than (for <code>self</code> and <code>other</code>) and is used by the <code>&lt;</code> operator. <a href="../../sgx_tstd/cmp/trait.PartialOrd.html#method.lt">Read more</a></p>
+</div><h4 id='method.le' class="method"><span id='le.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialOrd.html#method.le' class='fnname'>le</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests less than or equal to (for <code>self</code> and <code>other</code>) and is used by the <code>&lt;=</code> operator. <a href="../../sgx_tstd/cmp/trait.PartialOrd.html#method.le">Read more</a></p>
+</div><h4 id='method.gt' class="method"><span id='gt.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialOrd.html#method.gt' class='fnname'>gt</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests greater than (for <code>self</code> and <code>other</code>) and is used by the <code>&gt;</code> operator. <a href="../../sgx_tstd/cmp/trait.PartialOrd.html#method.gt">Read more</a></p>
+</div><h4 id='method.ge' class="method"><span id='ge.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialOrd.html#method.ge' class='fnname'>ge</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method tests greater than or equal to (for <code>self</code> and <code>other</code>) and is used by the <code>&gt;=</code> operator. <a href="../../sgx_tstd/cmp/trait.PartialOrd.html#method.ge">Read more</a></p>
+</div></div><h3 id='impl-Ord' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/cmp/trait.Ord.html" title="trait sgx_tstd::cmp::Ord">Ord</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-Ord' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.cmp' class="method"><span id='cmp.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.Ord.html#tymethod.cmp' class='fnname'>cmp</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;) -&gt; <a class="enum" href="../../sgx_tstd/cmp/enum.Ordering.html" title="enum sgx_tstd::cmp::Ordering">Ordering</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>This method returns an <code>Ordering</code> between <code>self</code> and <code>other</code>. <a href="../../sgx_tstd/cmp/trait.Ord.html#tymethod.cmp">Read more</a></p>
+</div><h4 id='method.max' class="method"><span id='max.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.Ord.html#method.max' class='fnname'>max</a>(self, other: Self) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.22.0'>1.22.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cmp.rs.html#460-463' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Compares and returns the maximum of two values. <a href="../../sgx_tstd/cmp/trait.Ord.html#method.max">Read more</a></p>
+</div><h4 id='method.min' class="method"><span id='min.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.Ord.html#method.min' class='fnname'>min</a>(self, other: Self) -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.22.0'>1.22.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cmp.rs.html#476-479' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Compares and returns the minimum of two values. <a href="../../sgx_tstd/cmp/trait.Ord.html#method.min">Read more</a></p>
+</div></div><h3 id='impl-Hash' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/hash/trait.Hash.html" title="trait sgx_tstd::hash::Hash">Hash</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-Hash' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.hash' class="method"><span id='hash.v' class='invisible'><code>fn <a href='../../sgx_tstd/hash/trait.Hash.html#tymethod.hash' class='fnname'>hash</a>&lt;__H:&nbsp;<a class="trait" href="../../sgx_tstd/hash/trait.Hasher.html" title="trait sgx_tstd::hash::Hasher">Hasher</a>&gt;(&amp;self, __arg_0: &amp;mut __H)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Feeds this value into the given [<code>Hasher</code>]. <a href="../../sgx_tstd/hash/trait.Hash.html#tymethod.hash">Read more</a></p>
+</div><h4 id='method.hash_slice' class="method"><span id='hash_slice.v' class='invisible'><code>fn <a href='../../sgx_tstd/hash/trait.Hash.html#method.hash_slice' class='fnname'>hash_slice</a>&lt;H&gt;(data: &amp;[Self], state: &amp;mut H) <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;H: <a class="trait" href="../../sgx_tstd/hash/trait.Hasher.html" title="trait sgx_tstd::hash::Hasher">Hasher</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.3.0'>1.3.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/hash/mod.rs.html#202-208' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Feeds a slice of this type into the given [<code>Hasher</code>]. <a href="../../sgx_tstd/hash/trait.Hash.html#method.hash_slice">Read more</a></p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#350' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-AsRef&lt;OsStr&gt;' class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../sgx_tstd/convert/trait.AsRef.html" title="trait sgx_tstd::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a>&gt; for <a class="enum" href="../../sgx_tstd/path/enum.Component.html" title="enum sgx_tstd::path::Component">Component</a>&lt;'a&gt;</code><a href='#impl-AsRef&lt;OsStr&gt;' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#395-399' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_ref' class="method"><span id='as_ref.v' class='invisible'><code>fn <a href='../../sgx_tstd/convert/trait.AsRef.html#tymethod.as_ref' class='fnname'>as_ref</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/path.rs.html#396-398' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tstd";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -97,6 +97,13 @@
 <span id="52">52</span>
 <span id="53">53</span>
 <span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -127,8 +134,15 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="doccomment">//! Global constructor support</span>
+
+<span class="doccomment">/// global_ctors_object is the base macro of implementing constructors.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// global_ctors_object registers functions to the `.init_array` section</span>
+<span class="doccomment">/// of the generated enclave binary. On the first ecall of enclave&#39;s execution,</span>
+<span class="doccomment">/// SGX would execute these registered functions and thus initialize data</span>
+<span class="doccomment">/// structures.</span>
 <span class="attribute">#[<span class="ident">macro_export</span>]</span>
-<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">init_global_object</span> {
+<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">global_ctors_object</span> {
     (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">var_name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func_name</span>:<span class="ident">ident</span> <span class="op">=</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">func</span>:<span class="ident">block</span>) <span class="op">=&gt;</span> {
 
         <span class="macro">cfg_if</span><span class="macro">!</span> {

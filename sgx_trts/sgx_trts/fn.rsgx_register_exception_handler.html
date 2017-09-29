@@ -49,7 +49,7 @@
                        [<span class='inner'>&#x2212;</span>]
                    </a>
                </span><a class='srclink' href='../src/sgx_trts/veh.rs.html#79-86' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn rsgx_register_exception_handler(<br>&nbsp;&nbsp;&nbsp;&nbsp;is_first_handler: u32, <br>&nbsp;&nbsp;&nbsp;&nbsp;exception_handler: <a class="type" href="../sgx_types/types/type.sgx_exception_handler_t.html" title="type sgx_types::types::sgx_exception_handler_t">sgx_exception_handler_t</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../sgx_trts/type.exception_handle.html" title="type sgx_trts::exception_handle">exception_handle</a>&gt;</pre><div class='docblock'><p>rsgx_register_exception_handler register an exception handler.</p>
+<pre class='rust fn'>pub fn rsgx_register_exception_handler(<br>&nbsp;&nbsp;&nbsp;&nbsp;is_first_handler: u32, <br>&nbsp;&nbsp;&nbsp;&nbsp;exception_handler: <a class="type" href="../sgx_types/types/type.sgx_exception_handler_t.html" title="type sgx_types::types::sgx_exception_handler_t">sgx_exception_handler_t</a><br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../sgx_trts/type.exception_handle.html" title="type sgx_trts::exception_handle">exception_handle</a>&gt;</pre><div class='docblock'><p>rsgx_register_exception_handler registers an exception handler.</p>
 
 <p>rsgx_register_exception_handler allows developers to register an exception handler, and specify whether to prepend
 (when is_first_handler is equal to 1) or append the handler to the handler chain.</p>
@@ -65,7 +65,7 @@ being trapped into an exception condition.</p>
 
 <p>After calling rsgx_register_exception_handler to prepend an exception handler, a subsequent call to this function may
 add another exception handler at the beginning of the handler chain. Therefore the order in which exception handlers
-are called does not only depend on the value of the is_first_handler parameter, but more importantly depends on the order
+are called does not only depend on the value of the is_first_handler parameter. It depends on the order
 in which exception handlers are registered.</p>
 
 <h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>

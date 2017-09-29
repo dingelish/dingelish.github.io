@@ -54,13 +54,13 @@
 <h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
 <p>The rsgx_read_rand function is provided to replace the standard pseudo-random sequence generation functions
 inside the enclave, since these standard functions are not supported in the enclave, such as rand, srand, etc.
-For HW mode, the function generates a real-random sequence; while for simulation mode, the function generates
+For HW mode, the function generates a real-random sequence; while in simulation mode, the function generates
 a pseudo-random sequence.</p>
 
 <h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
 <p><strong>rand</strong></p>
 
-<p>A pointer to the buffer that receives the random number. The rand buffer can be either within or outside the enclave,
+<p>A pointer to the buffer that stores the generated random number. The rand buffer can be either within or outside the enclave,
 but it is not allowed to be across the enclave boundary or wrapped around.</p>
 
 <h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
@@ -73,7 +73,7 @@ but it is not allowed to be across the enclave boundary or wrapped around.</p>
 
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 
-<p>Indicates an unexpected error occurs during the valid random number gen- eration process.</p>
+<p>Indicates an unexpected error occurs during the valid random number generation process.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
 

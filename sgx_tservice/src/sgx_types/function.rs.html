@@ -427,6 +427,57 @@
 <span id="382">382</span>
 <span id="383">383</span>
 <span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -459,7 +510,7 @@
 <span class="kw">use</span> <span class="ident">error</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">types</span>::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_tstdc&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_tstdc&quot;)]</span>
 <span class="kw">extern</span> {
     <span class="comment">//</span>
     <span class="comment">// sgx_cpuid.h</span>
@@ -470,8 +521,8 @@
     <span class="comment">//</span>
     <span class="comment">// sgx_spinlock.h</span>
     <span class="comment">//</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_spin_lock</span>(<span class="ident">lock</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_spinlock_t</span>) <span class="op">-&gt;</span> ::<span class="ident">uint32_t</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_spin_unlock</span>(<span class="ident">lock</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_spinlock_t</span>) <span class="op">-&gt;</span> ::<span class="ident">uint32_t</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_spin_lock</span>(<span class="ident">lock</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_spinlock_t</span>) <span class="op">-&gt;</span> ::<span class="ident">uint32_t</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_spin_unlock</span>(<span class="ident">lock</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_spinlock_t</span>) <span class="op">-&gt;</span> ::<span class="ident">uint32_t</span>;
 
     <span class="comment">//</span>
     <span class="comment">// sgx_thread.h</span>
@@ -495,7 +546,7 @@
 }
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_tservice&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_tservice&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
@@ -602,7 +653,7 @@
 }
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_tcrypto&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_tcrypto&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
@@ -682,11 +733,23 @@
                             <span class="ident">p_signature</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
                             <span class="ident">p_result</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint8_t</span>,
                             <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+
+    <span class="comment">/* intel sgx sdk 1.9 */</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
+                            <span class="ident">data_size</span>: ::<span class="ident">uint32_t</span>,
+                            <span class="ident">p_private</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_private_key_t</span>,
+                            <span class="ident">p_signature</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa3072_signature_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_rsa3072_verify</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
+                              <span class="ident">data_size</span>: ::<span class="ident">uint32_t</span>,
+                              <span class="ident">p_public</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_public_key_t</span>,
+                              <span class="ident">p_signature</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_signature_t</span>,
+                              <span class="ident">p_result</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa_result_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 }
 
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_tkey_exchange&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_tkey_exchange&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
@@ -707,7 +770,7 @@
 }
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_trts&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_trts&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
@@ -731,26 +794,19 @@
     <span class="comment">//</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ocalloc</span>(<span class="ident">size</span>: ::<span class="ident">size_t</span>) <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">c_void</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_sgx_ocfree</span>();
-
-    <span class="comment">//</span>
-    <span class="comment">// trts_pic.S</span>
-    <span class="comment">//</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">abort</span>() <span class="op">-&gt;</span> <span class="op">!</span>;
-
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_thread_data</span>() <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_void</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_enclave_base</span>() <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_void</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_heap_base</span>() <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_void</span>;
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_heap_size</span>() <span class="op">-&gt;</span> ::<span class="ident">size_t</span>;
 }
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_uae_service&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_uae_service&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
     <span class="comment">// sgx_uae_service.h</span>
     <span class="comment">//</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_init_quote</span>(<span class="ident">p_target_info</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_target_info_t</span>, <span class="ident">p_gid</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_epid_group_id_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+    
+    <span class="comment">/* intel sgx sdk 1.9 */</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_calc_quote_size</span>(<span class="ident">p_sig_rl</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>, <span class="ident">sig_rl_size</span>: ::<span class="ident">uint32_t</span>, <span class="ident">p_quote_size</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_quote_size</span>(<span class="ident">p_sig_rl</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>, <span class="ident">p_quote_size</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">uint32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_get_quote</span>(<span class="ident">p_report</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_report_t</span>,
@@ -774,7 +830,7 @@
 }
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_ukey_exchange&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_ukey_exchange&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
@@ -797,22 +853,67 @@
 }
 
 
-<span class="attribute">#[<span class="ident">link</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;sgx_urts&quot;</span>)]</span>
+<span class="comment">//#[link(name = &quot;sgx_urts&quot;)]</span>
 <span class="kw">extern</span> {
 
     <span class="comment">//</span>
     <span class="comment">// sgx_urts.h</span>
     <span class="comment">//</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_create_enclave</span>(<span class="ident">file_name</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_schar</span>,
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_create_enclave</span>(<span class="ident">file_name</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>,
                               <span class="ident">debug</span>: ::<span class="ident">int32_t</span>,
                               <span class="ident">launch_token</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_launch_token_t</span>,
                               <span class="ident">launch_token_updated</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">int32_t</span>,
                               <span class="ident">enclave_id</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_enclave_id_t</span>,
                               <span class="ident">misc_attr</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_misc_attribute_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_destroy_enclave</span>(<span class="ident">enclave_id</span>: <span class="ident">sgx_enclave_id_t</span>);
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_destroy_enclave</span>(<span class="ident">enclave_id</span>: <span class="ident">sgx_enclave_id_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 }
-</pre>
+
+<span class="comment">/* intel sgx sdk 1.9 */</span>
+<span class="comment">//#[link(name = &quot;sgx_tprotected_fs&quot;)]</span>
+<span class="kw">extern</span> {
+
+    <span class="comment">//</span>
+    <span class="comment">// sgx_tprotected_fs.h</span>
+    <span class="comment">//</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fopen</span>(<span class="ident">filename</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>, 
+                     <span class="ident">mode</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>, 
+                     <span class="ident">key</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_key_128bit_t</span>) <span class="op">-&gt;</span> <span class="ident">SGX_FILE</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fopen_auto_key</span>(<span class="ident">filename</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>, <span class="ident">mode</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>) <span class="op">-&gt;</span> <span class="ident">SGX_FILE</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fwrite</span>(<span class="ident">ptr</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_void</span>, 
+                      <span class="ident">size</span>: ::<span class="ident">size_t</span>, 
+                      <span class="ident">count</span>: ::<span class="ident">size_t</span>, 
+                      <span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">size_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fread</span>(<span class="ident">ptr</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">c_void</span>,
+                     <span class="ident">size</span>: ::<span class="ident">size_t</span>,
+                     <span class="ident">count</span>: ::<span class="ident">size_t</span>,
+                     <span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">size_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ftell</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int64_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fseek</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>, <span class="ident">offset</span>: ::<span class="ident">int64_t</span>, <span class="ident">origin</span>: ::<span class="ident">c_int</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fflush</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ferror</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_feof</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_clearerr</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>);
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fclose</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_remove</span>(<span class="ident">filename</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fexport_auto_key</span>(<span class="ident">filename</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>, <span class="ident">key</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_key_128bit_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fimport_auto_key</span>(<span class="ident">filename</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>, <span class="ident">key</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_key_128bit_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fclear_cache</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+}</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

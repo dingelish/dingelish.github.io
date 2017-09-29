@@ -149,41 +149,6 @@
 <span id="104">104</span>
 <span id="105">105</span>
 <span id="106">106</span>
-<span id="107">107</span>
-<span id="108">108</span>
-<span id="109">109</span>
-<span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
-<span id="113">113</span>
-<span id="114">114</span>
-<span id="115">115</span>
-<span id="116">116</span>
-<span id="117">117</span>
-<span id="118">118</span>
-<span id="119">119</span>
-<span id="120">120</span>
-<span id="121">121</span>
-<span id="122">122</span>
-<span id="123">123</span>
-<span id="124">124</span>
-<span id="125">125</span>
-<span id="126">126</span>
-<span id="127">127</span>
-<span id="128">128</span>
-<span id="129">129</span>
-<span id="130">130</span>
-<span id="131">131</span>
-<span id="132">132</span>
-<span id="133">133</span>
-<span id="134">134</span>
-<span id="135">135</span>
-<span id="136">136</span>
-<span id="137">137</span>
-<span id="138">138</span>
-<span id="139">139</span>
-<span id="140">140</span>
-<span id="141">141</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -215,7 +180,7 @@
 
 <span class="doccomment">//! # Trusted Runtime System</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK.</span>
+<span class="doccomment">//! The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK. </span>
 <span class="doccomment">//! It provides the enclave entry point logic as well as other functions to be used by enclave developers.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Intel(R) Software Guard Extensions Helper Functions**</span>
@@ -223,8 +188,8 @@
 <span class="doccomment">//! **CustomExceptionHandling**</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Intel(R) Software Guard Extensions Helper Functions</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//! The tRTS provides the helper functions for you to determine whether a given address is within or outside</span>
+<span class="doccomment">//! </span>
+<span class="doccomment">//! The tRTS provides the helper functions for you to determine whether a given address is within or outside </span>
 <span class="doccomment">//! enclave memory.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The tRTS provides a wrapper to the RDRAND instruction to generate a true random number from hardware.</span>
@@ -232,17 +197,17 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # CustomExceptionHandling</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers,</span>
-<span class="doccomment">//! to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within</span>
-<span class="doccomment">//! the enclave, the registered exception handlers will be called in a specific order until an exception handler reports</span>
-<span class="doccomment">//! that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault</span>
-<span class="doccomment">//! (Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type</span>
-<span class="doccomment">//! sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R)</span>
+<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers, </span>
+<span class="doccomment">//! to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within </span>
+<span class="doccomment">//! the enclave, the registered exception handlers will be called in a specific order until an exception handler reports </span>
+<span class="doccomment">//! that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault </span>
+<span class="doccomment">//! (Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type </span>
+<span class="doccomment">//! sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R) </span>
 <span class="doccomment">//! Software Guard Extensions Programming Reference.</span>
-<span class="doccomment">//!</span>
+<span class="doccomment">//! </span>
 <span class="doccomment">//! **Note**</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode,</span>
+<span class="doccomment">//! Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode, </span>
 <span class="doccomment">//! the exceptions cannot be caught and handled within the enclave.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
@@ -251,7 +216,7 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching</span>
+<span class="doccomment">//! Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching </span>
 <span class="doccomment">//! other registers in the exception handlers.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
@@ -259,40 +224,18 @@
 <span class="doccomment">//! If the exception handlers can not handle the exceptions, abort() is called.</span>
 <span class="doccomment">//! abort() makes the enclave unusable and generates another exception.</span>
 <span class="doccomment">//!</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_trts&quot;</span>]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_trts&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">no_std</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">needs_panic_runtime</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">feature</span>(<span class="ident">const_fn</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">feature</span>(<span class="ident">allow_internal_unstable</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">feature</span>(<span class="ident">core_intrinsics</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">feature</span>(<span class="ident">alloc</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">feature</span>(<span class="ident">oom</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">collections</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">unique</span>, <span class="ident">shared</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">integer_atomics</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">cfg_target_has_atomic</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">optin_builtin_traits</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">unboxed_closures</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">fn_traits</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">raw</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">lang_items</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">needs_panic_runtime</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">untagged_unions</span>))]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">unwind_attributes</span>))]</span>
+<span class="attribute">#![<span class="ident">no_std</span>]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
-
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>)]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">std</span> <span class="kw">as</span> <span class="ident">core</span>;
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">alloc</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">allocator_api</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">fused</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_ptr_new</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">alloc</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">collections</span>;
-
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_types</span>;
 
 <span class="kw">mod</span> <span class="ident">veh</span>;
@@ -302,30 +245,17 @@
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">trts</span>::<span class="kw-2">*</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">enclave</span>;
-
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">memeq</span>;
-
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">local</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">local</span>::{<span class="ident">LocalKey</span>, <span class="ident">LocalKeyState</span>};
-
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">panicking</span>;
-
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">panic</span>;
 
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">mod</span> <span class="ident">macros</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">oom</span>;
-
-<span class="macro">init_global_object</span><span class="macro">!</span> {
-    <span class="ident">INIT_OOM</span>, <span class="ident">init_oom_handler</span> <span class="op">=</span> {
-        <span class="ident">alloc</span>::<span class="ident">oom</span>::<span class="ident">set_oom_handler</span>(<span class="ident">oom</span>::<span class="ident">rsgx_oom</span>);
-    }
-}
-
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">error</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">libc</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">memchr</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ascii</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">c_str</span>;
 </pre>
 </section>
     <section id='search' class="content hidden"></section>

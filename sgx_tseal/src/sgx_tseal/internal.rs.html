@@ -616,8 +616,6 @@
 <span id="571">571</span>
 <span id="572">572</span>
 <span id="573">573</span>
-<span id="574">574</span>
-<span id="575">575</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -653,10 +651,8 @@
 <span class="kw">use</span> <span class="ident">sgx_tse</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">boxed</span>::<span class="ident">Box</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
-<span class="kw">use</span> <span class="ident">collections</span>::<span class="ident">vec</span>::<span class="ident">Vec</span>;
+<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">vec</span>::<span class="ident">Vec</span>;
 
 <span class="comment">//const SGX_MISCSEL_EXINFO: uint32_t     = 0x00000001;</span>
 <span class="comment">//const TSEAL_DEFAULT_MISCMASK: uint32_t = (!SGX_MISCSEL_EXINFO);</span>
@@ -1193,8 +1189,7 @@
 
         <span class="prelude-val">Ok</span>(<span class="ident">unsealed_data</span>)
     }
-}
-</pre>
+}</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

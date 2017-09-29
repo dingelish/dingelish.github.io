@@ -48,55 +48,63 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#168-181' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct SgxThreadData { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#183-273' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+               </span><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#167-180' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SgxThreadData { /* fields omitted */ }</pre>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#182-272' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#191-210' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>get thread_data per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div><h4 id='method.td_base' class="method"><span id='td_base.v' class='invisible'><code>fn <a href='#method.td_base' class='fnname'>td_base</a>(&amp;self) -&gt; usize</code></span></h4>
+</div><h4 id='method.td_base' class="method"><span id='td_base.v' class='invisible'><code>pub fn <a href='#method.td_base' class='fnname'>td_base</a>(&amp;self) -&gt; usize</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#219-221' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>td_base is to get TD base address per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div><h4 id='method.stack_base' class="method"><span id='stack_base.v' class='invisible'><code>fn <a href='#method.stack_base' class='fnname'>stack_base</a>(&amp;self) -&gt; usize</code></span></h4>
+</div><h4 id='method.stack_base' class="method"><span id='stack_base.v' class='invisible'><code>pub fn <a href='#method.stack_base' class='fnname'>stack_base</a>(&amp;self) -&gt; usize</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#229-231' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>stack_base is to get stack base address per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div><h4 id='method.stack_limit' class="method"><span id='stack_limit.v' class='invisible'><code>fn <a href='#method.stack_limit' class='fnname'>stack_limit</a>(&amp;self) -&gt; usize</code></span></h4>
+</div><h4 id='method.stack_limit' class="method"><span id='stack_limit.v' class='invisible'><code>pub fn <a href='#method.stack_limit' class='fnname'>stack_limit</a>(&amp;self) -&gt; usize</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#239-241' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>stack_limit is to get stack limit per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div><h4 id='method.tls_base' class="method"><span id='tls_base.v' class='invisible'><code>fn <a href='#method.tls_base' class='fnname'>tls_base</a>(&amp;self) -&gt; usize</code></span></h4>
+</div><h4 id='method.tls_base' class="method"><span id='tls_base.v' class='invisible'><code>pub fn <a href='#method.tls_base' class='fnname'>tls_base</a>(&amp;self) -&gt; usize</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#249-251' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>tls_base is to get tls base address per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div><h4 id='method.last_error' class="method"><span id='last_error.v' class='invisible'><code>fn <a href='#method.last_error' class='fnname'>last_error</a>(&amp;self) -&gt; usize</code></span></h4>
+</div><h4 id='method.last_error' class="method"><span id='last_error.v' class='invisible'><code>pub fn <a href='#method.last_error' class='fnname'>last_error</a>(&amp;self) -&gt; usize</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#259-261' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>last_error is to get last error per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div><h4 id='method.exception_flag' class="method"><span id='exception_flag.v' class='invisible'><code>fn <a href='#method.exception_flag' class='fnname'>exception_flag</a>(&amp;self) -&gt; usize</code></span></h4>
+</div><h4 id='method.exception_flag' class="method"><span id='exception_flag.v' class='invisible'><code>pub fn <a href='#method.exception_flag' class='fnname'>exception_flag</a>(&amp;self) -&gt; usize</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#269-271' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>exception_flag is to get exception flag per thread.</p>
 
 <p><strong>Note</strong></p>
 
 <p>This API is only an experimental funtion.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#167' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#167' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code></span></h4>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#166' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#166' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../sgx_trts/enclave/struct.SgxThreadData.html" title="struct sgx_trts::enclave::SgxThreadData">SgxThreadData</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#166' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
-</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
 </div></div></section>
     <section id='search' class="content hidden"></section>

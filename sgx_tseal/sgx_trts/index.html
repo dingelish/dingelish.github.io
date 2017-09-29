@@ -29,7 +29,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'>Crate sgx_trts</p><div class="block items"><ul><li><a href="#reexports">Reexports</a></li><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#statics">Statics</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_trts', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_trts</p><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_trts', ty: 'mod', relpath: '../'};</script>
     </nav>
 
     <nav class="sub">
@@ -48,10 +48,10 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#29-140' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_trts/lib.rs.html#29-106' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'>
 <h1 id='trusted-runtime-system' class='section-header'><a href='#trusted-runtime-system'>Trusted Runtime System</a></h1>
-<p>The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK.
+<p>The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK. 
 It provides the enclave entry point logic as well as other functions to be used by enclave developers.</p>
 
 <p><strong>Intel(R) Software Guard Extensions Helper Functions</strong></p>
@@ -59,24 +59,24 @@ It provides the enclave entry point logic as well as other functions to be used 
 <p><strong>CustomExceptionHandling</strong></p>
 
 <h1 id='intelr-software-guard-extensions-helper-functions' class='section-header'><a href='#intelr-software-guard-extensions-helper-functions'>Intel(R) Software Guard Extensions Helper Functions</a></h1>
-<p>The tRTS provides the helper functions for you to determine whether a given address is within or outside
+<p>The tRTS provides the helper functions for you to determine whether a given address is within or outside 
 enclave memory.</p>
 
 <p>The tRTS provides a wrapper to the RDRAND instruction to generate a true random number from hardware.
 enclave developers should use the rsgx_read_rand function to get true random numbers.</p>
 
 <h1 id='customexceptionhandling' class='section-header'><a href='#customexceptionhandling'>CustomExceptionHandling</a></h1>
-<p>The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers,
-to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within
-the enclave, the registered exception handlers will be called in a specific order until an exception handler reports
-that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault
-(Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type
-sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R)
+<p>The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers, 
+to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within 
+the enclave, the registered exception handlers will be called in a specific order until an exception handler reports 
+that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault 
+(Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type 
+sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R) 
 Software Guard Extensions Programming Reference.</p>
 
 <p><strong>Note</strong></p>
 
-<p>Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode,
+<p>Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode, 
 the exceptions cannot be caught and handled within the enclave.</p>
 
 <p><strong>Note</strong></p>
@@ -85,35 +85,63 @@ the exceptions cannot be caught and handled within the enclave.</p>
 
 <p><strong>Note</strong></p>
 
-<p>Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching
+<p>Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching 
 other registers in the exception handlers.</p>
 
 <p><strong>Note</strong></p>
 
 <p>If the exception handlers can not handle the exceptions, abort() is called.
 abort() makes the enclave unusable and generates another exception.</p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use self::<a class="mod" href="./local/index.html">local</a>::<a class="struct" href="../sgx_trts/local/struct.LocalKey.html" title="struct sgx_trts::local::LocalKey">LocalKey</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod" href="./local/index.html">local</a>::<a class="enum" href="../sgx_trts/local/enum.LocalKeyState.html" title="enum sgx_trts::local::LocalKeyState">LocalKeyState</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ascii/index.html"
+                                  title='mod sgx_trts::ascii'>ascii</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="c_str/index.html"
+                                  title='mod sgx_trts::c_str'>c_str</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
                        <tr class=' module-item'>
                            <td><a class="mod" href="enclave/index.html"
                                   title='mod sgx_trts::enclave'>enclave</a></td>
                            <td class='docblock-short'>
-                                <p>Get metadata</p>
+                                <p>Get the metadata of the current enclave.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="local/index.html"
-                                  title='mod sgx_trts::local'>local</a></td>
+                           <td><a class="mod" href="error/index.html"
+                                  title='mod sgx_trts::error'>error</a></td>
                            <td class='docblock-short'>
-                                <p>Thread local storage</p>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="libc/index.html"
+                                  title='mod sgx_trts::libc'>libc</a></td>
+                           <td class='docblock-short'>
+                                <p>This mod provides the interface connecting Rust&#39;s memory management system
+to the Intel&#39;s SGX SDK&#39;s malloc system.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="memchr/index.html"
+                                  title='mod sgx_trts::memchr'>memchr</a></td>
+                           <td class='docblock-short'>
+                                
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="mod" href="memeq/index.html"
                                   title='mod sgx_trts::memeq'>memeq</a></td>
                            <td class='docblock-short'>
-                                <p>consttime memcmp</p>
+                                <p>Comparing buffer contents in constant time.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -122,63 +150,19 @@ abort() makes the enclave unusable and generates another exception.</p>
                            <td class='docblock-short'>
                                 
                            </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="panic/index.html"
-                                  title='mod sgx_trts::panic'>panic</a></td>
-                           <td class='docblock-short'>
-                                <p>Panic support in the standard library</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="panicking/index.html"
-                                  title='mod sgx_trts::panicking'>panicking</a></td>
-                           <td class='docblock-short'>
-                                <p>Implementation of various bits and pieces of the <code>panic!</code> macro and
-associated runtime pieces.</p>
-                           </td>
                        </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="macro" href="macro.__thread_local_inner.html"
-                                  title='macro sgx_trts::__thread_local_inner'>__thread_local_inner</a></td>
+                           <td><a class="macro" href="macro.global_ctors_object.html"
+                                  title='macro sgx_trts::global_ctors_object'>global_ctors_object</a></td>
                            <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="macro" href="macro.init_global_object.html"
-                                  title='macro sgx_trts::init_global_object'>init_global_object</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="macro" href="macro.thread_local.html"
-                                  title='macro sgx_trts::thread_local'>thread_local</a></td>
-                           <td class='docblock-short'>
-                                <p>Declare a new thread local storage key of type [<code>sgx_trts::LocalKey</code>].</p>
-                           </td>
-                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="static" href="static.INIT_OOM.html"
-                                  title='static sgx_trts::INIT_OOM'>INIT_OOM</a></td>
-                           <td class='docblock-short'>
-                                
+                                <p>global_ctors_object is the base macro of implementing constructors.</p>
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="fn" href="fn.abort.html"
                                   title='fn sgx_trts::abort'>abort</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="fn" href="fn.init_oom_handler.html"
-                                  title='fn sgx_trts::init_oom_handler'>init_oom_handler</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -229,7 +213,7 @@ associated runtime pieces.</p>
                            <td><a class="fn" href="fn.rsgx_register_exception_handler.html"
                                   title='fn sgx_trts::rsgx_register_exception_handler'>rsgx_register_exception_handler</a></td>
                            <td class='docblock-short'>
-                                <p>rsgx_register_exception_handler register an exception handler.</p>
+                                <p>rsgx_register_exception_handler registers an exception handler.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>

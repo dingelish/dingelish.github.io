@@ -138,6 +138,10 @@
 <span id="93">93</span>
 <span id="94">94</span>
 <span id="95">95</span>
+<span id="96">96</span>
+<span id="97">97</span>
+<span id="98">98</span>
+<span id="99">99</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -167,7 +171,11 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="doccomment">//! consttime memcmp</span>
+<span class="doccomment">//! Comparing buffer contents in constant time.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This crate provides constant time memory comparison functions. These functions</span>
+<span class="doccomment">//! are useful in cyptographic functions, defending against timing based side</span>
+<span class="doccomment">//! channel attacks</span>
 
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="ident">marker</span>::{<span class="ident">BytewiseEquality</span>};
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;

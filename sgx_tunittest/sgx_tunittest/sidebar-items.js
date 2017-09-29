@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["rsgx_unit_test","Perform one test case at a time."],["rsgx_unit_test_end","An epilogue function for Rust SGX unit testing."],["rsgx_unit_test_start","A prologue function for Rust SGX unit testing."]],"macro":[["rsgx_unit_tests","This macro works as test case driver."],["should_panic","This macro implements the fail test."]]});

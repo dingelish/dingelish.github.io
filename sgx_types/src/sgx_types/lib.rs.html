@@ -135,6 +135,10 @@
 <span id="90">90</span>
 <span id="91">91</span>
 <span id="92">92</span>
+<span id="93">93</span>
+<span id="94">94</span>
+<span id="95">95</span>
+<span id="96">96</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -164,15 +168,15 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_types&quot;</span>]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_types&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">no_std</span>)]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">no_std</span>)]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">improper_ctypes</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">unused_macros</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">improper_ctypes</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">unused_macros</span>)]</span>
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">std</span> <span class="kw">as</span> <span class="ident">core</span>;
@@ -199,6 +203,7 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">uint64_t</span> <span class="op">=</span> <span class="ident">u64</span>;
 
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_schar</span> <span class="op">=</span> <span class="ident">i8</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_char</span> <span class="op">=</span> <span class="ident">i8</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_uchar</span> <span class="op">=</span> <span class="ident">u8</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_short</span> <span class="op">=</span> <span class="ident">i16</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_ushort</span> <span class="op">=</span> <span class="ident">u16</span>;
@@ -217,6 +222,9 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">uintptr_t</span> <span class="op">=</span> <span class="ident">usize</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">ssize_t</span> <span class="op">=</span> <span class="ident">isize</span>;
 
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_long</span> <span class="op">=</span> <span class="ident">i64</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">c_ulong</span> <span class="op">=</span> <span class="ident">u64</span>;
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">time_t</span> <span class="op">=</span> <span class="ident">i64</span>;
 
 <span class="kw">mod</span> <span class="ident">types</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">types</span>::<span class="kw-2">*</span>;
@@ -227,8 +235,7 @@
 <span class="kw">mod</span> <span class="ident">function</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">function</span>::<span class="kw-2">*</span>;
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">marker</span>;
-</pre>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">marker</span>;</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

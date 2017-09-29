@@ -151,13 +151,6 @@
 <span id="106">106</span>
 <span id="107">107</span>
 <span id="108">108</span>
-<span id="109">109</span>
-<span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
-<span id="113">113</span>
-<span id="114">114</span>
-<span id="115">115</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -242,25 +235,18 @@
 <span class="doccomment">//! non-confidential data to provide data origin authentication only. The single</span>
 <span class="doccomment">//! output of this function is the authentication tag.</span>
 <span class="doccomment">//!</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tseal&quot;</span>]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">no_std</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>), <span class="ident">feature</span>(<span class="ident">alloc</span>, <span class="ident">collections</span>))]</span>
+<span class="attribute">#![<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tseal&quot;</span>]</span>
+<span class="attribute">#![<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
 
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">unused_assignments</span>)]</span>
-<span class="attribute">#<span class="op">!</span>[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>)]</span>
+<span class="attribute">#![<span class="ident">no_std</span>]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">alloc</span>)]</span>
+
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">unused_assignments</span>)]</span>
+
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">std</span> <span class="kw">as</span> <span class="ident">core</span>;
-
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">alloc</span>;
-
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">collections</span>;
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_types</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_trts</span>;
@@ -268,13 +254,12 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tse</span>;
 
 <span class="kw">mod</span> <span class="ident">seal</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">seal</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">seal</span>::{<span class="ident">SgxSealedData</span>, <span class="ident">SgxUnsealedData</span>};
 
 <span class="kw">mod</span> <span class="ident">aad</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">aad</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">aad</span>::{<span class="ident">SgxMacAadata</span>};
 
-<span class="kw">mod</span> <span class="ident">internal</span>;
-</pre>
+<span class="kw">mod</span> <span class="ident">internal</span>;</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

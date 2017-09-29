@@ -50,8 +50,12 @@
                    </a>
                </span><a class='srclink' href='../src/sgx_tservice/tae.rs.html#331-334' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct SgxMonotonicCounter { /* fields omitted */ }</pre><div class='docblock'><p>Monotonic counter ID</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tservice/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::SgxMonotonicCounter">SgxMonotonicCounter</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#336-783' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(counter_value: &amp;mut u32) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span></h4>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tservice/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#336-783' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(counter_value: &amp;mut u32) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#422-431' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>creates a monotonic counter with default owner policy and default user attribute mask.</p>
 
 <h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
@@ -129,7 +133,7 @@ This procedure deletes all MCs created by any enclave in that system.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.new_ex' class="method"><span id='new_ex.v' class='invisible'><code>fn <a href='#method.new_ex' class='fnname'>new_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;owner_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;owner_attribute_mask: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;counter_value: &amp;mut u32<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span></h4>
+</div><h4 id='method.new_ex' class="method"><span id='new_ex.v' class='invisible'><code>pub fn <a href='#method.new_ex' class='fnname'>new_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;owner_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;owner_attribute_mask: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;counter_value: &amp;mut u32<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#529-538' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>creates a monotonic counter.</p>
 
 <h1 id='description-1' class='section-header'><a href='#description-1'>Description</a></h1>
@@ -221,7 +225,7 @@ This procedure deletes all MCs created by any enclave in that system.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.destory' class="method"><span id='destory.v' class='invisible'><code>fn <a href='#method.destory' class='fnname'>destory</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span></h4>
+</div><h4 id='method.destory' class="method"><span id='destory.v' class='invisible'><code>pub fn <a href='#method.destory' class='fnname'>destory</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#610-623' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
 
 <h1 id='description-2' class='section-header'><a href='#description-2'>Description</a></h1>
@@ -287,7 +291,7 @@ limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.increment' class="method"><span id='increment.v' class='invisible'><code>fn <a href='#method.increment' class='fnname'>increment</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span></h4>
+</div><h4 id='method.increment' class="method"><span id='increment.v' class='invisible'><code>pub fn <a href='#method.increment' class='fnname'>increment</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#695-707' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>increments a monotonic counter value by 1.</p>
 
 <h1 id='description-3' class='section-header'><a href='#description-3'>Description</a></h1>
@@ -353,7 +357,7 @@ the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>fn <a href='#method.read' class='fnname'>read</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span></h4>
+</div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>pub fn <a href='#method.read' class='fnname'>read</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#770-782' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>returns the value of a monotonic counter.</p>
 
 <h1 id='description-4' class='section-header'><a href='#description-4'>Description</a></h1>
@@ -409,8 +413,12 @@ call that created the monotonic counter.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 
 <p>Indicates an unexpected error occurs.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../sgx_tservice/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::SgxMonotonicCounter">SgxMonotonicCounter</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#785-792' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../sgx_tservice/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#785-792' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tservice/tae.rs.html#789-791' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>

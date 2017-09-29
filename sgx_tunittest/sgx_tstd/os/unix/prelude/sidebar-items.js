@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["FileExt","Unix-specific extensions to `File`"],["OsStrExt","Unix-specific extensions to `OsStr`."],["OsStringExt","Unix-specific extensions to `OsString`."]]});

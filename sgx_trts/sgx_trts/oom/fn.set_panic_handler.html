@@ -48,8 +48,8 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_trts/oom.rs.html#51-54' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn set_panic_handler(handler: fn() -&gt; !)</pre><div class='docblock'><p>Set a custom handler for out-of-memory conditions</p>
+               </span><a class='srclink' href='../../src/sgx_trts/oom.rs.html#54-57' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn set_panic_handler(handler: fn(_: <a class="enum" href="https://doc.rust-lang.org/nightly/alloc/allocator/enum.AllocErr.html" title="enum alloc::allocator::AllocErr">AllocErr</a>) -&gt; !)</pre><div class='docblock'><p>Set a custom handler for out-of-memory conditions</p>
 
 <p>To avoid recursive OOM failures, it is critical that the OOM handler does
 not allocate any memory itself.</p>

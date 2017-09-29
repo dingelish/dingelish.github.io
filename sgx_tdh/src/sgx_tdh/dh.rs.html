@@ -863,8 +863,6 @@
 <span id="818">818</span>
 <span id="819">819</span>
 <span id="820">820</span>
-<span id="821">821</span>
-<span id="822">822</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -904,14 +902,12 @@
 <span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">memeq</span>::<span class="ident">ConsttimeMemEq</span>;
 <span class="kw">use</span> <span class="ident">sgx_tcrypto</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">sgx_tse</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">ecp</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>;
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">slice</span>;
-<span class="kw">use</span> <span class="kw">super</span>::<span class="ident">ecp</span>::<span class="kw-2">*</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
+<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">slice</span>;
+<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">vec</span>::<span class="ident">Vec</span>;
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">boxed</span>::<span class="ident">Box</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;use_std&quot;</span>))]</span>
-<span class="kw">use</span> <span class="ident">collections</span>::<span class="ident">vec</span>::<span class="ident">Vec</span>;
 
 <span class="kw">const</span> <span class="ident">AES_CMAC_KDF_ID</span>: [<span class="ident">u8</span>; <span class="number">2</span>] <span class="op">=</span> [<span class="number">1</span>, <span class="number">0</span>];
 

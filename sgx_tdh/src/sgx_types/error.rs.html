@@ -285,6 +285,145 @@
 <span id="240">240</span>
 <span id="241">241</span>
 <span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -315,13 +454,14 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">result</span>;
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">fmt</span>;
 <span class="comment">//</span>
 <span class="comment">// sgx_error.h</span>
 <span class="comment">//</span>
 <span class="macro">impl_enum</span><span class="macro">!</span> {
 
     <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u32</span>)]</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">PartialOrd</span>, <span class="ident">Debug</span>)]</span>
     <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">sgx_status_t</span> {
         <span class="ident">SGX_SUCCESS</span>                  <span class="op">=</span> <span class="number">0x00000000</span>,
 
@@ -359,8 +499,8 @@
         <span class="ident">SGX_ERROR_INVALID_ISVSVN</span>     <span class="op">=</span> <span class="number">0x00003004</span>,      <span class="comment">/* The isv svn is greater than the enclave&#39;s isv svn */</span>
         <span class="ident">SGX_ERROR_INVALID_KEYNAME</span>    <span class="op">=</span> <span class="number">0x00003005</span>,      <span class="comment">/* The key name is an unsupported value */</span>
 
-        <span class="ident">SGX_ERROR_SERVICE_UNAVAILABLE</span>       <span class="op">=</span> <span class="number">0x00004001</span>,   <span class="comment">/* Indicates aesm didn&#39;t response or the requested service is not supported */</span>
-        <span class="ident">SGX_ERROR_SERVICE_TIMEOUT</span>           <span class="op">=</span> <span class="number">0x00004002</span>,   <span class="comment">/* The request to aesm time out */</span>
+        <span class="ident">SGX_ERROR_SERVICE_UNAVAILABLE</span>       <span class="op">=</span> <span class="number">0x00004001</span>,   <span class="comment">/* Indicates aesm didn&#39;t respond or the requested service is not supported */</span>
+        <span class="ident">SGX_ERROR_SERVICE_TIMEOUT</span>           <span class="op">=</span> <span class="number">0x00004002</span>,   <span class="comment">/* The request to aesm timed out */</span>
         <span class="ident">SGX_ERROR_AE_INVALID_EPIDBLOB</span>       <span class="op">=</span> <span class="number">0x00004003</span>,   <span class="comment">/* Indicates epid blob verification error */</span>
         <span class="ident">SGX_ERROR_SERVICE_INVALID_PRIVILEGE</span> <span class="op">=</span> <span class="number">0x00004004</span>,   <span class="comment">/* Enclave has no privilege to get launch token */</span>
         <span class="ident">SGX_ERROR_EPID_MEMBER_REVOKED</span>       <span class="op">=</span> <span class="number">0x00004005</span>,   <span class="comment">/* The EPID group membership is revoked. */</span>
@@ -374,7 +514,7 @@
         <span class="ident">SGX_ERROR_MC_OVER_QUOTA</span>             <span class="op">=</span> <span class="number">0x0000400f</span>,   <span class="comment">/* Monotonic counters exceeds quota limitation */</span>
         <span class="ident">SGX_ERROR_KDF_MISMATCH</span>              <span class="op">=</span> <span class="number">0x00004011</span>,   <span class="comment">/* Key derivation function doesn&#39;t match during key exchange */</span>
         <span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span>     <span class="op">=</span> <span class="number">0x00004012</span>,   <span class="comment">/* EPID Provisioning failed due to platform not recognized by backend server*/</span>
-
+    
         <span class="comment">/* SGX errors are only used in the file API when there is no appropriate EXXX (EINVAL, EIO etc.) error code */</span>
         <span class="ident">SGX_ERROR_FILE_BAD_STATUS</span>               <span class="op">=</span> <span class="number">0x00007001</span>,	<span class="comment">/* The file is in bad status, run sgx_clearerr to try and fix it */</span>
         <span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span>                <span class="op">=</span> <span class="number">0x00007002</span>,	<span class="comment">/* The Key ID field is all zeros, can&#39;t re-generate the encryption key */</span>
@@ -385,6 +525,144 @@
         <span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span>          <span class="op">=</span> <span class="number">0x00007007</span>,	<span class="comment">/* When openeing the file, recovery is needed, but the recovery process failed */</span>
         <span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span>             <span class="op">=</span> <span class="number">0x00007008</span>,	<span class="comment">/* fflush operation (to disk) failed (only used when no EXXX is returned) */</span>
         <span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span>             <span class="op">=</span> <span class="number">0x00007009</span>,	<span class="comment">/* fclose operation (to disk) failed (only used when no EXXX is returned) */</span>
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">sgx_status_t</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">__description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="string">&quot;Success.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNEXPECTED</span> <span class="op">=&gt;</span> <span class="string">&quot;Unexpected error occurred.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span> <span class="op">=&gt;</span> <span class="string">&quot;The parameter is incorrect.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_MEMORY</span> <span class="op">=&gt;</span> <span class="string">&quot;Not enough memory is available to complete this operation.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ENCLAVE_LOST</span> <span class="op">=&gt;</span> <span class="string">&quot;Enclave lost after power transition or used in child process created.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_STATE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX API is invoked in incorrect order or state.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_FUNCTION</span> <span class="op">=&gt;</span> <span class="string">&quot;The ecall/ocall index is invalid.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_TCS</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave is out of TCS.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ENCLAVE_CRASHED</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave is crashed.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ECALL_NOT_ALLOWED</span> <span class="op">=&gt;</span> <span class="string">&quot;The ECALL is not allowed at this time.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OCALL_NOT_ALLOWED</span> <span class="op">=&gt;</span> <span class="string">&quot;The OCALL is not allowed at this time.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_STACK_OVERRUN</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave is running out of stack.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNDEFINED_SYMBOL</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave image has undefined symbol.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ENCLAVE</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave image is not correct.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ENCLAVE_ID</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave id is invalid.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_SIGNATURE</span> <span class="op">=&gt;</span> <span class="string">&quot;The signature is invalid.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NDEBUG_ENCLAVE</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave can not be created as debuggable enclave.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_EPC</span> <span class="op">=&gt;</span> <span class="string">&quot;Not enough EPC is available to load the enclave.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NO_DEVICE</span> <span class="op">=&gt;</span> <span class="string">&quot;Can&#39;t open SGX device.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MEMORY_MAP_CONFLICT</span> <span class="op">=&gt;</span> <span class="string">&quot;Page mapping failed in driver.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_METADATA</span> <span class="op">=&gt;</span> <span class="string">&quot;The metadata is incorrect.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_DEVICE_BUSY</span> <span class="op">=&gt;</span> <span class="string">&quot;Device is busy, mostly EINIT failed.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_VERSION</span> <span class="op">=&gt;</span> <span class="string">&quot;Enclave version was invalid.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MODE_INCOMPATIBLE</span> <span class="op">=&gt;</span> <span class="string">&quot;The target enclave mode is incompatible with the mode of current uRTS.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ENCLAVE_FILE_ACCESS</span> <span class="op">=&gt;</span> <span class="string">&quot;Can&#39;t open enclave file.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_MISC</span> <span class="op">=&gt;</span> <span class="string">&quot;The MiscSelct/MiscMask settings are not correct.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;Indicates verification error for reports, sealed datas, etc.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ATTRIBUTE</span> <span class="op">=&gt;</span> <span class="string">&quot;The enclave is not authorized.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_CPUSVN</span> <span class="op">=&gt;</span> <span class="string">&quot;The cpu svn is beyond platform&#39;s cpu svn value.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ISVSVN</span> <span class="op">=&gt;</span> <span class="string">&quot;The isv svn is greater than the enclave&#39;s isv svn.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_KEYNAME</span> <span class="op">=&gt;</span> <span class="string">&quot;The key name is an unsupported value.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_SERVICE_UNAVAILABLE</span> <span class="op">=&gt;</span> <span class="string">&quot;Indicates aesm didn&#39;t response or the requested service is not supported.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_SERVICE_TIMEOUT</span> <span class="op">=&gt;</span> <span class="string">&quot;The request to aesm time out.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_AE_INVALID_EPIDBLOB</span> <span class="op">=&gt;</span> <span class="string">&quot;Indicates epid blob verification error.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_SERVICE_INVALID_PRIVILEGE</span> <span class="op">=&gt;</span> <span class="string">&quot;Enclave has no privilege to get launch token.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_EPID_MEMBER_REVOKED</span> <span class="op">=&gt;</span> <span class="string">&quot;The EPID group membership is revoked.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UPDATE_NEEDED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX needs to be updated.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NETWORK_FAILURE</span> <span class="op">=&gt;</span> <span class="string">&quot;Network connecting or proxy setting issue is encountered.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_AE_SESSION_INVALID</span> <span class="op">=&gt;</span> <span class="string">&quot;Session is invalid or ended by server.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_BUSY</span> <span class="op">=&gt;</span> <span class="string">&quot;The requested service is temporarily not availabe.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_NOT_FOUND</span> <span class="op">=&gt;</span> <span class="string">&quot;The Monotonic Counter doesn&#39;t exist or has been invalided.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_NO_ACCESS_RIGHT</span> <span class="op">=&gt;</span> <span class="string">&quot;Caller doesn&#39;t have the access right to specified VMC.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_USED_UP</span> <span class="op">=&gt;</span> <span class="string">&quot;Monotonic counters are used out.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_OVER_QUOTA</span> <span class="op">=&gt;</span> <span class="string">&quot;Monotonic counters exceeds quota limitation.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_KDF_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;Key derivation function doesn&#39;t match during key exchange.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span> <span class="op">=&gt;</span> <span class="string">&quot;EPID Provisioning failed due to platform not recognized by backend server.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_BAD_STATUS</span> <span class="op">=&gt;</span> <span class="string">&quot;The file is in bad status.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span> <span class="op">=&gt;</span> <span class="string">&quot;The Key ID field is all zeros, can&#39;t regenerate the encryption key.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NAME_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;The current file name is different then the original file name.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NOT_SGX_FILE</span> <span class="op">=&gt;</span> <span class="string">&quot;The file is not an SGX file.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CANT_OPEN_RECOVERY_FILE</span> <span class="op">=&gt;</span> <span class="string">&quot;A recovery file can&#39;t be opened, so flush operation can&#39;t continue.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CANT_WRITE_RECOVERY_FILE</span> <span class="op">=&gt;</span> <span class="string">&quot;A recovery file can&#39;t be written, so flush operation can&#39;t continue.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span> <span class="op">=&gt;</span> <span class="string">&quot;When openeing the file, recovery is needed, but the recovery process failed.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;fflush operation failed.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;fclose operation failed.&quot;</span>,
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">as_str</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_SUCCESS.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNEXPECTED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_UNEXPECTED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_PARAMETER&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_MEMORY</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_OUT_OF_MEMORY&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ENCLAVE_LOST</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_ENCLAVE_LOST&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_STATE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_STATE&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_FUNCTION</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_FUNCTION&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_TCS</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_OUT_OF_TCS&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ENCLAVE_CRASHED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_ENCLAVE_CRASHED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ECALL_NOT_ALLOWED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_ECALL_NOT_ALLOWED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OCALL_NOT_ALLOWED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_OCALL_NOT_ALLOWED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_STACK_OVERRUN</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_STACK_OVERRUN&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNDEFINED_SYMBOL</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_UNDEFINED_SYMBOL&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ENCLAVE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_ENCLAVE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ENCLAVE_ID</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_ENCLAVE_ID&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_SIGNATURE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_SIGNATURE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NDEBUG_ENCLAVE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_NDEBUG_ENCLAVE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_OUT_OF_EPC</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_OUT_OF_EPC&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NO_DEVICE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_NO_DEVICE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MEMORY_MAP_CONFLICT</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MEMORY_MAP_CONFLICT&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_METADATA</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_METADATA&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_DEVICE_BUSY</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_DEVICE_BUSY&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_VERSION</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_VERSION&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MODE_INCOMPATIBLE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MODE_INCOMPATIBLE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_ENCLAVE_FILE_ACCESS</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_ENCLAVE_FILE_ACCESS&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_MISC</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_MISC&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MAC_MISMATCH&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ATTRIBUTE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_ATTRIBUTE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_CPUSVN</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_CPUSVN&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ISVSVN</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_ISVSVN&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_KEYNAME</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_INVALID_KEYNAME&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_SERVICE_UNAVAILABLE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_SERVICE_UNAVAILABLE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_SERVICE_TIMEOUT</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_SERVICE_TIMEOUT&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_AE_INVALID_EPIDBLOB</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_AE_INVALID_EPIDBLOB&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_SERVICE_INVALID_PRIVILEGE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_SERVICE_INVALID_PRIVILEGE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_EPID_MEMBER_REVOKED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_EPID_MEMBER_REVOKED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UPDATE_NEEDED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_UPDATE_NEEDED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NETWORK_FAILURE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_NETWORK_FAILURE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_AE_SESSION_INVALID</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_AE_SESSION_INVALID&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_BUSY</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_BUSY&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_NOT_FOUND</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MC_NOT_FOUND&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_NO_ACCESS_RIGHT</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MC_NO_ACCESS_RIGHT&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_USED_UP</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MC_USED_UP&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MC_OVER_QUOTA</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_MC_OVER_QUOTA&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_KDF_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_KDF_MISMATCH&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_UNRECOGNIZED_PLATFORM&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_BAD_STATUS</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_BAD_STATUS&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_NO_KEY_ID&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NAME_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_NAME_MISMATCH&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NOT_SGX_FILE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_NOT_SGX_FILE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CANT_OPEN_RECOVERY_FILE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_CANT_OPEN_RECOVERY_FILE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CANT_WRITE_RECOVERY_FILE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_CANT_WRITE_RECOVERY_FILE&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_RECOVERY_NEEDED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_FLUSH_FAILED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_CLOSE_FAILED&quot;</span>,
+        }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="ident">sgx_status_t</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;{}&quot;</span>, <span class="self">self</span>.<span class="ident">as_str</span>())
     }
 }
 
