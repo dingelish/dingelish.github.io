@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='../../index.html'>sgx_tstd</a>::<wbr><a href='../index.html'>sync</a>::<wbr><a href='index.html'>atomic</a></p><script>window.sidebarCurrent = {name: 'compiler_fence', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -44,13 +45,12 @@
     </nav>
 
     <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Function <a href='../../index.html'>sgx_tstd</a>::<wbr><a href='../index.html'>sync</a>::<wbr><a href='index.html'>atomic</a>::<wbr><a class="fn" href=''>compiler_fence</a></span><span class='out-of-band'><span class='since' title='Stable since Rust version 1.22.0'>1.22.0</span><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Function <a href='../../index.html'>sgx_tstd</a>::<wbr><a href='../index.html'>sync</a>::<wbr><a href='index.html'>atomic</a>::<wbr><a class="fn" href=''>compiler_fence</a></span><span class='out-of-band'><span class='since' title='Stable since Rust version 1.21.0'>1.21.0</span><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/sync/atomic.rs.html#1756-1767' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/sync/atomic.rs.html#1804-1815' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn compiler_fence(order: <a class="enum" href="../../../sgx_tstd/sync/atomic/enum.Ordering.html" title="enum sgx_tstd::sync::atomic::Ordering">Ordering</a>)</pre><div class='docblock'><p>A compiler memory fence.</p>
-
 <p><code>compiler_fence</code> does not emit any machine code, but restricts the kinds
 of memory re-ordering the compiler is allowed to do. Specifically, depending on
 the given <a href="enum.Ordering.html"><code>Ordering</code></a> semantics, the compiler may be disallowed from moving reads
@@ -59,16 +59,13 @@ or writes from before or after the call to the other side of the call to
 from doing such re-ordering. This is not a problem in a single-threaded,
 execution context, but when other threads may modify memory at the same
 time, stronger synchronization primitives such as <a href="fn.fence.html"><code>fence</code></a> are required.</p>
-
 <p>The re-ordering prevented by the different ordering semantics are:</p>
-
 <ul>
 <li>with <a href="enum.Ordering.html#variant.SeqCst"><code>SeqCst</code></a>, no re-ordering of reads and writes across this point is allowed.</li>
 <li>with <a href="enum.Ordering.html#variant.Release"><code>Release</code></a>, preceding reads and writes cannot be moved past subsequent writes.</li>
 <li>with <a href="enum.Ordering.html#variant.Acquire"><code>Acquire</code></a>, subsequent reads and writes cannot be moved ahead of preceding reads.</li>
 <li>with <a href="enum.Ordering.html#variant.AcqRel"><code>AcqRel</code></a>, both of the above rules are enforced.</li>
 </ul>
-
 <p><code>compiler_fence</code> is generally only useful for preventing a thread from
 racing <em>with itself</em>. That is, if a given thread is executing one piece
 of code, and is then interrupted, and starts executing code elsewhere
@@ -76,13 +73,11 @@ of code, and is then interrupted, and starts executing code elsewhere
 core). In traditional programs, this can only occur when a signal
 handler is registered. In more low-level code, such situations can also
 arise when handling interrupts, when implementing green threads with
-pre-emption, etc. Curious readers are encouraged to read the Linux kernel&#39;s
+pre-emption, etc. Curious readers are encouraged to read the Linux kernel's
 discussion of <a href="https://www.kernel.org/doc/Documentation/memory-barriers.txt">memory barriers</a>.</p>
-
-<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
+<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>
 <p>Panics if <code>order</code> is <a href="enum.Ordering.html#variant.Relaxed"><code>Relaxed</code></a>.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>Without <code>compiler_fence</code>, the <code>assert_eq!</code> in following code
 is <em>not</em> guaranteed to succeed, despite everything happening in a single thread.
 To see why, remember that the compiler is free to swap the stores to
@@ -130,13 +125,15 @@ Using a <code>compiler_fence</code> remedies this situation.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

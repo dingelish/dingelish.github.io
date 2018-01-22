@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Crate sgx_tservice</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tservice', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_tservice</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tservice', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
     <nav class="sub">
@@ -48,13 +49,11 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tservice/lib.rs.html#29-46' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'>
-<h1 id='trust-service-library' class='section-header'><a href='#trust-service-library'>Trust Service Library</a></h1>
+               </span><a class='srclink' href='../src/sgx_tservice/lib.rs.html#29-44' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><h1 id="trust-service-library" class="section-header"><a href="#trust-service-library">Trust Service Library</a></h1>
 <p>The Intel(R) Software Guard Extensions SDK provides a trusted library named
 sgx_tservice for secure data manipulation and protection. The sgx_tservice library
 provides the following modules:</p>
-
 <p><strong>Trust Platform Service Functions</strong></p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -63,6 +62,23 @@ provides the following modules:</p>
                                   title='struct sgx_tservice::SgxMonotonicCounter'>SgxMonotonicCounter</a></td>
                            <td class='docblock-short'>
                                 <p>Monotonic counter ID</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SgxTime.html"
+                                  title='struct sgx_tservice::SgxTime'>SgxTime</a></td>
+                           <td class='docblock-short'>
+                                <p>timestamp contains time in seconds and source_nonce contains nonce associate with the time.</p>
+
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.SgxTimeError.html"
+                                  title='enum sgx_tservice::SgxTimeError'>SgxTimeError</a></td>
+                           <td class='docblock-short'>
+                                
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -71,6 +87,7 @@ provides the following modules:</p>
                                   title='fn sgx_tservice::rsgx_close_pse_session'>rsgx_close_pse_session</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_close_pse_session closes a session created by rsgx_create_pse_ session.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -78,6 +95,7 @@ provides the following modules:</p>
                                   title='fn sgx_tservice::rsgx_create_pse_session'>rsgx_create_pse_session</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_create_pse_session creates a session with the PSE.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -85,6 +103,7 @@ provides the following modules:</p>
                                   title='fn sgx_tservice::rsgx_get_ps_sec_prop'>rsgx_get_ps_sec_prop</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_ps_sec_prop gets a data structure describing the security property of the platform service.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -92,13 +111,15 @@ provides the following modules:</p>
                                   title='fn sgx_tservice::rsgx_get_ps_sec_prop_ex'>rsgx_get_ps_sec_prop_ex</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_ps_sec_prop_ex gets a data structure describing the security property of the platform service.</p>
+
                            </td>
-                       </tr>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
                        <tr class=' module-item'>
-                           <td><a class="fn" href="fn.rsgx_get_trusted_time.html"
-                                  title='fn sgx_tservice::rsgx_get_trusted_time'>rsgx_get_trusted_time</a></td>
+                           <td><a class="type" href="type.Duration.html"
+                                  title='type sgx_tservice::Duration'>Duration</a></td>
                            <td class='docblock-short'>
-                                <p>rsgx_get_trusted_time gets trusted time from the AE service.</p>
+                                
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -117,13 +138,15 @@ provides the following modules:</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct AssertUnwindSafe</p><div class="block items"><ul><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>panic</a></p><script>window.sidebarCurrent = {name: 'AssertUnwindSafe', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Struct AssertUnwindSafe</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-UnwindSafe">UnwindSafe</a><a href="#impl-RefUnwindSafe">RefUnwindSafe</a><a href="#impl-Deref">Deref</a><a href="#impl-DerefMut">DerefMut</a><a href="#impl-FnOnce%3C()%3E">FnOnce&lt;()&gt;</a><a href="#impl-Debug">Debug</a></div></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>panic</a></p><script>window.sidebarCurrent = {name: 'AssertUnwindSafe', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -50,7 +51,6 @@
                    </a>
                </span><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#139-141' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct AssertUnwindSafe&lt;T&gt;(pub T);</pre><div class='docblock'><p>A simple wrapper around a type to assert that it is unwind safe.</p>
-
 <p>When using <code>catch_unwind</code> it may be the case that some of the closed over
 variables are not unwind safe. For example if <code>&amp;mut T</code> is captured the
 compiler will generate a warning indicating that it is not unwind safe. It
@@ -72,14 +72,14 @@ annotation that a variable is indeed unwind safe.</p>
 </div></div><h3 id='impl-DerefMut' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/ops/trait.DerefMut.html" title="trait sgx_tstd::ops::DerefMut">DerefMut</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-DerefMut' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#211-215' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.deref_mut' class="method"><span id='deref_mut.v' class='invisible'><code>fn <a href='../../sgx_tstd/ops/trait.DerefMut.html#tymethod.deref_mut' class='fnname'>deref_mut</a>(&amp;mut self) -&gt; &amp;mut T</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#212-214' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Mutably dereferences the value.</p>
-</div></div><h3 id='impl-FnOnce&lt;()&gt;' class='impl'><span class='in-band'><code>impl&lt;R, F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() -&gt; R&gt; <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;()&gt; for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;F&gt;</code><a href='#impl-FnOnce&lt;()&gt;' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#217-223' title='goto source code'>[src]</a></span></h3>
+</div></div><h3 id='impl-FnOnce%3C()%3E' class='impl'><span class='in-band'><code>impl&lt;R, F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() -&gt; R&gt; <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;()&gt; for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;F&gt;</code><a href='#impl-FnOnce%3C()%3E' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#217-223' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='associatedtype.Output' class="type"><span id='Output.t' class='invisible'><code>type <a href='../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output' class="type">Output</a> = R</code></span></h4>
 <div class='docblock'><p>The returned type after the call operator is used.</p>
 </div><h4 id='method.call_once' class="method"><span id='call_once.v' class='invisible'><code>extern &quot;rust-call&quot; fn <a href='../../sgx_tstd/ops/trait.FnOnce.html#tymethod.call_once' class='fnname'>call_once</a>(self, _args: ()) -&gt; R</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#220-222' title='goto source code'>[src]</a></span></h4>
 <div class='stability'><div class='stab unstable'><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>fn_traits</code>)</div></div><div class='docblock'><p>Performs the call operation.</p>
 </div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a>&gt; <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#225-231' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#226-230' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Formats the value using the given formatter.</p>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -97,13 +97,15 @@ annotation that a variable is indeed unwind safe.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

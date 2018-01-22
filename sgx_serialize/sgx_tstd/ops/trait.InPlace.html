@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait InPlace</p><div class="block items"><ul><li><a href="#associated-types">Associated Types</a></li><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'InPlace', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait InPlace</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Owner">Owner</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.finalize">finalize</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'InPlace', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -59,7 +60,6 @@
             </h2>
             <div class='methods'>
         <h3 id='associatedtype.Owner' class='method'><span id='Owner.t' class='invisible'><code>type <a href='#associatedtype.Owner' class="type">Owner</a></code></span></h3><div class='stability'><div class='stab unstable'><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>placement_new_protocol</code>)</div></div><div class='docblock'><p><code>Owner</code> is the type of the end value of <code>PLACE &lt;- EXPR</code></p>
-
 <p>Note that when <code>PLACE &lt;- EXPR</code> is solely used for
 side-effecting an existing data-structure,
 e.g. <code>Vec::emplace_back</code>, then <code>Owner</code> need not carry any
@@ -78,14 +78,14 @@ the returned instance of <code>Owner</code> and forgetting self.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/linked_list/struct.FrontPlace.html" title="struct sgx_tstd::collections::linked_list::FrontPlace">FrontPlace</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = ();</span></code></li>
-<li><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for sgx_tstd::vec::<a class="struct" href="../../sgx_tstd/vec/struct.PlaceBack.html" title="struct sgx_tstd::vec::PlaceBack">PlaceBack</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a mut T;</span></code></li>
-<li><code>impl&lt;T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.IntermediateBox.html" title="struct sgx_tstd::boxed::IntermediateBox">IntermediateBox</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;;</span></code></li>
-<li><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for sgx_tstd::collections::vec_deque::<a class="struct" href="../../sgx_tstd/collections/vec_deque/struct.PlaceBack.html" title="struct sgx_tstd::collections::vec_deque::PlaceBack">PlaceBack</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a mut T;</span></code></li>
-<li><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/vec_deque/struct.PlaceFront.html" title="struct sgx_tstd::collections::vec_deque::PlaceFront">PlaceFront</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a mut T;</span></code></li>
-<li><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/linked_list/struct.BackPlace.html" title="struct sgx_tstd::collections::linked_list::BackPlace">BackPlace</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = ();</span></code></li>
-<li><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/binary_heap/struct.BinaryHeapPlace.html" title="struct sgx_tstd::collections::binary_heap::BinaryHeapPlace">BinaryHeapPlace</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a> + <a class="trait" href="../../sgx_tstd/cmp/trait.Ord.html" title="trait sgx_tstd::cmp::Ord">Ord</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a T;</span></code></li>
-<li><code>impl&lt;'a, K, V&gt; InPlace&lt;V&gt; for <a class="struct" href="../../sgx_tstd/collections/hash_map/struct.EntryPlace.html" title="struct sgx_tstd::collections::hash_map::EntryPlace">EntryPlace</a>&lt;'a, K, V&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = ();</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec_deque.rs.html#2576-2584' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for sgx_tstd::collections::vec_deque::<a class="struct" href="../../sgx_tstd/collections/vec_deque/struct.PlaceBack.html" title="struct sgx_tstd::collections::vec_deque::PlaceBack">PlaceBack</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a mut T;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/linked_list.rs.html#1353-1360' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/linked_list/struct.BackPlace.html" title="struct sgx_tstd::collections::linked_list::BackPlace">BackPlace</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = ();</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/linked_list.rs.html#1298-1305' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/linked_list/struct.FrontPlace.html" title="struct sgx_tstd::collections::linked_list::FrontPlace">FrontPlace</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = ();</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/binary_heap.rs.html#1224-1236' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/binary_heap/struct.BinaryHeapPlace.html" title="struct sgx_tstd::collections::binary_heap::BinaryHeapPlace">BinaryHeapPlace</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a> + <a class="trait" href="../../sgx_tstd/cmp/trait.Ord.html" title="trait sgx_tstd::cmp::Ord">Ord</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a T;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#189-194' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.IntermediateBox.html" title="struct sgx_tstd::boxed::IntermediateBox">IntermediateBox</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec_deque.rs.html#2623-2630' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for <a class="struct" href="../../sgx_tstd/collections/vec_deque/struct.PlaceFront.html" title="struct sgx_tstd::collections::vec_deque::PlaceFront">PlaceFront</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a mut T;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec.rs.html#2556-2564' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; InPlace&lt;T&gt; for sgx_tstd::vec::<a class="struct" href="../../sgx_tstd/vec/struct.PlaceBack.html" title="struct sgx_tstd::vec::PlaceBack">PlaceBack</a>&lt;'a, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = &amp;'a mut T;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/collections/hash/map.rs.html#1471-1477' title='goto source code'>[src]</a></div><code>impl&lt;'a, K, V&gt; InPlace&lt;V&gt; for <a class="struct" href="../../sgx_tstd/collections/hash_map/struct.EntryPlace.html" title="struct sgx_tstd::collections::hash_map::EntryPlace">EntryPlace</a>&lt;'a, K, V&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Owner' class="type">Owner</a> = ();</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/ops/place/trait.InPlace.js">
                  </script></section>
@@ -105,13 +105,15 @@ the returned instance of <code>Owner</code> and forgetting self.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

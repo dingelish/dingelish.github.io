@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait FnBox</p><div class="block items"><ul><li><a href="#associated-types">Associated Types</a></li><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>boxed</a></p><script>window.sidebarCurrent = {name: 'FnBox', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait FnBox</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Output">Output</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.call_box">call_box</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>boxed</a></p><script>window.sidebarCurrent = {name: 'FnBox', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#714-718' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#803-807' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait FnBox&lt;A&gt; {
     type <a href='#associatedtype.Output' class="type">Output</a>;
     fn <a href='#tymethod.call_box' class='fnname'>call_box</a>(self: <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;Self&gt;, args: A) -&gt; Self::<a class="type" href="../../sgx_tstd/boxed/trait.FnBox.html#associatedtype.Output" title="type sgx_tstd::boxed::FnBox::Output">Output</a>;
@@ -60,8 +61,7 @@ closure objects. The idea is that where one would normally store a
 that a <code>FnBox</code> closure can only be called if it is boxed. (Note
 that <code>FnBox</code> may be deprecated in the future if <code>Box&lt;FnOnce()&gt;</code>
 closures become directly usable.)</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>Here is a snippet of code which creates a hashmap full of boxed
 once closures and then removes them one by one, calling each
 closure as it is removed. Note that the type of the closures
@@ -104,7 +104,7 @@ stored in the map is <code>Box&lt;FnBox() -&gt; i32&gt;</code> and not <code>Box
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;A, F&gt; FnBox&lt;A&gt; for F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#811-819' title='goto source code'>[src]</a></div><code>impl&lt;A, F&gt; FnBox&lt;A&gt; for F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/alloc/boxed/trait.FnBox.js">
                  </script></section>
@@ -124,13 +124,15 @@ stored in the map is <code>Box&lt;FnBox() -&gt; i32&gt;</code> and not <code>Box
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

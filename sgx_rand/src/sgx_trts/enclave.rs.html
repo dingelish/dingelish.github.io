@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `../sgx_trts/src/enclave.rs`.">
+    <meta name="description" content="Source to the Rust file `..-icode/sgx_trts/src/enclave.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>enclave.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -417,9 +418,8 @@
 <span id="372">372</span>
 <span id="373">373</span>
 <span id="374">374</span>
-<span id="375">375</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -469,8 +469,6 @@
     <span class="ident">heap_offset</span>: <span class="ident">usize</span>,
     <span class="ident">heap_size</span>: <span class="ident">usize</span>,
     <span class="ident">thread_policy</span>: <span class="ident">u32</span>,
-    <span class="ident">reserved</span>: <span class="ident">u32</span>,
-    <span class="ident">td_template</span>: <span class="ident">thread_data_t</span>,
 }
 
 <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">C</span>)]</span>
@@ -482,13 +480,14 @@
     <span class="ident">first_ssa_gpr</span>: <span class="ident">usize</span>,
     <span class="ident">stack_guard</span>: <span class="ident">usize</span>,
     <span class="ident">reserved</span>: <span class="ident">usize</span>,
-    <span class="ident">ssa_frame_size</span>: <span class="ident">usize</span>,
+    <span class="ident">xsave_size</span>: <span class="ident">usize</span>,
     <span class="ident">last_error</span>: <span class="ident">usize</span>,
     <span class="ident">m_next</span>: <span class="ident">usize</span>,
     <span class="ident">tls_addr</span>: <span class="ident">usize</span>,
     <span class="ident">tls_array</span>: <span class="ident">usize</span>,
     <span class="ident">exception_flag</span>: <span class="ident">usize</span>,
     <span class="ident">cxx_thread_info</span>: [<span class="ident">usize</span>; <span class="number">6</span>],
+    <span class="ident">stack_commit_addr</span>: <span class="ident">usize</span>,
 }
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>)]</span>
@@ -592,7 +591,7 @@
     <span class="ident">stack_limit_addr</span>: <span class="ident">usize</span>,
     <span class="ident">first_ssa_gpr</span>: <span class="ident">usize</span>,
     <span class="ident">stack_guard</span>: <span class="ident">usize</span>,
-    <span class="ident">ssa_frame_size</span>: <span class="ident">usize</span>,
+    <span class="ident">xsave_size</span>: <span class="ident">usize</span>,
     <span class="ident">last_error</span>: <span class="ident">usize</span>,
     <span class="ident">tls_addr</span>: <span class="ident">usize</span>,
     <span class="ident">tls_array</span>: <span class="ident">usize</span>,
@@ -621,7 +620,7 @@
             <span class="ident">stack_limit_addr</span>: <span class="ident">td</span>.<span class="ident">stack_limit_addr</span>,
             <span class="ident">first_ssa_gpr</span>: <span class="ident">td</span>.<span class="ident">first_ssa_gpr</span>,
             <span class="ident">stack_guard</span>: <span class="ident">td</span>.<span class="ident">stack_guard</span>,
-            <span class="ident">ssa_frame_size</span>: <span class="ident">td</span>.<span class="ident">ssa_frame_size</span>,
+            <span class="ident">xsave_size</span>: <span class="ident">td</span>.<span class="ident">xsave_size</span>,
             <span class="ident">last_error</span>: <span class="ident">td</span>.<span class="ident">last_error</span>,
             <span class="ident">tls_addr</span>: <span class="ident">td</span>.<span class="ident">tls_addr</span>,
             <span class="ident">tls_array</span>: <span class="ident">td</span>.<span class="ident">tls_array</span>,
@@ -812,13 +811,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

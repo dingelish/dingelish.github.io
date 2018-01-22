@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -742,8 +743,27 @@
 <span id="697">697</span>
 <span id="698">698</span>
 <span id="699">699</span>
+<span id="700">700</span>
+<span id="701">701</span>
+<span id="702">702</span>
+<span id="703">703</span>
+<span id="704">704</span>
+<span id="705">705</span>
+<span id="706">706</span>
+<span id="707">707</span>
+<span id="708">708</span>
+<span id="709">709</span>
+<span id="710">710</span>
+<span id="711">711</span>
+<span id="712">712</span>
+<span id="713">713</span>
+<span id="714">714</span>
+<span id="715">715</span>
+<span id="716">716</span>
+<span id="717">717</span>
+<span id="718">718</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -771,7 +791,8 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">sgx_types</span>::{<span class="ident">SysError</span>, <span class="ident">sgx_thread_t</span>, <span class="ident">SGX_THREAD_T_NULL</span>};
+<span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">libc</span>;
 <span class="kw">use</span> <span class="ident">panic</span>::{<span class="ident">UnwindSafe</span>, <span class="ident">RefUnwindSafe</span>};
 <span class="kw">use</span> <span class="ident">thread</span>;
 <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">mutex</span>::<span class="ident">SgxThreadMutex</span>;
@@ -783,7 +804,6 @@
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">fmt</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ops</span>::{<span class="ident">Deref</span>, <span class="ident">DerefMut</span>};
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">marker</span>;
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">boxed</span>::<span class="ident">Box</span>;
 
 <span class="kw">struct</span> <span class="ident">RwLockInfo</span> {
@@ -817,7 +837,7 @@
         <span class="self">self</span>.<span class="ident">spinlock</span>.<span class="ident">lock</span>();
         {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">busy</span> <span class="op">==</span> <span class="ident">u32</span>::<span class="ident">max_value</span>() {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>);
             } <span class="kw">else</span> {
                 <span class="self">self</span>.<span class="ident">busy</span> <span class="op">+=</span> <span class="number">1</span>;
                 <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Ok</span>(());
@@ -833,7 +853,7 @@
         <span class="self">self</span>.<span class="ident">spinlock</span>.<span class="ident">lock</span>();
         {
             <span class="kw">if</span> <span class="self">self</span>.<span class="ident">busy</span> <span class="op">==</span> <span class="number">0</span> {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>);
             } <span class="kw">else</span> {
                 <span class="self">self</span>.<span class="ident">busy</span> <span class="op">-=</span> <span class="number">1</span>;
                 <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Ok</span>(());
@@ -876,14 +896,14 @@
                 
                 <span class="ident">rwlockinfo</span>.<span class="ident">mutex</span>.<span class="ident">unlock</span>();
                 <span class="ident">rwlockinfo</span>.<span class="ident">deref_busy</span>();
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">EDEADLK</span>);
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EDEADLK</span>);
             }
 
             <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">readers_num</span> <span class="op">==</span> <span class="ident">u32</span>::<span class="ident">max_value</span>() {
 
                 <span class="ident">rwlockinfo</span>.<span class="ident">mutex</span>.<span class="ident">unlock</span>();
                 <span class="ident">rwlockinfo</span>.<span class="ident">deref_busy</span>();
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>);
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>);
             }
 
             <span class="kw">while</span> <span class="ident">rwlockinfo</span>.<span class="ident">writers_num</span> <span class="op">&gt;</span> <span class="number">0</span> {
@@ -913,13 +933,13 @@
         {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Ok</span>(());
             <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">writer_thread</span> <span class="op">==</span> <span class="ident">thread</span>::<span class="ident">rsgx_thread_self</span>() {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EDEADLK</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EDEADLK</span>);
             } 
             <span class="kw">else</span> <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">readers_num</span> <span class="op">==</span> <span class="ident">u32</span>::<span class="ident">max_value</span>() {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>);
             }
             <span class="kw">else</span> <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">writers_num</span> <span class="op">&gt;</span> <span class="number">0</span> {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EBUSY</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EBUSY</span>);
             }
 
             <span class="kw">match</span> <span class="ident">ret</span> {
@@ -954,14 +974,14 @@
                 
                 <span class="ident">rwlockinfo</span>.<span class="ident">mutex</span>.<span class="ident">unlock</span>();
                 <span class="ident">rwlockinfo</span>.<span class="ident">deref_busy</span>();
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">EDEADLK</span>);
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EDEADLK</span>);
             }
 
             <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">writers_num</span> <span class="op">==</span> <span class="ident">u32</span>::<span class="ident">max_value</span>() {
 
                 <span class="ident">rwlockinfo</span>.<span class="ident">mutex</span>.<span class="ident">unlock</span>();
                 <span class="ident">rwlockinfo</span>.<span class="ident">deref_busy</span>();
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>);
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>);
             }
 
             <span class="ident">rwlockinfo</span>.<span class="ident">writers_num</span> <span class="op">+=</span> <span class="number">1</span>;
@@ -997,13 +1017,13 @@
         {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Ok</span>(());
             <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">writer_thread</span> <span class="op">==</span> <span class="ident">thread</span>::<span class="ident">rsgx_thread_self</span>() {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EDEADLK</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EDEADLK</span>);
             } 
             <span class="kw">else</span> <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">writers_num</span> <span class="op">==</span> <span class="ident">u32</span>::<span class="ident">max_value</span>() {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>);
             }
             <span class="kw">else</span> <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">readers_num</span> <span class="op">&gt;</span> <span class="number">0</span> <span class="op">||</span> <span class="ident">rwlockinfo</span>.<span class="ident">writer_thread</span> <span class="op">!=</span> <span class="ident">SGX_THREAD_T_NULL</span> {
-                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">EBUSY</span>);
+                <span class="ident">ret</span> <span class="op">=</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EBUSY</span>);
             }
 
             <span class="kw">match</span> <span class="ident">ret</span> {
@@ -1051,7 +1071,7 @@
             } <span class="kw">else</span> {
                 <span class="kw">if</span> <span class="ident">rwlockinfo</span>.<span class="ident">writer_thread</span> <span class="op">!=</span> <span class="ident">thread</span>::<span class="ident">rsgx_thread_self</span>() {
                     <span class="ident">rwlockinfo</span>.<span class="ident">mutex</span>.<span class="ident">unlock</span>();
-                    <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">EPERM</span>);
+                    <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EPERM</span>);
                 }
 
                 <span class="ident">rwlockinfo</span>.<span class="ident">writers_num</span> <span class="op">-=</span> <span class="number">1</span>;
@@ -1078,7 +1098,7 @@
                <span class="ident">rwlockinfo</span>.<span class="ident">busy</span> <span class="op">&gt;</span> <span class="number">0</span> {
 
                 <span class="ident">rwlockinfo</span>.<span class="ident">spinlock</span>.<span class="ident">unlock</span>();
-                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">EBUSY</span>);
+                <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EBUSY</span>);
             }
 
             <span class="ident">rwlockinfo</span>.<span class="ident">cond</span>.<span class="ident">destroy</span>();
@@ -1120,7 +1140,7 @@
     <span class="ident">data</span>: <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">Send</span><span class="op">&gt;</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">UnwindSafe</span> <span class="kw">for</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
@@ -1165,8 +1185,8 @@
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">read</span>();
             <span class="kw">match</span> <span class="ident">ret</span> {
-                <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock maximum reader count exceeded&quot;</span>),
-                <span class="prelude-val">Err</span>(<span class="ident">EDEADLK</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock read lock would result in deadlock&quot;</span>),
+                <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock maximum reader count exceeded&quot;</span>),
+                <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EDEADLK</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock read lock would result in deadlock&quot;</span>),
                 _ <span class="op">=&gt;</span> <span class="ident">SgxRwLockReadGuard</span>::<span class="ident">new</span>(<span class="self">self</span>),
             }
         }
@@ -1221,8 +1241,8 @@
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">write</span>();
             <span class="kw">match</span> <span class="ident">ret</span> {
-                <span class="prelude-val">Err</span>(<span class="ident">EAGAIN</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock maximum writer count exceeded&quot;</span>),
-                <span class="prelude-val">Err</span>(<span class="ident">EDEADLK</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock write lock would result in deadlock&quot;</span>),
+                <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EAGAIN</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock maximum writer count exceeded&quot;</span>),
+                <span class="prelude-val">Err</span>(<span class="ident">libc</span>::<span class="ident">EDEADLK</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;rwlock write lock would result in deadlock&quot;</span>),
                 _ <span class="op">=&gt;</span> <span class="ident">SgxRwLockWriteGuard</span>::<span class="ident">new</span>(<span class="self">self</span>),
             }
         }
@@ -1319,11 +1339,18 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">fmt</span>::<span class="ident">Debug</span><span class="op">&gt;</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">try_read</span>() {
-            <span class="prelude-val">Ok</span>(<span class="ident">guard</span>) <span class="op">=&gt;</span> <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;RwLock {{ data: {:?} }}&quot;</span>, <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">guard</span>),
+            <span class="prelude-val">Ok</span>(<span class="ident">guard</span>) <span class="op">=&gt;</span> <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;RwLock&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;data&quot;</span>, <span class="op">&amp;&amp;</span><span class="kw-2">*</span><span class="ident">guard</span>).<span class="ident">finish</span>(),
             <span class="prelude-val">Err</span>(<span class="ident">TryLockError</span>::<span class="ident">Poisoned</span>(<span class="ident">err</span>)) <span class="op">=&gt;</span> {
-                <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;RwLock {{ data: Poisoned({:?}) }}&quot;</span>, <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">err</span>.<span class="ident">get_ref</span>())
+                <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;RwLock&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;data&quot;</span>, <span class="op">&amp;&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">err</span>.<span class="ident">get_ref</span>()).<span class="ident">finish</span>()
             },
-            <span class="prelude-val">Err</span>(<span class="ident">TryLockError</span>::<span class="ident">WouldBlock</span>) <span class="op">=&gt;</span> <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;RwLock {{ &lt;locked&gt; }}&quot;</span>)
+            <span class="prelude-val">Err</span>(<span class="ident">TryLockError</span>::<span class="ident">WouldBlock</span>) <span class="op">=&gt;</span> {
+                <span class="kw">struct</span> <span class="ident">LockedPlaceholder</span>;
+                <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">LockedPlaceholder</span> {
+                    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> { <span class="ident">f</span>.<span class="ident">write_str</span>(<span class="string">&quot;&lt;locked&gt;&quot;</span>) }
+                }
+
+                <span class="ident">f</span>.<span class="ident">debug_struct</span>(<span class="string">&quot;RwLock&quot;</span>).<span class="ident">field</span>(<span class="string">&quot;data&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">LockedPlaceholder</span>).<span class="ident">finish</span>()
+            }
         }
     }
 }
@@ -1332,6 +1359,16 @@
     <span class="doccomment">/// Creates a new `RwLock&lt;T&gt;`, with the `Default` value for T.</span>
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
         <span class="ident">SgxRwLock</span>::<span class="ident">new</span>(<span class="ident">Default</span>::<span class="ident">default</span>())
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Creates a new instance of an `RwLock&lt;T&gt;` which is unlocked.</span>
+    <span class="doccomment">/// This is equivalent to [`RwLock::new`].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// [`RwLock::new`]: #method.new</span>
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">t</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="ident">SgxRwLock</span>::<span class="ident">new</span>(<span class="ident">t</span>)
     }
 }
 
@@ -1344,7 +1381,8 @@
     <span class="ident">__lock</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="op">!</span><span class="ident">marker</span>::<span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SgxRwLockReadGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="op">!</span><span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SgxRwLockReadGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {}
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">SgxRwLockReadGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="doccomment">/// RAII structure used to release the exclusive write access of a lock when</span>
 <span class="doccomment">/// dropped.</span>
@@ -1356,7 +1394,8 @@
     <span class="ident">__poison</span>: <span class="ident">poison</span>::<span class="ident">Guard</span>,
 }
 
-<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="op">!</span><span class="ident">marker</span>::<span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SgxRwLockWriteGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="op">!</span><span class="ident">Send</span> <span class="kw">for</span> <span class="ident">SgxRwLockWriteGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {}
+<span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span> <span class="op">+</span> <span class="ident">Sync</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">SgxRwLockWriteGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;rwlock</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">SgxRwLockReadGuard</span><span class="op">&lt;</span><span class="lifetime">&#39;rwlock</span>, <span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">lock</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;rwlock</span> <span class="ident">SgxRwLock</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>)
@@ -1459,13 +1498,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

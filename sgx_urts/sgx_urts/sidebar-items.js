@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["rsgx_create_enclave",""],["rsgx_destroy_enclave",""]],"mod":[["backtrace",""],["stdio",""]],"struct":[["SgxEnclave",""]]});
+initSidebarItems({"fn":[["rsgx_create_enclave","Loads the enclave using its file name and initializes it using a launch token."],["rsgx_destroy_enclave","The function destroys an enclave and frees its associated resources."]],"mod":[["backtrace",""],["env",""],["fs",""],["net",""],["stdio",""],["time",""]],"struct":[["SgxEnclave",""]]});

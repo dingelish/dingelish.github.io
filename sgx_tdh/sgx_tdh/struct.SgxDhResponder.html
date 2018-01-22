@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct SgxDhResponder</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>sgx_tdh</a></p><script>window.sidebarCurrent = {name: 'SgxDhResponder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Struct SgxDhResponder</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.init_session">init_session</a><a href="#method.gen_msg1">gen_msg1</a><a href="#method.proc_msg2">proc_msg2</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Copy">Copy</a><a href="#impl-Clone">Clone</a><a href="#impl-Default">Default</a><a href="#impl-ContiguousMemory">ContiguousMemory</a></div></div><p class='location'><a href='index.html'>sgx_tdh</a></p><script>window.sidebarCurrent = {name: 'SgxDhResponder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,128 +49,99 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tdh/dh.rs.html#219-225' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_tdh/dh.rs.html#215-221' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct SgxDhResponder { /* fields omitted */ }</pre><div class='docblock'><p>DH secure session responder</p>
 </div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#241-537' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.init_session' class="method"><span id='init_session.v' class='invisible'><code>pub fn <a href='#method.init_session' class='fnname'>init_session</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#253-255' title='goto source code'>[src]</a></span></h4>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#237-534' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.init_session' class="method"><span id='init_session.v' class='invisible'><code>pub fn <a href='#method.init_session' class='fnname'>init_session</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#249-251' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Initialize DH secure session responder.</p>
-
 <p>Indicates role of responder  the caller plays in the secure session establishment.</p>
-
 <p>The value of role of the responder of the session establishment must be <code>SGX_DH_SESSION_RESPONDER</code>.</p>
-
-<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-</div><h4 id='method.gen_msg1' class="method"><span id='gen_msg1.v' class='invisible'><code>pub fn <a href='#method.gen_msg1' class='fnname'>gen_msg1</a>(&amp;mut self, msg1: &amp;mut <a class="type" href="../sgx_tdh/type.SgxDhMsg1.html" title="type sgx_tdh::SgxDhMsg1">SgxDhMsg1</a>) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#290-318' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.gen_msg1' class="method"><span id='gen_msg1.v' class='invisible'><code>pub fn <a href='#method.gen_msg1' class='fnname'>gen_msg1</a>(&amp;mut self, msg1: &amp;mut <a class="type" href="../sgx_tdh/type.SgxDhMsg1.html" title="type sgx_tdh::SgxDhMsg1">SgxDhMsg1</a>) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#286-314' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Generates MSG1 for the responder of DH secure session establishment and records ECC key pair in session structure.</p>
-
-<h1 id='requirements-1' class='section-header'><a href='#requirements-1'>Requirements</a></h1>
+<h1 id="requirements-1" class="section-header"><a href="#requirements-1">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
 <p><strong>msg1</strong></p>
-
 <p>A pointer to an SgxDhMsg1 msg1 buffer. The buffer holding the msg1
 message, which is referenced by this parameter, must be within the enclave.
 The DH msg1 contains the responder’s public key and report based target
 info.</p>
-
-<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Any of the input parameters is incorrect.</p>
-
 <p><strong>SGX_ERROR_INVALID_STATE</strong></p>
-
 <p>The API is invoked in incorrect order or state.</p>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>An unexpected error occurred.</p>
-</div><h4 id='method.proc_msg2' class="method"><span id='proc_msg2.v' class='invisible'><code>pub fn <a href='#method.proc_msg2' class='fnname'>proc_msg2</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;msg2: &amp;<a class="type" href="../sgx_tdh/type.SgxDhMsg2.html" title="type sgx_tdh::SgxDhMsg2">SgxDhMsg2</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;msg3: &amp;mut <a class="struct" href="../sgx_tdh/struct.SgxDhMsg3.html" title="struct sgx_tdh::SgxDhMsg3">SgxDhMsg3</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;aek: &amp;mut <a class="type" href="../sgx_types/types/type.sgx_key_128bit_t.html" title="type sgx_types::types::sgx_key_128bit_t">sgx_key_128bit_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;initiator_identity: &amp;mut <a class="struct" href="../sgx_types/types/struct.sgx_dh_session_enclave_identity_t.html" title="struct sgx_types::types::sgx_dh_session_enclave_identity_t">sgx_dh_session_enclave_identity_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#386-440' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.proc_msg2' class="method"><span id='proc_msg2.v' class='invisible'><code>pub fn <a href='#method.proc_msg2' class='fnname'>proc_msg2</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;msg2: &amp;<a class="type" href="../sgx_tdh/type.SgxDhMsg2.html" title="type sgx_tdh::SgxDhMsg2">SgxDhMsg2</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;msg3: &amp;mut <a class="struct" href="../sgx_tdh/struct.SgxDhMsg3.html" title="struct sgx_tdh::SgxDhMsg3">SgxDhMsg3</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;aek: &amp;mut <a class="type" href="../sgx_types/types/type.sgx_key_128bit_t.html" title="type sgx_types::types::sgx_key_128bit_t">sgx_key_128bit_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;initiator_identity: &amp;mut <a class="struct" href="../sgx_types/types/struct.sgx_dh_session_enclave_identity_t.html" title="struct sgx_types::types::sgx_dh_session_enclave_identity_t">sgx_dh_session_enclave_identity_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#382-436' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The responder handles msg2 sent by initiator and then derives AEK, updates session information and generates msg3.</p>
-
-<h1 id='requirements-2' class='section-header'><a href='#requirements-2'>Requirements</a></h1>
+<h1 id="requirements-2" class="section-header"><a href="#requirements-2">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters-1' class='section-header'><a href='#parameters-1'>Parameters</a></h1>
+<h1 id="parameters-1" class="section-header"><a href="#parameters-1">Parameters</a></h1>
 <p><strong>msg2</strong></p>
-
 <p>Point to dh message 2 buffer generated by session initiator, and the buffer must be in enclave address space.</p>
-
 <p><strong>msg3</strong></p>
-
 <p>Point to dh message 3 buffer generated by session responder in this function, and the buffer must be in enclave address space.</p>
-
 <p><strong>aek</strong></p>
-
 <p>A pointer that points to instance of sgx_key_128bit_t. The aek is derived as follows:</p>
 
 <pre class="rust rust-example-rendered">
 <span class="ident">KDK</span> :<span class="op">=</span> <span class="ident">CMAC</span>(<span class="ident">key0</span>, <span class="ident">LittleEndian</span>(<span class="ident">gab</span> <span class="ident">x</span><span class="op">-</span><span class="ident">coordinate</span>))
 <span class="ident">AEK</span> <span class="op">=</span> <span class="ident">AES</span><span class="op">-</span><span class="ident">CMAC</span>(<span class="ident">KDK</span>, <span class="number">0x01</span><span class="op">||</span><span class="string">&quot;AEK&quot;</span><span class="op">||</span><span class="number">0x00</span><span class="op">||</span><span class="number">0x80</span><span class="op">||</span><span class="number">0x00</span>)</pre>
-
 <p>The key0 used in the key extraction operation is 16 bytes of 0x00. The plain
 text used in the AES-CMAC calculation of the KDK is the Diffie-Hellman shared
 secret elliptic curve field element in Little Endian format.The plain text used
 in the AEK calculation includes:</p>
-
 <ul>
-<li><p>a counter (0x01)</p></li>
-<li><p>a label: the ASCII representation of the string &#39;AEK&#39; in Little Endian format</p></li>
-<li><p>a bit length (0x80)</p></li>
+<li>
+<p>a counter (0x01)</p>
+</li>
+<li>
+<p>a label: the ASCII representation of the string 'AEK' in Little Endian format</p>
+</li>
+<li>
+<p>a bit length (0x80)</p>
+</li>
 </ul>
-
 <p><strong>initiator_identity</strong></p>
-
 <p>A pointer that points to instance of sgx_dh_session_enclave_identity_t.
 Identity information of initiator includes isv svn, isv product id, the
 enclave attributes, MRSIGNER, and MRENCLAVE. The buffer must be in
 enclave address space. The caller should check the identity of the peer and
 decide whether to trust the peer and use the aek.</p>
-
-<h1 id='errors-1' class='section-header'><a href='#errors-1'>Errors</a></h1>
+<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Any of the input parameters is incorrect.</p>
-
 <p><strong>SGX_ERROR_INVALID_STATE</strong></p>
-
 <p>The API is invoked in incorrect order or state.</p>
-
 <p><strong>SGX_ERROR_KDF_MISMATCH</strong></p>
-
 <p>Indicates the key derivation function does not match.</p>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>An unexpected error occurred.</p>
 </div></div>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
-        <h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#218' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#218' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#218' title='goto source code'>[src]</a></span></h4>
+        <h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#214' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#214' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#214' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
-</div></div><h3 id='impl-Default' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-Default' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#227-237' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#228-236' title='goto source code'>[src]</a></span></h4>
+</div></div><h3 id='impl-Default' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-Default' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#223-233' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#224-232' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
-</div></div><h3 id='impl-ContiguousMemory' class='impl'><span class='in-band'><code>impl <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-ContiguousMemory' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#239' title='goto source code'>[src]</a></span></h3>
+</div></div><h3 id='impl-ContiguousMemory' class='impl'><span class='in-band'><code>impl <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a> for <a class="struct" href="../sgx_tdh/struct.SgxDhResponder.html" title="struct sgx_tdh::SgxDhResponder">SgxDhResponder</a></code><a href='#impl-ContiguousMemory' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tdh/dh.rs.html#235' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -187,13 +159,15 @@ decide whether to trust the peer and use the aek.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

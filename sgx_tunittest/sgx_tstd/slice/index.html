@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module slice</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'slice', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module slice</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'slice', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,9 +49,8 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/lib.rs.html#176' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/lib.rs.html#182' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>A dynamically-sized view into a contiguous sequence, <code>[T]</code>.</p>
-
 <p>Slices are a view into a block of memory represented as a pointer and a
 length.</p>
 
@@ -60,7 +60,6 @@ length.</p>
 <span class="kw">let</span> <span class="ident">int_slice</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">vec</span>[..];
 <span class="comment">// coercing an array to a slice</span>
 <span class="kw">let</span> <span class="ident">str_slice</span>: <span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="ident">str</span>] <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="string">&quot;one&quot;</span>, <span class="string">&quot;two&quot;</span>, <span class="string">&quot;three&quot;</span>];</pre>
-
 <p>Slices are either mutable or shared. The shared slice type is <code>&amp;[T]</code>,
 while the mutable slice type is <code>&amp;mut [T]</code>, where <code>T</code> represents the element
 type. For example, you can mutate the block of memory that a mutable slice
@@ -70,24 +69,19 @@ points to:</p>
 <span class="kw">let</span> <span class="ident">x</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
 <span class="ident">x</span>[<span class="number">1</span>] <span class="op">=</span> <span class="number">7</span>;
 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">x</span>, <span class="kw-2">&amp;</span>[<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>]);</pre>
-
 <p>Here are some of the things this module contains:</p>
-
-<h2 id='structs' class='section-header'><a href='#structs'>Structs</a></h2>
+<h2 id="structs" class="section-header"><a href="#structs">Structs</a></h2>
 <p>There are several structs that are useful for slices, such as <a href="struct.Iter.html"><code>Iter</code></a>, which
 represents iteration over a slice.</p>
-
-<h2 id='trait-implementations' class='section-header'><a href='#trait-implementations'>Trait Implementations</a></h2>
+<h2 id="trait-implementations" class="section-header"><a href="#trait-implementations">Trait Implementations</a></h2>
 <p>There are several implementations of common traits for slices. Some examples
 include:</p>
-
 <ul>
 <li><a href="../../std/clone/trait.Clone.html"><code>Clone</code></a></li>
 <li><a href="../../std/cmp/trait.Eq.html"><code>Eq</code></a>, <a href="../../std/cmp/trait.Ord.html"><code>Ord</code></a> - for slices whose element type are <a href="../../std/cmp/trait.Eq.html"><code>Eq</code></a> or <a href="../../std/cmp/trait.Ord.html"><code>Ord</code></a>.</li>
 <li><a href="../../std/hash/trait.Hash.html"><code>Hash</code></a> - for slices whose element type is <a href="../../std/hash/trait.Hash.html"><code>Hash</code></a>.</li>
 </ul>
-
-<h2 id='iteration' class='section-header'><a href='#iteration'>Iteration</a></h2>
+<h2 id="iteration" class="section-header"><a href="#iteration">Iteration</a></h2>
 <p>The slices implement <code>IntoIterator</code>. The iterator yields references to the
 slice elements.</p>
 
@@ -96,7 +90,6 @@ slice elements.</p>
 <span class="kw">for</span> <span class="ident">n</span> <span class="kw">in</span> <span class="ident">numbers</span> {
     <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{} is a number!&quot;</span>, <span class="ident">n</span>);
 }</pre>
-
 <p>The mutable slice yields mutable references to the elements:</p>
 
 <pre class="rust rust-example-rendered">
@@ -104,18 +97,15 @@ slice elements.</p>
 <span class="kw">for</span> <span class="ident">score</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">scores</span>[..] {
     <span class="kw-2">*</span><span class="ident">score</span> <span class="op">+=</span> <span class="number">1</span>;
 }</pre>
-
-<p>This iterator yields mutable references to the slice&#39;s elements, so while
+<p>This iterator yields mutable references to the slice's elements, so while
 the element type of the slice is <code>i32</code>, the element type of the iterator is
 <code>&amp;mut i32</code>.</p>
-
 <ul>
 <li><a href="../../std/primitive.slice.html#method.iter"><code>.iter</code></a> and <a href="../../std/primitive.slice.html#method.iter_mut"><code>.iter_mut</code></a> are the explicit methods to return the default
 iterators.</li>
 <li>Further methods that return iterators are <a href="../../std/primitive.slice.html#method.split"><code>.split</code></a>, <a href="../../std/primitive.slice.html#method.splitn"><code>.splitn</code></a>,
 <a href="../../std/primitive.slice.html#method.chunks"><code>.chunks</code></a>, <a href="../../std/primitive.slice.html#method.windows"><code>.windows</code></a> and more.</li>
 </ul>
-
 <p><em><a href="../../std/primitive.slice.html">See also the slice primitive type</a>.</em></p>
 </div><h2 id='structs-1' class='section-header'><a href="#structs-1">Structs</a></h2>
 <table>
@@ -123,17 +113,19 @@ iterators.</li>
                            <td><a class="struct" href="struct.Chunks.html"
                                   title='struct sgx_tstd::slice::Chunks'>Chunks</a></td>
                            <td class='docblock-short'>
-                                <p>An iterator over a slice in (non-overlapping) chunks (<code>size</code> elements at a
+                                <p>An iterator over a slice in (non-overlapping) chunks (<code>chunk_size</code> elements at a
 time).</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.ChunksMut.html"
                                   title='struct sgx_tstd::slice::ChunksMut'>ChunksMut</a></td>
                            <td class='docblock-short'>
-                                <p>An iterator over a slice in (non-overlapping) mutable chunks (<code>size</code>
+                                <p>An iterator over a slice in (non-overlapping) mutable chunks (<code>chunk_size</code>
 elements at a time). When the slice len is not evenly divided by the chunk
 size, the last slice of the iteration will be the remainder.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -141,6 +133,7 @@ size, the last slice of the iteration will be the remainder.</p>
                                   title='struct sgx_tstd::slice::Iter'>Iter</a></td>
                            <td class='docblock-short'>
                                 <p>Immutable slice iterator</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -148,6 +141,7 @@ size, the last slice of the iteration will be the remainder.</p>
                                   title='struct sgx_tstd::slice::IterMut'>IterMut</a></td>
                            <td class='docblock-short'>
                                 <p>Mutable slice iterator.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -157,6 +151,7 @@ size, the last slice of the iteration will be the remainder.</p>
                                 <p>An iterator over subslices separated by elements that match a
 predicate function, limited to a given number of splits, starting
 from the end of the slice.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -166,6 +161,7 @@ from the end of the slice.</p>
                                 <p>An iterator over subslices separated by elements that match a
 predicate function, limited to a given number of splits, starting
 from the end of the slice.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -174,6 +170,7 @@ from the end of the slice.</p>
                            <td class='docblock-short'>
                                 <p>An iterator over subslices separated by elements that match a predicate
 function.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -182,6 +179,7 @@ function.</p>
                            <td class='docblock-short'>
                                 <p>An iterator over the subslices of the vector which are separated
 by elements that match <code>pred</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -190,6 +188,7 @@ by elements that match <code>pred</code>.</p>
                            <td class='docblock-short'>
                                 <p>An iterator over subslices separated by elements that match a predicate
 function, limited to a given number of splits.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -198,6 +197,7 @@ function, limited to a given number of splits.</p>
                            <td class='docblock-short'>
                                 <p>An iterator over subslices separated by elements that match a predicate
 function, limited to a given number of splits.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -205,6 +205,26 @@ function, limited to a given number of splits.</p>
                                   title='struct sgx_tstd::slice::Windows'>Windows</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator over overlapping subslices of length <code>size</code>.</p>
+
+                           </td>
+                       </tr>
+                       <tr class='unstable module-item'>
+                           <td><a class="struct" href="struct.ExactChunks.html"
+                                  title='struct sgx_tstd::slice::ExactChunks'>ExactChunks</a></td>
+                           <td class='docblock-short'>
+                               [<div class='stab unstable'>Experimental</div>] <p>An iterator over a slice in (non-overlapping) chunks (<code>chunk_size</code> elements at a
+time).</p>
+
+                           </td>
+                       </tr>
+                       <tr class='unstable module-item'>
+                           <td><a class="struct" href="struct.ExactChunksMut.html"
+                                  title='struct sgx_tstd::slice::ExactChunksMut'>ExactChunksMut</a></td>
+                           <td class='docblock-short'>
+                               [<div class='stab unstable'>Experimental</div>] <p>An iterator over a slice in (non-overlapping) mutable chunks (<code>chunk_size</code>
+elements at a time). When the slice len is not evenly divided by the chunk
+size, the last up to <code>chunk_size-1</code> elements will be omitted.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -213,6 +233,7 @@ function, limited to a given number of splits.</p>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>An iterator over subslices separated by elements that match a predicate
 function, starting from the end of the slice.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -221,6 +242,7 @@ function, starting from the end of the slice.</p>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>An iterator over the subslices of the vector which are separated
 by elements that match <code>pred</code>, starting from the end of the slice.</p>
+
                            </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
@@ -229,6 +251,7 @@ by elements that match <code>pred</code>, starting from the end of the slice.</p
                                   title='trait sgx_tstd::slice::SliceConcatExt'>SliceConcatExt</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>An extension trait for concatenating slices</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -236,6 +259,7 @@ by elements that match <code>pred</code>, starting from the end of the slice.</p
                                   title='trait sgx_tstd::slice::SliceIndex'>SliceIndex</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>A helper trait used for indexing operations.</p>
+
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -244,6 +268,7 @@ by elements that match <code>pred</code>, starting from the end of the slice.</p
                                   title='fn sgx_tstd::slice::from_raw_parts'>from_raw_parts</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
                            <td class='docblock-short'>
                                 <p>Forms a slice from a pointer and a length.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -252,6 +277,23 @@ by elements that match <code>pred</code>, starting from the end of the slice.</p
                            <td class='docblock-short'>
                                 <p>Performs the same functionality as <code>from_raw_parts</code>, except that a mutable
 slice is returned.</p>
+
+                           </td>
+                       </tr>
+                       <tr class='unstable module-item'>
+                           <td><a class="fn" href="fn.from_ref.html"
+                                  title='fn sgx_tstd::slice::from_ref'>from_ref</a></td>
+                           <td class='docblock-short'>
+                               [<div class='stab unstable'>Experimental</div>] <p>Converts a reference to T into a slice of length 1 (without copying).</p>
+
+                           </td>
+                       </tr>
+                       <tr class='unstable module-item'>
+                           <td><a class="fn" href="fn.from_ref_mut.html"
+                                  title='fn sgx_tstd::slice::from_ref_mut'>from_ref_mut</a></td>
+                           <td class='docblock-short'>
+                               [<div class='stab unstable'>Experimental</div>] <p>Converts a reference to T into a slice of length 1 (without copying).</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -270,13 +312,15 @@ slice is returned.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

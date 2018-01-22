@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module enclave</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_trts</a></p><script>window.sidebarCurrent = {name: 'enclave', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module enclave</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_trts</a></p><script>window.sidebarCurrent = {name: 'enclave', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,10 +49,9 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#29-375' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/sgx_trts/enclave.rs.html#29-374' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Get the metadata of the current enclave.</p>
-
-<p>This mod has clear interface and is easy to understand. Currently we don&#39;t
+<p>This mod has clear interface and is easy to understand. Currently we don't
 have time for its documents.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -111,6 +111,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_enclave_base'>rsgx_get_enclave_base</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_enclave_base is to get enclave image base address.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -118,6 +119,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_enclave_size'>rsgx_get_enclave_size</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_enclave_size is to get enclave image size.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -125,6 +127,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_heap_base'>rsgx_get_heap_base</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_heap_base is to get enclave heap base address.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -132,6 +135,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_heap_offset'>rsgx_get_heap_offset</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_heap_offset is to get enclave heap offset.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -139,6 +143,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_heap_size'>rsgx_get_heap_size</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_heap_size is to get enclave heap size.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -146,6 +151,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_thread_data'>rsgx_get_thread_data</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_thread_data is to get TD base address per thread.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -153,6 +159,7 @@ have time for its documents.</p>
                                   title='fn sgx_trts::enclave::rsgx_get_thread_policy'>rsgx_get_thread_policy</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_get_thread_policy is to get TCS management policy.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -171,13 +178,15 @@ have time for its documents.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

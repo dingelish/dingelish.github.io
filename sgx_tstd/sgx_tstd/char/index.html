@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module char</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'char', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module char</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'char', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,18 +49,15 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/std_unicode/lib.rs.html#45' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/std_unicode/lib.rs.html#50' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>A character type.</p>
-
 <p>The <code>char</code> type represents a single character. More specifically, since
-&#39;character&#39; isn&#39;t a well-defined concept in Unicode, <code>char</code> is a &#39;<a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode
-scalar value</a>&#39;, which is similar to, but not the same as, a &#39;<a href="http://www.unicode.org/glossary/#code_point">Unicode code
-point</a>&#39;.</p>
-
+'character' isn't a well-defined concept in Unicode, <code>char</code> is a '<a href="http://www.unicode.org/glossary/#unicode_scalar_value">Unicode
+scalar value</a>', which is similar to, but not the same as, a '<a href="http://www.unicode.org/glossary/#code_point">Unicode code
+point</a>'.</p>
 <p>This module exists for technical reasons, the primary documentation for
 <code>char</code> is directly on <a href="../../std/primitive.char.html">the <code>char</code> primitive type</a>
 itself.</p>
-
 <p>This module is the home of the iterator implementations for the iterators
 implemented on <code>char</code>, as well as some useful constants and conversion
 functions that convert various types to <code>char</code>.</p>
@@ -70,13 +68,15 @@ functions that convert various types to <code>char</code>.</p>
                                   title='struct sgx_tstd::char::DecodeUtf16'>DecodeUtf16</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that decodes UTF-16 encoded code points from an iterator of <code>u16</code>s.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.DecodeUtf16Error.html"
                                   title='struct sgx_tstd::char::DecodeUtf16Error'>DecodeUtf16Error</a></td>
                            <td class='docblock-short'>
-                                <p>An iterator that decodes UTF-16 encoded code points from an iterator of <code>u16</code>s.</p>
+                                <p>An error that can be returned when decoding UTF-16 code points.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -84,6 +84,7 @@ functions that convert various types to <code>char</code>.</p>
                                   title='struct sgx_tstd::char::EscapeDebug'>EscapeDebug</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that yields the literal escape code of a <code>char</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -91,6 +92,7 @@ functions that convert various types to <code>char</code>.</p>
                                   title='struct sgx_tstd::char::EscapeDefault'>EscapeDefault</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that yields the literal escape code of a <code>char</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -99,6 +101,7 @@ functions that convert various types to <code>char</code>.</p>
                            <td class='docblock-short'>
                                 <p>Returns an iterator that yields the hexadecimal Unicode escape of a
 character, as <code>char</code>s.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -106,6 +109,7 @@ character, as <code>char</code>s.</p>
                                   title='struct sgx_tstd::char::ParseCharError'>ParseCharError</a></td>
                            <td class='docblock-short'>
                                 <p>An error which can be returned when parsing a char.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -113,6 +117,7 @@ character, as <code>char</code>s.</p>
                                   title='struct sgx_tstd::char::ToLowercase'>ToLowercase</a></td>
                            <td class='docblock-short'>
                                 <p>Returns an iterator that yields the lowercase equivalent of a <code>char</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -120,6 +125,7 @@ character, as <code>char</code>s.</p>
                                   title='struct sgx_tstd::char::ToUppercase'>ToUppercase</a></td>
                            <td class='docblock-short'>
                                 <p>Returns an iterator that yields the uppercase equivalent of a <code>char</code>.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -127,6 +133,7 @@ character, as <code>char</code>s.</p>
                                   title='struct sgx_tstd::char::CharTryFromError'>CharTryFromError</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>The error type returned when a conversion from u32 to char fails.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -135,6 +142,7 @@ character, as <code>char</code>s.</p>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>An iterator over an iterator of bytes of the characters the bytes represent
 as UTF-8</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -142,6 +150,7 @@ as UTF-8</p>
                                   title='struct sgx_tstd::char::UnicodeVersion'>UnicodeVersion</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>Represents a Unicode Version.</p>
+
                            </td>
                        </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
@@ -150,6 +159,7 @@ as UTF-8</p>
                                   title='constant sgx_tstd::char::MAX'>MAX</a></td>
                            <td class='docblock-short'>
                                 <p>The highest valid code point a <code>char</code> can have.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -158,6 +168,7 @@ as UTF-8</p>
                            <td class='docblock-short'>
                                 <p><code>U+FFFD REPLACEMENT CHARACTER</code> (�) is used in Unicode to represent a
 decoding error.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -166,6 +177,7 @@ decoding error.</p>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>The version of <a href="http://www.unicode.org/">Unicode</a> that the Unicode parts of
 <code>CharExt</code> and <code>UnicodeStrPrelude</code> traits are based on.</p>
+
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -175,6 +187,7 @@ decoding error.</p>
                            <td class='docblock-short'>
                                 <p>Create an iterator over the UTF-16 encoded code points in <code>iter</code>,
 returning unpaired surrogates as <code>Err</code>s.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -182,6 +195,7 @@ returning unpaired surrogates as <code>Err</code>s.</p>
                                   title='fn sgx_tstd::char::from_digit'>from_digit</a></td>
                            <td class='docblock-short'>
                                 <p>Converts a digit in the given radix to a <code>char</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -189,6 +203,7 @@ returning unpaired surrogates as <code>Err</code>s.</p>
                                   title='fn sgx_tstd::char::from_u32'>from_u32</a></td>
                            <td class='docblock-short'>
                                 <p>Converts a <code>u32</code> to a <code>char</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -196,6 +211,7 @@ returning unpaired surrogates as <code>Err</code>s.</p>
                                   title='fn sgx_tstd::char::from_u32_unchecked'>from_u32_unchecked</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
                            <td class='docblock-short'>
                                 <p>Converts a <code>u32</code> to a <code>char</code>, ignoring validity.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -203,6 +219,7 @@ returning unpaired surrogates as <code>Err</code>s.</p>
                                   title='fn sgx_tstd::char::decode_utf8'>decode_utf8</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>Decodes an <code>Iterator</code> of bytes as UTF-8.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -221,13 +238,15 @@ returning unpaired surrogates as <code>Err</code>s.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `trts` mod in crate `sgx_trts`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, trts">
+
+    <title>sgx_trts::trts - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Module trts</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_trts</a></p><script>window.sidebarCurrent = {name: 'trts', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>sgx_trts</a>::<wbr><a class="mod" href=''>trts</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_trts/trts.rs.html#29-213' title='goto source code'>[src]</a></span></h1>
+<h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.abort.html"
+                                  title='fn sgx_trts::trts::abort'>abort</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.atexit.html"
+                                  title='fn sgx_trts::trts::atexit'>atexit</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_abort.html"
+                                  title='fn sgx_trts::trts::rsgx_abort'>rsgx_abort</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_atexit.html"
+                                  title='fn sgx_trts::trts::rsgx_atexit'>rsgx_atexit</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_data_is_outside_enclave.html"
+                                  title='fn sgx_trts::trts::rsgx_data_is_outside_enclave'>rsgx_data_is_outside_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_data_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_data_is_within_enclave.html"
+                                  title='fn sgx_trts::trts::rsgx_data_is_within_enclave'>rsgx_data_is_within_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_data_is_within_enclave checks whether a given address is within enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_raw_is_outside_enclave.html"
+                                  title='fn sgx_trts::trts::rsgx_raw_is_outside_enclave'>rsgx_raw_is_outside_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_raw_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_raw_is_within_enclave.html"
+                                  title='fn sgx_trts::trts::rsgx_raw_is_within_enclave'>rsgx_raw_is_within_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_raw_is_within_enclave checks whether a given address is within enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_read_rand.html"
+                                  title='fn sgx_trts::trts::rsgx_read_rand'>rsgx_read_rand</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_read_rand function is used to generate a random number inside the enclave.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_slice_is_outside_enclave.html"
+                                  title='fn sgx_trts::trts::rsgx_slice_is_outside_enclave'>rsgx_slice_is_outside_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_slice_is_outside_enclave checks whether a given address is outside enclave memory.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rsgx_slice_is_within_enclave.html"
+                                  title='fn sgx_trts::trts::rsgx_slice_is_within_enclave'>rsgx_slice_is_within_enclave</a></td>
+                           <td class='docblock-short'>
+                                <p>rsgx_slice_is_within_enclave checks whether a given address is within enclave memory.</p>
+
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.exit_function_t.html"
+                                  title='type sgx_trts::trts::exit_function_t'>exit_function_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_trts";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

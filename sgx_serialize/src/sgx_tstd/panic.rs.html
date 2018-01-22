@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `../sgx_tstd/src/panic.rs`.">
+    <meta name="description" content="Source to the Rust file `..-icode/sgx_tstd/src/panic.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>panic.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -331,7 +332,7 @@
 <span id="286">286</span>
 <span id="287">287</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -447,7 +448,7 @@
 <span class="doccomment">/// wrapper struct in this module can be used to force this trait to be</span>
 <span class="doccomment">/// implemented for any closed over variables passed to the `catch_unwind` function</span>
 <span class="doccomment">/// (more on this below).</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">UnwindSafe</span> {}
+<span class="kw">pub</span> <span class="ident">auto</span> <span class="kw">trait</span> <span class="ident">UnwindSafe</span> {}
 
 <span class="doccomment">/// A marker trait representing types where a shared reference is considered</span>
 <span class="doccomment">/// unwind safe.</span>
@@ -457,7 +458,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// This is a &quot;helper marker trait&quot; used to provide impl blocks for the</span>
 <span class="doccomment">/// `UnwindSafe` trait, for more information see that documentation.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">RefUnwindSafe</span> {}
+<span class="kw">pub</span> <span class="ident">auto</span> <span class="kw">trait</span> <span class="ident">RefUnwindSafe</span> {}
 
 <span class="doccomment">/// A simple wrapper around a type to assert that it is unwind safe.</span>
 <span class="doccomment">///</span>
@@ -480,7 +481,7 @@
 <span class="comment">// * Unique, an owning pointer, lifts an implementation</span>
 <span class="comment">// * Types like Mutex/RwLock which are explicilty poisoned are unwind safe</span>
 <span class="comment">// * Our custom AssertUnwindSafe wrapper is indeed unwind safe</span>
-<span class="kw">impl</span> <span class="ident">UnwindSafe</span> <span class="kw">for</span> .. {}
+
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="op">!</span><span class="ident">UnwindSafe</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="kw-2">mut</span> <span class="ident">T</span> {}
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">UnwindSafe</span> <span class="kw">for</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">T</span> {}
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">UnwindSafe</span> <span class="kw">for</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">T</span> {}
@@ -496,10 +497,10 @@
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">RefUnwindSafe</span> <span class="op">+</span> <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="ident">UnwindSafe</span> <span class="kw">for</span> <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 
 <span class="comment">// Pretty simple implementations for the `RefUnwindSafe` marker trait,</span>
-<span class="comment">// basically just saying that this is a marker trait and `UnsafeCell` is the</span>
+<span class="comment">// basically just saying that `UnsafeCell` is the</span>
 <span class="comment">// only thing which doesn&#39;t implement it (which then transitively applies to</span>
 <span class="comment">// everything else).</span>
-<span class="kw">impl</span> <span class="ident">RefUnwindSafe</span> <span class="kw">for</span> .. {}
+
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="question-mark">?</span><span class="ident">Sized</span><span class="op">&gt;</span> <span class="op">!</span><span class="ident">RefUnwindSafe</span> <span class="kw">for</span> <span class="ident">UnsafeCell</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="ident">RefUnwindSafe</span> <span class="kw">for</span> <span class="ident">AssertUnwindSafe</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {}
 
@@ -636,13 +637,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

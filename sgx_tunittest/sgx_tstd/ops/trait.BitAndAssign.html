@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait BitAndAssign</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'BitAndAssign', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait BitAndAssign</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.bitand_assign">bitand_assign</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'BitAndAssign', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -53,8 +54,7 @@
 </div>pub trait BitAndAssign&lt;Rhs&nbsp;=&nbsp;Self&gt; {
     fn <a href='#tymethod.bitand_assign' class='fnname'>bitand_assign</a>(&amp;mut self, rhs: Rhs);
 }</pre><div class='docblock'><p>The bitwise AND assignment operator <code>&amp;=</code>.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>An implementation of <code>BitAndAssign</code> that lifts the <code>&amp;=</code> operator to a
 wrapper around <code>bool</code>.</p>
 
@@ -86,7 +86,6 @@ wrapper around <code>bool</code>.</p>
 <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">scalar</span> <span class="op">=</span> <span class="ident">Scalar</span>(<span class="bool-val">false</span>);
 <span class="ident">scalar</span> <span class="op">&amp;=</span> <span class="ident">Scalar</span>(<span class="bool-val">false</span>);
 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">scalar</span>, <span class="ident">Scalar</span>(<span class="bool-val">false</span>));</pre>
-
 <p>Here, the <code>BitAndAssign</code> trait is implemented for a wrapper around
 <code>Vec&lt;bool&gt;</code>.</p>
 
@@ -123,31 +122,56 @@ wrapper around <code>bool</code>.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u64&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u64&gt;</code></li>
-<li><code>impl BitAndAssign&lt;bool&gt; for bool</code></li>
-<li><code>impl BitAndAssign&lt;u64&gt; for u64</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i64&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i64&gt;</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i128&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i128&gt;</code></li>
-<li><code>impl BitAndAssign&lt;u128&gt; for u128</code></li>
-<li><code>impl BitAndAssign&lt;u8&gt; for u8</code></li>
-<li><code>impl BitAndAssign&lt;isize&gt; for isize</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u32&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u32&gt;</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;usize&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;usize&gt;</code></li>
-<li><code>impl BitAndAssign&lt;usize&gt; for usize</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u128&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u128&gt;</code></li>
-<li><code>impl BitAndAssign&lt;u16&gt; for u16</code></li>
-<li><code>impl BitAndAssign&lt;u32&gt; for u32</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u16&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u16&gt;</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i8&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i8&gt;</code></li>
-<li><code>impl BitAndAssign&lt;i16&gt; for i16</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u8&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u8&gt;</code></li>
-<li><code>impl BitAndAssign&lt;i8&gt; for i8</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i16&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i16&gt;</code></li>
-<li><code>impl BitAndAssign&lt;i32&gt; for i32</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;isize&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;isize&gt;</code></li>
-<li><code>impl BitAndAssign&lt;i128&gt; for i128</code></li>
-<li><code>impl BitAndAssign&lt;i64&gt; for i64</code></li>
-<li><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i32&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i32&gt;</code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u32&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u32&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a bool&gt; for bool</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a i32&gt; for i32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i32&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i32&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;usize&gt; for usize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a u64&gt; for u64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;u8&gt; for u8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u128&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u128&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;u32&gt; for u32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u8&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u8&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;isize&gt; for isize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i128&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i128&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i128&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i128&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a u8&gt; for u8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;isize&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;isize&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;i32&gt; for i32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u64&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u64&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a u16&gt; for u16</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;isize&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;isize&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;u64&gt; for u64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;i16&gt; for i16</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;i64&gt; for i64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;usize&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;usize&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i64&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i64&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a i16&gt; for i16</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;usize&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;usize&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;bool&gt; for bool</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i8&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i8&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u64&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u64&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i8&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i8&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i16&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i16&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i32&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i32&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u32&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u32&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a u128&gt; for u128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;i128&gt; for i128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i16&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i16&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u16&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u16&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;i8&gt; for i8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u16&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u16&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;u128&gt; for u128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a isize&gt; for isize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a i128&gt; for i128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a u32&gt; for u32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i64&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;i64&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a usize&gt; for usize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a i64&gt; for i64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/bit.rs.html#592-595' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;u16&gt; for u16</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a i8&gt; for i8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/internal_macros.rs.html#81-86' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; BitAndAssign&lt;&amp;'a <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u128&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u128&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/wrapping.rs.html#302-307' title='goto source code'>[src]</a></div><code>impl BitAndAssign&lt;<a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u8&gt;&gt; for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;u8&gt;</code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/ops/bit/trait.BitAndAssign.js">
                  </script></section>
@@ -167,13 +191,15 @@ wrapper around <code>bool</code>.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

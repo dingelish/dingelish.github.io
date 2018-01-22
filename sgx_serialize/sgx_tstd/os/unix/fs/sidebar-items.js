@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["FileExt","Unix-specific extensions to `File`"]]});
+initSidebarItems({"fn":[["symlink","Creates a new symbolic link on the filesystem."]],"trait":[["FileExt","Unix-specific extensions to `File`"],["FileTypeExt","Add support for special unix types (block/char device, fifo and socket)."],["MetadataExt",""],["OpenOptionsExt","Unix-specific extensions to `OpenOptions`"],["PermissionsExt","Unix-specific extensions to `Permissions`"]]});

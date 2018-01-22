@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct TraitObject</p><div class="block items"><ul><li><a href="#fields">Fields</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>raw</a></p><script>window.sidebarCurrent = {name: 'TraitObject', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Struct TraitObject</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#fields">Fields</a><div class="sidebar-links"><a href="#structfield.data">data</a><a href="#structfield.vtable">vtable</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Copy">Copy</a></div></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>raw</a></p><script>window.sidebarCurrent = {name: 'TraitObject', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -54,30 +55,25 @@
     pub data: *mut (),
     pub vtable: *mut (),
 }</pre><div class='stability'><div class='stab unstable'><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>raw</code>)</div></div><div class='docblock'><p>The representation of a trait object like <code>&amp;SomeTrait</code>.</p>
-
 <p>This struct has the same layout as types like <code>&amp;SomeTrait</code> and
 <code>Box&lt;AnotherTrait&gt;</code>. The <a href="../../book/first-edition/trait-objects.html#representation">Trait Objects chapter of the
 Book</a> contains more details about the precise nature of
 these internals.</p>
-
 <p><code>TraitObject</code> is guaranteed to match layouts, but it is not the
 type of trait objects (e.g. the fields are not directly accessible
 on a <code>&amp;SomeTrait</code>) nor does it control that layout (changing the
 definition will not change the layout of a <code>&amp;SomeTrait</code>). It is
 only designed to be used by unsafe code that needs to manipulate
 the low-level details.</p>
-
 <p>There is no way to refer to all trait objects generically, so the only
 way to create values of this type is with functions like
 <a href="../intrinsics/fn.transmute.html"><code>std::mem::transmute</code></a>. Similarly, the only way to create a true
 trait object from a <code>TraitObject</code> value is with <code>transmute</code>.</p>
-
 <p>Synthesizing a trait object with mismatched types—one where the
 vtable does not correspond to the type of the value to which the
 data pointer points—is highly likely to lead to undefined
 behavior.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <pre class="rust rust-example-rendered">
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">raw</span>)]</span>
 
@@ -155,13 +151,15 @@ behavior.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

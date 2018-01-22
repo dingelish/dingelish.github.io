@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait Boxed</p><div class="block items"><ul><li><a href="#associated-types">Associated Types</a></li><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'Boxed', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait Boxed</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Data">Data</a><a href="#associatedtype.Place">Place</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.finalize">finalize</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'Boxed', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -54,7 +55,6 @@
     type <a href='#associatedtype.Place' class="type">Place</a>: <a class="trait" href="../../sgx_tstd/ops/trait.BoxPlace.html" title="trait sgx_tstd::ops::BoxPlace">BoxPlace</a>&lt;Self::<a class="type" href="../../sgx_tstd/ops/trait.Boxed.html#associatedtype.Data" title="type sgx_tstd::ops::Boxed::Data">Data</a>&gt;;
     unsafe fn <a href='#tymethod.finalize' class='fnname'>finalize</a>(filled: Self::<a class="type" href="../../sgx_tstd/ops/trait.Boxed.html#associatedtype.Place" title="type sgx_tstd::ops::Boxed::Place">Place</a>) -&gt; Self;
 }</pre><div class='stability'><div class='stab unstable'><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>placement_new_protocol</code>)</div></div><div class='docblock'><p>Core trait for the <code>box EXPR</code> form.</p>
-
 <p><code>box EXPR</code> effectively desugars into:</p>
 
 <pre class="rust rust-example-rendered">
@@ -65,7 +65,6 @@
     ::<span class="ident">std</span>::<span class="ident">ptr</span>::<span class="ident">write</span>(<span class="ident">raw_place</span>, <span class="ident">value</span>);
     <span class="ident">Boxed</span>::<span class="ident">finalize</span>(<span class="ident">place</span>)
 }</pre>
-
 <p>The type of <code>box EXPR</code> is supplied from its surrounding
 context; in the above expansion, the result type <code>T</code> is used
 to determine which implementation of <code>Boxed</code> to use, and that
@@ -92,7 +91,7 @@ returned instance of <code>Self</code> and forgetting <code>filled</code>.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;T&gt; Boxed for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Data' class="type">Data</a> = T;</span><span class="where fmt-newline">  type <a href='#associatedtype.Place' class="type">Place</a> = <a class="struct" href="../../sgx_tstd/boxed/struct.IntermediateBox.html" title="struct sgx_tstd::boxed::IntermediateBox">IntermediateBox</a>&lt;T&gt;;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#197-203' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Boxed for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Data' class="type">Data</a> = T;</span><span class="where fmt-newline">  type <a href='#associatedtype.Place' class="type">Place</a> = <a class="struct" href="../../sgx_tstd/boxed/struct.IntermediateBox.html" title="struct sgx_tstd::boxed::IntermediateBox">IntermediateBox</a>&lt;T&gt;;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/ops/place/trait.Boxed.js">
                  </script></section>
@@ -112,13 +111,15 @@ returned instance of <code>Self</code> and forgetting <code>filled</code>.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ToSocketAddrs` trait in crate `sgx_tstd`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ToSocketAddrs">
+
+    <title>sgx_tstd::net::ToSocketAddrs - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc trait">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Trait ToSocketAddrs</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Iter">Iter</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.to_socket_addrs">to_socket_addrs</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>net</a></p><script>window.sidebarCurrent = {name: 'ToSocketAddrs', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>net</a>::<wbr><a class="trait" href=''>ToSocketAddrs</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#424-437' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait ToSocketAddrs {
+    type <a href='#associatedtype.Iter' class="type">Iter</a>: <a class="trait" href="../../sgx_tstd/iter/trait.Iterator.html" title="trait sgx_tstd::iter::Iterator">Iterator</a>&lt;Item = <a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;
+    fn <a href='#tymethod.to_socket_addrs' class='fnname'>to_socket_addrs</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;Self::<a class="type" href="../../sgx_tstd/net/trait.ToSocketAddrs.html#associatedtype.Iter" title="type sgx_tstd::net::ToSocketAddrs::Iter">Iter</a>&gt;;
+}</pre><div class='docblock'><p>A trait for objects which can be converted or resolved to one or more
+[<code>SocketAddr</code>] values.</p>
+<p>This trait is used for generic address resolution when constructing network
+objects.  By default it is implemented for the following types:</p>
+<ul>
+<li>
+<p>[<code>SocketAddr</code>]: [<code>to_socket_addrs</code>] is the identity function.</p>
+</li>
+<li>
+<p>[<code>SocketAddrV4</code>], [<code>SocketAddrV6</code>], <code>(</code>[<code>IpAddr</code>]<code>,</code>[<code>u16</code>]<code>)</code>,
+<code>(</code>[<code>Ipv4Addr</code>]<code>,</code>[<code>u16</code>]<code>)</code>, <code>(</code>[<code>Ipv6Addr</code>]<code>,</code>[<code>u16</code>]<code>)</code>:
+[<code>to_socket_addrs</code>] constructs a [<code>SocketAddr</code>] trivially.</p>
+</li>
+<li>
+<p><code>(</code>[<code>&amp;str</code>]<code>,</code>[<code>u16</code>]<code>)</code>: the string should be either a string representation
+of an [<code>IpAddr</code>] address as expected by [<code>FromStr</code>] implementation or a host
+name.</p>
+</li>
+<li>
+<p>[<code>&amp;str</code>]: the string should be either a string representation of a
+[<code>SocketAddr</code>] as expected by its [<code>FromStr</code>] implementation or a string like
+<code>&lt;host_name&gt;:&lt;port&gt;</code> pair where <code>&lt;port&gt;</code> is a [<code>u16</code>] value.</p>
+</li>
+</ul>
+<p>This trait allows constructing network objects like [<code>TcpStream</code>] or
+[<code>UdpSocket</code>] easily with values of various types for the bind/connection
+address. It is needed because sometimes one type is more appropriate than
+the other: for simple uses a string like <code>&quot;localhost:12345&quot;</code> is much nicer
+than manual construction of the corresponding [<code>SocketAddr</code>], but sometimes
+[<code>SocketAddr</code>] value is <em>the</em> main source of the address, and converting it to
+some other type (e.g. a string) just for it to be converted back to
+[<code>SocketAddr</code>] in constructor methods is pointless.</p>
+<p>Addresses returned by the operating system that are not IP addresses are
+silently ignored.</p>
+</div>
+            <h2 id='associated-types' class='small-section-header'>
+              Associated Types<a href='#associated-types' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='associatedtype.Iter' class='method'><span id='Iter.t' class='invisible'><code>type <a href='#associatedtype.Iter' class="type">Iter</a>: <a class="trait" href="../../sgx_tstd/iter/trait.Iterator.html" title="trait sgx_tstd::iter::Iterator">Iterator</a>&lt;Item = <a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;</code></span></h3><div class='docblock'><p>Returned iterator over socket addresses which this type may correspond
+to.</p>
+</div></div>
+            <h2 id='required-methods' class='small-section-header'>
+              Required Methods<a href='#required-methods' class='anchor'></a>
+            </h2>
+            <div class='methods'>
+        <h3 id='tymethod.to_socket_addrs' class='method'><span id='to_socket_addrs.v' class='invisible'><code>fn <a href='#tymethod.to_socket_addrs' class='fnname'>to_socket_addrs</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;Self::<a class="type" href="../../sgx_tstd/net/trait.ToSocketAddrs.html#associatedtype.Iter" title="type sgx_tstd::net::ToSocketAddrs::Iter">Iter</a>&gt;</code></span></h3><div class='docblock'><p>Converts this object to an iterator of resolved <code>SocketAddr</code>s.</p>
+<p>The returned iterator may not actually yield any values depending on the
+outcome of any resolution performed.</p>
+<p>Note that this function may block the current thread while resolution is
+performed.</p>
+</div></div>
+        <h2 id='implementors' class='small-section-header'>
+          Implementors<a href='#implementors' class='anchor'></a>
+        </h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#439-444' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for <a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a><span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/option/struct.IntoIter.html" title="struct sgx_tstd::option::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#446-451' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for <a class="struct" href="../../sgx_tstd/net/struct.SocketAddrV4.html" title="struct sgx_tstd::net::SocketAddrV4">SocketAddrV4</a><span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/option/struct.IntoIter.html" title="struct sgx_tstd::option::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#453-458' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for <a class="struct" href="../../sgx_tstd/net/struct.SocketAddrV6.html" title="struct sgx_tstd::net::SocketAddrV6">SocketAddrV6</a><span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/option/struct.IntoIter.html" title="struct sgx_tstd::option::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#460-469' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for (<a class="enum" href="../../sgx_tstd/net/enum.IpAddr.html" title="enum sgx_tstd::net::IpAddr">IpAddr</a>, u16)<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/option/struct.IntoIter.html" title="struct sgx_tstd::option::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#471-477' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for (<a class="struct" href="../../sgx_tstd/net/struct.Ipv4Addr.html" title="struct sgx_tstd::net::Ipv4Addr">Ipv4Addr</a>, u16)<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/option/struct.IntoIter.html" title="struct sgx_tstd::option::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#479-485' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for (<a class="struct" href="../../sgx_tstd/net/struct.Ipv6Addr.html" title="struct sgx_tstd::net::Ipv6Addr">Ipv6Addr</a>, u16)<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/option/struct.IntoIter.html" title="struct sgx_tstd::option::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#495-513' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; ToSocketAddrs for (&amp;'a str, u16)<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/vec/struct.IntoIter.html" title="struct sgx_tstd::vec::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#517-543' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for str<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/vec/struct.IntoIter.html" title="struct sgx_tstd::vec::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#545-551' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; ToSocketAddrs for &amp;'a [<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>]<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/iter/struct.Cloned.html" title="struct sgx_tstd::iter::Cloned">Cloned</a>&lt;<a class="struct" href="../../sgx_tstd/slice/struct.Iter.html" title="struct sgx_tstd::slice::Iter">Iter</a>&lt;'a, <a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#553-558' title='goto source code'>[src]</a></div><code>impl&lt;'a, T:&nbsp;<a class="trait" href="../../sgx_tstd/net/trait.ToSocketAddrs.html" title="trait sgx_tstd::net::ToSocketAddrs">ToSocketAddrs</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; ToSocketAddrs for &amp;'a T<span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = T::<a class="type" href="../../sgx_tstd/net/trait.ToSocketAddrs.html#associatedtype.Iter" title="type sgx_tstd::net::ToSocketAddrs::Iter">Iter</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/addr.rs.html#560-565' title='goto source code'>[src]</a></div><code>impl ToSocketAddrs for <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a><span class="where fmt-newline">  type <a href='#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../sgx_tstd/vec/struct.IntoIter.html" title="struct sgx_tstd::vec::IntoIter">IntoIter</a>&lt;<a class="enum" href="../../sgx_tstd/net/enum.SocketAddr.html" title="enum sgx_tstd::net::SocketAddr">SocketAddr</a>&gt;;</span></code></li>
+</ul><script type="text/javascript" async
+                         src="../../implementors/sgx_tstd/net/trait.ToSocketAddrs.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tstd";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

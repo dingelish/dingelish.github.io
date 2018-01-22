@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Crate sgx_types</p><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_types', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_types</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_types', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
     <nav class="sub">
@@ -48,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_types/lib.rs.html#29-96' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_types/lib.rs.html#29-94' title='goto source code'>[src]</a></span></h1>
 <h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                        <tr class=' module-item'>
@@ -74,6 +75,13 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
+                           <td><a class="macro" href="macro.__item.html"
+                                  title='macro sgx_types::__item'>__item</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
                            <td><a class="macro" href="macro.cfg_if.html"
                                   title='macro sgx_types::cfg_if'>cfg_if</a></td>
                            <td class='docblock-short'>
@@ -83,6 +91,20 @@
                        <tr class=' module-item'>
                            <td><a class="macro" href="macro.impl_enum.html"
                                   title='macro sgx_types::impl_enum'>impl_enum</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.impl_struct.html"
+                                  title='macro sgx_types::impl_struct'>impl_struct</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.s.html"
+                                  title='macro sgx_types::s'>s</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -168,13 +190,6 @@
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.sgx_dh_session_t.html"
                                   title='struct sgx_types::sgx_dh_session_t'>sgx_dh_session_t</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.sgx_ec256_dh_shared512_t.html"
-                                  title='struct sgx_types::sgx_ec256_dh_shared512_t'>sgx_ec256_dh_shared512_t</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -334,8 +349,8 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="struct" href="struct.sgx_rsa3072_private_key_t.html"
-                                  title='struct sgx_types::sgx_rsa3072_private_key_t'>sgx_rsa3072_private_key_t</a></td>
+                           <td><a class="struct" href="struct.sgx_rsa3072_key_t.html"
+                                  title='struct sgx_types::sgx_rsa3072_key_t'>sgx_rsa3072_key_t</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -426,6 +441,13 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
+                           <td><a class="enum" href="enum.sgx_device_status_t.html"
+                                  title='enum sgx_types::sgx_device_status_t'>sgx_device_status_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
                            <td><a class="enum" href="enum.sgx_dh_session_role_t.html"
                                   title='enum sgx_types::sgx_dh_session_role_t'>sgx_dh_session_role_t</a></td>
                            <td class='docblock-short'>
@@ -483,468 +505,6 @@
                        </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class="constant" href="constant.E2BIG.html"
-                                  title='constant sgx_types::E2BIG'>E2BIG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EACCES.html"
-                                  title='constant sgx_types::EACCES'>EACCES</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EADDRINUSE.html"
-                                  title='constant sgx_types::EADDRINUSE'>EADDRINUSE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EADDRNOTAVAIL.html"
-                                  title='constant sgx_types::EADDRNOTAVAIL'>EADDRNOTAVAIL</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EADV.html"
-                                  title='constant sgx_types::EADV'>EADV</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EAFNOSUPPORT.html"
-                                  title='constant sgx_types::EAFNOSUPPORT'>EAFNOSUPPORT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EAGAIN.html"
-                                  title='constant sgx_types::EAGAIN'>EAGAIN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EALREADY.html"
-                                  title='constant sgx_types::EALREADY'>EALREADY</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADE.html"
-                                  title='constant sgx_types::EBADE'>EBADE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADF.html"
-                                  title='constant sgx_types::EBADF'>EBADF</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADFD.html"
-                                  title='constant sgx_types::EBADFD'>EBADFD</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADMSG.html"
-                                  title='constant sgx_types::EBADMSG'>EBADMSG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADR.html"
-                                  title='constant sgx_types::EBADR'>EBADR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADRQC.html"
-                                  title='constant sgx_types::EBADRQC'>EBADRQC</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBADSLT.html"
-                                  title='constant sgx_types::EBADSLT'>EBADSLT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBFONT.html"
-                                  title='constant sgx_types::EBFONT'>EBFONT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EBUSY.html"
-                                  title='constant sgx_types::EBUSY'>EBUSY</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECANCELED.html"
-                                  title='constant sgx_types::ECANCELED'>ECANCELED</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECHILD.html"
-                                  title='constant sgx_types::ECHILD'>ECHILD</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECHRNG.html"
-                                  title='constant sgx_types::ECHRNG'>ECHRNG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECOMM.html"
-                                  title='constant sgx_types::ECOMM'>ECOMM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECONNABORTED.html"
-                                  title='constant sgx_types::ECONNABORTED'>ECONNABORTED</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECONNREFUSED.html"
-                                  title='constant sgx_types::ECONNREFUSED'>ECONNREFUSED</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ECONNRESET.html"
-                                  title='constant sgx_types::ECONNRESET'>ECONNRESET</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EDEADLK.html"
-                                  title='constant sgx_types::EDEADLK'>EDEADLK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EDEADLOCK.html"
-                                  title='constant sgx_types::EDEADLOCK'>EDEADLOCK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EDESTADDRREQ.html"
-                                  title='constant sgx_types::EDESTADDRREQ'>EDESTADDRREQ</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EDOM.html"
-                                  title='constant sgx_types::EDOM'>EDOM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EDOTDOT.html"
-                                  title='constant sgx_types::EDOTDOT'>EDOTDOT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EDQUOT.html"
-                                  title='constant sgx_types::EDQUOT'>EDQUOT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EEXIST.html"
-                                  title='constant sgx_types::EEXIST'>EEXIST</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EFAULT.html"
-                                  title='constant sgx_types::EFAULT'>EFAULT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EFBIG.html"
-                                  title='constant sgx_types::EFBIG'>EFBIG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EHOSTDOWN.html"
-                                  title='constant sgx_types::EHOSTDOWN'>EHOSTDOWN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EHOSTUNREACH.html"
-                                  title='constant sgx_types::EHOSTUNREACH'>EHOSTUNREACH</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EHWPOISON.html"
-                                  title='constant sgx_types::EHWPOISON'>EHWPOISON</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EIDRM.html"
-                                  title='constant sgx_types::EIDRM'>EIDRM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EILSEQ.html"
-                                  title='constant sgx_types::EILSEQ'>EILSEQ</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EINPROGRESS.html"
-                                  title='constant sgx_types::EINPROGRESS'>EINPROGRESS</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EINTR.html"
-                                  title='constant sgx_types::EINTR'>EINTR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EINVAL.html"
-                                  title='constant sgx_types::EINVAL'>EINVAL</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EIO.html"
-                                  title='constant sgx_types::EIO'>EIO</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EISCONN.html"
-                                  title='constant sgx_types::EISCONN'>EISCONN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EISDIR.html"
-                                  title='constant sgx_types::EISDIR'>EISDIR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EISNAM.html"
-                                  title='constant sgx_types::EISNAM'>EISNAM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EKEYEXPIRED.html"
-                                  title='constant sgx_types::EKEYEXPIRED'>EKEYEXPIRED</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EKEYREJECTED.html"
-                                  title='constant sgx_types::EKEYREJECTED'>EKEYREJECTED</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EKEYREVOKED.html"
-                                  title='constant sgx_types::EKEYREVOKED'>EKEYREVOKED</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EL2HLT.html"
-                                  title='constant sgx_types::EL2HLT'>EL2HLT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EL2NSYNC.html"
-                                  title='constant sgx_types::EL2NSYNC'>EL2NSYNC</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EL3HLT.html"
-                                  title='constant sgx_types::EL3HLT'>EL3HLT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EL3RST.html"
-                                  title='constant sgx_types::EL3RST'>EL3RST</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELIBACC.html"
-                                  title='constant sgx_types::ELIBACC'>ELIBACC</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELIBBAD.html"
-                                  title='constant sgx_types::ELIBBAD'>ELIBBAD</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELIBEXEC.html"
-                                  title='constant sgx_types::ELIBEXEC'>ELIBEXEC</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELIBMAX.html"
-                                  title='constant sgx_types::ELIBMAX'>ELIBMAX</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELIBSCN.html"
-                                  title='constant sgx_types::ELIBSCN'>ELIBSCN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELNRNG.html"
-                                  title='constant sgx_types::ELNRNG'>ELNRNG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ELOOP.html"
-                                  title='constant sgx_types::ELOOP'>ELOOP</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EMEDIUMTYPE.html"
-                                  title='constant sgx_types::EMEDIUMTYPE'>EMEDIUMTYPE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EMFILE.html"
-                                  title='constant sgx_types::EMFILE'>EMFILE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EMLINK.html"
-                                  title='constant sgx_types::EMLINK'>EMLINK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EMSGSIZE.html"
-                                  title='constant sgx_types::EMSGSIZE'>EMSGSIZE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EMULTIHOP.html"
-                                  title='constant sgx_types::EMULTIHOP'>EMULTIHOP</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENAMETOOLONG.html"
-                                  title='constant sgx_types::ENAMETOOLONG'>ENAMETOOLONG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENAVAIL.html"
-                                  title='constant sgx_types::ENAVAIL'>ENAVAIL</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
                            <td><a class="constant" href="constant.ENCLAVE_CRASHED.html"
                                   title='constant sgx_types::ENCLAVE_CRASHED'>ENCLAVE_CRASHED</a></td>
                            <td class='docblock-short'>
@@ -973,475 +533,6 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENETDOWN.html"
-                                  title='constant sgx_types::ENETDOWN'>ENETDOWN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENETRESET.html"
-                                  title='constant sgx_types::ENETRESET'>ENETRESET</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENETUNREACH.html"
-                                  title='constant sgx_types::ENETUNREACH'>ENETUNREACH</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENFILE.html"
-                                  title='constant sgx_types::ENFILE'>ENFILE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOANO.html"
-                                  title='constant sgx_types::ENOANO'>ENOANO</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOBUFS.html"
-                                  title='constant sgx_types::ENOBUFS'>ENOBUFS</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOCSI.html"
-                                  title='constant sgx_types::ENOCSI'>ENOCSI</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENODATA.html"
-                                  title='constant sgx_types::ENODATA'>ENODATA</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENODEV.html"
-                                  title='constant sgx_types::ENODEV'>ENODEV</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOENT.html"
-                                  title='constant sgx_types::ENOENT'>ENOENT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOEXEC.html"
-                                  title='constant sgx_types::ENOEXEC'>ENOEXEC</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOKEY.html"
-                                  title='constant sgx_types::ENOKEY'>ENOKEY</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOLCK.html"
-                                  title='constant sgx_types::ENOLCK'>ENOLCK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOLINK.html"
-                                  title='constant sgx_types::ENOLINK'>ENOLINK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOMEDIUM.html"
-                                  title='constant sgx_types::ENOMEDIUM'>ENOMEDIUM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOMEM.html"
-                                  title='constant sgx_types::ENOMEM'>ENOMEM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOMSG.html"
-                                  title='constant sgx_types::ENOMSG'>ENOMSG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENONET.html"
-                                  title='constant sgx_types::ENONET'>ENONET</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOPKG.html"
-                                  title='constant sgx_types::ENOPKG'>ENOPKG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOPROTOOPT.html"
-                                  title='constant sgx_types::ENOPROTOOPT'>ENOPROTOOPT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOSPC.html"
-                                  title='constant sgx_types::ENOSPC'>ENOSPC</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOSR.html"
-                                  title='constant sgx_types::ENOSR'>ENOSR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOSTR.html"
-                                  title='constant sgx_types::ENOSTR'>ENOSTR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOSYS.html"
-                                  title='constant sgx_types::ENOSYS'>ENOSYS</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTBLK.html"
-                                  title='constant sgx_types::ENOTBLK'>ENOTBLK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTCONN.html"
-                                  title='constant sgx_types::ENOTCONN'>ENOTCONN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTDIR.html"
-                                  title='constant sgx_types::ENOTDIR'>ENOTDIR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTEMPTY.html"
-                                  title='constant sgx_types::ENOTEMPTY'>ENOTEMPTY</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTNAM.html"
-                                  title='constant sgx_types::ENOTNAM'>ENOTNAM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTRECOVERABLE.html"
-                                  title='constant sgx_types::ENOTRECOVERABLE'>ENOTRECOVERABLE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTSOCK.html"
-                                  title='constant sgx_types::ENOTSOCK'>ENOTSOCK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTSUP.html"
-                                  title='constant sgx_types::ENOTSUP'>ENOTSUP</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTTY.html"
-                                  title='constant sgx_types::ENOTTY'>ENOTTY</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENOTUNIQ.html"
-                                  title='constant sgx_types::ENOTUNIQ'>ENOTUNIQ</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ENXIO.html"
-                                  title='constant sgx_types::ENXIO'>ENXIO</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EOF.html"
-                                  title='constant sgx_types::EOF'>EOF</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EOPNOTSUPP.html"
-                                  title='constant sgx_types::EOPNOTSUPP'>EOPNOTSUPP</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EOVERFLOW.html"
-                                  title='constant sgx_types::EOVERFLOW'>EOVERFLOW</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EOWNERDEAD.html"
-                                  title='constant sgx_types::EOWNERDEAD'>EOWNERDEAD</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EPERM.html"
-                                  title='constant sgx_types::EPERM'>EPERM</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EPFNOSUPPORT.html"
-                                  title='constant sgx_types::EPFNOSUPPORT'>EPFNOSUPPORT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EPIPE.html"
-                                  title='constant sgx_types::EPIPE'>EPIPE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EPROTO.html"
-                                  title='constant sgx_types::EPROTO'>EPROTO</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EPROTONOSUPPORT.html"
-                                  title='constant sgx_types::EPROTONOSUPPORT'>EPROTONOSUPPORT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EPROTOTYPE.html"
-                                  title='constant sgx_types::EPROTOTYPE'>EPROTOTYPE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ERANGE.html"
-                                  title='constant sgx_types::ERANGE'>ERANGE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EREMCHG.html"
-                                  title='constant sgx_types::EREMCHG'>EREMCHG</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EREMOTE.html"
-                                  title='constant sgx_types::EREMOTE'>EREMOTE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EREMOTEIO.html"
-                                  title='constant sgx_types::EREMOTEIO'>EREMOTEIO</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ERESTART.html"
-                                  title='constant sgx_types::ERESTART'>ERESTART</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ERFKILL.html"
-                                  title='constant sgx_types::ERFKILL'>ERFKILL</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EROFS.html"
-                                  title='constant sgx_types::EROFS'>EROFS</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESHUTDOWN.html"
-                                  title='constant sgx_types::ESHUTDOWN'>ESHUTDOWN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESOCKTNOSUPPORT.html"
-                                  title='constant sgx_types::ESOCKTNOSUPPORT'>ESOCKTNOSUPPORT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESPIPE.html"
-                                  title='constant sgx_types::ESPIPE'>ESPIPE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESRCH.html"
-                                  title='constant sgx_types::ESRCH'>ESRCH</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESRMNT.html"
-                                  title='constant sgx_types::ESRMNT'>ESRMNT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESTALE.html"
-                                  title='constant sgx_types::ESTALE'>ESTALE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ESTRPIPE.html"
-                                  title='constant sgx_types::ESTRPIPE'>ESTRPIPE</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ETIME.html"
-                                  title='constant sgx_types::ETIME'>ETIME</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ETIMEDOUT.html"
-                                  title='constant sgx_types::ETIMEDOUT'>ETIMEDOUT</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ETOOMANYREFS.html"
-                                  title='constant sgx_types::ETOOMANYREFS'>ETOOMANYREFS</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.ETXTBSY.html"
-                                  title='constant sgx_types::ETXTBSY'>ETXTBSY</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EUCLEAN.html"
-                                  title='constant sgx_types::EUCLEAN'>EUCLEAN</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EUNATCH.html"
-                                  title='constant sgx_types::EUNATCH'>EUNATCH</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EUSERS.html"
-                                  title='constant sgx_types::EUSERS'>EUSERS</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EWOULDBLOCK.html"
-                                  title='constant sgx_types::EWOULDBLOCK'>EWOULDBLOCK</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
                            <td><a class="constant" href="constant.EXCEPTION_CONTINUE_EXECUTION.html"
                                   title='constant sgx_types::EXCEPTION_CONTINUE_EXECUTION'>EXCEPTION_CONTINUE_EXECUTION</a></td>
                            <td class='docblock-short'>
@@ -1451,20 +542,6 @@
                        <tr class=' module-item'>
                            <td><a class="constant" href="constant.EXCEPTION_CONTINUE_SEARCH.html"
                                   title='constant sgx_types::EXCEPTION_CONTINUE_SEARCH'>EXCEPTION_CONTINUE_SEARCH</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EXDEV.html"
-                                  title='constant sgx_types::EXDEV'>EXDEV</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.EXFULL.html"
-                                  title='constant sgx_types::EXFULL'>EXFULL</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -1493,27 +570,6 @@
                        <tr class=' module-item'>
                            <td><a class="constant" href="constant.PS_CAP_TRUSTED_TIME.html"
                                   title='constant sgx_types::PS_CAP_TRUSTED_TIME'>PS_CAP_TRUSTED_TIME</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.SEEK_CUR.html"
-                                  title='constant sgx_types::SEEK_CUR'>SEEK_CUR</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.SEEK_END.html"
-                                  title='constant sgx_types::SEEK_END'>SEEK_END</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="constant" href="constant.SEEK_SET.html"
-                                  title='constant sgx_types::SEEK_SET'>SEEK_SET</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -1947,6 +1003,20 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sgx_cap_enable_device.html"
+                                  title='fn sgx_types::sgx_cap_enable_device'>sgx_cap_enable_device</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sgx_cap_get_status.html"
+                                  title='fn sgx_types::sgx_cap_get_status'>sgx_cap_get_status</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
                            <td><a class="fn" href="fn.sgx_clearerr.html"
                                   title='fn sgx_types::sgx_clearerr'>sgx_clearerr</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
                            <td class='docblock-short'>
@@ -2103,13 +1173,6 @@
                        <tr class=' module-item'>
                            <td><a class="fn" href="fn.sgx_ecc256_compute_shared_dhkey.html"
                                   title='fn sgx_types::sgx_ecc256_compute_shared_dhkey'>sgx_ecc256_compute_shared_dhkey</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="fn" href="fn.sgx_ecc256_compute_shared_dhkey512.html"
-                                  title='fn sgx_types::sgx_ecc256_compute_shared_dhkey512'>sgx_ecc256_compute_shared_dhkey512</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -2327,6 +1390,13 @@
                        <tr class=' module-item'>
                            <td><a class="fn" href="fn.sgx_init_quote.html"
                                   title='fn sgx_types::sgx_init_quote'>sgx_init_quote</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sgx_is_capable.html"
+                                  title='fn sgx_types::sgx_is_capable'>sgx_is_capable</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -3068,13 +2138,6 @@
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="type" href="type.time_t.html"
-                                  title='type sgx_types::time_t'>time_t</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
                            <td><a class="type" href="type.uint16_t.html"
                                   title='type sgx_types::uint16_t'>uint16_t</a></td>
                            <td class='docblock-short'>
@@ -3132,13 +2195,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

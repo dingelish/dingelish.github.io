@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>char</a></p><script>window.sidebarCurrent = {name: 'from_u32_unchecked', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -50,7 +51,6 @@
                    </a>
                </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/char.rs.html#173-175' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub unsafe fn from_u32_unchecked(i: u32) -&gt; char</pre><div class='docblock'><p>Converts a <code>u32</code> to a <code>char</code>, ignoring validity.</p>
-
 <p>Note that all <a href="../../std/primitive.char.html"><code>char</code></a>s are valid <a href="../../std/primitive.u32.html"><code>u32</code></a>s, and can be casted to one with
 <a href="../../book/first-edition/casting-between-types.html#as"><code>as</code></a>:</p>
 
@@ -59,17 +59,13 @@
 <span class="kw">let</span> <span class="ident">i</span> <span class="op">=</span> <span class="ident">c</span> <span class="kw">as</span> <span class="ident">u32</span>;
 
 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="number">128175</span>, <span class="ident">i</span>);</pre>
-
 <p>However, the reverse is not true: not all valid <a href="../../std/primitive.u32.html"><code>u32</code></a>s are valid
 <a href="../../std/primitive.char.html"><code>char</code></a>s. <code>from_u32_unchecked()</code> will ignore this, and blindly cast to
 <a href="../../std/primitive.char.html"><code>char</code></a>, possibly creating an invalid one.</p>
-
-<h1 id='safety' class='section-header'><a href='#safety'>Safety</a></h1>
+<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
 <p>This function is unsafe, as it may construct invalid <code>char</code> values.</p>
-
 <p>For a safe version of this function, see the <a href="fn.from_u32.html"><code>from_u32</code></a> function.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>Basic usage:</p>
 
 <pre class="rust rust-example-rendered">
@@ -95,13 +91,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

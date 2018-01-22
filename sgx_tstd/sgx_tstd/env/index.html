@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module env</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'env', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module env</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'env', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,8 +49,18 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_tstd/env.rs.html#29-98' title='goto source code'>[src]</a></span></h1>
-<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+               </span><a class='srclink' href='../../src/sgx_tstd/env.rs.html#29-387' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Inspection and manipulation of the process's environment.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="consts/index.html"
+                                  title='mod sgx_tstd::env::consts'>consts</a></td>
+                           <td class='docblock-short'>
+                                <p>Constants associated with the current target</p>
+
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class="struct" href="struct.JoinPathsError.html"
@@ -57,6 +68,7 @@
                            <td class='docblock-short'>
                                 <p>The error type for operations on the <code>PATH</code> variable. Possibly returned from
 the [<code>env::join_paths</code>] function.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -65,6 +77,33 @@ the [<code>env::join_paths</code>] function.</p>
                            <td class='docblock-short'>
                                 <p>An iterator that splits an environment variable into paths according to
 platform-specific conventions.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Vars.html"
+                                  title='struct sgx_tstd::env::Vars'>Vars</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator over a snapshot of the environment variables of this process.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.VarsOs.html"
+                                  title='struct sgx_tstd::env::VarsOs'>VarsOs</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator over a snapshot of the environment variables of this process.</p>
+
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.VarError.html"
+                                  title='enum sgx_tstd::env::VarError'>VarError</a></td>
+                           <td class='docblock-short'>
+                                <p>The error type for operations interacting with environment variables.
+Possibly returned from the [<code>env::var</code>] function.</p>
+
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -74,6 +113,24 @@ platform-specific conventions.</p>
                            <td class='docblock-short'>
                                 <p>Joins a collection of <a href="../../std/path/struct.Path.html"><code>Path</code></a>s appropriately for the <code>PATH</code>
 environment variable.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.remove_var.html"
+                                  title='fn sgx_tstd::env::remove_var'>remove_var</a></td>
+                           <td class='docblock-short'>
+                                <p>Removes an environment variable from the environment of the currently running process.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_var.html"
+                                  title='fn sgx_tstd::env::set_var'>set_var</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the environment variable <code>k</code> to the value <code>v</code> for the currently running
+process.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -82,6 +139,42 @@ environment variable.</p>
                            <td class='docblock-short'>
                                 <p>Parses input according to platform conventions for the <code>PATH</code>
 environment variable.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.var.html"
+                                  title='fn sgx_tstd::env::var'>var</a></td>
+                           <td class='docblock-short'>
+                                <p>Fetches the environment variable <code>key</code> from the current process.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.var_os.html"
+                                  title='fn sgx_tstd::env::var_os'>var_os</a></td>
+                           <td class='docblock-short'>
+                                <p>Fetches the environment variable <code>key</code> from the current process, returning
+[<code>None</code>] if the variable isn't set.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vars.html"
+                                  title='fn sgx_tstd::env::vars'>vars</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns an iterator of (variable, value) pairs of strings, for all the
+environment variables of the current process.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vars_os.html"
+                                  title='fn sgx_tstd::env::vars_os'>vars_os</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns an iterator of (variable, value) pairs of OS strings, for all the
+environment variables of the current process.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -100,13 +193,15 @@ environment variable.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

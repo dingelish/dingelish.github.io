@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Enum SeekFrom</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'SeekFrom', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Enum SeekFrom</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.Start">Start</a><a href="#variant.End">End</a><a href="#variant.Current">Current</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Copy">Copy</a><a href="#impl-PartialEq">PartialEq</a><a href="#impl-Eq">Eq</a><a href="#impl-Clone">Clone</a><a href="#impl-Debug">Debug</a></div></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'SeekFrom', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,46 +49,43 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#603-620' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#600-617' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum SeekFrom {
     Start(u64),
     End(i64),
     Current(i64),
 }</pre><div class='docblock'><p>Enumeration of possible methods to seek within an I/O object.</p>
-
 <p>It is used by the <a href="trait.Seek.html"><code>Seek</code></a> trait.</p>
 </div><h2 id='variants' class='variants small-section-header'>
                    Variants<a href='#variants' class='anchor'></a></h2>
 <span id="variant.Start" class="variant small-section-header"><a href="#variant.Start" class="anchor field"></a><span id='Start.v' class='invisible'><code>Start(u64)</code></span></span><div class='docblock'><p>Set the offset to the provided number of bytes.</p>
 </div><span id="variant.End" class="variant small-section-header"><a href="#variant.End" class="anchor field"></a><span id='End.v' class='invisible'><code>End(i64)</code></span></span><div class='docblock'><p>Set the offset to the size of this object plus the specified number of
 bytes.</p>
-
-<p>It is possible to seek beyond the end of an object, but it&#39;s an error to
+<p>It is possible to seek beyond the end of an object, but it's an error to
 seek before byte 0.</p>
 </div><span id="variant.Current" class="variant small-section-header"><a href="#variant.Current" class="anchor field"></a><span id='Current.v' class='invisible'><code>Current(i64)</code></span></span><div class='docblock'><p>Set the offset to the current position plus the specified number of
 bytes.</p>
-
-<p>It is possible to seek beyond the end of an object, but it&#39;s an error to
+<p>It is possible to seek beyond the end of an object, but it's an error to
 seek before byte 0.</p>
 </div>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
-        <h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/marker/trait.Copy.html" title="trait sgx_tstd::marker::Copy">Copy</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/cmp/trait.PartialEq.html" title="trait sgx_tstd::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h4>
+        <h3 id='impl-Copy' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/marker/trait.Copy.html" title="trait sgx_tstd::marker::Copy">Copy</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Copy' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/cmp/trait.PartialEq.html" title="trait sgx_tstd::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="../../sgx_tstd/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
-</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a>) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>This method tests for <code>!=</code>.</p>
-</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/cmp/trait.Eq.html" title="trait sgx_tstd::cmp::Eq">Eq</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='../../sgx_tstd/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h4>
+</div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/cmp/trait.Eq.html" title="trait sgx_tstd::cmp::Eq">Eq</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Clone' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Clone' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='../../sgx_tstd/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Returns a copy of the value. <a href="../../sgx_tstd/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
 </div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='../../sgx_tstd/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></span><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#112-114' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="../../sgx_tstd/clone/trait.Clone.html#method.clone_from">Read more</a></p>
-</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#602' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="enum" href="../../sgx_tstd/io/enum.SeekFrom.html" title="enum sgx_tstd::io::SeekFrom">SeekFrom</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#599' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -105,13 +103,15 @@ seek before byte 0.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

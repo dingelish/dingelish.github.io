@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `../sgx_tstd/src/f64.rs`.">
+    <meta name="description" content="Source to the Rust file `..-icode/sgx_tstd/src/f64.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>f64.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -990,38 +991,8 @@
 <span id="945">945</span>
 <span id="946">946</span>
 <span id="947">947</span>
-<span id="948">948</span>
-<span id="949">949</span>
-<span id="950">950</span>
-<span id="951">951</span>
-<span id="952">952</span>
-<span id="953">953</span>
-<span id="954">954</span>
-<span id="955">955</span>
-<span id="956">956</span>
-<span id="957">957</span>
-<span id="958">958</span>
-<span id="959">959</span>
-<span id="960">960</span>
-<span id="961">961</span>
-<span id="962">962</span>
-<span id="963">963</span>
-<span id="964">964</span>
-<span id="965">965</span>
-<span id="966">966</span>
-<span id="967">967</span>
-<span id="968">968</span>
-<span id="969">969</span>
-<span id="970">970</span>
-<span id="971">971</span>
-<span id="972">972</span>
-<span id="973">973</span>
-<span id="974">974</span>
-<span id="975">975</span>
-<span id="976">976</span>
-<span id="977">977</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -1049,61 +1020,24 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
+<span class="doccomment">//! This module provides constants which are specific to the implementation</span>
+<span class="doccomment">//! of the `f64` floating point data type.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Mathematically significant numbers are provided in the `consts` sub-module.</span>
+<span class="doccomment">//!</span>
+
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
 
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">num</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">intrinsics</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">num</span>::<span class="ident">FpCategory</span>;
+<span class="kw">use</span> <span class="ident">sys</span>::<span class="ident">cmath</span>;
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">f64</span>::{<span class="ident">RADIX</span>, <span class="ident">MANTISSA_DIGITS</span>, <span class="ident">DIGITS</span>, <span class="ident">EPSILON</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">f64</span>::{<span class="ident">MIN_EXP</span>, <span class="ident">MAX_EXP</span>, <span class="ident">MIN_10_EXP</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">f64</span>::{<span class="ident">MAX_10_EXP</span>, <span class="ident">NAN</span>, <span class="ident">INFINITY</span>, <span class="ident">NEG_INFINITY</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">f64</span>::{<span class="ident">MIN</span>, <span class="ident">MIN_POSITIVE</span>, <span class="ident">MAX</span>};
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">f64</span>::<span class="ident">consts</span>;
-
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
-<span class="kw">mod</span> <span class="ident">cmath</span> {
-    <span class="kw">use</span> <span class="ident">sgx_types</span>::{<span class="ident">c_double</span>, <span class="ident">c_int</span>};
-
-    <span class="attribute">#[<span class="ident">link_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tstdc&quot;</span>]</span>
-    <span class="kw">extern</span> {
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">acos</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">asin</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">atan</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">atan2</span>(<span class="ident">a</span>: <span class="ident">c_double</span>, <span class="ident">b</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cbrt</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cosh</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">erf</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">erfc</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">expm1</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fdim</span>(<span class="ident">a</span>: <span class="ident">c_double</span>, <span class="ident">b</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">fmod</span>(<span class="ident">a</span>: <span class="ident">c_double</span>, <span class="ident">b</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">frexp</span>(<span class="ident">n</span>: <span class="ident">c_double</span>, <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ilogb</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_int</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ldexp</span>(<span class="ident">x</span>: <span class="ident">c_double</span>, <span class="ident">n</span>: <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">logb</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">log1p</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">nextafter</span>(<span class="ident">x</span>: <span class="ident">c_double</span>, <span class="ident">y</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">modf</span>(<span class="ident">n</span>: <span class="ident">c_double</span>, <span class="ident">iptr</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sinh</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tan</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tanh</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">tgamma</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-
-        <span class="comment">// These are commonly only available for doubles</span>
-
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">j0</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">j1</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">jn</span>(<span class="ident">i</span>: <span class="ident">c_int</span>, <span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">y0</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">y1</span>(<span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">yn</span>(<span class="ident">i</span>: <span class="ident">c_int</span>, <span class="ident">n</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">lgamma_r</span>(<span class="ident">n</span>: <span class="ident">c_double</span>, <span class="ident">sign</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">c_int</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-        <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hypot</span>(<span class="ident">x</span>: <span class="ident">c_double</span>, <span class="ident">y</span>: <span class="ident">c_double</span>) <span class="op">-&gt;</span> <span class="ident">c_double</span>;
-    }
-}
 
 <span class="attribute">#[<span class="ident">lang</span> <span class="op">=</span> <span class="string">&quot;f64&quot;</span>]</span>
 <span class="kw">impl</span> <span class="ident">f64</span> {
@@ -1472,18 +1406,17 @@
 
     <span class="doccomment">/// Returns the logarithm of the number with respect to an arbitrary base.</span>
     <span class="doccomment">///</span>
+    <span class="doccomment">/// The result may not be correctly rounded owing to implementation details;</span>
+    <span class="doccomment">/// `self.log2()` can produce more accurate results for base 2, and</span>
+    <span class="doccomment">/// `self.log10()` can produce more accurate results for base 10.</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ```</span>
-    <span class="doccomment">/// let ten = 10.0_f64;</span>
-    <span class="doccomment">/// let two = 2.0_f64;</span>
+    <span class="doccomment">/// let five = 5.0_f64;</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // log10(10) - 1 == 0</span>
-    <span class="doccomment">/// let abs_difference_10 = (ten.log(10.0) - 1.0).abs();</span>
+    <span class="doccomment">/// // log5(5) - 1 == 0</span>
+    <span class="doccomment">/// let abs_difference = (five.log(5.0) - 1.0).abs();</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// // log2(2) - 1 == 0</span>
-    <span class="doccomment">/// let abs_difference_2 = (two.log(2.0) - 1.0).abs();</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// assert!(abs_difference_10 &lt; 1e-10);</span>
-    <span class="doccomment">/// assert!(abs_difference_2 &lt; 1e-10);</span>
+    <span class="doccomment">/// assert!(abs_difference &lt; 1e-10);</span>
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">log</span>(<span class="self">self</span>, <span class="ident">base</span>: <span class="ident">f64</span>) <span class="op">-&gt;</span> <span class="ident">f64</span> { <span class="self">self</span>.<span class="ident">ln</span>() <span class="op">/</span> <span class="ident">base</span>.<span class="ident">ln</span>() }
@@ -1957,10 +1890,13 @@
 
     <span class="doccomment">/// Raw transmutation to `u64`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Converts the `f64` into its raw memory representation,</span>
-    <span class="doccomment">/// similar to the `transmute` function.</span>
+    <span class="doccomment">/// This is currently identical to `transmute::&lt;f64, u64&gt;(self)` on all platforms.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that this function is distinct from casting.</span>
+    <span class="doccomment">/// See `from_bits` for some discussion of the portability of this operation</span>
+    <span class="doccomment">/// (there are almost no issues).</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note that this function is distinct from `as` casting, which attempts to</span>
+    <span class="doccomment">/// preserve the *numeric* value, and not the bitwise value.</span>
     <span class="doccomment">///</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_bits</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">u64</span> {
@@ -1969,32 +1905,37 @@
 
     <span class="doccomment">/// Raw transmutation from `u64`.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Converts the given `u64` containing the float&#39;s raw memory</span>
-    <span class="doccomment">/// representation into the `f64` type, similar to the</span>
-    <span class="doccomment">/// `transmute` function.</span>
+    <span class="doccomment">/// This is currently identical to `transmute::&lt;u64, f64&gt;(v)` on all platforms.</span>
+    <span class="doccomment">/// It turns out this is incredibly portable, for two reasons:</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// There is only one difference to a bare `transmute`:</span>
-    <span class="doccomment">/// Due to the implications onto Rust&#39;s safety promises being</span>
-    <span class="doccomment">/// uncertain, if the representation of a signaling NaN &quot;sNaN&quot; float</span>
-    <span class="doccomment">/// is passed to the function, the implementation is allowed to</span>
-    <span class="doccomment">/// return a quiet NaN instead.</span>
+    <span class="doccomment">/// * Floats and Ints have the same endianess on all supported platforms.</span>
+    <span class="doccomment">/// * IEEE-754 very precisely specifies the bit layout of floats.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Note that this function is distinct from casting.</span>
+    <span class="doccomment">/// However there is one caveat: prior to the 2008 version of IEEE-754, how</span>
+    <span class="doccomment">/// to interpret the NaN signaling bit wasn&#39;t actually specified. Most platforms</span>
+    <span class="doccomment">/// (notably x86 and ARM) picked the interpretation that was ultimately</span>
+    <span class="doccomment">/// standardized in 2008, but some didn&#39;t (notably MIPS). As a result, all</span>
+    <span class="doccomment">/// signaling NaNs on MIPS are quiet NaNs on x86, and vice-versa.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Rather than trying to preserve signaling-ness cross-platform, this</span>
+    <span class="doccomment">/// implementation favours preserving the exact bits. This means that</span>
+    <span class="doccomment">/// any payloads encoded in NaNs will be preserved even if the result of</span>
+    <span class="doccomment">/// this method is sent over the network from an x86 machine to a MIPS one.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the results of this method are only manipulated by the same</span>
+    <span class="doccomment">/// architecture that produced them, then there is no portability concern.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the input isn&#39;t NaN, then there is no portability concern.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If you don&#39;t care about signalingness (very likely), then there is no</span>
+    <span class="doccomment">/// portability concern.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note that this function is distinct from `as` casting, which attempts to</span>
+    <span class="doccomment">/// preserve the *numeric* value, and not the bitwise value.</span>
     <span class="doccomment">///</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bits</span>(<span class="kw-2">mut</span> <span class="ident">v</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="kw">const</span> <span class="ident">EXP_MASK</span>: <span class="ident">u64</span>   <span class="op">=</span> <span class="number">0x7FF0000000000000</span>;
-        <span class="kw">const</span> <span class="ident">FRACT_MASK</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="number">0x000FFFFFFFFFFFFF</span>;
-        <span class="kw">if</span> <span class="ident">v</span> <span class="op">&amp;</span> <span class="ident">EXP_MASK</span> <span class="op">==</span> <span class="ident">EXP_MASK</span> <span class="op">&amp;&amp;</span> <span class="ident">v</span> <span class="op">&amp;</span> <span class="ident">FRACT_MASK</span> <span class="op">!=</span> <span class="number">0</span> {
-            <span class="comment">// While IEEE 754-2008 specifies encodings for quiet NaNs</span>
-            <span class="comment">// and signaling ones, certain MIPS and PA-RISC</span>
-            <span class="comment">// CPUs treat signaling NaNs differently.</span>
-            <span class="comment">// Therefore to be safe, we pass a known quiet NaN</span>
-            <span class="comment">// if v is any kind of NaN.</span>
-            <span class="comment">// The check above only assumes IEEE 754-1985 to be</span>
-            <span class="comment">// valid.</span>
-            <span class="ident">v</span> <span class="op">=</span> <span class="kw">unsafe</span> { ::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">NAN</span>) };
-        }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bits</span>(<span class="ident">v</span>: <span class="ident">u64</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="comment">// It turns out the safety issues with sNaN were overblown! Hooray!</span>
         <span class="kw">unsafe</span> { ::<span class="ident">mem</span>::<span class="ident">transmute</span>(<span class="ident">v</span>) }
     }
 }
@@ -2016,13 +1957,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

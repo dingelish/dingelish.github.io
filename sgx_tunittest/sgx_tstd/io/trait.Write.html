@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait Write</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#provided-methods">Provided Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'Write', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait Write</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.write">write</a><a href="#tymethod.flush">flush</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.write_all">write_all</a><a href="#method.write_fmt">write_fmt</a><a href="#method.by_ref">by_ref</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'Write', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#441-571' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/sgx_tstd/io/mod.rs.html#438-568' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait Write {
     fn <a href='#tymethod.write' class='fnname'>write</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;;
@@ -58,19 +59,19 @@
 <div class='item-spacer'></div>    fn <a href='#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self<br>&nbsp;&nbsp;&nbsp; <span class="where">where<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a></span>,
     { ... }
 }</pre><div class='docblock'><p>A trait for objects which are byte-oriented sinks.</p>
-
-<p>Implementors of the <code>Write</code> trait are sometimes called &#39;writers&#39;.</p>
-
+<p>Implementors of the <code>Write</code> trait are sometimes called 'writers'.</p>
 <p>Writers are defined by two required methods, <a href="#tymethod.write"><code>write</code></a> and <a href="#tymethod.flush"><code>flush</code></a>:</p>
-
 <ul>
-<li><p>The <a href="#tymethod.write"><code>write</code></a> method will attempt to write some data into the object,
-returning how many bytes were successfully written.</p></li>
-<li><p>The <a href="#tymethod.flush"><code>flush</code></a> method is useful for adaptors and explicit buffers
+<li>
+<p>The <a href="#tymethod.write"><code>write</code></a> method will attempt to write some data into the object,
+returning how many bytes were successfully written.</p>
+</li>
+<li>
+<p>The <a href="#tymethod.flush"><code>flush</code></a> method is useful for adaptors and explicit buffers
 themselves for ensuring that all buffered data has been pushed out to the
-&#39;true sink&#39;.</p></li>
+'true sink'.</p>
+</li>
 </ul>
-
 <p>Writers are intended to be composable with one another. Many implementors
 throughout <a href="index.html"><code>std::io</code></a> take and provide types which implement the <code>Write</code>
 trait.</p>
@@ -80,35 +81,28 @@ trait.</p>
             </h2>
             <div class='methods'>
         <h3 id='tymethod.write' class='method'><span id='write.v' class='invisible'><code>fn <a href='#tymethod.write' class='fnname'>write</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;usize&gt;</code></span></h3><div class='docblock'><p>Write a buffer into this object, returning how many bytes were written.</p>
-
 <p>This function will attempt to write the entire contents of <code>buf</code>, but
 the entire write may not succeed, or the write may also generate an
 error. A call to <code>write</code> represents <em>at most one</em> attempt to write to
 any wrapped object.</p>
-
 <p>Calls to <code>write</code> are not guaranteed to block waiting for data to be
 written, and a write which would otherwise block can be indicated through
 an <code>Err</code> variant.</p>
-
 <p>If the return value is <code>Ok(n)</code> then it must be guaranteed that
 <code>0 &lt;= n &lt;= buf.len()</code>. A return value of <code>0</code> typically means that the
 underlying object is no longer able to accept bytes and will likely not
 be able to in the future as well, or that the buffer provided is empty.</p>
-
-<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
 <p>Each call to <code>write</code> may generate an I/O error indicating that the
 operation could not be completed. If an error is returned then no bytes
 in the buffer were written to this writer.</p>
-
 <p>It is <strong>not</strong> considered an error if the entire buffer could not be
 written to this writer.</p>
-
 <p>An error of the <code>ErrorKind::Interrupted</code> kind is non-fatal and the
 write operation should be retried if there is nothing else to do.</p>
 </div><h3 id='tymethod.flush' class='method'><span id='flush.v' class='invisible'><code>fn <a href='#tymethod.flush' class='fnname'>flush</a>(&amp;mut self) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span></h3><div class='docblock'><p>Flush this output stream, ensuring that all intermediately buffered
 contents reach their destination.</p>
-
-<h1 id='errors-1' class='section-header'><a href='#errors-1'>Errors</a></h1>
+<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
 <p>It is considered an error if not all bytes could be written due to
 I/O errors or EOF being reached.</p>
 </div></div>
@@ -117,34 +111,28 @@ I/O errors or EOF being reached.</p>
             </h2>
             <div class='methods'>
         <h3 id='method.write_all' class='method'><span id='write_all.v' class='invisible'><code>fn <a href='#method.write_all' class='fnname'>write_all</a>(&amp;mut self, buf: &amp;[u8]) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span></h3><div class='docblock'><p>Attempts to write an entire buffer into this write.</p>
-
 <p>This method will continuously call <code>write</code> until there is no more data
 to be written or an error of non-<code>ErrorKind::Interrupted</code> kind is
 returned. This method will not return until the entire buffer has been
 successfully written or such an error occurs. The first error that is
 not of <code>ErrorKind::Interrupted</code> kind generated from this method will be
 returned.</p>
-
-<h1 id='errors-2' class='section-header'><a href='#errors-2'>Errors</a></h1>
+<h1 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h1>
 <p>This function will return the first error of
 non-<code>ErrorKind::Interrupted</code> kind that <code>write</code> returns.</p>
 </div><h3 id='method.write_fmt' class='method'><span id='write_fmt.v' class='invisible'><code>fn <a href='#method.write_fmt' class='fnname'>write_fmt</a>(&amp;mut self, fmt: <a class="struct" href="../../sgx_tstd/fmt/struct.Arguments.html" title="struct sgx_tstd::fmt::Arguments">Arguments</a>) -&gt; <a class="type" href="../../sgx_tstd/io/type.Result.html" title="type sgx_tstd::io::Result">Result</a>&lt;()&gt;</code></span></h3><div class='docblock'><p>Writes a formatted string into this writer, returning any error
 encountered.</p>
-
 <p>This method is primarily used to interface with the
 <a href="../macro.format_args.html"><code>format_args!</code></a> macro, but it is rare that this should
 explicitly be called. The <a href="../macro.write.html"><code>write!</code></a> macro should be favored to
 invoke this method instead.</p>
-
 <p>This function internally uses the <a href="#method.write_all"><code>write_all</code></a> method on
 this trait and hence will continuously write data so long as no errors
 are received. This also means that partial writes are not indicated in
 this signature.</p>
-
-<h1 id='errors-3' class='section-header'><a href='#errors-3'>Errors</a></h1>
+<h1 id="errors-3" class="section-header"><a href="#errors-3">Errors</a></h1>
 <p>This function will return any I/O error reported while formatting.</p>
 </div><h3 id='method.by_ref' class='method'><span id='by_ref.v' class='invisible'><code>fn <a href='#method.by_ref' class='fnname'>by_ref</a>(&amp;mut self) -&gt; &amp;mut Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;Self: <a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></span></h3><div class='docblock'><p>Creates a &quot;by reference&quot; adaptor for this instance of <code>Write</code>.</p>
-
 <p>The returned adaptor also implements <code>Write</code> and will simply borrow this
 current writer.</p>
 </div></div>
@@ -152,22 +140,27 @@ current writer.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl Write for <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code></li>
-<li><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.SgxFile.html" title="struct sgx_tstd::fs::SgxFile">SgxFile</a></code></li>
-<li><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a>&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.BufWriter.html" title="struct sgx_tstd::io::BufWriter">BufWriter</a>&lt;W&gt;</code></li>
-<li><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a>&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.LineWriter.html" title="struct sgx_tstd::io::LineWriter">LineWriter</a>&lt;W&gt;</code></li>
-<li><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;&amp;'a mut [u8]&gt;</code></li>
-<li><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;<a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;&gt;</code></li>
-<li><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;<a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;[u8]&gt;&gt;</code></li>
-<li><code>impl&lt;'a, W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Write for &amp;'a mut W</code></li>
-<li><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Write for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;W&gt;</code></li>
-<li><code>impl&lt;'a&gt; Write for &amp;'a mut [u8]</code></li>
-<li><code>impl Write for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;</code></li>
-<li><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Sink.html" title="struct sgx_tstd::io::Sink">Sink</a></code></li>
-<li><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Stdout.html" title="struct sgx_tstd::io::Stdout">Stdout</a></code></li>
-<li><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.StdoutLock.html" title="struct sgx_tstd::io::StdoutLock">StdoutLock</a>&lt;'a&gt;</code></li>
-<li><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Stderr.html" title="struct sgx_tstd::io::Stderr">Stderr</a></code></li>
-<li><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.StderrLock.html" title="struct sgx_tstd::io::StderrLock">StderrLock</a>&lt;'a&gt;</code></li>
+    <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sgxfs.rs.html#179-184' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/sgxfs/struct.SgxFile.html" title="struct sgx_tstd::sgxfs::SgxFile">SgxFile</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sgxfs.rs.html#203-208' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/sgxfs/struct.SgxFile.html" title="struct sgx_tstd::sgxfs::SgxFile">SgxFile</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#306-311' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/fs/struct.File.html" title="struct sgx_tstd::fs::File">File</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#330-335' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.File.html" title="struct sgx_tstd::fs::File">File</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#333-350' title='goto source code'>[src]</a></div><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a>&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.BufWriter.html" title="struct sgx_tstd::io::BufWriter">BufWriter</a>&lt;W&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#476-518' title='goto source code'>[src]</a></div><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a>&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.LineWriter.html" title="struct sgx_tstd::io::LineWriter">LineWriter</a>&lt;W&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/cursor.rs.html#165-171' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;&amp;'a mut [u8]&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/cursor.rs.html#173-178' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;&amp;'a mut <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/cursor.rs.html#180-185' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;<a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/cursor.rs.html#187-193' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;<a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;[u8]&gt;&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/impls.rs.html#64-80' title='goto source code'>[src]</a></div><code>impl&lt;'a, W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Write for &amp;'a mut W</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/impls.rs.html#132-148' title='goto source code'>[src]</a></div><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Write for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;W&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/impls.rs.html#247-268' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a mut [u8]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/impls.rs.html#272-287' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;u8&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/util.rs.html#156-161' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Sink.html" title="struct sgx_tstd::io::Sink">Sink</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#336-349' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Stdout.html" title="struct sgx_tstd::io::Stdout">Stdout</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#351-358' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.StdoutLock.html" title="struct sgx_tstd::io::StdoutLock">StdoutLock</a>&lt;'a&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#422-435' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Stderr.html" title="struct sgx_tstd::io::Stderr">Stderr</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#437-444' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.StderrLock.html" title="struct sgx_tstd::io::StderrLock">StderrLock</a>&lt;'a&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/tcp.rs.html#227-230' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/net/struct.TcpStream.html" title="struct sgx_tstd::net::TcpStream">TcpStream</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/tcp.rs.html#241-244' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/net/struct.TcpStream.html" title="struct sgx_tstd::net::TcpStream">TcpStream</a></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/sgx_tstd/io/trait.Write.js">
                  </script></section>
@@ -187,13 +180,15 @@ current writer.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

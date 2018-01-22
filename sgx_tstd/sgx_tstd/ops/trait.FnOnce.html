@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait FnOnce</p><div class="block items"><ul><li><a href="#associated-types">Associated Types</a></li><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'FnOnce', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait FnOnce</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Output">Output</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.call_once">call_once</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'FnOnce', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -54,38 +55,29 @@
     type <a href='#associatedtype.Output' class="type">Output</a>;
     extern &quot;rust-call&quot; fn <a href='#tymethod.call_once' class='fnname'>call_once</a>(self, args: Args) -&gt; Self::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;
 }</pre><div class='docblock'><p>The version of the call operator that takes a by-value receiver.</p>
-
 <p>Instances of <code>FnOnce</code> can be called, but might not be callable multiple
 times. Because of this, if the only thing known about a type is that it
 implements <code>FnOnce</code>, it can only be called once.</p>
-
 <p><code>FnOnce</code> is implemented automatically by closure that might consume captured
 variables, as well as all types that implement <a href="trait.FnMut.html"><code>FnMut</code></a>, e.g. (safe)
 <a href="../../std/primitive.fn.html">function pointers</a> (since <code>FnOnce</code> is a supertrait of <a href="trait.FnMut.html"><code>FnMut</code></a>).</p>
-
 <p>Since both <a href="trait.Fn.html"><code>Fn</code></a> and <a href="trait.FnMut.html"><code>FnMut</code></a> are subtraits of <code>FnOnce</code>, any instance of
 <a href="trait.Fn.html"><code>Fn</code></a> or <a href="trait.FnMut.html"><code>FnMut</code></a> can be used where a <code>FnOnce</code> is expected.</p>
-
 <p>Use <code>FnOnce</code> as a bound when you want to accept a parameter of function-like
 type and only need to call it once. If you need to call the parameter
 repeatedly, use <a href="trait.FnMut.html"><code>FnMut</code></a> as a bound; if you also need it to not mutate
 state, use <a href="trait.Fn.html"><code>Fn</code></a>.</p>
-
 <p>See the <a href="../../book/second-edition/ch13-01-closures.html">chapter on closures in <em>The Rust Programming Language</em></a> for
 some more information on this topic.</p>
-
 <p>Also of note is the special syntax for <code>Fn</code> traits (e.g.
 <code>Fn(usize, bool) -&gt; usize</code>). Those interested in the technical details of
 this can refer to <a href="../../nomicon/hrtb.html">the relevant section in the <em>Rustonomicon</em></a>.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
-<h2 id='calling-a-by-value-closure' class='section-header'><a href='#calling-a-by-value-closure'>Calling a by-value closure</a></h2>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1><h2 id="calling-a-by-value-closure" class="section-header"><a href="#calling-a-by-value-closure">Calling a by-value closure</a></h2>
 <pre class="rust rust-example-rendered">
 <span class="kw">let</span> <span class="ident">x</span> <span class="op">=</span> <span class="number">5</span>;
 <span class="kw">let</span> <span class="ident">square_x</span> <span class="op">=</span> <span class="kw">move</span> <span class="op">||</span> <span class="ident">x</span> <span class="op">*</span> <span class="ident">x</span>;
 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">square_x</span>(), <span class="number">25</span>);</pre>
-
-<h2 id='using-a-fnonce-parameter' class='section-header'><a href='#using-a-fnonce-parameter'>Using a <code>FnOnce</code> parameter</a></h2>
+<h2 id="using-a-fnonce-parameter" class="section-header"><a href="#using-a-fnonce-parameter">Using a <code>FnOnce</code> parameter</a></h2>
 <pre class="rust rust-example-rendered">
 <span class="kw">fn</span> <span class="ident">consume_with_relish</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="ident">func</span>: <span class="ident">F</span>)
     <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">FnOnce</span>() <span class="op">-&gt;</span> <span class="ident">String</span>
@@ -122,11 +114,11 @@ this can refer to <a href="../../nomicon/hrtb.html">the relevant section in the 
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;'a, A, F&gt; FnOnce&lt;A&gt; for &amp;'a F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.Fn.html" title="trait sgx_tstd::ops::Fn">Fn</a>&lt;A&gt; + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
-<li><code>impl&lt;'a, A, F&gt; FnOnce&lt;A&gt; for &amp;'a mut F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.FnMut.html" title="trait sgx_tstd::ops::FnMut">FnMut</a>&lt;A&gt; + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
-<li><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
-<li><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
-<li><code>impl&lt;R, F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() -&gt; R&gt; FnOnce&lt;()&gt; for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;F&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/function.rs.html#266-273' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, F&gt; FnOnce&lt;A&gt; for &amp;'a mut F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.FnMut.html" title="trait sgx_tstd::ops::FnMut">FnMut</a>&lt;A&gt; + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/function.rs.html#246-254' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, F&gt; FnOnce&lt;A&gt; for &amp;'a F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.Fn.html" title="trait sgx_tstd::ops::Fn">Fn</a>&lt;A&gt; + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#833-839' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#823-829' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#217-223' title='goto source code'>[src]</a></div><code>impl&lt;R, F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() -&gt; R&gt; FnOnce&lt;()&gt; for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;F&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/ops/function/trait.FnOnce.js">
                  </script></section>
@@ -146,13 +138,15 @@ this can refer to <a href="../../nomicon/hrtb.html">the relevant section in the 
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

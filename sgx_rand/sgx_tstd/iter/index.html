@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module iter</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'iter', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module iter</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'iter', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,33 +49,27 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/lib.rs.html#179' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/lib.rs.html#162' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Composable external iteration.</p>
-
-<p>If you&#39;ve found yourself with a collection of some kind, and needed to
-perform an operation on the elements of said collection, you&#39;ll quickly run
-into &#39;iterators&#39;. Iterators are heavily used in idiomatic Rust code, so
-it&#39;s worth becoming familiar with them.</p>
-
-<p>Before explaining more, let&#39;s talk about how this module is structured:</p>
-
-<h1 id='organization' class='section-header'><a href='#organization'>Organization</a></h1>
+<p>If you've found yourself with a collection of some kind, and needed to
+perform an operation on the elements of said collection, you'll quickly run
+into 'iterators'. Iterators are heavily used in idiomatic Rust code, so
+it's worth becoming familiar with them.</p>
+<p>Before explaining more, let's talk about how this module is structured:</p>
+<h1 id="organization" class="section-header"><a href="#organization">Organization</a></h1>
 <p>This module is largely organized by type:</p>
-
 <ul>
 <li><a href="#traits">Traits</a> are the core portion: these traits define what kind of iterators
 exist and what you can do with them. The methods of these traits are worth
 putting some extra study time into.</li>
 <li><a href="#functions">Functions</a> provide some helpful ways to create some basic iterators.</li>
 <li><a href="#structs">Structs</a> are often the return types of the various methods on this
-module&#39;s traits. You&#39;ll usually want to look at the method that creates
+module's traits. You'll usually want to look at the method that creates
 the <code>struct</code>, rather than the <code>struct</code> itself. For more detail about why,
-see &#39;<a href="#implementing-iterator">Implementing Iterator</a>&#39;.</li>
+see '<a href="#implementing-iterator">Implementing Iterator</a>'.</li>
 </ul>
-
-<p>That&#39;s it! Let&#39;s dig into iterators.</p>
-
-<h1 id='iterator' class='section-header'><a href='#iterator'>Iterator</a></h1>
+<p>That's it! Let's dig into iterators.</p>
+<h1 id="iterator" class="section-header"><a href="#iterator">Iterator</a></h1>
 <p>The heart and soul of this module is the <a href="trait.Iterator.html"><code>Iterator</code></a> trait. The core of
 <a href="trait.Iterator.html"><code>Iterator</code></a> looks like this:</p>
 
@@ -83,41 +78,33 @@ see &#39;<a href="#implementing-iterator">Implementing Iterator</a>&#39;.</li>
     <span class="kw">type</span> <span class="ident">Item</span>;
     <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span>;
 }</pre>
-
 <p>An iterator has a method, <a href="trait.Iterator.html#tymethod.next"><code>next</code></a>, which when called, returns an
 <a href="../../std/option/enum.Option.html"><code>Option</code></a><code>&lt;Item&gt;</code>. <a href="trait.Iterator.html#tymethod.next"><code>next</code></a> will return <code>Some(Item)</code> as long as there
-are elements, and once they&#39;ve all been exhausted, will return <code>None</code> to
+are elements, and once they've all been exhausted, will return <code>None</code> to
 indicate that iteration is finished. Individual iterators may choose to
 resume iteration, and so calling <a href="trait.Iterator.html#tymethod.next"><code>next</code></a> again may or may not eventually
 start returning <code>Some(Item)</code> again at some point.</p>
-
-<p><a href="trait.Iterator.html"><code>Iterator</code></a>&#39;s full definition includes a number of other methods as well,
+<p><a href="trait.Iterator.html"><code>Iterator</code></a>'s full definition includes a number of other methods as well,
 but they are default methods, built on top of <a href="trait.Iterator.html#tymethod.next"><code>next</code></a>, and so you get
 them for free.</p>
-
-<p>Iterators are also composable, and it&#39;s common to chain them together to do
+<p>Iterators are also composable, and it's common to chain them together to do
 more complex forms of processing. See the <a href="#adapters">Adapters</a> section
 below for more details.</p>
-
-<h1 id='the-three-forms-of-iteration' class='section-header'><a href='#the-three-forms-of-iteration'>The three forms of iteration</a></h1>
+<h1 id="the-three-forms-of-iteration" class="section-header"><a href="#the-three-forms-of-iteration">The three forms of iteration</a></h1>
 <p>There are three common methods which can create iterators from a collection:</p>
-
 <ul>
 <li><code>iter()</code>, which iterates over <code>&amp;T</code>.</li>
 <li><code>iter_mut()</code>, which iterates over <code>&amp;mut T</code>.</li>
 <li><code>into_iter()</code>, which iterates over <code>T</code>.</li>
 </ul>
-
 <p>Various things in the standard library may implement one or more of the
 three, where appropriate.</p>
-
-<h1 id='implementing-iterator' class='section-header'><a href='#implementing-iterator'>Implementing Iterator</a></h1>
+<h1 id="implementing-iterator" class="section-header"><a href="#implementing-iterator">Implementing Iterator</a></h1>
 <p>Creating an iterator of your own involves two steps: creating a <code>struct</code> to
-hold the iterator&#39;s state, and then <code>impl</code>ementing <a href="trait.Iterator.html"><code>Iterator</code></a> for that
+hold the iterator's state, and then <code>impl</code>ementing <a href="trait.Iterator.html"><code>Iterator</code></a> for that
 <code>struct</code>. This is why there are so many <code>struct</code>s in this module: there is
 one for each iterator and iterator adapter.</p>
-
-<p>Let&#39;s make an iterator named <code>Counter</code> which counts from <code>1</code> to <code>5</code>:</p>
+<p>Let's make an iterator named <code>Counter</code> which counts from <code>1</code> to <code>5</code>:</p>
 
 <pre class="rust rust-example-rendered">
 <span class="comment">// First, the struct:</span>
@@ -174,15 +161,12 @@ one for each iterator and iterator adapter.</p>
 
 <span class="kw">let</span> <span class="ident">x</span> <span class="op">=</span> <span class="ident">counter</span>.<span class="ident">next</span>().<span class="ident">unwrap</span>();
 <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">x</span>);</pre>
-
 <p>This will print <code>1</code> through <code>5</code>, each on their own line.</p>
-
 <p>Calling <code>next()</code> this way gets repetitive. Rust has a construct which can
-call <code>next()</code> on your iterator, until it reaches <code>None</code>. Let&#39;s go over that
+call <code>next()</code> on your iterator, until it reaches <code>None</code>. Let's go over that
 next.</p>
-
-<h1 id='for-loops-and-intoiterator' class='section-header'><a href='#for-loops-and-intoiterator'>for Loops and IntoIterator</a></h1>
-<p>Rust&#39;s <code>for</code> loop syntax is actually sugar for iterators. Here&#39;s a basic
+<h1 id="for-loops-and-intoiterator" class="section-header"><a href="#for-loops-and-intoiterator">for Loops and IntoIterator</a></h1>
+<p>Rust's <code>for</code> loop syntax is actually sugar for iterators. Here's a basic
 example of <code>for</code>:</p>
 
 <pre class="rust rust-example-rendered">
@@ -191,15 +175,13 @@ example of <code>for</code>:</p>
 <span class="kw">for</span> <span class="ident">x</span> <span class="kw">in</span> <span class="ident">values</span> {
     <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">x</span>);
 }</pre>
-
 <p>This will print the numbers one through five, each on their own line. But
-you&#39;ll notice something here: we never called anything on our vector to
+you'll notice something here: we never called anything on our vector to
 produce an iterator. What gives?</p>
-
-<p>There&#39;s a trait in the standard library for converting something into an
+<p>There's a trait in the standard library for converting something into an
 iterator: <a href="trait.IntoIterator.html"><code>IntoIterator</code></a>. This trait has one method, <a href="trait.IntoIterator.html#tymethod.into_iter"><code>into_iter</code></a>,
 which converts the thing implementing <a href="trait.IntoIterator.html"><code>IntoIterator</code></a> into an iterator.
-Let&#39;s take a look at that <code>for</code> loop again, and what the compiler converts
+Let's take a look at that <code>for</code> loop again, and what the compiler converts
 it into:</p>
 
 <pre class="rust rust-example-rendered">
@@ -208,7 +190,6 @@ it into:</p>
 <span class="kw">for</span> <span class="ident">x</span> <span class="kw">in</span> <span class="ident">values</span> {
     <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">x</span>);
 }</pre>
-
 <p>Rust de-sugars this into:</p>
 
 <pre class="rust rust-example-rendered">
@@ -227,37 +208,30 @@ it into:</p>
     };
     <span class="ident">result</span>
 }</pre>
-
 <p>First, we call <code>into_iter()</code> on the value. Then, we match on the iterator
 that returns, calling <a href="trait.Iterator.html#tymethod.next"><code>next</code></a> over and over until we see a <code>None</code>. At
-that point, we <code>break</code> out of the loop, and we&#39;re done iterating.</p>
-
-<p>There&#39;s one more subtle bit here: the standard library contains an
+that point, we <code>break</code> out of the loop, and we're done iterating.</p>
+<p>There's one more subtle bit here: the standard library contains an
 interesting implementation of <a href="trait.IntoIterator.html"><code>IntoIterator</code></a>:</p>
 
-<div class='information'><div class='tooltip ignore'>⚠<span class='tooltiptext'>Be careful when using this code, it's not being tested!</span></div></div><pre class="rust rust-example-rendered ignore">
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><pre class="rust rust-example-rendered ignore">
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">I</span>: <span class="ident">Iterator</span><span class="op">&gt;</span> <span class="ident">IntoIterator</span> <span class="kw">for</span> <span class="ident">I</span></pre>
-
 <p>In other words, all <a href="trait.Iterator.html"><code>Iterator</code></a>s implement <a href="trait.IntoIterator.html"><code>IntoIterator</code></a>, by just
 returning themselves. This means two things:</p>
-
 <ol>
-<li>If you&#39;re writing an <a href="trait.Iterator.html"><code>Iterator</code></a>, you can use it with a <code>for</code> loop.</li>
-<li>If you&#39;re creating a collection, implementing <a href="trait.IntoIterator.html"><code>IntoIterator</code></a> for it
+<li>If you're writing an <a href="trait.Iterator.html"><code>Iterator</code></a>, you can use it with a <code>for</code> loop.</li>
+<li>If you're creating a collection, implementing <a href="trait.IntoIterator.html"><code>IntoIterator</code></a> for it
 will allow your collection to be used with the <code>for</code> loop.</li>
 </ol>
-
-<h1 id='adapters' class='section-header'><a href='#adapters'>Adapters</a></h1>
+<h1 id="adapters" class="section-header"><a href="#adapters">Adapters</a></h1>
 <p>Functions which take an <a href="trait.Iterator.html"><code>Iterator</code></a> and return another <a href="trait.Iterator.html"><code>Iterator</code></a> are
-often called &#39;iterator adapters&#39;, as they&#39;re a form of the &#39;adapter
-pattern&#39;.</p>
-
+often called 'iterator adapters', as they're a form of the 'adapter
+pattern'.</p>
 <p>Common iterator adapters include <a href="trait.Iterator.html#method.map"><code>map</code></a>, <a href="trait.Iterator.html#method.take"><code>take</code></a>, and <a href="trait.Iterator.html#method.filter"><code>filter</code></a>.
 For more, see their documentation.</p>
-
-<h1 id='laziness' class='section-header'><a href='#laziness'>Laziness</a></h1>
+<h1 id="laziness" class="section-header"><a href="#laziness">Laziness</a></h1>
 <p>Iterators (and iterator <a href="#adapters">adapters</a>) are <em>lazy</em>. This means that
-just creating an iterator doesn&#39;t <em>do</em> a whole lot. Nothing really happens
+just creating an iterator doesn't <em>do</em> a whole lot. Nothing really happens
 until you call <a href="trait.Iterator.html#tymethod.next"><code>next</code></a>. This is sometimes a source of confusion when
 creating an iterator solely for its side effects. For example, the <a href="trait.Iterator.html#method.map"><code>map</code></a>
 method calls a closure on each element it iterates over:</p>
@@ -265,14 +239,11 @@ method calls a closure on each element it iterates over:</p>
 <pre class="rust rust-example-rendered">
 <span class="kw">let</span> <span class="ident">v</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
 <span class="ident">v</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">x</span><span class="op">|</span> <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">x</span>));</pre>
-
 <p>This will not print any values, as we only created an iterator, rather than
 using it. The compiler will warn us about this kind of behavior:</p>
-
 <pre><code class="language-text">warning: unused result which must be used: iterator adaptors are lazy and
 do nothing unless consumed
 </code></pre>
-
 <p>The idiomatic way to write a <a href="trait.Iterator.html#method.map"><code>map</code></a> for its side effects is to use a
 <code>for</code> loop instead:</p>
 
@@ -282,17 +253,14 @@ do nothing unless consumed
 <span class="kw">for</span> <span class="ident">x</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">v</span> {
     <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">x</span>);
 }</pre>
-
 <p>The two most common ways to evaluate an iterator are to use a <code>for</code> loop
 like this, or using the <a href="trait.Iterator.html#method.collect"><code>collect</code></a> method to produce a new collection.</p>
-
-<h1 id='infinity' class='section-header'><a href='#infinity'>Infinity</a></h1>
+<h1 id="infinity" class="section-header"><a href="#infinity">Infinity</a></h1>
 <p>Iterators do not have to be finite. As an example, an open-ended range is
 an infinite iterator:</p>
 
 <pre class="rust rust-example-rendered">
 <span class="kw">let</span> <span class="ident">numbers</span> <span class="op">=</span> <span class="number">0</span>..;</pre>
-
 <p>It is common to use the <a href="trait.Iterator.html#method.take"><code>take</code></a> iterator adapter to turn an infinite
 iterator into a finite one:</p>
 
@@ -303,7 +271,6 @@ iterator into a finite one:</p>
 <span class="kw">for</span> <span class="ident">number</span> <span class="kw">in</span> <span class="ident">five_numbers</span> {
     <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">number</span>);
 }</pre>
-
 <p>This will print the numbers <code>0</code> through <code>4</code>, each on their own line.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -312,6 +279,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::Chain'>Chain</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that strings two iterators together.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -319,6 +287,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::Cloned'>Cloned</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that clones the elements of an underlying iterator.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -326,6 +295,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::Cycle'>Cycle</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that repeats endlessly.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -333,6 +303,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::Empty'>Empty</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that yields nothing.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -340,6 +311,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::Enumerate'>Enumerate</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that yields the current count and the element during iteration.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -347,6 +319,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::Filter'>Filter</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that filters the elements of <code>iter</code> with <code>predicate</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -354,6 +327,7 @@ iterator into a finite one:</p>
                                   title='struct sgx_tstd::iter::FilterMap'>FilterMap</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that uses <code>f</code> to both filter and map elements from <code>iter</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -362,6 +336,7 @@ iterator into a finite one:</p>
                            <td class='docblock-short'>
                                 <p>An iterator that maps each element to an iterator, and yields the elements
 of the produced iterators.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -370,6 +345,7 @@ of the produced iterators.</p>
                            <td class='docblock-short'>
                                 <p>An iterator that yields <code>None</code> forever after the underlying iterator
 yields <code>None</code> once.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -378,6 +354,7 @@ yields <code>None</code> once.</p>
                            <td class='docblock-short'>
                                 <p>An iterator that calls a function with a reference to each element before
 yielding it.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -385,6 +362,7 @@ yielding it.</p>
                                   title='struct sgx_tstd::iter::Map'>Map</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that maps the values of <code>iter</code> with <code>f</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -392,6 +370,7 @@ yielding it.</p>
                                   title='struct sgx_tstd::iter::Once'>Once</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that yields an element exactly once.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -400,6 +379,7 @@ yielding it.</p>
                            <td class='docblock-short'>
                                 <p>An iterator with a <code>peek()</code> that returns an optional reference to the next
 element.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -407,6 +387,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::Repeat'>Repeat</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that repeats an element endlessly.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -414,6 +395,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::Rev'>Rev</a></td>
                            <td class='docblock-short'>
                                 <p>A double-ended iterator with the direction inverted.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -421,6 +403,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::Scan'>Scan</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator to maintain state while iterating another iterator.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -428,6 +411,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::Skip'>Skip</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that skips over <code>n</code> elements of <code>iter</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -435,6 +419,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::SkipWhile'>SkipWhile</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that rejects elements while <code>predicate</code> is true.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -442,6 +427,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::Take'>Take</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that only iterates over the first <code>n</code> iterations of <code>iter</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -449,6 +435,7 @@ element.</p>
                                   title='struct sgx_tstd::iter::TakeWhile'>TakeWhile</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that only accepts elements while <code>predicate</code> is true.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -456,13 +443,15 @@ element.</p>
                                   title='struct sgx_tstd::iter::Zip'>Zip</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that iterates two other iterators simultaneously.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
                            <td><a class="struct" href="struct.StepBy.html"
                                   title='struct sgx_tstd::iter::StepBy'>StepBy</a></td>
                            <td class='docblock-short'>
-                               [<div class='stab unstable'>Experimental</div>] <p>An adapter for stepping iterators by a custom amount.</p>
+                               [<div class='stab unstable'>Experimental</div>] <p>An iterator for stepping iterators by a custom amount.</p>
+
                            </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
@@ -471,6 +460,7 @@ element.</p>
                                   title='trait sgx_tstd::iter::DoubleEndedIterator'>DoubleEndedIterator</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator able to yield elements from both ends.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -478,6 +468,7 @@ element.</p>
                                   title='trait sgx_tstd::iter::ExactSizeIterator'>ExactSizeIterator</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator that knows its exact length.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -485,6 +476,7 @@ element.</p>
                                   title='trait sgx_tstd::iter::Extend'>Extend</a></td>
                            <td class='docblock-short'>
                                 <p>Extend a collection with the contents of an iterator.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -492,6 +484,7 @@ element.</p>
                                   title='trait sgx_tstd::iter::FromIterator'>FromIterator</a></td>
                            <td class='docblock-short'>
                                 <p>Conversion from an <code>Iterator</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -499,6 +492,7 @@ element.</p>
                                   title='trait sgx_tstd::iter::IntoIterator'>IntoIterator</a></td>
                            <td class='docblock-short'>
                                 <p>Conversion into an <code>Iterator</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -506,6 +500,7 @@ element.</p>
                                   title='trait sgx_tstd::iter::Iterator'>Iterator</a></td>
                            <td class='docblock-short'>
                                 <p>An interface for dealing with iterators.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -514,6 +509,7 @@ element.</p>
                            <td class='docblock-short'>
                                 <p>Trait to represent types that can be created by multiplying elements of an
 iterator.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -521,6 +517,7 @@ iterator.</p>
                                   title='trait sgx_tstd::iter::Sum'>Sum</a></td>
                            <td class='docblock-short'>
                                 <p>Trait to represent types that can be created by summing up an iterator.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -528,6 +525,7 @@ iterator.</p>
                                   title='trait sgx_tstd::iter::FusedIterator'>FusedIterator</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>An iterator that always continues to yield <code>None</code> when exhausted.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -535,6 +533,7 @@ iterator.</p>
                                   title='trait sgx_tstd::iter::Step'>Step</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>Objects that can be stepped over in both directions.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -542,6 +541,7 @@ iterator.</p>
                                   title='trait sgx_tstd::iter::TrustedLen'>TrustedLen</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>An iterator that reports an accurate length using size_hint.</p>
+
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -550,6 +550,7 @@ iterator.</p>
                                   title='fn sgx_tstd::iter::empty'>empty</a></td>
                            <td class='docblock-short'>
                                 <p>Creates an iterator that yields nothing.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -557,6 +558,7 @@ iterator.</p>
                                   title='fn sgx_tstd::iter::once'>once</a></td>
                            <td class='docblock-short'>
                                 <p>Creates an iterator that yields an element exactly once.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -564,6 +566,7 @@ iterator.</p>
                                   title='fn sgx_tstd::iter::repeat'>repeat</a></td>
                            <td class='docblock-short'>
                                 <p>Creates a new iterator that endlessly repeats a single element.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -582,13 +585,15 @@ iterator.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

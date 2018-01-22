@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -862,9 +863,8 @@
 <span id="817">817</span>
 <span id="818">818</span>
 <span id="819">819</span>
-<span id="820">820</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -898,7 +898,7 @@
 <span class="doccomment">//!</span>
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="ident">marker</span>::<span class="ident">ContiguousMemory</span>;
-<span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">trts</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">memeq</span>::<span class="ident">ConsttimeMemEq</span>;
 <span class="kw">use</span> <span class="ident">sgx_tcrypto</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">sgx_tse</span>::<span class="kw-2">*</span>;
@@ -998,7 +998,7 @@
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">dh_msg3</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">p</span>);
+        <span class="kw">let</span> <span class="ident">dh_msg3</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="ident">p</span>;
         <span class="ident">dh_msg3</span>.<span class="ident">cmac</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">cmac</span>;
         <span class="ident">dh_msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">report</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">msg3_body</span>.<span class="ident">report</span>;
         <span class="ident">dh_msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop_length</span> <span class="op">=</span> <span class="ident">additional_prop_len</span> <span class="kw">as</span> <span class="ident">u32</span>;
@@ -1007,8 +1007,6 @@
             <span class="kw">let</span> <span class="ident">raw_msg3</span> <span class="op">=</span> <span class="ident">slice</span>::<span class="ident">from_raw_parts_mut</span>(<span class="ident">p</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span>, <span class="ident">len</span> <span class="kw">as</span> <span class="ident">usize</span>);
             <span class="ident">raw_msg3</span>[<span class="ident">dh_msg3_size</span>..].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span>);
         }
-
-        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">dh_msg3</span>);
         <span class="prelude-val">Some</span>(<span class="ident">p</span>)
     }
 
@@ -1044,7 +1042,7 @@
             <span class="kw">return</span> <span class="prelude-val">None</span>;
         }
 
-        <span class="kw">let</span> <span class="ident">raw_msg3</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">from_raw</span>(<span class="ident">p</span>);
+        <span class="kw">let</span> <span class="ident">raw_msg3</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">p</span>;
         <span class="kw">let</span> <span class="ident">additional_prop_len</span> <span class="op">=</span> <span class="ident">raw_msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop_length</span>;
         <span class="kw">let</span> <span class="ident">dh_msg3_size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">sgx_dh_msg3_t</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>;
         <span class="kw">if</span> <span class="ident">additional_prop_len</span> <span class="op">&gt;</span> <span class="ident">u32</span>::<span class="ident">max_value</span>() <span class="op">-</span> <span class="ident">dh_msg3_size</span> {
@@ -1064,8 +1062,6 @@
             <span class="ident">ptr</span>::<span class="ident">copy_nonoverlapping</span>(<span class="ident">ptr_additional_prop</span>, <span class="ident">additional_prop</span>.<span class="ident">as_mut_ptr</span>(), <span class="ident">additional_prop_len</span> <span class="kw">as</span> <span class="ident">usize</span>);
             <span class="ident">dh_msg3</span>.<span class="ident">msg3_body</span>.<span class="ident">additional_prop</span> <span class="op">=</span> <span class="ident">additional_prop</span>.<span class="ident">into_boxed_slice</span>();
         }
-
-        <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">raw_msg3</span>);
         <span class="prelude-val">Some</span>(<span class="ident">dh_msg3</span>)
     }
 }
@@ -1336,12 +1332,13 @@
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_KDF_MISMATCH</span>);
         }
 
-        <span class="kw">let</span> <span class="ident">data_mac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_rijndael128_cmac_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>, <span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">report</span>));
+        <span class="kw">let</span> <span class="ident">report</span> <span class="op">=</span> <span class="ident">msg2</span>.<span class="ident">report</span>;
+        <span class="kw">let</span> <span class="ident">data_mac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_rijndael128_cmac_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>, <span class="kw-2">&amp;</span><span class="ident">report</span>));
         <span class="kw">if</span> <span class="ident">data_mac</span>.<span class="ident">consttime_memeq</span>(<span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">cmac</span>) <span class="op">==</span> <span class="bool-val">false</span> {
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_MAC_MISMATCH</span>);
         }
 
-        <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_verify_report</span>(<span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">report</span>));
+        <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_verify_report</span>(<span class="kw-2">&amp;</span><span class="ident">report</span>));
 
         <span class="kw">let</span> <span class="ident">sha_handle</span> <span class="op">=</span> <span class="ident">SgxShaHandle</span>::<span class="ident">new</span>();
         <span class="macro">try</span><span class="macro">!</span>(<span class="ident">sha_handle</span>.<span class="ident">init</span>());
@@ -1634,8 +1631,10 @@
         <span class="ident">report_data</span>.<span class="ident">d</span>[..<span class="ident">SGX_SHA256_HASH_SIZE</span>].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">msg_hash</span>);
         <span class="ident">report_data</span>.<span class="ident">d</span>[<span class="ident">SGX_SHA256_HASH_SIZE</span>..<span class="ident">SGX_SHA256_HASH_SIZE</span> <span class="op">+</span> <span class="number">2</span>].<span class="ident">copy_from_slice</span>(<span class="kw-2">&amp;</span><span class="ident">AES_CMAC_KDF_ID</span>);
 
-        <span class="ident">msg2</span>.<span class="ident">report</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_create_report</span>(<span class="kw-2">&amp;</span><span class="ident">msg1</span>.<span class="ident">target</span>, <span class="kw-2">&amp;</span><span class="ident">report_data</span>));
-        <span class="ident">msg2</span>.<span class="ident">cmac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_rijndael128_cmac_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>, <span class="kw-2">&amp;</span><span class="ident">msg2</span>.<span class="ident">report</span>));
+        <span class="kw">let</span> <span class="ident">target</span> <span class="op">=</span> <span class="ident">msg1</span>.<span class="ident">target</span>;
+        <span class="ident">msg2</span>.<span class="ident">report</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_create_report</span>(<span class="kw-2">&amp;</span><span class="ident">target</span>, <span class="kw-2">&amp;</span><span class="ident">report_data</span>));
+        <span class="kw">let</span> <span class="ident">report</span> <span class="op">=</span> <span class="ident">msg2</span>.<span class="ident">report</span>;
+        <span class="ident">msg2</span>.<span class="ident">cmac</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">rsgx_rijndael128_cmac_msg</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">smk_aek</span>, <span class="kw-2">&amp;</span><span class="ident">report</span>));
 
         <span class="prelude-val">Ok</span>(())
     }
@@ -1702,13 +1701,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

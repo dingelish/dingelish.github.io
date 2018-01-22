@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `../sgx_tstd/src/sys/mod.rs`.">
+    <meta name="description" content="Source to the Rust file `..-icode/sgx_tstd/src/sys/mod.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>mod.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -147,8 +148,15 @@
 <span id="102">102</span>
 <span id="103">103</span>
 <span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -176,10 +184,15 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">libc</span>;
 <span class="kw">use</span> <span class="ident">io</span>::{<span class="self">self</span>, <span class="ident">ErrorKind</span>};
 
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">rand</span>::<span class="ident">hashmap_random_keys</span>;
+
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">fd</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">fs</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">sgxfs</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">net</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">os_str</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">path</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ext</span>;
@@ -189,28 +202,32 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">stdio</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">backtrace</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">time</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">memchr</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">cmath</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">env</span>;
 
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">decode_error_kind</span>(<span class="ident">errno</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">ErrorKind</span> {
 
-    <span class="kw">match</span> <span class="ident">errno</span> <span class="kw">as</span> <span class="ident">c_int</span> {
-        <span class="ident">ECONNREFUSED</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">ConnectionRefused</span>,
-        <span class="ident">ECONNRESET</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">ConnectionReset</span>,
-        <span class="ident">EPERM</span> <span class="op">|</span> <span class="ident">EACCES</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">PermissionDenied</span>,
-        <span class="ident">EPIPE</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">BrokenPipe</span>,
-        <span class="ident">ENOTCONN</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">NotConnected</span>,
-        <span class="ident">ECONNABORTED</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">ConnectionAborted</span>,
-        <span class="ident">EADDRNOTAVAIL</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">AddrNotAvailable</span>,
-        <span class="ident">EADDRINUSE</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">AddrInUse</span>,
-        <span class="ident">ENOENT</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">NotFound</span>,
-        <span class="ident">EINTR</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">Interrupted</span>,
-        <span class="ident">EINVAL</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">InvalidInput</span>,
-        <span class="ident">ETIMEDOUT</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">TimedOut</span>,
-        <span class="ident">EEXIST</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">AlreadyExists</span>,
+    <span class="kw">match</span> <span class="ident">errno</span> <span class="kw">as</span> <span class="ident">libc</span>::<span class="ident">c_int</span> {
+        <span class="ident">libc</span>::<span class="ident">ECONNREFUSED</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">ConnectionRefused</span>,
+        <span class="ident">libc</span>::<span class="ident">ECONNRESET</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">ConnectionReset</span>,
+        <span class="ident">libc</span>::<span class="ident">EPERM</span> <span class="op">|</span> <span class="ident">libc</span>::<span class="ident">EACCES</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">PermissionDenied</span>,
+        <span class="ident">libc</span>::<span class="ident">EPIPE</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">BrokenPipe</span>,
+        <span class="ident">libc</span>::<span class="ident">ENOTCONN</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">NotConnected</span>,
+        <span class="ident">libc</span>::<span class="ident">ECONNABORTED</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">ConnectionAborted</span>,
+        <span class="ident">libc</span>::<span class="ident">EADDRNOTAVAIL</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">AddrNotAvailable</span>,
+        <span class="ident">libc</span>::<span class="ident">EADDRINUSE</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">AddrInUse</span>,
+        <span class="ident">libc</span>::<span class="ident">ENOENT</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">NotFound</span>,
+        <span class="ident">libc</span>::<span class="ident">EINTR</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">Interrupted</span>,
+        <span class="ident">libc</span>::<span class="ident">EINVAL</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">InvalidInput</span>,
+        <span class="ident">libc</span>::<span class="ident">ETIMEDOUT</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">TimedOut</span>,
+        <span class="ident">libc</span>::<span class="ident">EEXIST</span> <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">AlreadyExists</span>,
 
         <span class="comment">// These two constants can have the same value on some systems,</span>
         <span class="comment">// but different values on others, so we can&#39;t use a match</span>
         <span class="comment">// clause</span>
-        <span class="ident">x</span> <span class="kw">if</span> <span class="ident">x</span> <span class="op">==</span> <span class="ident">EAGAIN</span> <span class="op">||</span> <span class="ident">x</span> <span class="op">==</span> <span class="ident">EWOULDBLOCK</span> <span class="op">=&gt;</span>
+        <span class="ident">x</span> <span class="kw">if</span> <span class="ident">x</span> <span class="op">==</span> <span class="ident">libc</span>::<span class="ident">EAGAIN</span> <span class="op">||</span> <span class="ident">x</span> <span class="op">==</span> <span class="ident">libc</span>::<span class="ident">EWOULDBLOCK</span> <span class="op">=&gt;</span>
             <span class="ident">ErrorKind</span>::<span class="ident">WouldBlock</span>,
 
         _ <span class="op">=&gt;</span> <span class="ident">ErrorKind</span>::<span class="ident">Other</span>,
@@ -231,7 +248,6 @@
 
 <span class="macro">impl_is_minus_one</span><span class="macro">!</span> { <span class="ident">i8</span> <span class="ident">i16</span> <span class="ident">i32</span> <span class="ident">i64</span> <span class="ident">isize</span> }
 
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cvt</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">IsMinusOne</span><span class="op">&gt;</span>(<span class="ident">t</span>: <span class="ident">T</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="kw">if</span> <span class="ident">t</span>.<span class="ident">is_minus_one</span>() {
         <span class="prelude-val">Err</span>(<span class="ident">io</span>::<span class="ident">Error</span>::<span class="ident">last_os_error</span>())
@@ -240,7 +256,6 @@
     }
 }
 
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">cvt_r</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="ident">f</span>: <span class="ident">F</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">IsMinusOne</span>,
           <span class="ident">F</span>: <span class="ident">FnMut</span>() <span class="op">-&gt;</span> <span class="ident">T</span>
@@ -269,13 +284,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

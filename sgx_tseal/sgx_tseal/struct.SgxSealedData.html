@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct SgxSealedData</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>sgx_tseal</a></p><script>window.sidebarCurrent = {name: 'SgxSealedData', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Struct SgxSealedData</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.seal_data">seal_data</a><a href="#method.seal_data_ex">seal_data_ex</a><a href="#method.unseal_data">unseal_data</a><a href="#method.from_raw_sealed_data_t">from_raw_sealed_data_t</a><a href="#method.to_raw_sealed_data_t">to_raw_sealed_data_t</a><a href="#method.seal_data">seal_data</a><a href="#method.seal_data_ex">seal_data_ex</a><a href="#method.unseal_data">unseal_data</a><a href="#method.from_raw_sealed_data_t">from_raw_sealed_data_t</a><a href="#method.to_raw_sealed_data_t">to_raw_sealed_data_t</a><a href="#method.new">new</a><a href="#method.get_payload_size">get_payload_size</a><a href="#method.get_payload_tag">get_payload_tag</a><a href="#method.get_key_request">get_key_request</a><a href="#method.get_encrypt_txt">get_encrypt_txt</a><a href="#method.get_additional_txt">get_additional_txt</a><a href="#method.calc_raw_sealed_data_size">calc_raw_sealed_data_size</a><a href="#method.get_add_mac_txt_len">get_add_mac_txt_len</a><a href="#method.get_encrypt_txt_len">get_encrypt_txt_len</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Default">Default</a><a href="#impl-Clone">Clone</a></div></div><p class='location'><a href='index.html'>sgx_tseal</a></p><script>window.sidebarCurrent = {name: 'SgxSealedData', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -60,8 +61,7 @@
 <div class='docblock'><p>This function is used to AES-GCM encrypt the input data. Two input data sets
 are provided: one is the data to be encrypted; the second is optional additional data
 that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</p>
-
-<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
+<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
 <p>The seal_data function retrieves a key unique to the enclave and uses
 that key to encrypt the input data buffer. This function can be utilized to preserve secret
 data after the enclave is destroyed. The sealed data blob can be
@@ -73,40 +73,27 @@ identify the sealed data blob since it will remain plain text
 Use <code>calc_raw_sealed_data_size</code> to calculate the number of bytes to
 allocate for the <code>SgxSealedData</code> structure. The input sealed data buffer and
 text2encrypt buffers must be allocated within the enclave.</p>
-
-<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
 <p><strong>additional_text</strong></p>
-
 <p>Pointer to the additional Message Authentication Code (MAC) data.
 This additional data is optional and no data is necessary.</p>
-
 <p><strong>encrypt_text</strong></p>
-
 <p>Pointer to the data stream to be encrypted, which is &amp;T. Must be within the enclave.</p>
-
-<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
+<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
 <p>The sealed data in SgxSealedData.</p>
-
-<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Indicates an error if the parameters do not meet any of the following conditions:</p>
-
 <ul>
 <li>additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</li>
 <li>encrypt_text must be non-zero.</li>
 <li>encrypt_text buffer must be within the enclave.</li>
 </ul>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>Indicates a crypto library failure or the RDRAND instruction fails to generate a
 random number.</p>
 </div><h4 id='method.seal_data_ex' class="method"><span id='seal_data_ex.v' class='invisible'><code>pub fn <a href='#method.seal_data_ex' class='fnname'>seal_data_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;key_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;attribute_mask: <a class="struct" href="../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;misc_mask: <a class="type" href="../sgx_types/types/type.sgx_misc_select_t.html" title="type sgx_types::types::sgx_misc_select_t">sgx_misc_select_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;additional_text: &amp;[u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;encrypt_text: &amp;'a T<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#287-311' title='goto source code'>[src]</a></span></h4>
@@ -115,8 +102,7 @@ are provided: one is the data to be encrypted; the second is optional additional
 data that will not be encrypted but will be part of the GCM MAC calculation
 which also covers the data to be encrypted. This is the expert mode
 version of function <code>seal_data</code>.</p>
-
-<h1 id='descryption' class='section-header'><a href='#descryption'>Descryption</a></h1>
+<h1 id="descryption" class="section-header"><a href="#descryption">Descryption</a></h1>
 <p>The <code>seal_data_ex</code> is an extended version of <code>seal_data</code>. It
 provides parameters for you to identify how to derive the sealing key (key
 policy and attributes_mask). Typical callers of the seal library should be
@@ -124,77 +110,39 @@ able to use <code>seal_data</code> and the default values provided for key_
 policy (MR_SIGNER) and an attribute mask which includes the RESERVED,
 INITED and DEBUG bits. Users of this function should have a clear understanding
 of the impact on using a policy and/or attribute_mask that is different from that in seal_data.</p>
-
-<h1 id='requirements-1' class='section-header'><a href='#requirements-1'>Requirements</a></h1>
+<h1 id="requirements-1" class="section-header"><a href="#requirements-1">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters-1' class='section-header'><a href='#parameters-1'>Parameters</a></h1>
+<h1 id="parameters-1" class="section-header"><a href="#parameters-1">Parameters</a></h1>
 <p><strong>key_policy</strong></p>
-
 <p>Specifies the policy to use in the key derivation. Function sgx_seal_data uses the MRSIGNER policy.</p>
-
-<table>
-<thead>
-<tr>
-<th>Key policy name</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>KEYPOLICY_MRENCLAVE</td>
-<td>0x0001</td>
-<td>-Derive key using the enclave??s ENCLAVE measurement register</td>
-</tr>
-<tr>
-<td>KEYPOLICY_MRSIGNER</td>
-<td>0x0002</td>
-<td>-Derive key using the enclave??s SIGNER measurement register</td>
-</tr>
-</tbody>
-</table>
-
+<table><thead><tr><th>Key policy name </th><th> Value </th><th> Description</th></tr></thead><tbody>
+<tr><td>KEYPOLICY_MRENCLAVE </td><td> 0x0001 </td><td> -Derive key using the enclave??s ENCLAVE measurement register</td></tr>
+<tr><td>KEYPOLICY_MRSIGNER </td><td>0x0002 </td><td> -Derive key using the enclave??s SIGNER measurement register</td></tr>
+</tbody></table>
 <p><strong>attribute_mask</strong></p>
-
 <p>Identifies which platform/enclave attributes to use in the key derivation. See
 the definition of sgx_attributes_t to determine which attributes will be
 checked.  Function sgx_seal_data uses flags=0xfffffffffffffff3,?xfrm=0.</p>
-
 <p><strong>misc_mask</strong></p>
-
 <p>The misc mask bits for the enclave. Reserved for future function extension.</p>
-
 <p><strong>additional_text</strong></p>
-
 <p>Pointer to the additional Message Authentication Code (MAC) data.
 This additional data is optional and no data is necessary.</p>
-
 <p><strong>encrypt_text</strong></p>
-
 <p>Pointer to the data stream to be encrypted, which is &amp;T. Must not be NULL. Must be within the enclave.</p>
-
-<h1 id='return-value-1' class='section-header'><a href='#return-value-1'>Return value</a></h1>
+<h1 id="return-value-1" class="section-header"><a href="#return-value-1">Return value</a></h1>
 <p>The sealed data in SgxSealedData.</p>
-
-<h1 id='errors-1' class='section-header'><a href='#errors-1'>Errors</a></h1>
+<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Indicates an error if the parameters do not meet any of the following conditions:</p>
-
 <ul>
 <li>additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</li>
 <li>encrypt_text must be non-zero.</li>
 <li>encrypt_text buffer must be within the enclave.</li>
 </ul>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>Indicates a crypto library failure or the RDRAND instruction fails to generate a
 random number.</p>
 </div><h4 id='method.unseal_data' class="method"><span id='unseal_data.v' class='invisible'><code>pub fn <a href='#method.unseal_data' class='fnname'>unseal_data</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_tseal/struct.SgxUnsealedData.html" title="struct sgx_tseal::SgxUnsealedData">SgxUnsealedData</a>&lt;'a, T&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#361-380' title='goto source code'>[src]</a></span></h4>
@@ -203,85 +151,55 @@ Two output data sets result: one is the decrypted data; the second is the
 optional additional data that was part of the GCM MAC calculation but was not
 encrypted. This function provides the converse of seal_data and
 seal_data_ex.</p>
-
-<h1 id='descryption-1' class='section-header'><a href='#descryption-1'>Descryption</a></h1>
+<h1 id="descryption-1" class="section-header"><a href="#descryption-1">Descryption</a></h1>
 <p>The unseal_data function AES-GCM decrypts the sealed data so that
 the enclave data can be restored. This function can be utilized to restore
 secret data that was preserved after an earlier instantiation of this enclave
 saved this data.</p>
-
-<h1 id='requirements-2' class='section-header'><a href='#requirements-2'>Requirements</a></h1>
+<h1 id="requirements-2" class="section-header"><a href="#requirements-2">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='return-value-2' class='section-header'><a href='#return-value-2'>Return value</a></h1>
+<h1 id="return-value-2" class="section-header"><a href="#return-value-2">Return value</a></h1>
 <p>The unsealed data in SgxUnsealedData.</p>
-
-<h1 id='errors-2' class='section-header'><a href='#errors-2'>Errors</a></h1>
+<h1 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>The size of T may be zero.</p>
-
 <p><strong>SGX_ERROR_INVALID_CPUSVN</strong></p>
-
 <p>The CPUSVN in the sealed data blob is beyond the CPUSVN value of the platform.
 SGX_ERROR_INVALID_ISVSVN The ISVSVN in the sealed data blob is greater than the ISVSVN value of the enclave.</p>
-
 <p><strong>SGX_ERROR_MAC_MISMATCH</strong></p>
-
 <p>The tag verification failed during unsealing. The error may be caused by a platform update,
 software update, or sealed data blob corruption. This error is also reported if other corruption
 of the sealed data structure is detected.</p>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>Indicates a crypto library failure or the RDRAND instruction fails to generate a
 random number.</p>
 </div><h4 id='method.from_raw_sealed_data_t' class="method"><span id='from_raw_sealed_data_t.v' class='invisible'><code>pub unsafe fn <a href='#method.from_raw_sealed_data_t' class='fnname'>from_raw_sealed_data_t</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;p: *mut <a class="struct" href="../sgx_types/types/struct.sgx_sealed_data_t.html" title="struct sgx_types::types::sgx_sealed_data_t">sgx_sealed_data_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: u32<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#409-421' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Convert a pointer of sgx_sealed_data_t buffer to SgxSealedData.</p>
-
-<h1 id='requirements-3' class='section-header'><a href='#requirements-3'>Requirements</a></h1>
+<h1 id="requirements-3" class="section-header"><a href="#requirements-3">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters-2' class='section-header'><a href='#parameters-2'>Parameters</a></h1>
+<h1 id="parameters-2" class="section-header"><a href="#parameters-2">Parameters</a></h1>
 <p><strong>p</strong></p>
-
 <p>The mutable pointer of sgx_sealed_data_t buffer.</p>
-
 <p><strong>len</strong></p>
-
 <p>The size of the parameter <code>p</code>.</p>
-
-<h1 id='return-value-3' class='section-header'><a href='#return-value-3'>Return value</a></h1>
+<h1 id="return-value-3" class="section-header"><a href="#return-value-3">Return value</a></h1>
 <p><strong>Some(SgxSealedData)</strong></p>
-
 <p>Indicates the conversion is successfully. The return value is SgxSealedData.</p>
-
 <p><strong>None</strong></p>
-
 <p>Maybe the size of T is zero.</p>
 </div><h4 id='method.to_raw_sealed_data_t' class="method"><span id='to_raw_sealed_data_t.v' class='invisible'><code>pub unsafe fn <a href='#method.to_raw_sealed_data_t' class='fnname'>to_raw_sealed_data_t</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;p: *mut <a class="struct" href="../sgx_types/types/struct.sgx_sealed_data_t.html" title="struct sgx_types::types::sgx_sealed_data_t">sgx_sealed_data_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: u32<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;*mut <a class="struct" href="../sgx_types/types/struct.sgx_sealed_data_t.html" title="struct sgx_types::types::sgx_sealed_data_t">sgx_sealed_data_t</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#446-448' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Convert SgxSealedData to the pointer of sgx_sealed_data_t.</p>
-
-<h1 id='parameters-3' class='section-header'><a href='#parameters-3'>Parameters</a></h1>
+<h1 id="parameters-3" class="section-header"><a href="#parameters-3">Parameters</a></h1>
 <p><strong>p</strong></p>
-
 <p>The pointer of sgx_sealed_data_t to save the data in SgxSealedData.</p>
-
 <p><strong>len</strong></p>
-
 <p>The size of the pointer of sgx_sealed_data_t.</p>
-
-<h1 id='error' class='section-header'><a href='#error'>Error</a></h1>
-<p><strong>Some(* mut sgx_sealed_data_t)</strong></p>
-
+<h1 id="error" class="section-header"><a href="#error">Error</a></h1>
+<p><em><em>Some(</em> mut sgx_sealed_data_t)</em>*</p>
 <p>Indicates the conversion is successfully. The return value is the pointer of sgx_sealed_data_t.</p>
-
 <p><strong>None</strong></p>
-
 <p>May be the parameter p and len is not avaliable.</p>
 </div></div><h3 id='impl-1' class='impl'><span class='in-band'><code>impl&lt;'a, T:&nbsp;'a + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>&gt; <a class="struct" href="../sgx_tseal/struct.SgxSealedData.html" title="struct sgx_tseal::SgxSealedData">SgxSealedData</a>&lt;'a, [T]&gt;</code><a href='#impl-1' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#452-774' title='goto source code'>[src]</a></span></h3>
 <div class='docblock'><p>The encrypt_text to seal is [T], and T must have Copy and ContiguousMemory trait.</p>
@@ -289,8 +207,7 @@ random number.</p>
 <div class='docblock'><p>This function is used to AES-GCM encrypt the input data. Two input data sets
 are provided: one is the data to be encrypted; the second is optional additional data
 that will not be encrypted but will be part of the GCM MAC calculation which also covers the data to be encrypted.</p>
-
-<h1 id='descryption-2' class='section-header'><a href='#descryption-2'>Descryption</a></h1>
+<h1 id="descryption-2" class="section-header"><a href="#descryption-2">Descryption</a></h1>
 <p>The seal_data function retrieves a key unique to the enclave and uses
 that key to encrypt the input data buffer. This function can be utilized to preserve secret
 data after the enclave is destroyed. The sealed data blob can be
@@ -302,40 +219,27 @@ identify the sealed data blob since it will remain plain text
 Use <code>calc_raw_sealed_data_size</code> to calculate the number of bytes to
 allocate for the <code>SgxSealedData</code> structure. The input sealed data buffer and
 text2encrypt buffers must be allocated within the enclave.</p>
-
-<h1 id='requirements-4' class='section-header'><a href='#requirements-4'>Requirements</a></h1>
+<h1 id="requirements-4" class="section-header"><a href="#requirements-4">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters-4' class='section-header'><a href='#parameters-4'>Parameters</a></h1>
+<h1 id="parameters-4" class="section-header"><a href="#parameters-4">Parameters</a></h1>
 <p><strong>additional_text</strong></p>
-
 <p>Pointer to the additional Message Authentication Code (MAC) data.
 This additional data is optional and no data is necessary.</p>
-
 <p><strong>encrypt_text</strong></p>
-
 <p>Pointer to the data stream to be encrypted, which is &amp;[T]. Must be within the enclave.</p>
-
-<h1 id='return-value-4' class='section-header'><a href='#return-value-4'>Return value</a></h1>
+<h1 id="return-value-4" class="section-header"><a href="#return-value-4">Return value</a></h1>
 <p>The sealed data in SgxSealedData.</p>
-
-<h1 id='errors-3' class='section-header'><a href='#errors-3'>Errors</a></h1>
+<h1 id="errors-3" class="section-header"><a href="#errors-3">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Indicates an error if the parameters do not meet any of the following conditions:</p>
-
 <ul>
 <li>additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</li>
 <li>encrypt_text must be non-zero.</li>
 <li>encrypt_text buffer must be within the enclave.</li>
 </ul>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>Indicates a crypto library failure or the RDRAND instruction fails to generate a
 random number.</p>
 </div><h4 id='method.seal_data_ex-1' class="method"><span id='seal_data_ex.v-1' class='invisible'><code>pub fn <a href='#method.seal_data_ex-1' class='fnname'>seal_data_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;key_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;attribute_mask: <a class="struct" href="../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;misc_mask: <a class="type" href="../sgx_types/types/type.sgx_misc_select_t.html" title="type sgx_types::types::sgx_misc_select_t">sgx_misc_select_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;additional_text: &amp;[u8], <br>&nbsp;&nbsp;&nbsp;&nbsp;encrypt_text: &amp;'a [T]<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#605-631' title='goto source code'>[src]</a></span></h4>
@@ -344,8 +248,7 @@ are provided: one is the data to be encrypted; the second is optional additional
 data that will not be encrypted but will be part of the GCM MAC calculation
 which also covers the data to be encrypted. This is the expert mode
 version of function <code>seal_data</code>.</p>
-
-<h1 id='descryption-3' class='section-header'><a href='#descryption-3'>Descryption</a></h1>
+<h1 id="descryption-3" class="section-header"><a href="#descryption-3">Descryption</a></h1>
 <p>The <code>seal_data_ex</code> is an extended version of <code>seal_data</code>. It
 provides parameters for you to identify how to derive the sealing key (key
 policy and attributes_mask). Typical callers of the seal library should be
@@ -353,77 +256,39 @@ able to use <code>seal_data</code> and the default values provided for key_
 policy (MR_SIGNER) and an attribute mask which includes the RESERVED,
 INITED and DEBUG bits. Users of this function should have a clear understanding
 of the impact on using a policy and/or attribute_mask that is different from that in seal_data.</p>
-
-<h1 id='requirements-5' class='section-header'><a href='#requirements-5'>Requirements</a></h1>
+<h1 id="requirements-5" class="section-header"><a href="#requirements-5">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters-5' class='section-header'><a href='#parameters-5'>Parameters</a></h1>
+<h1 id="parameters-5" class="section-header"><a href="#parameters-5">Parameters</a></h1>
 <p><strong>key_policy</strong></p>
-
 <p>Specifies the policy to use in the key derivation. Function sgx_seal_data uses the MRSIGNER policy.</p>
-
-<table>
-<thead>
-<tr>
-<th>Key policy name</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>KEYPOLICY_MRENCLAVE</td>
-<td>0x0001</td>
-<td>-Derive key using the enclave??s ENCLAVE measurement register</td>
-</tr>
-<tr>
-<td>KEYPOLICY_MRSIGNER</td>
-<td>0x0002</td>
-<td>-Derive key using the enclave??s SIGNER measurement register</td>
-</tr>
-</tbody>
-</table>
-
+<table><thead><tr><th>Key policy name </th><th> Value </th><th> Description</th></tr></thead><tbody>
+<tr><td>KEYPOLICY_MRENCLAVE </td><td> 0x0001 </td><td> -Derive key using the enclave??s ENCLAVE measurement register</td></tr>
+<tr><td>KEYPOLICY_MRSIGNER </td><td>0x0002 </td><td> -Derive key using the enclave??s SIGNER measurement register</td></tr>
+</tbody></table>
 <p><strong>attribute_mask</strong></p>
-
 <p>Identifies which platform/enclave attributes to use in the key derivation. See
 the definition of sgx_attributes_t to determine which attributes will be
 checked.  Function sgx_seal_data uses flags=0xfffffffffffffff3,?xfrm=0.</p>
-
 <p><strong>misc_mask</strong></p>
-
 <p>The misc mask bits for the enclave. Reserved for future function extension.</p>
-
 <p><strong>additional_text</strong></p>
-
 <p>Pointer to the additional Message Authentication Code (MAC) data.
 This additional data is optional and no data is necessary.</p>
-
 <p><strong>encrypt_text</strong></p>
-
 <p>Pointer to the data stream to be encrypted, which is &amp;[T]. Must not be NULL. Must be within the enclave.</p>
-
-<h1 id='return-value-5' class='section-header'><a href='#return-value-5'>Return value</a></h1>
+<h1 id="return-value-5" class="section-header"><a href="#return-value-5">Return value</a></h1>
 <p>The sealed data in SgxSealedData.</p>
-
-<h1 id='errors-4' class='section-header'><a href='#errors-4'>Errors</a></h1>
+<h1 id="errors-4" class="section-header"><a href="#errors-4">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Indicates an error if the parameters do not meet any of the following conditions:</p>
-
 <ul>
 <li>additional_text buffer can be within or outside the enclave, but cannot cross the enclave boundary.</li>
 <li>encrypt_text must be non-zero.</li>
 <li>encrypt_text buffer must be within the enclave.</li>
 </ul>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>Indicates a crypto library failure or the RDRAND instruction fails to generate a
 random number.</p>
 </div><h4 id='method.unseal_data-1' class="method"><span id='unseal_data.v-1' class='invisible'><code>pub fn <a href='#method.unseal_data-1' class='fnname'>unseal_data</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_tseal/struct.SgxUnsealedData.html" title="struct sgx_tseal::SgxUnsealedData">SgxUnsealedData</a>&lt;'a, [T]&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#681-705' title='goto source code'>[src]</a></span></h4>
@@ -432,85 +297,55 @@ Two output data sets result: one is the decrypted data; the second is the
 optional additional data that was part of the GCM MAC calculation but was not
 encrypted. This function provides the converse of seal_data and
 seal_data_ex.</p>
-
-<h1 id='descryption-4' class='section-header'><a href='#descryption-4'>Descryption</a></h1>
+<h1 id="descryption-4" class="section-header"><a href="#descryption-4">Descryption</a></h1>
 <p>The unseal_data function AES-GCM decrypts the sealed data so that
 the enclave data can be restored. This function can be utilized to restore
 secret data that was preserved after an earlier instantiation of this enclave
 saved this data.</p>
-
-<h1 id='requirements-6' class='section-header'><a href='#requirements-6'>Requirements</a></h1>
+<h1 id="requirements-6" class="section-header"><a href="#requirements-6">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='return-value-6' class='section-header'><a href='#return-value-6'>Return value</a></h1>
+<h1 id="return-value-6" class="section-header"><a href="#return-value-6">Return value</a></h1>
 <p>The unsealed data in SgxUnsealedData.</p>
-
-<h1 id='errors-5' class='section-header'><a href='#errors-5'>Errors</a></h1>
+<h1 id="errors-5" class="section-header"><a href="#errors-5">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>The size of T may be zero.</p>
-
 <p><strong>SGX_ERROR_INVALID_CPUSVN</strong></p>
-
 <p>The CPUSVN in the sealed data blob is beyond the CPUSVN value of the platform.
 SGX_ERROR_INVALID_ISVSVN The ISVSVN in the sealed data blob is greater than the ISVSVN value of the enclave.</p>
-
 <p><strong>SGX_ERROR_MAC_MISMATCH</strong></p>
-
 <p>The tag verification failed during unsealing. The error may be caused by a platform update,
 software update, or sealed data blob corruption. This error is also reported if other corruption
 of the sealed data structure is detected.</p>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>The enclave is out of memory.</p>
-
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
-
 <p>Indicates a crypto library failure or the RDRAND instruction fails to generate a
 random number.</p>
 </div><h4 id='method.from_raw_sealed_data_t-1' class="method"><span id='from_raw_sealed_data_t.v-1' class='invisible'><code>pub unsafe fn <a href='#method.from_raw_sealed_data_t-1' class='fnname'>from_raw_sealed_data_t</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;p: *mut <a class="struct" href="../sgx_types/types/struct.sgx_sealed_data_t.html" title="struct sgx_types::types::sgx_sealed_data_t">sgx_sealed_data_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: u32<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#734-746' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Convert a pointer of sgx_sealed_data_t buffer to SgxSealedData.</p>
-
-<h1 id='requirements-7' class='section-header'><a href='#requirements-7'>Requirements</a></h1>
+<h1 id="requirements-7" class="section-header"><a href="#requirements-7">Requirements</a></h1>
 <p>Library: libsgx_tservice.a or libsgx_tservice_sim.a (simulation)</p>
-
-<h1 id='parameters-6' class='section-header'><a href='#parameters-6'>Parameters</a></h1>
+<h1 id="parameters-6" class="section-header"><a href="#parameters-6">Parameters</a></h1>
 <p><strong>p</strong></p>
-
 <p>The mutable pointer of sgx_sealed_data_t buffer.</p>
-
 <p><strong>len</strong></p>
-
 <p>The size of the parameter <code>p</code>.</p>
-
-<h1 id='return-value-7' class='section-header'><a href='#return-value-7'>Return value</a></h1>
+<h1 id="return-value-7" class="section-header"><a href="#return-value-7">Return value</a></h1>
 <p><strong>Some(SgxSealedData)</strong></p>
-
 <p>Indicates the conversion is successfully. The return value is SgxSealedData.</p>
-
 <p><strong>None</strong></p>
-
 <p>Maybe the size of T is zero.</p>
 </div><h4 id='method.to_raw_sealed_data_t-1' class="method"><span id='to_raw_sealed_data_t.v-1' class='invisible'><code>pub unsafe fn <a href='#method.to_raw_sealed_data_t-1' class='fnname'>to_raw_sealed_data_t</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;p: *mut <a class="struct" href="../sgx_types/types/struct.sgx_sealed_data_t.html" title="struct sgx_types::types::sgx_sealed_data_t">sgx_sealed_data_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;len: u32<br>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;*mut <a class="struct" href="../sgx_types/types/struct.sgx_sealed_data_t.html" title="struct sgx_types::types::sgx_sealed_data_t">sgx_sealed_data_t</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#771-773' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Convert SgxSealedData to the pointer of sgx_sealed_data_t.</p>
-
-<h1 id='parameters-7' class='section-header'><a href='#parameters-7'>Parameters</a></h1>
+<h1 id="parameters-7" class="section-header"><a href="#parameters-7">Parameters</a></h1>
 <p><strong>p</strong></p>
-
 <p>The pointer of sgx_sealed_data_t to save the data in SgxSealedData.</p>
-
 <p><strong>len</strong></p>
-
 <p>The size of the pointer of sgx_sealed_data_t.</p>
-
-<h1 id='error-1' class='section-header'><a href='#error-1'>Error</a></h1>
-<p><strong>Some(* mut sgx_sealed_data_t)</strong></p>
-
+<h1 id="error-1" class="section-header"><a href="#error-1">Error</a></h1>
+<p><em><em>Some(</em> mut sgx_sealed_data_t)</em>*</p>
 <p>Indicates the conversion is successfully. The return value is the pointer of sgx_sealed_data_t.</p>
-
 <p><strong>None</strong></p>
-
 <p>May be the parameter p and len is not avaliable.</p>
 </div></div><h3 id='impl-2' class='impl'><span class='in-band'><code>impl&lt;'a, T:&nbsp;'a + ?<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a>&gt; <a class="struct" href="../sgx_tseal/struct.SgxSealedData.html" title="struct sgx_tseal::SgxSealedData">SgxSealedData</a>&lt;'a, T&gt;</code><a href='#impl-2' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#776-840' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tseal/seal.rs.html#781-783' title='goto source code'>[src]</a></span></h4>
@@ -560,13 +395,15 @@ random number.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

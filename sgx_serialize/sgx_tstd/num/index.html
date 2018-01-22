@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module num</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'num', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module num</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'num', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -50,7 +51,6 @@
                    </a>
                </span><a class='srclink' href='../../src/sgx_tstd/num.rs.html#29-37' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Additional functionality for numerics.</p>
-
 <p>This module provides some extra types that are useful when doing numerical
 work. See the individual documentation for each piece for more information.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
@@ -60,6 +60,7 @@ work. See the individual documentation for each piece for more information.</p>
                                   title='struct sgx_tstd::num::ParseFloatError'>ParseFloatError</a></td>
                            <td class='docblock-short'>
                                 <p>An error which can be returned when parsing a float.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -67,6 +68,7 @@ work. See the individual documentation for each piece for more information.</p>
                                   title='struct sgx_tstd::num::ParseIntError'>ParseIntError</a></td>
                            <td class='docblock-short'>
                                 <p>An error which can be returned when parsing an integer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -74,6 +76,7 @@ work. See the individual documentation for each piece for more information.</p>
                                   title='struct sgx_tstd::num::Wrapping'>Wrapping</a></td>
                            <td class='docblock-short'>
                                 <p>Provides intentionally-wrapped arithmetic on <code>T</code>.</p>
+
                            </td>
                        </tr>
                        <tr class='unstable module-item'>
@@ -81,6 +84,7 @@ work. See the individual documentation for each piece for more information.</p>
                                   title='struct sgx_tstd::num::TryFromIntError'>TryFromIntError</a></td>
                            <td class='docblock-short'>
                                [<div class='stab unstable'>Experimental</div>] <p>The error type returned when a checked integral type conversion fails.</p>
+
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
@@ -89,6 +93,7 @@ work. See the individual documentation for each piece for more information.</p>
                                   title='enum sgx_tstd::num::FpCategory'>FpCategory</a></td>
                            <td class='docblock-short'>
                                 <p>A classification of floating point numbers.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -107,13 +112,15 @@ work. See the individual documentation for each piece for more information.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

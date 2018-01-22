@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Crate sgx_serialize_derive</p><div class="block items"><ul><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_serialize_derive', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_serialize_derive</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_serialize_derive', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
     <nav class="sub">
@@ -48,10 +49,10 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_serialize_derive/lib.rs.html#29-91' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>This crate provides sgx_serialize&#39;s two derive macros.</p>
+               </span><a class='srclink' href='../src/sgx_serialize_derive/lib.rs.html#29-88' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This crate provides sgx_serialize's two derive macros.</p>
 
-<div class='information'><div class='tooltip ignore'>⚠<span class='tooltiptext'>Be careful when using this code, it's not being tested!</span></div></div><pre class="rust rust-example-rendered ignore">
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><pre class="rust rust-example-rendered ignore">
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tstd</span> <span class="kw">as</span> <span class="ident">std</span>; <span class="comment">// Must do that!</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serializable</span>, <span class="ident">DeSerializable</span>)]</span></pre>
 </div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
@@ -61,6 +62,7 @@
                                   title='fn sgx_serialize_derive::derive_deserialize'>derive_deserialize</a></td>
                            <td class='docblock-short'>
                                 <p><code>derive_deserialize</code> provides the <code>DeSerializable</code> macro for `sgx_serialize</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -68,6 +70,7 @@
                                   title='fn sgx_serialize_derive::derive_serialize'>derive_serialize</a></td>
                            <td class='docblock-short'>
                                 <p><code>derive_serialize</code> provides the <code>Serializable</code> macro for `sgx_serialize</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -86,13 +89,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

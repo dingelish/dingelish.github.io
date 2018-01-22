@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait Step</p><div class="block items"><ul><li><a href="#required-methods">Required Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>iter</a></p><script>window.sidebarCurrent = {name: 'Step', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait Step</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.steps_between">steps_between</a><a href="#tymethod.replace_one">replace_one</a><a href="#tymethod.replace_zero">replace_zero</a><a href="#tymethod.add_one">add_one</a><a href="#tymethod.sub_one">sub_one</a><a href="#tymethod.add_usize">add_usize</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>iter</a></p><script>window.sidebarCurrent = {name: 'Step', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -58,7 +59,6 @@
 <div class='item-spacer'></div>    fn <a href='#tymethod.add_usize' class='fnname'>add_usize</a>(&amp;self, n: usize) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;Self&gt;;
 }</pre><div class='stability'><div class='stab unstable'><details><summary><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>step_trait</code>)</summary><p>likely to be replaced by finer-grained traits</p>
 </details></div></div><div class='docblock'><p>Objects that can be stepped over in both directions.</p>
-
 <p>The <code>steps_between</code> function provides a way to efficiently compare
 two <code>Step</code> objects.</p>
 </div>
@@ -69,7 +69,6 @@ two <code>Step</code> objects.</p>
         <h3 id='tymethod.steps_between' class='method'><span id='steps_between.v' class='invisible'><code>fn <a href='#tymethod.steps_between' class='fnname'>steps_between</a>(start: &amp;Self, end: &amp;Self) -&gt; <a class="enum" href="../../sgx_tstd/option/enum.Option.html" title="enum sgx_tstd::option::Option">Option</a>&lt;usize&gt;</code></span></h3><div class='stability'><div class='stab unstable'><details><summary><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>step_trait</code>)</summary><p>likely to be replaced by finer-grained traits</p>
 </details></div></div><div class='docblock'><p>Returns the number of steps between two step objects. The count is
 inclusive of <code>start</code> and exclusive of <code>end</code>.</p>
-
 <p>Returns <code>None</code> if it is not possible to calculate <code>steps_between</code>
 without overflow.</p>
 </div><h3 id='tymethod.replace_one' class='method'><span id='replace_one.v' class='invisible'><code>fn <a href='#tymethod.replace_one' class='fnname'>replace_one</a>(&amp;mut self) -&gt; Self</code></span></h3><div class='stability'><div class='stab unstable'><details><summary><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>step_trait</code>)</summary><p>likely to be replaced by finer-grained traits</p>
@@ -87,18 +86,18 @@ without overflow.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl Step for usize</code></li>
-<li><code>impl Step for u128</code></li>
-<li><code>impl Step for u8</code></li>
-<li><code>impl Step for i128</code></li>
-<li><code>impl Step for u32</code></li>
-<li><code>impl Step for u16</code></li>
-<li><code>impl Step for i32</code></li>
-<li><code>impl Step for i64</code></li>
-<li><code>impl Step for i16</code></li>
-<li><code>impl Step for i8</code></li>
-<li><code>impl Step for isize</code></li>
-<li><code>impl Step for u64</code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#152-164' title='goto source code'>[src]</a></div><code>impl Step for u128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#79-101' title='goto source code'>[src]</a></div><code>impl Step for u8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#109-143' title='goto source code'>[src]</a></div><code>impl Step for isize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#109-143' title='goto source code'>[src]</a></div><code>impl Step for i8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#79-101' title='goto source code'>[src]</a></div><code>impl Step for u32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#79-101' title='goto source code'>[src]</a></div><code>impl Step for u16</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#109-143' title='goto source code'>[src]</a></div><code>impl Step for i32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#79-101' title='goto source code'>[src]</a></div><code>impl Step for usize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#152-164' title='goto source code'>[src]</a></div><code>impl Step for i128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#79-101' title='goto source code'>[src]</a></div><code>impl Step for u64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#109-143' title='goto source code'>[src]</a></div><code>impl Step for i16</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/range.rs.html#109-143' title='goto source code'>[src]</a></div><code>impl Step for i64</code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/iter/range/trait.Step.js">
                  </script></section>
@@ -118,13 +117,15 @@ without overflow.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

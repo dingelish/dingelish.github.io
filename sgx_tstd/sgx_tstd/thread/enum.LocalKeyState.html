@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Enum LocalKeyState</p><div class="block items"><ul><li><a href="#variants">Variants</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>thread</a></p><script>window.sidebarCurrent = {name: 'LocalKeyState', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Enum LocalKeyState</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.Uninitialized">Uninitialized</a><a href="#variant.Valid">Valid</a><a href="#variant.Error">Error</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Debug">Debug</a><a href="#impl-Eq">Eq</a><a href="#impl-PartialEq">PartialEq</a><a href="#impl-Copy">Copy</a><a href="#impl-Clone">Clone</a></div></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>thread</a></p><script>window.sidebarCurrent = {name: 'LocalKeyState', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -59,25 +60,23 @@
 <span id="variant.Uninitialized" class="variant small-section-header"><a href="#variant.Uninitialized" class="anchor field"></a><span id='Uninitialized.v' class='invisible'><code>Uninitialized</code></span></span><div class='docblock'><p>All keys are in this state whenever a thread starts. Keys will
 transition to the <code>Valid</code> state once the first call to [<code>with</code>] happens
 and the initialization expression succeeds.</p>
-
 <p>Keys in the <code>Uninitialized</code> state will yield a reference to the closure
 passed to [<code>with</code>] so long as the initialization routine does not panic.</p>
 </div><span id="variant.Valid" class="variant small-section-header"><a href="#variant.Valid" class="anchor field"></a><span id='Valid.v' class='invisible'><code>Valid</code></span></span><div class='docblock'><p>Once a key has been accessed successfully, it will enter the <code>Valid</code>
 state. Keys in the <code>Valid</code> state will remain so until the thread exits,
 at which point the destructor will be run and the key will enter the
 <code>Destroyed</code> state.</p>
-
 <p>Keys in the <code>Valid</code> state will be guaranteed to yield a reference to the
 closure passed to [<code>with</code>].</p>
-</div><span id="variant.Error" class="variant small-section-header"><a href="#variant.Error" class="anchor field"></a><span id='Error.v' class='invisible'><code>Error</code></span></span><div class='docblock'><p>if TLS data needs to be destructed, TCS policy must be Bound, The key will 
-enter the &#39;Error&#39; state.</p>
+</div><span id="variant.Error" class="variant small-section-header"><a href="#variant.Error" class="anchor field"></a><span id='Error.v' class='invisible'><code>Error</code></span></span><div class='docblock'><p>if TLS data needs to be destructed, TCS policy must be Bound, The key will
+enter the 'Error' state.</p>
 </div>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
         <h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="enum" href="../../sgx_tstd/thread/enum.LocalKeyState.html" title="enum sgx_tstd::thread::LocalKeyState">LocalKeyState</a></code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/thread/local.rs.html#131' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/thread/local.rs.html#131' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Formats the value using the given formatter.</p>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
 </div></div><h3 id='impl-Eq' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/cmp/trait.Eq.html" title="trait sgx_tstd::cmp::Eq">Eq</a> for <a class="enum" href="../../sgx_tstd/thread/enum.LocalKeyState.html" title="enum sgx_tstd::thread::LocalKeyState">LocalKeyState</a></code><a href='#impl-Eq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/thread/local.rs.html#131' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><code>impl <a class="trait" href="../../sgx_tstd/cmp/trait.PartialEq.html" title="trait sgx_tstd::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../sgx_tstd/thread/enum.LocalKeyState.html" title="enum sgx_tstd::thread::LocalKeyState">LocalKeyState</a></code><a href='#impl-PartialEq' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/thread/local.rs.html#131' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='../../sgx_tstd/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../sgx_tstd/thread/enum.LocalKeyState.html" title="enum sgx_tstd::thread::LocalKeyState">LocalKeyState</a>) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/thread/local.rs.html#131' title='goto source code'>[src]</a></span></h4>
@@ -107,13 +106,15 @@ enter the &#39;Error&#39; state.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

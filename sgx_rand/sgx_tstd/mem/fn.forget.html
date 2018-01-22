@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>mem</a></p><script>window.sidebarCurrent = {name: 'forget', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -51,29 +52,23 @@
                </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/mem.rs.html#174-176' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn forget&lt;T&gt;(t: T)</pre><div class='docblock'><p>Leaks a value: takes ownership and &quot;forgets&quot; about the value <strong>without running
 its destructor</strong>.</p>
-
 <p>Any resources the value manages, such as heap memory or a file handle, will linger
 forever in an unreachable state.</p>
-
 <p>If you want to dispose of a value properly, running its destructor, see
 <a href="fn.drop.html"><code>mem::drop</code></a>.</p>
-
-<h1 id='safety' class='section-header'><a href='#safety'>Safety</a></h1>
-<p><code>forget</code> is not marked as <code>unsafe</code>, because Rust&#39;s safety guarantees
+<h1 id="safety" class="section-header"><a href="#safety">Safety</a></h1>
+<p><code>forget</code> is not marked as <code>unsafe</code>, because Rust's safety guarantees
 do not include a guarantee that destructors will always run. For example,
 a program can create a reference cycle using <a href="../../std/rc/struct.Rc.html"><code>Rc</code></a>, or call
 <a href="../../std/process/fn.exit.html"><code>process::exit</code></a> to exit without running destructors. Thus, allowing
-<code>mem::forget</code> from safe code does not fundamentally change Rust&#39;s safety
+<code>mem::forget</code> from safe code does not fundamentally change Rust's safety
 guarantees.</p>
-
 <p>That said, leaking resources such as memory or I/O objects is usually undesirable,
 so <code>forget</code> is only recommended for specialized use cases like those shown below.</p>
-
 <p>Because forgetting a value is allowed, any <code>unsafe</code> code you write must
 allow for this possibility. You cannot return a value and expect that the
-caller will necessarily run the value&#39;s destructor.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+caller will necessarily run the value's destructor.</p>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>Leak some heap memory by never deallocating it:</p>
 
 <pre class="rust rust-example-rendered">
@@ -81,7 +76,6 @@ caller will necessarily run the value&#39;s destructor.</p>
 
 <span class="kw">let</span> <span class="ident">heap_memory</span> <span class="op">=</span> <span class="ident">Box</span>::<span class="ident">new</span>(<span class="number">3</span>);
 <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">heap_memory</span>);</pre>
-
 <p>Leak an I/O object, never closing the file:</p>
 
 <pre class="rust rust-example-rendered">
@@ -90,11 +84,9 @@ caller will necessarily run the value&#39;s destructor.</p>
 
 <span class="kw">let</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">File</span>::<span class="ident">open</span>(<span class="string">&quot;foo.txt&quot;</span>).<span class="ident">unwrap</span>();
 <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">file</span>);</pre>
-
 <p>The practical use cases for <code>forget</code> are rather specialized and mainly come
 up in unsafe or FFI code.</p>
-
-<h2 id='use-case-1' class='section-header'><a href='#use-case-1'>Use case 1</a></h2>
+<h2 id="use-case-1" class="section-header"><a href="#use-case-1">Use case 1</a></h2>
 <p>You have created an uninitialized value using <a href="fn.uninitialized.html"><code>mem::uninitialized</code></a>.
 You must either initialize or <code>forget</code> it on every computation path before
 Rust drops it automatically, like at the end of a scope or after a panic.
@@ -115,12 +107,10 @@ Running the destructor on an uninitialized value would be <a href="../../referen
         <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">uninit_vec</span>);
     }
 }</pre>
-
-<h2 id='use-case-2' class='section-header'><a href='#use-case-2'>Use case 2</a></h2>
+<h2 id="use-case-2" class="section-header"><a href="#use-case-2">Use case 2</a></h2>
 <p>You have duplicated the bytes making up a value, without doing a proper
-<a href="../clone/trait.Clone.html"><code>Clone</code></a>. You need the value&#39;s destructor to run only once,
+<a href="../clone/trait.Clone.html"><code>Clone</code></a>. You need the value's destructor to run only once,
 because a double <code>free</code> is undefined behavior.</p>
-
 <p>An example is a possible implementation of <a href="fn.swap.html"><code>mem::swap</code></a>:</p>
 
 <pre class="rust rust-example-rendered">
@@ -143,8 +133,7 @@ because a double <code>free</code> is undefined behavior.</p>
         <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">t</span>);
     }
 }</pre>
-
-<h2 id='use-case-3' class='section-header'><a href='#use-case-3'>Use case 3</a></h2>
+<h2 id="use-case-3" class="section-header"><a href="#use-case-3">Use case 3</a></h2>
 <p>You are transferring ownership across a <a href="../../book/first-edition/ffi.html">FFI</a> boundary to code written in
 another language. You need to <code>forget</code> the value on the Rust side because Rust
 code is no longer responsible for it.</p>
@@ -163,8 +152,7 @@ code is no longer responsible for it.</p>
     <span class="ident">my_c_function</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">x</span>);
 }
 <span class="ident">mem</span>::<span class="ident">forget</span>(<span class="ident">x</span>);</pre>
-
-<p>In this case, C code must call back into Rust to free the object. Calling C&#39;s <code>free</code>
+<p>In this case, C code must call back into Rust to free the object. Calling C's <code>free</code>
 function on a <a href="../../std/boxed/struct.Box.html"><code>Box</code></a> is <em>not</em> safe! Also, <code>Box</code> provides an <a href="../../std/boxed/struct.Box.html#method.into_raw"><code>into_raw</code></a>
 method which is the preferred way to do this in practice.</p>
 </div></section>
@@ -184,13 +172,15 @@ method which is the preferred way to do this in practice.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

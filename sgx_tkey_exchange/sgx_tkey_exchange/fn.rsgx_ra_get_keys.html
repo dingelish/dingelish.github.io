@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='index.html'>sgx_tkey_exchange</a></p><script>window.sidebarCurrent = {name: 'rsgx_ra_get_keys', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -48,40 +49,27 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tkey_exchange/lib.rs.html#220-230' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_tkey_exchange/lib.rs.html#218-228' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn rsgx_ra_get_keys(<br>&nbsp;&nbsp;&nbsp;&nbsp;context: <a class="type" href="../sgx_types/types/type.sgx_ra_context_t.html" title="type sgx_types::types::sgx_ra_context_t">sgx_ra_context_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;keytype: <a class="enum" href="../sgx_types/types/enum.sgx_ra_key_type_t.html" title="enum sgx_types::types::sgx_ra_key_type_t">sgx_ra_key_type_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="type" href="../sgx_types/types/type.sgx_ra_key_128_t.html" title="type sgx_types::types::sgx_ra_key_128_t">sgx_ra_key_128_t</a>&gt;</pre><div class='docblock'><p>The sgx_ra_get_keys function is used to get the negotiated keys of a remote attestation and key exchange session.</p>
-
 <p>This function should only be called after the service provider accepts the remote attestation and key exchange
 protocol message 3 produced by sgx_ra_proc_msg2.</p>
-
-<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
+<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
 <p>After a successful key exchange process, this API can be used in the enclave to get specific key associated
 with this remote attestation and key exchange session.</p>
-
-<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
 <p><strong>context</strong></p>
-
 <p>Context returned by rsgx_ra_init.</p>
-
 <p><strong>keytype</strong></p>
-
 <p>The type of the keys, which can be SGX_RA_KEY_MK, SGX_RA_KEY_SK, or SGX_RA_VK.</p>
-
-<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
 <p>Header: sgx_tkey_exchange.edl</p>
-
 <p>Library: libsgx_tkey_exchange.a</p>
-
-<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
+<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
 <p>The key returned.</p>
-
-<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>Indicates an error that the input parameters are invalid.</p>
-
 <p><strong>SGX_ERROR_INVALID_STATE</strong></p>
-
 <p>Indicates this API is invoked in incorrect order, it can be called only after a success session has been established.
 In other words, sgx_ra_proc_msg2 should have been called and no error returned.</p>
 </div></section>
@@ -101,13 +89,15 @@ In other words, sgx_ra_proc_msg2 should have been called and no error returned.<
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>iter</a></p><script>window.sidebarCurrent = {name: 'once', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -49,14 +50,12 @@
                        [<span class='inner'>&#x2212;</span>]
                    </a>
                </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/sources.rs.html#280-282' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn once&lt;T&gt;(value: T) -&gt; <a class="struct" href="../../sgx_tstd/iter/struct.Once.html" title="struct sgx_tstd::iter::Once">Once</a>&lt;T&gt;</pre><div class='docblock'><p>Creates an iterator that yields an element exactly once.</p>
-
+<div class="important-traits"><div class='tooltip'>ⓘ<span class='tooltiptext'>Important traits for <a class="struct" href="../../sgx_tstd/iter/struct.Once.html" title="struct sgx_tstd::iter::Once">Once</a>&lt;T&gt;</span></div><div class="content hidden"><h3 class="important">Important traits for <a class="struct" href="../../sgx_tstd/iter/struct.Once.html" title="struct sgx_tstd::iter::Once">Once</a>&lt;T&gt;</h3><code class="content"><span class="where fmt-newline">impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/iter/trait.Iterator.html" title="trait sgx_tstd::iter::Iterator">Iterator</a> for <a class="struct" href="../../sgx_tstd/iter/struct.Once.html" title="struct sgx_tstd::iter::Once">Once</a>&lt;T&gt;</span><span class="where fmt-newline">    type <a href='../../sgx_tstd/iter/trait.Iterator.html#associatedtype.Item' class="type">Item</a> = T;</span></code></div></div><pre class='rust fn'>pub fn once&lt;T&gt;(value: T) -&gt; <a class="struct" href="../../sgx_tstd/iter/struct.Once.html" title="struct sgx_tstd::iter::Once">Once</a>&lt;T&gt;</pre><div class='docblock'><p>Creates an iterator that yields an element exactly once.</p>
 <p>This is commonly used to adapt a single value into a <a href="trait.Iterator.html#method.chain"><code>chain</code></a> of other
 kinds of iteration. Maybe you have an iterator that covers almost
 everything, but you need an extra special case. Maybe you have a function
 which works on iterators, but you only need to process one value.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>Basic usage:</p>
 
 <pre class="rust rust-example-rendered">
@@ -69,8 +68,7 @@ which works on iterators, but you only need to process one value.</p>
 
 <span class="comment">// just one, that&#39;s all we get</span>
 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="prelude-val">None</span>, <span class="ident">one</span>.<span class="ident">next</span>());</pre>
-
-<p>Chaining together with another iterator. Let&#39;s say that we want to iterate
+<p>Chaining together with another iterator. Let's say that we want to iterate
 over each file of the <code>.foo</code> directory, but also a configuration file,
 <code>.foorc</code>:</p>
 
@@ -112,13 +110,15 @@ over each file of the <code>.foo</code> directory, but also a configuration file
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

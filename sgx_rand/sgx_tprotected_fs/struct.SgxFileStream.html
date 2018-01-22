@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct SgxFileStream</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>sgx_tprotected_fs</a></p><script>window.sidebarCurrent = {name: 'SgxFileStream', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Struct SgxFileStream</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.open">open</a><a href="#method.open_auto_key">open_auto_key</a><a href="#method.read">read</a><a href="#method.write">write</a><a href="#method.tell">tell</a><a href="#method.seek">seek</a><a href="#method.flush">flush</a><a href="#method.error">error</a><a href="#method.is_eof">is_eof</a><a href="#method.clearerr">clearerr</a><a href="#method.clear_cache">clear_cache</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Drop">Drop</a></div></div><p class='location'><a href='index.html'>sgx_tprotected_fs</a></p><script>window.sidebarCurrent = {name: 'SgxFileStream', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -56,220 +57,156 @@
                 <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tprotected_fs/struct.SgxFileStream.html" title="struct sgx_tprotected_fs::SgxFileStream">SgxFileStream</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#225-545' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.open' class="method"><span id='open.v' class='invisible'><code>pub fn <a href='#method.open' class='fnname'>open</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;filename: &amp;<a class="struct" href="../sgx_trts/c_str/struct.CStr.html" title="struct sgx_trts::c_str::CStr">CStr</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;mode: &amp;<a class="struct" href="../sgx_trts/c_str/struct.CStr.html" title="struct sgx_trts::c_str::CStr">CStr</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: &amp;<a class="type" href="../sgx_types/types/type.sgx_key_128bit_t.html" title="type sgx_types::types::sgx_key_128bit_t">sgx_key_128bit_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SysResult.html" title="type sgx_types::error::SysResult">SysResult</a>&lt;<a class="struct" href="../sgx_tprotected_fs/struct.SgxFileStream.html" title="struct sgx_tprotected_fs::SgxFileStream">SgxFileStream</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#263-267' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The open function creates or opens a protected file.</p>
-
-<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
+<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
 <p>open is similar to the C file API fopen. It creates a new Protected File or opens an existing
 Protected File created with a previous call to open. Regular files cannot be opened with this API.</p>
-
-<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
 <p><strong>filename</strong></p>
-
 <p>The name of the file to be created or opened.</p>
-
 <p><strong>mode</strong></p>
-
 <p>The file open mode string. Allowed values are any combination of ‘r’, ‘w’ or ‘a’, with possible ‘+’
 and possible ‘b’ (since string functions are currently not sup- ported, ‘b’ is meaningless).</p>
-
 <p><strong>key</strong></p>
-
 <p>The encryption key of the file. This key is used as a key derivation key, used for deriving encryption
 keys for the file. If the file is created with open, you should protect this key and provide it as
 input every time the file is opened.</p>
-
-<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
+<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
 <p>If the function succeeds, it returns a valid file pointer, which can be used by all the other functions
 in the Protected FS API, otherwise, error code is returned.</p>
 </div><h4 id='method.open_auto_key' class="method"><span id='open_auto_key.v' class='invisible'><code>pub fn <a href='#method.open_auto_key' class='fnname'>open_auto_key</a>(filename: &amp;<a class="struct" href="../sgx_trts/c_str/struct.CStr.html" title="struct sgx_trts::c_str::CStr">CStr</a>, mode: &amp;<a class="struct" href="../sgx_trts/c_str/struct.CStr.html" title="struct sgx_trts::c_str::CStr">CStr</a>) -&gt; <a class="type" href="../sgx_types/error/type.SysResult.html" title="type sgx_types::error::SysResult">SysResult</a>&lt;<a class="struct" href="../sgx_tprotected_fs/struct.SgxFileStream.html" title="struct sgx_tprotected_fs::SgxFileStream">SgxFileStream</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#299-303' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The open_auto_key function creates or opens a protected file.</p>
-
-<h1 id='description-1' class='section-header'><a href='#description-1'>Description</a></h1>
+<h1 id="description-1" class="section-header"><a href="#description-1">Description</a></h1>
 <p>open_auto_key is similar to the C file API fopen. It creates a new Protected File or opens an existing
 Protected File created with a previous call to open_auto_key. Regular files cannot be opened with this API.</p>
-
-<h1 id='parameters-1' class='section-header'><a href='#parameters-1'>Parameters</a></h1>
+<h1 id="parameters-1" class="section-header"><a href="#parameters-1">Parameters</a></h1>
 <p><strong>filename</strong></p>
-
 <p>The name of the file to be created or opened.</p>
-
 <p><strong>mode</strong></p>
-
 <p>The file open mode string. Allowed values are any combination of ‘r’, ‘w’ or ‘a’, with possible ‘+’
 and possible ‘b’ (since string functions are currently not sup- ported, ‘b’ is meaningless).</p>
-
-<h1 id='requirements-1' class='section-header'><a href='#requirements-1'>Requirements</a></h1>
+<h1 id="requirements-1" class="section-header"><a href="#requirements-1">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-1' class='section-header'><a href='#return-value-1'>Return value</a></h1>
+<h1 id="return-value-1" class="section-header"><a href="#return-value-1">Return value</a></h1>
 <p>If the function succeeds, it returns a valid file pointer, which can be used by all the other functions
 in the Protected FS API, otherwise, error code is returned.</p>
 </div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>pub fn <a href='#method.read' class='fnname'>read</a>(&amp;self, buf: &amp;mut [u8]) -&gt; <a class="type" href="../sgx_types/error/type.SysResult.html" title="type sgx_types::error::SysResult">SysResult</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#329-331' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The read function reads the requested amount of data from the file, and extends the file pointer by that amount.</p>
-
-<h1 id='description-2' class='section-header'><a href='#description-2'>Description</a></h1>
+<h1 id="description-2" class="section-header"><a href="#description-2">Description</a></h1>
 <p>read is similar to the file API fread. In case of an error, error can be called to get the error code.</p>
-
-<h1 id='parameters-2' class='section-header'><a href='#parameters-2'>Parameters</a></h1>
+<h1 id="parameters-2" class="section-header"><a href="#parameters-2">Parameters</a></h1>
 <p><strong>buf</strong></p>
-
 <p>A pointer to a buffer to receive the data read from the file.</p>
-
-<h1 id='requirements-2' class='section-header'><a href='#requirements-2'>Requirements</a></h1>
+<h1 id="requirements-2" class="section-header"><a href="#requirements-2">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-2' class='section-header'><a href='#return-value-2'>Return value</a></h1>
+<h1 id="return-value-2" class="section-header"><a href="#return-value-2">Return value</a></h1>
 <p>If the function succeeds, the number of bytes read is returned (zero indicates end of file).
 otherwise, error code is returned.</p>
 </div><h4 id='method.write' class="method"><span id='write.v' class='invisible'><code>pub fn <a href='#method.write' class='fnname'>write</a>(&amp;self, buf: &amp;[u8]) -&gt; <a class="type" href="../sgx_types/error/type.SysResult.html" title="type sgx_types::error::SysResult">SysResult</a>&lt;usize&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#357-359' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The write function writes the given amount of data to the file, and extends the file pointer by that amount.</p>
-
-<h1 id='description-3' class='section-header'><a href='#description-3'>Description</a></h1>
+<h1 id="description-3" class="section-header"><a href="#description-3">Description</a></h1>
 <p>write is similar to the file API fwrite. In case of an error, error can be called to get the error code.</p>
-
-<h1 id='parameters-3' class='section-header'><a href='#parameters-3'>Parameters</a></h1>
+<h1 id="parameters-3" class="section-header"><a href="#parameters-3">Parameters</a></h1>
 <p><strong>buf</strong></p>
-
 <p>A pointer to a buffer, that contains the data to write to the file.</p>
-
-<h1 id='requirements-3' class='section-header'><a href='#requirements-3'>Requirements</a></h1>
+<h1 id="requirements-3" class="section-header"><a href="#requirements-3">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-3' class='section-header'><a href='#return-value-3'>Return value</a></h1>
+<h1 id="return-value-3" class="section-header"><a href="#return-value-3">Return value</a></h1>
 <p>If the function succeeds, the number of bytes written is returned (zero indicates nothing was written).
 otherwise, error code is returned.</p>
 </div><h4 id='method.tell' class="method"><span id='tell.v' class='invisible'><code>pub fn <a href='#method.tell' class='fnname'>tell</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SysResult.html" title="type sgx_types::error::SysResult">SysResult</a>&lt;i64&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#379-381' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The tell function obtains the current value of the file position indicator for the stream pointed to by stream.</p>
-
-<h1 id='description-4' class='section-header'><a href='#description-4'>Description</a></h1>
+<h1 id="description-4" class="section-header"><a href="#description-4">Description</a></h1>
 <p>tell is similar to the C file API ftell.</p>
-
-<h1 id='requirements-4' class='section-header'><a href='#requirements-4'>Requirements</a></h1>
+<h1 id="requirements-4" class="section-header"><a href="#requirements-4">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-4' class='section-header'><a href='#return-value-4'>Return value</a></h1>
+<h1 id="return-value-4" class="section-header"><a href="#return-value-4">Return value</a></h1>
 <p>If the function succeeds, it returns the current value of the position indicator of the file.
 otherwise, error code is returned.</p>
 </div><h4 id='method.seek' class="method"><span id='seek.v' class='invisible'><code>pub fn <a href='#method.seek' class='fnname'>seek</a>(&amp;self, offset: i64, origin: <a class="enum" href="../sgx_tprotected_fs/enum.SeekFrom.html" title="enum sgx_tprotected_fs::SeekFrom">SeekFrom</a>) -&gt; <a class="type" href="../sgx_types/error/type.SysError.html" title="type sgx_types::error::SysError">SysError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#410-417' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The seek function sets the current value of the position indicator of the file.</p>
-
-<h1 id='description-5' class='section-header'><a href='#description-5'>Description</a></h1>
+<h1 id="description-5" class="section-header"><a href="#description-5">Description</a></h1>
 <p>seek is similar to the C file API fseek.</p>
-
-<h1 id='parameters-4' class='section-header'><a href='#parameters-4'>Parameters</a></h1>
+<h1 id="parameters-4" class="section-header"><a href="#parameters-4">Parameters</a></h1>
 <p><strong>offset</strong></p>
-
 <p>The new required value, relative to the origin parameter.</p>
-
 <p><strong>origin</strong></p>
-
 <p>The origin from which to calculate the offset (Start, ENd or Current).</p>
-
-<h1 id='requirements-5' class='section-header'><a href='#requirements-5'>Requirements</a></h1>
+<h1 id="requirements-5" class="section-header"><a href="#requirements-5">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-5' class='section-header'><a href='#return-value-5'>Return value</a></h1>
+<h1 id="return-value-5" class="section-header"><a href="#return-value-5">Return value</a></h1>
 <p>If the function failed, error code is returned.</p>
 </div><h4 id='method.flush' class="method"><span id='flush.v' class='invisible'><code>pub fn <a href='#method.flush' class='fnname'>flush</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SysError.html" title="type sgx_types::error::SysError">SysError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#441-443' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The flush function forces a cache flush, and if it returns successfully, it is guaranteed
 that your changes are committed to a file on the disk.</p>
-
-<h1 id='description-6' class='section-header'><a href='#description-6'>Description</a></h1>
+<h1 id="description-6" class="section-header"><a href="#description-6">Description</a></h1>
 <p>flush is similar to the C file API fflush. This function flushes all the modified data from
 the cache and writes it to a file on the disk. In case of an error, error can be called to
 get the error code. Note that this function does not clear the cache, but only flushes the
 changes to the actual file on the disk. Flushing also happens automatically when the cache
 is full and page eviction is required.</p>
-
-<h1 id='requirements-6' class='section-header'><a href='#requirements-6'>Requirements</a></h1>
+<h1 id="requirements-6" class="section-header"><a href="#requirements-6">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-6' class='section-header'><a href='#return-value-6'>Return value</a></h1>
+<h1 id="return-value-6" class="section-header"><a href="#return-value-6">Return value</a></h1>
 <p>If the function failed, error code is returned.</p>
 </div><h4 id='method.error' class="method"><span id='error.v' class='invisible'><code>pub fn <a href='#method.error' class='fnname'>error</a>(&amp;self) -&gt; i32</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#463-465' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The error function returns the latest operation error code.</p>
-
-<h1 id='description-7' class='section-header'><a href='#description-7'>Description</a></h1>
+<h1 id="description-7" class="section-header"><a href="#description-7">Description</a></h1>
 <p>error is similar to the C file API ferror. In case the latest operation failed because
 the file is in a bad state, SGX_ERROR_FILE_BAD_STATUS will be returned.</p>
-
-<h1 id='requirements-7' class='section-header'><a href='#requirements-7'>Requirements</a></h1>
+<h1 id="requirements-7" class="section-header"><a href="#requirements-7">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-7' class='section-header'><a href='#return-value-7'>Return value</a></h1>
+<h1 id="return-value-7" class="section-header"><a href="#return-value-7">Return value</a></h1>
 <p>The latest operation error code is returned. 0 indicates that no errors occurred.</p>
 </div><h4 id='method.is_eof' class="method"><span id='is_eof.v' class='invisible'><code>pub fn <a href='#method.is_eof' class='fnname'>is_eof</a>(&amp;self) -&gt; bool</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#485-487' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>The is_eof function tells the caller if the file&#39;s position indicator hit the end of the
+<div class='docblock'><p>The is_eof function tells the caller if the file's position indicator hit the end of the
 file in a previous read operation.</p>
-
-<h1 id='description-8' class='section-header'><a href='#description-8'>Description</a></h1>
+<h1 id="description-8" class="section-header"><a href="#description-8">Description</a></h1>
 <p>is_eof is similar to the C file API feof.</p>
-
-<h1 id='requirements-8' class='section-header'><a href='#requirements-8'>Requirements</a></h1>
+<h1 id="requirements-8" class="section-header"><a href="#requirements-8">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-8' class='section-header'><a href='#return-value-8'>Return value</a></h1>
+<h1 id="return-value-8" class="section-header"><a href="#return-value-8">Return value</a></h1>
 <p>true - End of file was not reached. false - End of file was reached.</p>
 </div><h4 id='method.clearerr' class="method"><span id='clearerr.v' class='invisible'><code>pub fn <a href='#method.clearerr' class='fnname'>clearerr</a>(&amp;self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#512-514' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The clearerr function attempts to repair a bad file status, and also clears the end-of-file flag.</p>
-
-<h1 id='description-9' class='section-header'><a href='#description-9'>Description</a></h1>
+<h1 id="description-9" class="section-header"><a href="#description-9">Description</a></h1>
 <p>clearerr is similar to the C file API clearerr. This function attempts to repair errors resulted
 from the underlying file system, like write errors to the disk (resulting in a full cache thats
 cannot be emptied). Call error or is_eof after a call to this function to learn if it was successful
 or not.</p>
-
 <p>clearerr does not repair errors resulting from a corrupted file, like decryption errors, or from
 memory corruption, etc.</p>
-
-<h1 id='requirements-9' class='section-header'><a href='#requirements-9'>Requirements</a></h1>
+<h1 id="requirements-9" class="section-header"><a href="#requirements-9">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-9' class='section-header'><a href='#return-value-9'>Return value</a></h1>
+<h1 id="return-value-9" class="section-header"><a href="#return-value-9">Return value</a></h1>
 <p>None</p>
 </div><h4 id='method.clear_cache' class="method"><span id='clear_cache.v' class='invisible'><code>pub fn <a href='#method.clear_cache' class='fnname'>clear_cache</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SysError.html" title="type sgx_types::error::SysError">SysError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tprotected_fs/fs.rs.html#542-544' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>The clear_cache function is used for clearing the internal file cache. The function scrubs all
 the data from the cache, and releases all the allocated cache memory.</p>
-
-<h1 id='description-10' class='section-header'><a href='#description-10'>Description</a></h1>
+<h1 id="description-10" class="section-header"><a href="#description-10">Description</a></h1>
 <p>clear_cache is used to scrub all the data from the cache and release all the allocated cache
 memory. If modified data is found in the cache, it will be written to the file on disk before
 being scrubbed.</p>
-
 <p>This function is especially useful if you do not trust parts of your own enclave (for example,
 external libraries you linked against, etc.) and want to make sure there is as little sensitive
 data in the memory as possible before transferring control to the code they do not trust.
 Note, however, that the SGX_FILE structure itself still holds sensitive data. To remove all
 such data related to the file from memory completely, you should close the file handle.</p>
-
-<h1 id='requirements-10' class='section-header'><a href='#requirements-10'>Requirements</a></h1>
+<h1 id="requirements-10" class="section-header"><a href="#requirements-10">Requirements</a></h1>
 <p>Header: sgx_tprotected_fs.edl</p>
-
 <p>Library: libsgx_tprotected_fs.a</p>
-
-<h1 id='return-value-10' class='section-header'><a href='#return-value-10'>Return value</a></h1>
+<h1 id="return-value-10" class="section-header"><a href="#return-value-10">Return value</a></h1>
 <p>If the function failed, error code is returned.</p>
 </div></div>
             <h2 id='implementations' class='small-section-header'>
@@ -295,13 +232,15 @@ such data related to the file from memory completely, you should close the file 
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

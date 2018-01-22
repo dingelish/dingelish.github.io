@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `../sgx_tstd/src/sync/condvar.rs`.">
+    <meta name="description" content="Source to the Rust file `..-icode/sgx_tstd/src/sync/condvar.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>condvar.rs.html -- source</title>
@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -440,8 +441,9 @@
 <span id="395">395</span>
 <span id="396">396</span>
 <span id="397">397</span>
+<span id="398">398</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -480,7 +482,8 @@
 <span class="doccomment">//! The table below illustrates the primitives that the Intel(R) SGX Thread </span>
 <span class="doccomment">//! Synchronization library supports, as well as the OCALLs that each API function needs.</span>
 <span class="doccomment">//!</span>
-<span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">sgx_types</span>::{<span class="self">self</span>, <span class="ident">SysError</span>, <span class="ident">sgx_thread_mutex_t</span>, <span class="ident">sgx_thread_cond_t</span>, <span class="ident">sgx_thread_condattr_t</span>};
+<span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">libc</span>;
 <span class="kw">use</span> <span class="ident">sgx_trts</span>::<span class="ident">oom</span>;
 <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">mutex</span>::{<span class="self">self</span>, <span class="ident">SgxThreadMutex</span>, <span class="ident">SgxMutexGuard</span>};
 <span class="kw">use</span> <span class="ident">sys_common</span>::<span class="ident">poison</span>::{<span class="ident">LockResult</span>, <span class="ident">PoisonError</span>};
@@ -498,31 +501,31 @@
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
 <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_cond_init</span>(<span class="ident">cond</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>, <span class="ident">unused</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_thread_condattr_t</span> ) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
     
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_thread_cond_init</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>), <span class="ident">unused</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_thread_condattr_t</span>);
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_cond_init</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>), <span class="ident">unused</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_thread_condattr_t</span>);
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_cond_destroy</span>(<span class="ident">cond</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
     
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_thread_cond_destroy</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>));
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_cond_destroy</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_cond_wait</span>(<span class="ident">cond</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>, <span class="ident">mutex</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
     
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_thread_cond_wait</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>), <span class="ident">mutex</span>::<span class="ident">raw_mutex</span>(<span class="ident">mutex</span>));
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_cond_wait</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>), <span class="ident">mutex</span>::<span class="ident">raw_mutex</span>(<span class="ident">mutex</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_cond_signal</span>(<span class="ident">cond</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
     
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_thread_cond_signal</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>));
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_cond_signal</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_cond_broadcast</span>(<span class="ident">cond</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_cond_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
     
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_thread_cond_broadcast</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>));
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_cond_broadcast</span>(<span class="ident">raw_cond</span>(<span class="ident">cond</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
@@ -551,7 +554,7 @@
     <span class="doccomment">/// Library: libsgx_tstdc.a</span>
     <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="ident">SgxThreadCondvar</span>{ <span class="ident">cond</span>: <span class="ident">UnsafeCell</span>::<span class="ident">new</span>(<span class="ident">SGX_THREAD_COND_INITIALIZER</span>) }
+        <span class="ident">SgxThreadCondvar</span>{ <span class="ident">cond</span>: <span class="ident">UnsafeCell</span>::<span class="ident">new</span>(<span class="ident">sgx_types</span>::<span class="ident">SGX_THREAD_COND_INITIALIZER</span>) }
     }
 
     <span class="doccomment">/// </span>
@@ -793,7 +796,7 @@
         <span class="kw">unsafe</span> {
             <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">broadcast</span>();
             <span class="kw">match</span> <span class="ident">ret</span> {
-                <span class="prelude-val">Err</span>(<span class="ident">r</span>) <span class="kw">if</span> <span class="ident">r</span> <span class="op">==</span> <span class="ident">ENOMEM</span> <span class="op">=&gt;</span> {
+                <span class="prelude-val">Err</span>(<span class="ident">r</span>) <span class="kw">if</span> <span class="ident">r</span> <span class="op">==</span> <span class="ident">libc</span>::<span class="ident">ENOMEM</span> <span class="op">=&gt;</span> {
                     <span class="kw">let</span> <span class="ident">layout</span> <span class="op">=</span> <span class="ident">Layout</span>::<span class="ident">from_size_align</span>(<span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>(), <span class="number">1</span>).<span class="ident">unwrap</span>();
                     <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">AllocErr</span>::<span class="ident">Exhausted</span> { <span class="ident">request</span>: <span class="ident">layout</span> };
                     <span class="ident">oom</span>::<span class="ident">rsgx_oom</span>(<span class="ident">err</span>)
@@ -856,13 +859,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

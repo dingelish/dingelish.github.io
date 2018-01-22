@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Crate sgx_tcrypto</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tcrypto', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate sgx_tcrypto</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tcrypto', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
     <nav class="sub">
@@ -48,10 +49,9 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tcrypto/lib.rs.html#29-45' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'>
-<h1 id='cryptography-library' class='section-header'><a href='#cryptography-library'>Cryptography Library</a></h1>
-<p>The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto. 
+               </span><a class='srclink' href='../src/sgx_tcrypto/lib.rs.html#29-43' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><h1 id="cryptography-library" class="section-header"><a href="#cryptography-library">Cryptography Library</a></h1>
+<p>The Intel(R) Software Guard Extensions SDK includes a trusted cryptography library named sgx_tcrypto.
 It includes the cryptographic functions used by other trusted libraries included in the SDK</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -60,6 +60,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='struct sgx_tcrypto::SgxCmacHandle'>SgxCmacHandle</a></td>
                            <td class='docblock-short'>
                                 <p>CMAC algorithm context state.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -67,6 +68,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='struct sgx_tcrypto::SgxEccHandle'>SgxEccHandle</a></td>
                            <td class='docblock-short'>
                                 <p>ECC GF(p) context state.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -74,6 +76,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='struct sgx_tcrypto::SgxShaHandle'>SgxShaHandle</a></td>
                            <td class='docblock-short'>
                                 <p>SHA algorithm context state.</p>
+
                            </td>
                        </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
@@ -90,6 +93,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_aes_ctr_decrypt'>rsgx_aes_ctr_decrypt</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_aes_ctr_decrypt performs a Rijndael AES-CTR decryption operation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -97,6 +101,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_aes_ctr_encrypt'>rsgx_aes_ctr_encrypt</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_aes_ctr_encrypt performs a Rijndael AES-CTR encryption operation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -104,6 +109,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rijndael128GCM_decrypt'>rsgx_rijndael128GCM_decrypt</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_rijndael128GCM_decrypt performs a Rijndael AES-GCM decryption operation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -111,6 +117,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rijndael128GCM_encrypt'>rsgx_rijndael128GCM_encrypt</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_rijndael128GCM_encrypt performs a Rijndael AES-GCM encryption operation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -118,6 +125,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rijndael128_cmac_msg'>rsgx_rijndael128_cmac_msg</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_rijndael128_cmac_msg function performs a standard 128bit CMAC hash over the input data buffer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -125,6 +133,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rijndael128_cmac_slice'>rsgx_rijndael128_cmac_slice</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_rijndael128_cmac_slice function performs a standard 128bit CMAC hash over the input data buffer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -132,6 +141,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rsa3072_sign_msg'>rsgx_rsa3072_sign_msg</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_rsa3072_sign_msg computes a digital signature for a given dataset based on RSA 3072 private key.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -139,6 +149,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rsa3072_sign_slice'>rsgx_rsa3072_sign_slice</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_rsa3072_sign_slice computes a digital signature for a given dataset based on RSA 3072 private key.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -146,6 +157,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rsa3072_verify_msg'>rsgx_rsa3072_verify_msg</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_rsa3072_verify_msg verifies the input digital signature for the given data- set based on the RSA 3072 public key.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -153,6 +165,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_rsa3072_verify_slice'>rsgx_rsa3072_verify_slice</a></td>
                            <td class='docblock-short'>
                                 <p>rsgx_rsa3072_verify_slice verifies the input digital signature for the given data- set based on the RSA 3072 public key.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -160,6 +173,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_sha256_msg'>rsgx_sha256_msg</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_sha256_msg function performs a standard SHA256 hash over the input data buffer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -167,6 +181,7 @@ It includes the cryptographic functions used by other trusted libraries included
                                   title='fn sgx_tcrypto::rsgx_sha256_slice'>rsgx_sha256_slice</a></td>
                            <td class='docblock-short'>
                                 <p>The rsgx_sha256_slice function performs a standard SHA256 hash over the input data buffer.</p>
+
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
@@ -193,13 +208,15 @@ It includes the cryptographic functions used by other trusted libraries included
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

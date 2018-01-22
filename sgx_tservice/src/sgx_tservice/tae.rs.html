@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -835,8 +836,123 @@
 <span id="790">790</span>
 <span id="791">791</span>
 <span id="792">792</span>
+<span id="793">793</span>
+<span id="794">794</span>
+<span id="795">795</span>
+<span id="796">796</span>
+<span id="797">797</span>
+<span id="798">798</span>
+<span id="799">799</span>
+<span id="800">800</span>
+<span id="801">801</span>
+<span id="802">802</span>
+<span id="803">803</span>
+<span id="804">804</span>
+<span id="805">805</span>
+<span id="806">806</span>
+<span id="807">807</span>
+<span id="808">808</span>
+<span id="809">809</span>
+<span id="810">810</span>
+<span id="811">811</span>
+<span id="812">812</span>
+<span id="813">813</span>
+<span id="814">814</span>
+<span id="815">815</span>
+<span id="816">816</span>
+<span id="817">817</span>
+<span id="818">818</span>
+<span id="819">819</span>
+<span id="820">820</span>
+<span id="821">821</span>
+<span id="822">822</span>
+<span id="823">823</span>
+<span id="824">824</span>
+<span id="825">825</span>
+<span id="826">826</span>
+<span id="827">827</span>
+<span id="828">828</span>
+<span id="829">829</span>
+<span id="830">830</span>
+<span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
+<span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
+<span id="842">842</span>
+<span id="843">843</span>
+<span id="844">844</span>
+<span id="845">845</span>
+<span id="846">846</span>
+<span id="847">847</span>
+<span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
+<span id="854">854</span>
+<span id="855">855</span>
+<span id="856">856</span>
+<span id="857">857</span>
+<span id="858">858</span>
+<span id="859">859</span>
+<span id="860">860</span>
+<span id="861">861</span>
+<span id="862">862</span>
+<span id="863">863</span>
+<span id="864">864</span>
+<span id="865">865</span>
+<span id="866">866</span>
+<span id="867">867</span>
+<span id="868">868</span>
+<span id="869">869</span>
+<span id="870">870</span>
+<span id="871">871</span>
+<span id="872">872</span>
+<span id="873">873</span>
+<span id="874">874</span>
+<span id="875">875</span>
+<span id="876">876</span>
+<span id="877">877</span>
+<span id="878">878</span>
+<span id="879">879</span>
+<span id="880">880</span>
+<span id="881">881</span>
+<span id="882">882</span>
+<span id="883">883</span>
+<span id="884">884</span>
+<span id="885">885</span>
+<span id="886">886</span>
+<span id="887">887</span>
+<span id="888">888</span>
+<span id="889">889</span>
+<span id="890">890</span>
+<span id="891">891</span>
+<span id="892">892</span>
+<span id="893">893</span>
+<span id="894">894</span>
+<span id="895">895</span>
+<span id="896">896</span>
+<span id="897">897</span>
+<span id="898">898</span>
+<span id="899">899</span>
+<span id="900">900</span>
+<span id="901">901</span>
+<span id="902">902</span>
+<span id="903">903</span>
+<span id="904">904</span>
+<span id="905">905</span>
+<span id="906">906</span>
+<span id="907">907</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -871,6 +987,8 @@
 <span class="doccomment">//!</span>
 <span class="kw">use</span> <span class="ident">sgx_types</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">cell</span>::<span class="ident">Cell</span>;
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">cmp</span>::<span class="ident">Ordering</span>;
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">fmt</span>;
 
 <span class="doccomment">///</span>
 <span class="doccomment">/// rsgx_create_pse_session creates a session with the PSE.</span>
@@ -977,17 +1095,15 @@
 <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
 <span class="doccomment">/// before calling this API.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// # Parameters</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// **security_property**</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to the buffer that receives the security property descriptor of the platform service.</span>
-<span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Header: sgx_tae_service.edl</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Library: libsgx_tservice.a</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Return value</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The security property descriptor of the platform service</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
 <span class="doccomment">///</span>
@@ -999,11 +1115,12 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Session is not created or has been closed by architectural enclave service.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_ps_sec_prop</span>(<span class="ident">security_property</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_ps_sec_prop</span>() <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ps_sec_prop_desc_t</span><span class="op">&gt;</span> {
 
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_ps_sec_prop</span>(<span class="ident">security_property</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_t</span>) };
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">security_property</span>: <span class="ident">sgx_ps_sec_prop_desc_t</span> <span class="op">=</span> <span class="ident">Default</span>::<span class="ident">default</span>();
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_ps_sec_prop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">security_property</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_t</span>) };
     <span class="kw">match</span> <span class="ident">ret</span> {
-        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
+        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">security_property</span>),
         _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
@@ -1018,17 +1135,15 @@
 <span class="doccomment">/// The caller should call rsgx_create_pse_session to establish a session with the platform service enclave</span>
 <span class="doccomment">/// before calling this API.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// # Parameters</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// **security_property**</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to the buffer that receives the security property descriptor of the platform service.</span>
-<span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Header: sgx_tae_service.edl</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// Library: libsgx_tservice.a</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// # Return value</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The security property descriptor of the platform service</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Errors</span>
 <span class="doccomment">///</span>
@@ -1040,11 +1155,13 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Session is not created or has been closed by architectural enclave service.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_ps_sec_prop_ex</span>(<span class="ident">security_property</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_ps_sec_prop_ex</span>() <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ps_sec_prop_desc_ex_t</span><span class="op">&gt;</span> {
 
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_ps_sec_prop_ex</span>(<span class="ident">security_property</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>) };
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">security_property</span>: <span class="ident">sgx_ps_sec_prop_desc_ex_t</span> <span class="op">=</span> <span class="ident">Default</span>::<span class="ident">default</span>();
+
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_ps_sec_prop_ex</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">security_property</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ps_sec_prop_desc_ex_t</span>) };
     <span class="kw">match</span> <span class="ident">ret</span> {
-        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
+        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">security_property</span>),
         _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
@@ -1055,7 +1172,7 @@
 <span class="doccomment">/// # Description</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// current_time contains time in seconds and time_source_nonce contains nonce associate with the time.</span>
-<span class="doccomment">/// The caller should compare time_ source_nonce against the value returned from the previous call of</span>
+<span class="doccomment">/// The caller should compare time_source_nonce against the value returned from the previous call of</span>
 <span class="doccomment">/// this API if it needs to calculate the time passed between two readings of the Trusted Timer. If the</span>
 <span class="doccomment">/// time_source_nonce of the two readings do not match, the difference between the two readings does not</span>
 <span class="doccomment">/// necessarily reflect time passed.</span>
@@ -1114,14 +1231,122 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Indicates an unexpected error occurs.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_get_trusted_time</span>(<span class="ident">current_time</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>,
-                             <span class="ident">time_source_nonce</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+<span class="kw">fn</span> <span class="ident">rsgx_get_trusted_time</span>(<span class="ident">current_time</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>,
+                         <span class="ident">time_source_nonce</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
 
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_get_trusted_time</span>(<span class="ident">current_time</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>, <span class="ident">time_source_nonce</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) };
-    <span class="kw">match</span> <span class="ident">ret</span> {
-        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+    <span class="kw">unsafe</span> { 
+        <span class="ident">sgx_get_trusted_time</span>(<span class="ident">current_time</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_t</span>, <span class="ident">time_source_nonce</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_time_source_nonce_t</span>) 
     }
+}
+
+<span class="doccomment">/// timestamp contains time in seconds and source_nonce contains nonce associate with the time.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">Default</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxTime</span> {
+    <span class="ident">timestamp</span>: <span class="ident">sgx_time_t</span>,
+    <span class="ident">source_nonce</span>: <span class="ident">sgx_time_source_nonce_t</span>,
+}
+
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Duration</span> <span class="op">=</span> <span class="ident">sgx_time_t</span>;
+
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">SgxTimeError</span> {
+    <span class="ident">TimeStamp</span>(<span class="ident">Duration</span>),
+    <span class="ident">TimeSourceChanged</span>,
+    <span class="ident">SgxStatus</span>(<span class="ident">sgx_status_t</span>),
+}
+
+<span class="kw">impl</span> <span class="ident">SgxTimeError</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">__description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+           <span class="ident">SgxTimeError</span>::<span class="ident">TimeStamp</span>(_) <span class="op">=&gt;</span> <span class="string">&quot;other time was not earlier than self&quot;</span>,
+           <span class="ident">SgxTimeError</span>::<span class="ident">TimeSourceChanged</span> <span class="op">=&gt;</span> <span class="string">&quot;time source is changed&quot;</span>,
+           <span class="ident">SgxTimeError</span>::<span class="ident">SgxStatus</span>(<span class="kw-2">ref</span> <span class="ident">status</span>) <span class="op">=&gt;</span> <span class="ident">status</span>.<span class="ident">__description</span>(),
+        }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="ident">SgxTimeError</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+           <span class="ident">SgxTimeError</span>::<span class="ident">TimeStamp</span>(_) <span class="op">=&gt;</span> <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;second time provided was later than self&quot;</span>),
+           <span class="ident">SgxTimeError</span>::<span class="ident">TimeSourceChanged</span> <span class="op">=&gt;</span> <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;time source does not match&quot;</span>),
+           <span class="ident">SgxTimeError</span>::<span class="ident">SgxStatus</span>(<span class="ident">status</span>) <span class="op">=&gt;</span> <span class="ident">status</span>.<span class="ident">fmt</span>(<span class="ident">f</span>),
+        }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">PartialEq</span> <span class="kw">for</span> <span class="ident">SgxTime</span> {
+    <span class="kw">fn</span> <span class="ident">eq</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">SgxTime</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
+        <span class="self">self</span>.<span class="ident">timestamp</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">timestamp</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">source_nonce</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">source_nonce</span>
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="ident">SgxTime</span> {}
+
+<span class="kw">impl</span> <span class="ident">PartialOrd</span> <span class="kw">for</span> <span class="ident">SgxTime</span> {
+
+    <span class="kw">fn</span> <span class="ident">partial_cmp</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="kw-2">&amp;</span><span class="ident">SgxTime</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Ordering</span><span class="op">&gt;</span> {
+        
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">source_nonce</span> <span class="op">==</span> <span class="ident">other</span>.<span class="ident">source_nonce</span> {
+            <span class="prelude-val">Some</span>(<span class="self">self</span>.<span class="ident">timestamp</span>.<span class="ident">cmp</span>(<span class="kw-2">&amp;</span><span class="ident">other</span>.<span class="ident">timestamp</span>))
+        } <span class="kw">else</span> {
+            <span class="prelude-val">None</span>
+        }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">SgxTime</span> {
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">now</span>() <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">SgxTime</span>, <span class="ident">SgxTimeError</span><span class="op">&gt;</span> {
+
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">timestamp</span>: <span class="ident">sgx_time_t</span> <span class="op">=</span> <span class="number">0</span>;
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">source_nonce</span>: <span class="ident">sgx_time_source_nonce_t</span> <span class="op">=</span> <span class="ident">Default</span>::<span class="ident">default</span>();
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_get_trusted_time</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">timestamp</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">source_nonce</span>);
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxTime</span>{ 
+                                            <span class="ident">timestamp</span>: <span class="ident">timestamp</span>, 
+                                            <span class="ident">source_nonce</span>: <span class="ident">source_nonce</span> 
+                                         }),
+            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">SgxTimeError</span>::<span class="ident">SgxStatus</span>(<span class="ident">ret</span>)),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">duration_since</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">earlier</span>: <span class="kw-2">&amp;</span><span class="ident">SgxTime</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Duration</span>, <span class="ident">SgxTimeError</span><span class="op">&gt;</span> {
+
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">source_nonce</span> <span class="op">==</span> <span class="ident">earlier</span>.<span class="ident">source_nonce</span> {
+
+            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">timestamp</span> <span class="op">&gt;=</span> <span class="ident">earlier</span>.<span class="ident">timestamp</span> {
+                <span class="prelude-val">Ok</span>(<span class="self">self</span>.<span class="ident">timestamp</span> <span class="op">-</span> <span class="ident">earlier</span>.<span class="ident">timestamp</span>)
+            } <span class="kw">else</span> {
+                <span class="prelude-val">Err</span>(<span class="ident">SgxTimeError</span>::<span class="ident">TimeStamp</span>(<span class="ident">earlier</span>.<span class="ident">timestamp</span> <span class="op">-</span> <span class="self">self</span>.<span class="ident">timestamp</span>))
+            }
+        } <span class="kw">else</span> {
+            <span class="prelude-val">Err</span>(<span class="ident">SgxTimeError</span>::<span class="ident">TimeSourceChanged</span>)
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">elapsed</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Duration</span>, <span class="ident">SgxTimeError</span><span class="op">&gt;</span> {
+
+        <span class="ident">SgxTime</span>::<span class="ident">now</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">duration_since</span>(<span class="self">self</span>))
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">add_duration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Duration</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">SgxTime</span><span class="op">&gt;</span> {
+
+        <span class="self">self</span>.<span class="ident">timestamp</span>.<span class="ident">checked_add</span>(<span class="ident">other</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">secs</span><span class="op">|</span>
+            <span class="ident">SgxTime</span>{ <span class="ident">timestamp</span>: <span class="ident">secs</span>, <span class="ident">source_nonce</span>: <span class="self">self</span>.<span class="ident">source_nonce</span> }
+        )
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sub_duration</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">other</span>: <span class="ident">Duration</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">SgxTime</span><span class="op">&gt;</span> {
+
+        <span class="self">self</span>.<span class="ident">timestamp</span>.<span class="ident">checked_sub</span>(<span class="ident">other</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">secs</span><span class="op">|</span>
+            <span class="ident">SgxTime</span>{ <span class="ident">timestamp</span>: <span class="ident">secs</span>, <span class="ident">source_nonce</span>: <span class="self">self</span>.<span class="ident">source_nonce</span> }
+        )
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_secs</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">sgx_time_t</span> { <span class="self">self</span>.<span class="ident">timestamp</span> }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_source_nonce</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">sgx_time_source_nonce_t</span> { <span class="self">self</span>.<span class="ident">source_nonce</span> }
 }
 
 <span class="kw">fn</span> <span class="ident">rsgx_create_monotonic_counter_ex</span>(<span class="ident">owner_policy</span>: <span class="ident">u16</span>,
@@ -1263,9 +1488,12 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_create_monotonic_counter</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">counter_uuid</span>, <span class="ident">counter_value</span>);
 
         <span class="kw">match</span> <span class="ident">ret</span> {
-            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxMonotonicCounter</span>{<span class="ident">counter_uuid</span>: <span class="ident">counter_uuid</span>, <span class="ident">initflag</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="bool-val">true</span>)}),
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxMonotonicCounter</span>{
+                                            <span class="ident">counter_uuid</span>: <span class="ident">counter_uuid</span>, 
+                                            <span class="ident">initflag</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="bool-val">true</span>),
+                                         }),
             _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
-         }
+        }
     }
 
     <span class="doccomment">///</span>
@@ -1370,7 +1598,10 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_create_monotonic_counter_ex</span>(<span class="ident">owner_policy</span>, <span class="ident">owner_attribute_mask</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">counter_uuid</span>, <span class="ident">counter_value</span>);
 
         <span class="kw">match</span> <span class="ident">ret</span> {
-            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxMonotonicCounter</span>{<span class="ident">counter_uuid</span>: <span class="ident">counter_uuid</span>, <span class="ident">initflag</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="bool-val">true</span>)}),
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxMonotonicCounter</span>{
+                                            <span class="ident">counter_uuid</span>: <span class="ident">counter_uuid</span>, 
+                                            <span class="ident">initflag</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="bool-val">true</span>),
+                                         }),
             _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
@@ -1627,7 +1858,8 @@
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
         <span class="kw">let</span> _ <span class="op">=</span> <span class="self">self</span>.<span class="ident">destory</span>();
     }
-}</pre>
+}
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 
@@ -1645,13 +1877,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

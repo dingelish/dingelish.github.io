@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Module io</p><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'io', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module io</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a></p><script>window.sidebarCurrent = {name: 'io', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -56,6 +57,7 @@
                                   title='mod sgx_tstd::io::prelude'>prelude</a></td>
                            <td class='docblock-short'>
                                 <p>The I/O Prelude</p>
+
                            </td>
                        </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -64,6 +66,7 @@
                                   title='struct sgx_tstd::io::BufReader'>BufReader</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>BufReader</code> struct adds buffering to any reader.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -71,6 +74,7 @@
                                   title='struct sgx_tstd::io::BufWriter'>BufWriter</a></td>
                            <td class='docblock-short'>
                                 <p>Wraps a writer and buffers its output.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -78,6 +82,7 @@
                                   title='struct sgx_tstd::io::Bytes'>Bytes</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator over <code>u8</code> values of a reader.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -85,6 +90,7 @@
                                   title='struct sgx_tstd::io::Chain'>Chain</a></td>
                            <td class='docblock-short'>
                                 <p>Adaptor to chain together two readers.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -92,6 +98,7 @@
                                   title='struct sgx_tstd::io::Chars'>Chars</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator over the <code>char</code>s of a reader.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -100,6 +107,7 @@
                            <td class='docblock-short'>
                                 <p>A <code>Cursor</code> wraps another type and provides it with a
 [<code>Seek</code>] implementation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -107,6 +115,7 @@
                                   title='struct sgx_tstd::io::Empty'>Empty</a></td>
                            <td class='docblock-short'>
                                 <p>A reader which is always at EOF.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -115,6 +124,7 @@
                            <td class='docblock-short'>
                                 <p>The error type for I/O operations of the <code>Read</code>, <code>Write</code>, <code>Seek</code>, and
 associated traits.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -122,6 +132,7 @@ associated traits.</p>
                                   title='struct sgx_tstd::io::Initializer'>Initializer</a></td>
                            <td class='docblock-short'>
                                 <p>A type used to conditionally initialize buffers passed to <code>Read</code> methods.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -131,6 +142,7 @@ associated traits.</p>
                                 <p>An error returned by <code>into_inner</code> which combines an error that
 happened while writing out the buffer, and the buffered writer object
 which may be used to recover from the condition.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -145,7 +157,8 @@ which may be used to recover from the condition.</p>
                                   title='struct sgx_tstd::io::LineWriter'>LineWriter</a></td>
                            <td class='docblock-short'>
                                 <p>Wraps a writer and buffers output to it, flushing whenever a newline
-(<code>0x0a</code>, <code>&#39;\n&#39;</code>) is detected.</p>
+(<code>0x0a</code>, <code>'\n'</code>) is detected.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -153,6 +166,7 @@ which may be used to recover from the condition.</p>
                                   title='struct sgx_tstd::io::Lines'>Lines</a></td>
                            <td class='docblock-short'>
                                 <p>An iterator over the lines of an instance of <code>BufRead</code>.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -160,6 +174,7 @@ which may be used to recover from the condition.</p>
                                   title='struct sgx_tstd::io::Repeat'>Repeat</a></td>
                            <td class='docblock-short'>
                                 <p>A reader which yields one byte over and over and over and over and over and...</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -167,6 +182,7 @@ which may be used to recover from the condition.</p>
                                   title='struct sgx_tstd::io::Sink'>Sink</a></td>
                            <td class='docblock-short'>
                                 <p>A writer which will move data into the void.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -175,6 +191,7 @@ which may be used to recover from the condition.</p>
                            <td class='docblock-short'>
                                 <p>An iterator over the contents of an instance of <code>BufRead</code> split on a
 particular byte.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -182,6 +199,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::Stderr'>Stderr</a></td>
                            <td class='docblock-short'>
                                 <p>A handle to the standard error stream of a process.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -189,6 +207,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::StderrLock'>StderrLock</a></td>
                            <td class='docblock-short'>
                                 <p>A locked reference to the <code>Stderr</code> handle.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -196,6 +215,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::Stdin'>Stdin</a></td>
                            <td class='docblock-short'>
                                 <p>A handle to the standard input stream of a process.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -203,6 +223,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::StdinLock'>StdinLock</a></td>
                            <td class='docblock-short'>
                                 <p>A locked reference to the <code>Stdin</code> handle.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -210,6 +231,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::Stdout'>Stdout</a></td>
                            <td class='docblock-short'>
                                 <p>A handle to the global standard output stream of the current process.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -217,6 +239,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::StdoutLock'>StdoutLock</a></td>
                            <td class='docblock-short'>
                                 <p>A locked reference to the <code>Stdout</code> handle.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -224,6 +247,7 @@ particular byte.</p>
                                   title='struct sgx_tstd::io::Take'>Take</a></td>
                            <td class='docblock-short'>
                                 <p>Reader adaptor which limits the bytes read from an underlying reader.</p>
+
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
@@ -233,6 +257,7 @@ particular byte.</p>
                            <td class='docblock-short'>
                                 <p>An enumeration of possible errors that can be generated from the <code>Chars</code>
 adapter.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -240,6 +265,7 @@ adapter.</p>
                                   title='enum sgx_tstd::io::ErrorKind'>ErrorKind</a></td>
                            <td class='docblock-short'>
                                 <p>A list specifying general categories of I/O error.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -247,6 +273,7 @@ adapter.</p>
                                   title='enum sgx_tstd::io::SeekFrom'>SeekFrom</a></td>
                            <td class='docblock-short'>
                                 <p>Enumeration of possible methods to seek within an I/O object.</p>
+
                            </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
@@ -256,6 +283,7 @@ adapter.</p>
                            <td class='docblock-short'>
                                 <p>A <code>BufRead</code> is a type of <code>Read</code>er which has an internal buffer, allowing it
 to perform extra ways of reading.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -263,6 +291,7 @@ to perform extra ways of reading.</p>
                                   title='trait sgx_tstd::io::Read'>Read</a></td>
                            <td class='docblock-short'>
                                 <p>The <code>Read</code> trait allows for reading bytes from a source.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -271,6 +300,7 @@ to perform extra ways of reading.</p>
                            <td class='docblock-short'>
                                 <p>The <code>Seek</code> trait provides a cursor which can be moved within a stream of
 bytes.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -278,6 +308,7 @@ bytes.</p>
                                   title='trait sgx_tstd::io::Write'>Write</a></td>
                            <td class='docblock-short'>
                                 <p>A trait for objects which are byte-oriented sinks.</p>
+
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -293,6 +324,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::copy'>copy</a></td>
                            <td class='docblock-short'>
                                 <p>Copies the entire contents of a reader into a writer.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -300,6 +332,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::empty'>empty</a></td>
                            <td class='docblock-short'>
                                 <p>Constructs a new handle to an empty reader.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -321,6 +354,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::repeat'>repeat</a></td>
                            <td class='docblock-short'>
                                 <p>Creates an instance of a reader that infinitely repeats one byte.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -335,6 +369,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::sink'>sink</a></td>
                            <td class='docblock-short'>
                                 <p>Creates an instance of a writer which will successfully consume all data.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -342,6 +377,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::stderr'>stderr</a></td>
                            <td class='docblock-short'>
                                 <p>Constructs a new handle to the standard error of the current process.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -349,6 +385,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::stdin'>stdin</a></td>
                            <td class='docblock-short'>
                                 <p>Constructs a new handle to the standard input of the current process.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -356,6 +393,7 @@ bytes.</p>
                                   title='fn sgx_tstd::io::stdout'>stdout</a></td>
                            <td class='docblock-short'>
                                 <p>Constructs a new handle to the standard output of the current process.</p>
+
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
@@ -365,6 +403,7 @@ bytes.</p>
                            <td class='docblock-short'>
                                 <p>A specialized <a href="../result/enum.Result.html"><code>Result</code></a> type for I/O
 operations.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -383,13 +422,15 @@ operations.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

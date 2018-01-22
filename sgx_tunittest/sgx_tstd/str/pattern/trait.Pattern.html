@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Trait Pattern</p><div class="block items"><ul><li><a href="#associated-types">Associated Types</a></li><li><a href="#required-methods">Required Methods</a></li><li><a href="#provided-methods">Provided Methods</a></li><li><a href="#implementors">Implementors</a></li></ul></div><p class='location'><a href='../../index.html'>sgx_tstd</a>::<wbr><a href='../index.html'>str</a>::<wbr><a href='index.html'>pattern</a></p><script>window.sidebarCurrent = {name: 'Pattern', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Trait Pattern</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Searcher">Searcher</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.into_searcher">into_searcher</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.is_contained_in">is_contained_in</a><a href="#method.is_prefix_of">is_prefix_of</a><a href="#method.is_suffix_of">is_suffix_of</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../../index.html'>sgx_tstd</a>::<wbr><a href='../index.html'>str</a>::<wbr><a href='index.html'>pattern</a></p><script>window.sidebarCurrent = {name: 'Pattern', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,7 +49,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#37-70' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#38-71' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait Pattern&lt;'a&gt; {
     type <a href='#associatedtype.Searcher' class="type">Searcher</a>: <a class="trait" href="../../../sgx_tstd/str/pattern/trait.Searcher.html" title="trait sgx_tstd::str::pattern::Searcher">Searcher</a>&lt;'a&gt;;
     fn <a href='#tymethod.into_searcher' class='fnname'>into_searcher</a>(self, haystack: &amp;'a str) -&gt; Self::<a class="type" href="../../../sgx_tstd/str/pattern/trait.Pattern.html#associatedtype.Searcher" title="type sgx_tstd::str::pattern::Pattern::Searcher">Searcher</a>;
@@ -59,13 +60,10 @@
     { ... }
 }</pre><div class='stability'><div class='stab unstable'><details><summary><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>pattern</code>)</summary><p>API not fully fleshed out and ready to be stabilized</p>
 </details></div></div><div class='docblock'><p>A string pattern.</p>
-
-<p>A <code>Pattern&lt;&#39;a&gt;</code> expresses that the implementing type
-can be used as a string pattern for searching in a <code>&amp;&#39;a str</code>.</p>
-
-<p>For example, both <code>&#39;a&#39;</code> and <code>&quot;aa&quot;</code> are patterns that
+<p>A <code>Pattern&lt;'a&gt;</code> expresses that the implementing type
+can be used as a string pattern for searching in a <code>&amp;'a str</code>.</p>
+<p>For example, both <code>'a'</code> and <code>&quot;aa&quot;</code> are patterns that
 would match at index <code>1</code> in the string <code>&quot;baaaab&quot;</code>.</p>
-
 <p>The trait itself acts as a builder for an associated
 <code>Searcher</code> type, which does the actual work of finding
 occurrences of the pattern in a string.</p>
@@ -100,12 +98,12 @@ occurrences of the pattern in a string.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><code>impl&lt;'a, 'b&gt; Pattern&lt;'a&gt; for &amp;'b str<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.StrSearcher.html" title="struct sgx_tstd::str::pattern::StrSearcher">StrSearcher</a>&lt;'a, 'b&gt;;</span></code></li>
-<li><code>impl&lt;'a, 'b&gt; Pattern&lt;'a&gt; for &amp;'b [char]<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSliceSearcher.html" title="struct sgx_tstd::str::pattern::CharSliceSearcher">CharSliceSearcher</a>&lt;'a, 'b&gt;;</span></code></li>
-<li><code>impl&lt;'a, 'b, 'c&gt; Pattern&lt;'a&gt; for &amp;'c &amp;'b str<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.StrSearcher.html" title="struct sgx_tstd::str::pattern::StrSearcher">StrSearcher</a>&lt;'a, 'b&gt;;</span></code></li>
-<li><code>impl&lt;'a&gt; Pattern&lt;'a&gt; for char<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSearcher.html" title="struct sgx_tstd::str::pattern::CharSearcher">CharSearcher</a>&lt;'a&gt;;</span></code></li>
-<li><code>impl&lt;'a, F&gt; Pattern&lt;'a&gt; for F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../../sgx_tstd/ops/trait.FnMut.html" title="trait sgx_tstd::ops::FnMut">FnMut</a>(char) -&gt; bool,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharPredicateSearcher.html" title="struct sgx_tstd::str::pattern::CharPredicateSearcher">CharPredicateSearcher</a>&lt;'a, F&gt;;</span></code></li>
-<li><code>impl&lt;'a, 'b&gt; Pattern&lt;'a&gt; for &amp;'b <a class="struct" href="../../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a><span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = &lt;&amp;'b str as <a class="trait" href="../../../sgx_tstd/str/pattern/trait.Pattern.html" title="trait sgx_tstd::str::pattern::Pattern">Pattern</a>&lt;'a&gt;&gt;::<a class="type" href="../../../sgx_tstd/str/pattern/trait.Pattern.html#associatedtype.Searcher" title="type sgx_tstd::str::pattern::Pattern::Searcher">Searcher</a>;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#695-697' title='goto source code'>[src]</a></div><code>impl&lt;'a, F&gt; Pattern&lt;'a&gt; for F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../../sgx_tstd/ops/trait.FnMut.html" title="trait sgx_tstd::ops::FnMut">FnMut</a>(char) -&gt; bool,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharPredicateSearcher.html" title="struct sgx_tstd::str::pattern::CharPredicateSearcher">CharPredicateSearcher</a>&lt;'a, F&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#716-738' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Pattern&lt;'a&gt; for &amp;'b str<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.StrSearcher.html" title="struct sgx_tstd::str::pattern::StrSearcher">StrSearcher</a>&lt;'a, 'b&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#432-478' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Pattern&lt;'a&gt; for char<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSearcher.html" title="struct sgx_tstd::str::pattern::CharSearcher">CharSearcher</a>&lt;'a&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#704-706' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b, 'c&gt; Pattern&lt;'a&gt; for &amp;'c &amp;'b str<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.StrSearcher.html" title="struct sgx_tstd::str::pattern::StrSearcher">StrSearcher</a>&lt;'a, 'b&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#656-658' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Pattern&lt;'a&gt; for &amp;'b [char]<span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSliceSearcher.html" title="struct sgx_tstd::str::pattern::CharSliceSearcher">CharSliceSearcher</a>&lt;'a, 'b&gt;;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#1692-1708' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Pattern&lt;'a&gt; for &amp;'b <a class="struct" href="../../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a><span class="where fmt-newline">  type <a href='#associatedtype.Searcher' class="type">Searcher</a> = &lt;&amp;'b str as <a class="trait" href="../../../sgx_tstd/str/pattern/trait.Pattern.html" title="trait sgx_tstd::str::pattern::Pattern">Pattern</a>&lt;'a&gt;&gt;::<a class="type" href="../../../sgx_tstd/str/pattern/trait.Pattern.html#associatedtype.Searcher" title="type sgx_tstd::str::pattern::Pattern::Searcher">Searcher</a>;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../../implementors/core/str/pattern/trait.Pattern.js">
                  </script></section>
@@ -125,13 +123,15 @@ occurrences of the pattern in a string.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

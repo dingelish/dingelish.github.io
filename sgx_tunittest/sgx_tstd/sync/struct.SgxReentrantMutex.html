@@ -28,8 +28,9 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'>Struct SgxReentrantMutex</p><div class="block items"><ul><li><a href="#methods">Methods</a></li><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>sync</a></p><script>window.sidebarCurrent = {name: 'SgxReentrantMutex', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'>Struct SgxReentrantMutex</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.lock">lock</a><a href="#method.try_lock">try_lock</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a><a href="#impl-UnwindSafe">UnwindSafe</a><a href="#impl-RefUnwindSafe">RefUnwindSafe</a><a href="#impl-Drop">Drop</a><a href="#impl-Debug">Debug</a></div></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>sync</a></p><script>window.sidebarCurrent = {name: 'SgxReentrantMutex', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
     <nav class="sub">
@@ -48,9 +49,8 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#202-206' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#230-234' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct SgxReentrantMutex&lt;T&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A re-entrant mutual exclusion</p>
-
 <p>This mutex will block <em>other</em> threads waiting for the lock to become
 available. The thread which has already locked the mutex can lock it
 multiple times without blocking, preventing a common source of deadlocks.</p>
@@ -58,30 +58,25 @@ multiple times without blocking, preventing a common source of deadlocks.</p>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#238-285' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(t: T) -&gt; <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#240-247' title='goto source code'>[src]</a></span></h4>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#266-313' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(t: T) -&gt; <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#268-275' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Creates a new reentrant mutex in an unlocked state.</p>
-</div><h4 id='method.lock' class="method"><span id='lock.v' class='invisible'><code>pub fn <a href='#method.lock' class='fnname'>lock</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/sync/type.LockResult.html" title="type sgx_tstd::sync::LockResult">LockResult</a>&lt;<a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutexGuard.html" title="struct sgx_tstd::sync::SgxReentrantMutexGuard">SgxReentrantMutexGuard</a>&lt;T&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#261-264' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.lock' class="method"><span id='lock.v' class='invisible'><code>pub fn <a href='#method.lock' class='fnname'>lock</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/sync/type.LockResult.html" title="type sgx_tstd::sync::LockResult">LockResult</a>&lt;<a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutexGuard.html" title="struct sgx_tstd::sync::SgxReentrantMutexGuard">SgxReentrantMutexGuard</a>&lt;T&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#289-292' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Acquires a mutex, blocking the current thread until it is able to do so.</p>
-
 <p>This function will block the caller until it is available to acquire the mutex.
 Upon returning, the thread is the only thread with the mutex held. When the thread
 calling this method already holds the lock, the call shall succeed without
 blocking.</p>
-
-<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
 <p>If another user of this mutex panicked while holding the mutex, then
 this call will return failure if the mutex would otherwise be
 acquired.</p>
-</div><h4 id='method.try_lock' class="method"><span id='try_lock.v' class='invisible'><code>pub fn <a href='#method.try_lock' class='fnname'>try_lock</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/sync/type.TryLockResult.html" title="type sgx_tstd::sync::TryLockResult">TryLockResult</a>&lt;<a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutexGuard.html" title="struct sgx_tstd::sync::SgxReentrantMutexGuard">SgxReentrantMutexGuard</a>&lt;T&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#278-284' title='goto source code'>[src]</a></span></h4>
+</div><h4 id='method.try_lock' class="method"><span id='try_lock.v' class='invisible'><code>pub fn <a href='#method.try_lock' class='fnname'>try_lock</a>(&amp;self) -&gt; <a class="type" href="../../sgx_tstd/sync/type.TryLockResult.html" title="type sgx_tstd::sync::TryLockResult">TryLockResult</a>&lt;<a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutexGuard.html" title="struct sgx_tstd::sync::SgxReentrantMutexGuard">SgxReentrantMutexGuard</a>&lt;T&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#306-312' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Attempts to acquire this lock.</p>
-
 <p>If the lock could not be acquired at this time, then <code>Err</code> is returned.
 Otherwise, an RAII guard is returned.</p>
-
 <p>This function does not block.</p>
-
-<h1 id='errors-1' class='section-header'><a href='#errors-1'>Errors</a></h1>
+<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
 <p>If another user of this mutex panicked while holding the mutex, then
 this call will return failure if the mutex would otherwise be
 acquired.</p>
@@ -89,16 +84,16 @@ acquired.</p>
             <h2 id='implementations' class='small-section-header'>
               Trait Implementations<a href='#implementations' class='anchor'></a>
             </h2>
-        <h3 id='impl-Send' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt; <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Send' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#208' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt; <a class="trait" href="../../sgx_tstd/marker/trait.Sync.html" title="trait sgx_tstd::marker::Sync">Sync</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Sync' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#209' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-UnwindSafe' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/panic/trait.UnwindSafe.html" title="trait sgx_tstd::panic::UnwindSafe">UnwindSafe</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-UnwindSafe' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#211' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-RefUnwindSafe' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/panic/trait.RefUnwindSafe.html" title="trait sgx_tstd::panic::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-RefUnwindSafe' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#212' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'></div><h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/ops/trait.Drop.html" title="trait sgx_tstd::ops::Drop">Drop</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#287-294' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='../../sgx_tstd/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#288-293' title='goto source code'>[src]</a></span></h4>
+        <h3 id='impl-Send' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt; <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Send' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#236' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt; <a class="trait" href="../../sgx_tstd/marker/trait.Sync.html" title="trait sgx_tstd::marker::Sync">Sync</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Sync' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#237' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-UnwindSafe' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/panic/trait.UnwindSafe.html" title="trait sgx_tstd::panic::UnwindSafe">UnwindSafe</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-UnwindSafe' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#239' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-RefUnwindSafe' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/panic/trait.RefUnwindSafe.html" title="trait sgx_tstd::panic::RefUnwindSafe">RefUnwindSafe</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-RefUnwindSafe' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#240' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../../sgx_tstd/ops/trait.Drop.html" title="trait sgx_tstd::ops::Drop">Drop</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#315-322' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='../../sgx_tstd/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#316-321' title='goto source code'>[src]</a></span></h4>
 <div class='docblock'><p>Executes the destructor for this type. <a href="../../sgx_tstd/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
-</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> + 'static&gt; <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#296-306' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#297-305' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 id='impl-Debug' class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> + 'static&gt; <a class="trait" href="../../sgx_tstd/fmt/trait.Debug.html" title="trait sgx_tstd::fmt::Debug">Debug</a> for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutex.html" title="struct sgx_tstd::sync::SgxReentrantMutex">SgxReentrantMutex</a>&lt;T&gt;</code><a href='#impl-Debug' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#324-341' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="../../sgx_tstd/fmt/struct.Formatter.html" title="struct sgx_tstd::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="../../sgx_tstd/fmt/type.Result.html" title="type sgx_tstd::fmt::Result">Result</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#325-340' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter. <a href="../../sgx_tstd/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -116,13 +111,15 @@ acquired.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

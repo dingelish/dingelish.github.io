@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -2306,8 +2307,12 @@
 <span id="2261">2261</span>
 <span id="2262">2262</span>
 <span id="2263">2263</span>
+<span id="2264">2264</span>
+<span id="2265">2265</span>
+<span id="2266">2266</span>
+<span id="2267">2267</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -3609,18 +3614,20 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">rsgx_ecc256_compute_shared_dhkey512</span>(<span class="ident">private_b</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_private_t</span>,
-                                       <span class="ident">public_ga</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_public_t</span>,
-                                       <span class="ident">shared_key</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared512_t</span>,
-                                       <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
+<span class="comment">/* delete (intel sgx sdk 2.0)
+fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
+                                       public_ga: &amp;sgx_ec256_public_t,
+                                       shared_key: &amp;mut sgx_ec256_dh_shared512_t,
+                                       ecc_handle: sgx_ecc_state_handle_t) -&gt; sgx_status_t {
 
-    <span class="kw">unsafe</span> {
-        <span class="ident">sgx_ecc256_compute_shared_dhkey512</span>(<span class="ident">private_b</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
-                                           <span class="ident">public_ga</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_public_t</span>,
-                                           <span class="ident">shared_key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared512_t</span>,
-                                           <span class="ident">ecc_handle</span>)
+    unsafe {
+        sgx_ecc256_compute_shared_dhkey512(private_b as * const _ as * mut sgx_ec256_private_t,
+                                           public_ga as * const _ as * mut sgx_ec256_public_t,
+                                           shared_key as * mut sgx_ec256_dh_shared512_t,
+                                           ecc_handle)
     }
 }
+*/</span>
 
 <span class="kw">fn</span> <span class="ident">rsgx_ecdsa_sign_msg</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>,
                           <span class="ident">private</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_private_t</span>,
@@ -4078,19 +4085,21 @@
         }
     }
 
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">compute_shared_dhkey512</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">private_b</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_private_t</span>, <span class="ident">public_ga</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_ec256_public_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_ec256_dh_shared512_t</span><span class="op">&gt;</span> {
+    <span class="comment">/* delete (intel sgx sdk 2.0)
+    pub fn compute_shared_dhkey512(&amp;self, private_b: &amp;sgx_ec256_private_t, public_ga: &amp;sgx_ec256_public_t) -&gt; SgxResult&lt;sgx_ec256_dh_shared512_t&gt; {
 
-        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">initflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">false</span> {
-            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_STATE</span>);
+        if self.initflag.get() == false {
+            return Err(sgx_status_t::SGX_ERROR_INVALID_STATE);
         }
 
-        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">shared_key</span> <span class="op">=</span> <span class="ident">sgx_ec256_dh_shared512_t</span>::<span class="ident">default</span>();
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_ecc256_compute_shared_dhkey512</span>(<span class="ident">private_b</span>, <span class="ident">public_ga</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">shared_key</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
-        <span class="kw">match</span> <span class="ident">ret</span> {
-            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">shared_key</span>),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        let mut shared_key = sgx_ec256_dh_shared512_t::default();
+        let ret = rsgx_ecc256_compute_shared_dhkey512(private_b, public_ga, &amp;mut shared_key, *self.handle.borrow());
+        match ret {
+            sgx_status_t::SGX_SUCCESS =&gt; Ok(shared_key),
+            _ =&gt; Err(ret),
         }
     }
+    */</span>
 
     <span class="doccomment">///</span>
     <span class="doccomment">/// ecdsa_sign_msg computes a digital signature with a given private key over an input dataset.</span>
@@ -4373,9 +4382,9 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// A pointer to the data to calculate the signature over.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// **private**</span>
+<span class="doccomment">/// **key**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A pointer to the private key.</span>
+<span class="doccomment">/// A pointer to the RSA key.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Requirements</span>
 <span class="doccomment">///</span>
@@ -4389,7 +4398,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// **SGX_ERROR_INVALID_PARAMETER**</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// The private key, data is NULL. Or the data size is 0.</span>
+<span class="doccomment">/// The RSA key, data is NULL. Or the data size is 0.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **SGX_ERROR_OUT_OF_MEMORY**</span>
 <span class="doccomment">///</span>
@@ -4399,7 +4408,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The signature generation process failed due to an internal cryptography library failure.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_sign_msg</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>, <span class="ident">private</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_private_key_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_rsa3072_signature_t</span><span class="op">&gt;</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_sign_msg</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_key_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_rsa3072_signature_t</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span> {
     
     <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
@@ -4414,7 +4423,7 @@
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
         <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, 
                          <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, 
-                         <span class="ident">private</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_private_key_t</span>,
+                         <span class="ident">key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_key_t</span>,
                          <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sign</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa3072_signature_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
@@ -4426,7 +4435,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The rsgx_rsa3072_sign_slice computes a digital signature for a given dataset based on RSA 3072 private key.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_sign_slice</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>], <span class="ident">private</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_private_key_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_rsa3072_signature_t</span><span class="op">&gt;</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_sign_slice</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_key_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_rsa3072_signature_t</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span> {
     
     <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of_val</span>(<span class="ident">data</span>);
@@ -4441,7 +4450,7 @@
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
         <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, 
                          <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, 
-                         <span class="ident">private</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_private_key_t</span>,
+                         <span class="ident">key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_key_t</span>,
                          <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sign</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa3072_signature_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
@@ -4587,13 +4596,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -478,8 +479,27 @@
 <span id="433">433</span>
 <span id="434">434</span>
 <span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -716,10 +736,12 @@
                                            <span class="ident">p_shared_key</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared_t</span>,
                                            <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
     <span class="comment">/* intel sgx sdk 1.8 */</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ecc256_compute_shared_dhkey512</span>(<span class="ident">p_private_b</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
-                                              <span class="ident">p_public_ga</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_public_t</span>,
-                                              <span class="ident">p_shared_key</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared512_t</span>,
-                                              <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+    <span class="comment">/* delete (intel sgx sdk 2.0)
+    pub fn sgx_ecc256_compute_shared_dhkey512(p_private_b: * mut sgx_ec256_private_t,
+                                              p_public_ga: * mut sgx_ec256_public_t,
+                                              p_shared_key: * mut sgx_ec256_dh_shared512_t,
+                                              ecc_handle: sgx_ecc_state_handle_t) -&gt; sgx_status_t;
+    */</span>
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_ecdsa_sign</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
                           <span class="ident">data_size</span>: ::<span class="ident">uint32_t</span>,
@@ -735,9 +757,17 @@
                             <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="comment">/* intel sgx sdk 1.9 */</span>
+    <span class="comment">/*
+    pub fn sgx_rsa3072_sign(p_data: * const ::uint8_t,
+                            data_size: ::uint32_t,
+                            p_private: * const sgx_rsa3072_private_key_t,
+                            p_signature: * mut sgx_rsa3072_signature_t) -&gt; sgx_status_t;
+    */</span>
+
+    <span class="comment">/* intel sgx sdk 2.0 */</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
                             <span class="ident">data_size</span>: ::<span class="ident">uint32_t</span>,
-                            <span class="ident">p_private</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_private_key_t</span>,
+                            <span class="ident">p_key</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_key_t</span>,
                             <span class="ident">p_signature</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa3072_signature_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_rsa3072_verify</span>(<span class="ident">p_data</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">uint8_t</span>,
@@ -913,6 +943,15 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fimport_auto_key</span>(<span class="ident">filename</span>: <span class="op">*</span> <span class="kw">const</span> ::<span class="ident">c_char</span>, <span class="ident">key</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_key_128bit_t</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_fclear_cache</span>(<span class="ident">stream</span>: <span class="ident">SGX_FILE</span>) <span class="op">-&gt;</span> ::<span class="ident">int32_t</span>;
+}
+
+<span class="comment">/* intel sgx sdk 2.0 */</span>
+<span class="comment">//#[link(name = &quot;sgx_capable&quot;)]</span>
+<span class="kw">extern</span> {
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_is_capable</span>(<span class="ident">sgx_capable</span>: <span class="op">*</span> <span class="kw-2">mut</span> ::<span class="ident">int32_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_cap_enable_device</span>(<span class="ident">sgx_device_status</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_device_status_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">sgx_cap_get_status</span>(<span class="ident">sgx_device_status</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_device_status_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
 }</pre>
 </section>
     <section id='search' class="content hidden"></section>
@@ -931,13 +970,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

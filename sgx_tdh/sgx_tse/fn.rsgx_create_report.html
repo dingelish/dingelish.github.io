@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='index.html'>sgx_tse</a></p><script>window.sidebarCurrent = {name: 'rsgx_create_report', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -48,51 +49,37 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tse/lib.rs.html#93-106' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_tse/lib.rs.html#91-104' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn rsgx_create_report(<br>&nbsp;&nbsp;&nbsp;&nbsp;target_info: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_target_info_t.html" title="struct sgx_types::types::sgx_target_info_t">sgx_target_info_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;report_data: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_report_data_t.html" title="struct sgx_types::types::sgx_report_data_t">sgx_report_data_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_report_t.html" title="struct sgx_types::types::sgx_report_t">sgx_report_t</a>&gt;</pre><div class='docblock'><p>The rsgx_create_report function tries to use the information of the target enclave and other information
 to create a cryptographic report of the enclave.</p>
-
 <p>This function is a wrapper for the SGX EREPORT instruction.</p>
-
-<h1 id='description' class='section-header'><a href='#description'>Description</a></h1>
+<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
 <p>Use the function rsgx_create_report to create a cryptographic report that describes the contents of the
 calling enclave. The report can be used by other enclaves to verify that the enclave is running on the
 same platform. When an enclave calls rsgx_verify_report to verify a report, it will succeed only if
 the report was generated using the target_info for said enclave. This function is a wrapper for the SGX EREPORT
 instruction.</p>
-
 <p>Before the source enclave calls rsgx_create_report to generate a report, it needs to populate target_info with
 information about the target enclave that will verify the report. The target enclave may obtain this information
 calling rsgx_create_report with a default value for target_info and pass it to the source enclave at the beginning
 of the inter-enclave attestation process.</p>
-
-<h1 id='parameters' class='section-header'><a href='#parameters'>Parameters</a></h1>
+<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
 <p><strong>target_info</strong></p>
-
 <p>A pointer to the sgx_target_info_t object that contains the information of the target enclave,
 which will be able to cryptographically verify the report calling rsgx_verify_report.efore calling this function.</p>
-
 <p>If value is default, sgx_create_report retrieves information about the calling enclave,
 but the generated report cannot be verified by any enclave.</p>
-
 <p><strong>report_data</strong></p>
-
 <p>A pointer to the sgx_report_data_t object which contains a set of data used for communication between the enclaves.</p>
-
-<h1 id='requirements' class='section-header'><a href='#requirements'>Requirements</a></h1>
+<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
 <p>Library: libsgx_tservice.a</p>
-
-<h1 id='return-value' class='section-header'><a href='#return-value'>Return value</a></h1>
+<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
 <p>Cryptographic report of the enclave</p>
-
-<h1 id='errors' class='section-header'><a href='#errors'>Errors</a></h1>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
-
 <p>An error is reported if any of the parameters memory is not within the enclave or the reserved fields
 of the data structure are not set to zero.</p>
-
 <p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
-
 <p>Indicates that the enclave is out of memory.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -111,13 +98,15 @@ of the data structure are not set to zero.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

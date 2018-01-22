@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         
     </nav>
@@ -276,24 +277,8 @@
 <span id="231">231</span>
 <span id="232">232</span>
 <span id="233">233</span>
-<span id="234">234</span>
-<span id="235">235</span>
-<span id="236">236</span>
-<span id="237">237</span>
-<span id="238">238</span>
-<span id="239">239</span>
-<span id="240">240</span>
-<span id="241">241</span>
-<span id="242">242</span>
-<span id="243">243</span>
-<span id="244">244</span>
-<span id="245">245</span>
-<span id="246">246</span>
-<span id="247">247</span>
-<span id="248">248</span>
-<span id="249">249</span>
 </pre><pre class="rust ">
-<span class="comment">// Copyright (c) 2017 Baidu, Inc. All Rights Reserved.</span>
+<span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
 <span class="comment">// Redistribution and use in source and binary forms, with or without</span>
 <span class="comment">// modification, are permitted provided that the following conditions</span>
@@ -337,9 +322,6 @@
 <span class="doccomment">//! `std`, as in [`use std::env`], or in expressions through the absolute path</span>
 <span class="doccomment">//! `::std`, as in [`::std::env::args`].</span>
 
-<span class="attribute">#![<span class="ident">crate_name</span> <span class="op">=</span> <span class="string">&quot;sgx_tstd&quot;</span>]</span>
-<span class="attribute">#![<span class="ident">crate_type</span> <span class="op">=</span> <span class="string">&quot;rlib&quot;</span>]</span>
-
 <span class="attribute">#![<span class="ident">no_std</span>]</span>
 <span class="attribute">#![<span class="ident">needs_panic_runtime</span>]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
@@ -352,6 +334,7 @@
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">allocator_internals</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">allow_internal_unstable</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">align_offset</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">array_error_internals</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">box_syntax</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">cfg_target_has_atomic</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">char_error_internals</span>)]</span>
@@ -359,6 +342,7 @@
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">compiler_builtins_lib</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_fn</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">core_intrinsics</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">fixed_size_array</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">dropck_eyepatch</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">fn_traits</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">fnbox</span>)]</span>
@@ -378,6 +362,7 @@
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">prelude_import</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">rand</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">raw</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">rustc_attrs</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">shared</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">sip_hash_13</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">slice_concat_ext</span>)]</span>
@@ -393,17 +378,6 @@
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">slice_patterns</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">panic_unwind</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">libc</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_max_value</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_bool_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_isize_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_usize_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_u64_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_ptr_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_unsafe_cell_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_cell_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_once_new</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_ptr_null</span>)]</span>
-<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_ptr_null_mut</span>)]</span>
 
 <span class="attribute">#![<span class="ident">default_lib_allocator</span>]</span>
 
@@ -422,14 +396,12 @@
                  <span class="ident">debug_assert_ne</span>, <span class="ident">unreachable</span>, <span class="ident">unimplemented</span>, <span class="ident">write</span>, <span class="ident">writeln</span>, <span class="ident">try</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">core</span> <span class="kw">as</span> <span class="ident">__core</span>;
 
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span><span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rand</span> <span class="kw">as</span> <span class="ident">core_rand</span>;
-
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="attribute">#[<span class="ident">macro_reexport</span>(<span class="ident">vec</span>, <span class="ident">format</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">alloc</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">std_unicode</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">target_env</span> <span class="op">=</span> <span class="string">&quot;sgx&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;backtrace&quot;</span>))]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">libc</span>;
 
 <span class="comment">// We always need an unwinder currently for backtraces</span>
@@ -440,9 +412,11 @@
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">compiler_builtins</span>;
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_alloc</span>;
+<span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="attribute">#[<span class="ident">macro_reexport</span>(<span class="ident">cfg_if</span>, <span class="ident">__cfg_if_items</span>, <span class="ident">__cfg_if_apply</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_types</span>;
-<span class="attribute">#[<span class="ident">macro_reexport</span>(<span class="ident">global_ctors_object</span>)]</span>
+<span class="attribute">#[<span class="ident">macro_use</span>]</span>
+<span class="attribute">#[<span class="ident">macro_reexport</span>(<span class="ident">global_ctors_object</span>, <span class="ident">global_dtors_object</span>)]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_trts</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">sgx_tprotected_fs</span>;
 
@@ -503,13 +477,16 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">env</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">error</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ffi</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">sgxfs</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">fs</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">io</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">net</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">num</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">os</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">panic</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">path</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">sync</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">time</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">heap</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">enclave</span>;
 
@@ -519,7 +496,6 @@
 
 <span class="comment">// Private support modules</span>
 <span class="kw">mod</span> <span class="ident">panicking</span>;
-<span class="kw">mod</span> <span class="ident">rand</span>;
 <span class="kw">mod</span> <span class="ident">cpuid</span>;
 <span class="kw">mod</span> <span class="ident">memchr</span>;
 
@@ -532,13 +508,6 @@
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">cpuid</span>::<span class="kw-2">*</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">thread</span>::{<span class="ident">rsgx_thread_self</span>, <span class="ident">rsgx_thread_equal</span>};
-
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">__rand</span> {
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">rand</span>::{<span class="ident">thread_rng</span>, <span class="ident">ThreadRng</span>, <span class="ident">Rng</span>};
-}
-
-
-
 
 
 
@@ -560,13 +529,15 @@
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>

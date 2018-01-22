@@ -28,6 +28,7 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
         <p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>iter</a></p><script>window.sidebarCurrent = {name: 'repeat', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
@@ -49,15 +50,12 @@
                        [<span class='inner'>&#x2212;</span>]
                    </a>
                </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/iter/sources.rs.html#95-97' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn repeat&lt;T&gt;(elt: T) -&gt; <a class="struct" href="../../sgx_tstd/iter/struct.Repeat.html" title="struct sgx_tstd::iter::Repeat">Repeat</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span></pre><div class='docblock'><p>Creates a new iterator that endlessly repeats a single element.</p>
-
+<div class="important-traits"><div class='tooltip'>ⓘ<span class='tooltiptext'>Important traits for <a class="struct" href="../../sgx_tstd/iter/struct.Repeat.html" title="struct sgx_tstd::iter::Repeat">Repeat</a>&lt;A&gt;</span></div><div class="content hidden"><h3 class="important">Important traits for <a class="struct" href="../../sgx_tstd/iter/struct.Repeat.html" title="struct sgx_tstd::iter::Repeat">Repeat</a>&lt;A&gt;</h3><code class="content"><span class="where fmt-newline">impl&lt;A&gt; <a class="trait" href="../../sgx_tstd/iter/trait.Iterator.html" title="trait sgx_tstd::iter::Iterator">Iterator</a> for <a class="struct" href="../../sgx_tstd/iter/struct.Repeat.html" title="struct sgx_tstd::iter::Repeat">Repeat</a>&lt;A&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span></span><span class="where fmt-newline">    type <a href='../../sgx_tstd/iter/trait.Iterator.html#associatedtype.Item' class="type">Item</a> = A;</span></code></div></div><pre class='rust fn'>pub fn repeat&lt;T&gt;(elt: T) -&gt; <a class="struct" href="../../sgx_tstd/iter/struct.Repeat.html" title="struct sgx_tstd::iter::Repeat">Repeat</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span></pre><div class='docblock'><p>Creates a new iterator that endlessly repeats a single element.</p>
 <p>The <code>repeat()</code> function repeats a single value over and over and over and
 over and over and 🔁.</p>
-
 <p>Infinite iterators like <code>repeat()</code> are often used with adapters like
 <a href="trait.Iterator.html#method.take"><code>take</code></a>, in order to make them finite.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
 <p>Basic usage:</p>
 
 <pre class="rust rust-example-rendered">
@@ -74,7 +72,6 @@ over and over and 🔁.</p>
 
 <span class="comment">// yup, still four</span>
 <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="prelude-val">Some</span>(<span class="number">4</span>), <span class="ident">fours</span>.<span class="ident">next</span>());</pre>
-
 <p>Going finite with <a href="trait.Iterator.html#method.take"><code>take</code></a>:</p>
 
 <pre class="rust rust-example-rendered">
@@ -107,13 +104,15 @@ over and over and 🔁.</p>
                     <dd>Show this help dialog</dd>
                     <dt>S</dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt>↑</dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt>↓</dt>
                     <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
+                    <dt style="width:31px;">+ / -</dt>
                     <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
