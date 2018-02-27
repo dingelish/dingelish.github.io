@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["SgxTimeError",""]],"struct":[["SgxTime","timestamp contains time in seconds and source_nonce contains nonce associate with the time."]],"type":[["Duration",""]]});

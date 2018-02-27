@@ -10,8 +10,11 @@
     <title>sgx_tstd::os::unix::fs::FileTypeExt - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css" id="themeStyle">
+    <script src="../../../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait FileTypeExt</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.is_block_device">is_block_device</a><a href="#tymethod.is_char_device">is_char_device</a><a href="#tymethod.is_fifo">is_fifo</a><a href="#tymethod.is_socket">is_socket</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../../../index.html'>sgx_tstd</a>::<wbr><a href='../../index.html'>os</a>::<wbr><a href='../index.html'>unix</a>::<wbr><a href='index.html'>fs</a></p><script>window.sidebarCurrent = {name: 'FileTypeExt', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -49,7 +59,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../../../src/sgx_tstd/sys/ext/fs.rs.html#222-235' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../../../src/sgx_tstd/sys/ext/fs.rs.html#225-238' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait FileTypeExt {
     fn <a href='#tymethod.is_block_device' class='fnname'>is_block_device</a>(&amp;self) -&gt; bool;
 <div class='item-spacer'></div>    fn <a href='#tymethod.is_char_device' class='fnname'>is_char_device</a>(&amp;self) -&gt; bool;
@@ -70,7 +80,7 @@
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='../../../../src/sgx_tstd/sys/ext/fs.rs.html#237-242' title='goto source code'>[src]</a></div><code>impl FileTypeExt for <a class="struct" href="../../../../sgx_tstd/fs/struct.FileType.html" title="struct sgx_tstd::fs::FileType">FileType</a></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='../../../../src/sgx_tstd/sys/ext/fs.rs.html#240-245' title='goto source code'>[src]</a></div><code>impl FileTypeExt for <a class="struct" href="../../../../sgx_tstd/untrusted/fs/struct.FileType.html" title="struct sgx_tstd::untrusted::fs::FileType">FileType</a></code></li>
 </ul><script type="text/javascript" async
                          src="../../../../implementors/sgx_tstd/os/unix/fs/trait.FileTypeExt.js">
                  </script></section>
@@ -86,20 +96,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

@@ -10,8 +10,11 @@
     <title>sgx_tstd::borrow::Borrow - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait Borrow</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.borrow">borrow</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>borrow</a></p><script>window.sidebarCurrent = {name: 'Borrow', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -91,51 +101,51 @@ type can be borrowed as multiple different types. In particular, <code>Vec&lt;T&
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 14]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 1]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 8]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 5]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 10]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 11]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 23]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 27]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 22]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 3]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 0]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 31]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 12]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 20]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 2]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 4]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 26]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 29]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/borrow.rs.html#100-102' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Borrow&lt;T&gt; for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 17]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 28]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 16]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/borrow.rs.html#95-97' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Borrow&lt;T&gt; for &amp;'a T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 6]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 30]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 13]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 32]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 19]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 18]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 7]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 24]</code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 21]</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 25]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/borrow.rs.html#85-87' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 15]</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 21]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 18]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 6]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 28]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 32]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 0]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 12]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 26]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 7]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 5]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 4]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 8]</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 9]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 30]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 2]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/borrow.rs.html#85-87' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 14]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 31]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/borrow.rs.html#100-102' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Borrow&lt;T&gt; for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 23]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 19]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 13]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/borrow.rs.html#95-97' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Borrow&lt;T&gt; for &amp;'a T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 1]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 11]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 17]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 3]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 29]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 22]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 27]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 16]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 20]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 10]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 24]</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/array.rs.html#138-142' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for [T; 15]</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/str.rs.html#178-183' title='goto source code'>[src]</a></div><code>impl Borrow&lt;str&gt; for <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/rc.rs.html#1796-1800' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for <a class="struct" href="../../sgx_tstd/rc/struct.Rc.html" title="struct sgx_tstd::rc::Rc">Rc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/slice.rs.html#1923-1927' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/arc.rs.html#1853-1857' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for <a class="struct" href="../../sgx_tstd/sync/struct.Arc.html" title="struct sgx_tstd::sync::Arc">Arc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#28-35' title='goto source code'>[src]</a></div><code>impl&lt;'a, B&gt; Borrow&lt;B&gt; for <a class="enum" href="../../sgx_tstd/borrow/enum.Cow.html" title="enum sgx_tstd::borrow::Cow">Cow</a>&lt;'a, B&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="../../sgx_tstd/borrow/trait.ToOwned.html" title="trait sgx_tstd::borrow::ToOwned">ToOwned</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;B as <a class="trait" href="../../sgx_tstd/borrow/trait.ToOwned.html" title="trait sgx_tstd::borrow::ToOwned">ToOwned</a>&gt;::<a class="type" href="../../sgx_tstd/borrow/trait.ToOwned.html#associatedtype.Owned" title="type sgx_tstd::borrow::ToOwned::Owned">Owned</a>: 'a,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#896-900' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/slice.rs.html#1915-1919' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;[T]&gt; for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/rc.rs.html#1796-1800' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for <a class="struct" href="../../sgx_tstd/rc/struct.Rc.html" title="struct sgx_tstd::rc::Rc">Rc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#867-871' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Borrow&lt;T&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_trts/c_str.rs.html#303-306' title='goto source code'>[src]</a></div><code>impl Borrow&lt;<a class="struct" href="../../sgx_tstd/ffi/struct.CStr.html" title="struct sgx_tstd::ffi::CStr">CStr</a>&gt; for <a class="struct" href="../../sgx_tstd/ffi/struct.CString.html" title="struct sgx_tstd::ffi::CString">CString</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/ffi/os_str.rs.html#473-475' title='goto source code'>[src]</a></div><code>impl Borrow&lt;<a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a>&gt; for <a class="struct" href="../../sgx_tstd/ffi/struct.OsString.html" title="struct sgx_tstd::ffi::OsString">OsString</a></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/path.rs.html#1062-1066' title='goto source code'>[src]</a></div><code>impl Borrow&lt;<a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>&gt; for <a class="struct" href="../../sgx_tstd/path/struct.PathBuf.html" title="struct sgx_tstd::path::PathBuf">PathBuf</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/path.rs.html#1063-1067' title='goto source code'>[src]</a></div><code>impl Borrow&lt;<a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>&gt; for <a class="struct" href="../../sgx_tstd/path/struct.PathBuf.html" title="struct sgx_tstd::path::PathBuf">PathBuf</a></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/borrow/trait.Borrow.js">
                  </script></section>
@@ -151,20 +161,22 @@ type can be borrowed as multiple different types. In particular, <code>Vec&lt;T&
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

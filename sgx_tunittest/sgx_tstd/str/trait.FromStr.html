@@ -10,8 +10,11 @@
     <title>sgx_tstd::str::FromStr - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait FromStr</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Err">Err</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.from_str">from_str</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>str</a></p><script>window.sidebarCurrent = {name: 'FromStr', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -117,22 +127,22 @@ inside <a href="../../std/result/enum.Result.html#variant.Err"><code>Err</code><
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/mod.rs.html#105-138' title='goto source code'>[src]</a></div><code>impl FromStr for bool<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/str/struct.ParseBoolError.html" title="struct sgx_tstd::str::ParseBoolError">ParseBoolError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for i16<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for u32<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for u64<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for isize<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for u16<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for i64<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for i32<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for usize<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/dec2flt/mod.rs.html#112-143' title='goto source code'>[src]</a></div><code>impl FromStr for f32<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseFloatError.html" title="struct sgx_tstd::num::ParseFloatError">ParseFloatError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for i128<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/char.rs.html#249-265' title='goto source code'>[src]</a></div><code>impl FromStr for char<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/char/struct.ParseCharError.html" title="struct sgx_tstd::char::ParseCharError">ParseCharError</a>;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/dec2flt/mod.rs.html#112-143' title='goto source code'>[src]</a></div><code>impl FromStr for f32<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseFloatError.html" title="struct sgx_tstd::num::ParseFloatError">ParseFloatError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for i32<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for u64<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for u128<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/dec2flt/mod.rs.html#112-143' title='goto source code'>[src]</a></div><code>impl FromStr for f64<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseFloatError.html" title="struct sgx_tstd::num::ParseFloatError">ParseFloatError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for u128<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for u8<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2949-2954' title='goto source code'>[src]</a></div><code>impl FromStr for i8<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/mod.rs.html#105-138' title='goto source code'>[src]</a></div><code>impl FromStr for bool<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/str/struct.ParseBoolError.html" title="struct sgx_tstd::str::ParseBoolError">ParseBoolError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for u8<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/char.rs.html#249-265' title='goto source code'>[src]</a></div><code>impl FromStr for char<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/char/struct.ParseCharError.html" title="struct sgx_tstd::char::ParseCharError">ParseCharError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for usize<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for i128<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for u16<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for u32<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for i16<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for i64<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for isize<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#2960-2965' title='goto source code'>[src]</a></div><code>impl FromStr for i8<span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/num/struct.ParseIntError.html" title="struct sgx_tstd::num::ParseIntError">ParseIntError</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#1976-1982' title='goto source code'>[src]</a></div><code>impl FromStr for <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a><span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="enum" href="../../sgx_tstd/string/enum.ParseError.html" title="enum sgx_tstd::string::ParseError">ParseError</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/parser.rs.html#317-325' title='goto source code'>[src]</a></div><code>impl FromStr for <a class="enum" href="../../sgx_tstd/net/enum.IpAddr.html" title="enum sgx_tstd::net::IpAddr">IpAddr</a><span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/net/struct.AddrParseError.html" title="struct sgx_tstd::net::AddrParseError">AddrParseError</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/parser.rs.html#327-335' title='goto source code'>[src]</a></div><code>impl FromStr for <a class="struct" href="../../sgx_tstd/net/struct.Ipv4Addr.html" title="struct sgx_tstd::net::Ipv4Addr">Ipv4Addr</a><span class="where fmt-newline">  type <a href='#associatedtype.Err' class="type">Err</a> = <a class="struct" href="../../sgx_tstd/net/struct.AddrParseError.html" title="struct sgx_tstd::net::AddrParseError">AddrParseError</a>;</span></code></li>
@@ -155,20 +165,22 @@ inside <a href="../../std/result/enum.Result.html#variant.Err"><code>Err</code><
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

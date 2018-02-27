@@ -10,8 +10,11 @@
     <title>sgx_tstd::ops::FnOnce - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait FnOnce</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Output">Output</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.call_once">call_once</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'FnOnce', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -116,8 +126,8 @@ this can refer to <a href="../../nomicon/hrtb.html">the relevant section in the 
         <ul class='item-list' id='implementors-list'>
     <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/function.rs.html#266-273' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, F&gt; FnOnce&lt;A&gt; for &amp;'a mut F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.FnMut.html" title="trait sgx_tstd::ops::FnMut">FnMut</a>&lt;A&gt; + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/function.rs.html#246-254' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, F&gt; FnOnce&lt;A&gt; for &amp;'a F <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../sgx_tstd/ops/trait.Fn.html" title="trait sgx_tstd::ops::Fn">Fn</a>&lt;A&gt; + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = &lt;F as <a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>&lt;A&gt;&gt;::<a class="type" href="../../sgx_tstd/ops/trait.FnOnce.html#associatedtype.Output" title="type sgx_tstd::ops::FnOnce::Output">Output</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#833-839' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#823-829' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#804-810' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a>&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#794-800' title='goto source code'>[src]</a></div><code>impl&lt;'a, A, R&gt; FnOnce&lt;A&gt; for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;<a class="trait" href="../../sgx_tstd/boxed/trait.FnBox.html" title="trait sgx_tstd::boxed::FnBox">FnBox</a>&lt;A, Output = R&gt; + 'a&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#217-223' title='goto source code'>[src]</a></div><code>impl&lt;R, F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() -&gt; R&gt; FnOnce&lt;()&gt; for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;F&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Output' class="type">Output</a> = R;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/ops/function/trait.FnOnce.js">
@@ -134,20 +144,22 @@ this can refer to <a href="../../nomicon/hrtb.html">the relevant section in the 
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

@@ -10,8 +10,11 @@
     <title>sgx_tstd::borrow::ToOwned - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait ToOwned</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Owned">Owned</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.to_owned">to_owned</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.clone_into">clone_into</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>borrow</a></p><script>window.sidebarCurrent = {name: 'ToOwned', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -102,12 +112,12 @@ from any borrow of a given type.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#89-100' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; ToOwned for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/slice.rs.html#1929-1953' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; ToOwned for [T] <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/slice.rs.html#1937-1961' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; ToOwned for [T] <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/str.rs.html#186-197' title='goto source code'>[src]</a></div><code>impl ToOwned for str<span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#89-100' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; ToOwned for T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/clone/trait.Clone.html" title="trait sgx_tstd::clone::Clone">Clone</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = T;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_trts/c_str.rs.html#514-520' title='goto source code'>[src]</a></div><code>impl ToOwned for <a class="struct" href="../../sgx_tstd/ffi/struct.CStr.html" title="struct sgx_tstd::ffi::CStr">CStr</a><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/ffi/struct.CString.html" title="struct sgx_tstd::ffi::CString">CString</a>;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/ffi/os_str.rs.html#477-486' title='goto source code'>[src]</a></div><code>impl ToOwned for <a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/ffi/struct.OsString.html" title="struct sgx_tstd::ffi::OsString">OsString</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/path.rs.html#1120-1128' title='goto source code'>[src]</a></div><code>impl ToOwned for <a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/path/struct.PathBuf.html" title="struct sgx_tstd::path::PathBuf">PathBuf</a>;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/path.rs.html#1121-1129' title='goto source code'>[src]</a></div><code>impl ToOwned for <a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a><span class="where fmt-newline">  type <a href='#associatedtype.Owned' class="type">Owned</a> = <a class="struct" href="../../sgx_tstd/path/struct.PathBuf.html" title="struct sgx_tstd::path::PathBuf">PathBuf</a>;</span></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/alloc/borrow/trait.ToOwned.js">
                  </script></section>
@@ -123,20 +133,22 @@ from any borrow of a given type.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

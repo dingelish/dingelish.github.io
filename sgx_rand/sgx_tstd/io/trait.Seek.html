@@ -10,8 +10,11 @@
     <title>sgx_tstd::io::Seek - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait Seek</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.seek">seek</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'Seek', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -76,13 +86,13 @@ That position can be used later with <a href="enum.SeekFrom.html#variant.Start">
         <ul class='item-list' id='implementors-list'>
     <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sgxfs.rs.html#186-190' title='goto source code'>[src]</a></div><code>impl Seek for <a class="struct" href="../../sgx_tstd/sgxfs/struct.SgxFile.html" title="struct sgx_tstd::sgxfs::SgxFile">SgxFile</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sgxfs.rs.html#210-214' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Seek for &amp;'a <a class="struct" href="../../sgx_tstd/sgxfs/struct.SgxFile.html" title="struct sgx_tstd::sgxfs::SgxFile">SgxFile</a></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#313-317' title='goto source code'>[src]</a></div><code>impl Seek for <a class="struct" href="../../sgx_tstd/fs/struct.File.html" title="struct sgx_tstd::fs::File">File</a></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#337-341' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Seek for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.File.html" title="struct sgx_tstd::fs::File">File</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#178-224' title='goto source code'>[src]</a></div><code>impl&lt;R:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a>&gt; Seek for <a class="struct" href="../../sgx_tstd/io/struct.BufReader.html" title="struct sgx_tstd::io::BufReader">BufReader</a>&lt;R&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#361-368' title='goto source code'>[src]</a></div><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a> + <a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a>&gt; Seek for <a class="struct" href="../../sgx_tstd/io/struct.BufWriter.html" title="struct sgx_tstd::io::BufWriter">BufWriter</a>&lt;W&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/cursor.rs.html#82-100' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Seek for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/convert/trait.AsRef.html" title="trait sgx_tstd::convert::AsRef">AsRef</a>&lt;[u8]&gt;,&nbsp;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/impls.rs.html#82-85' title='goto source code'>[src]</a></div><code>impl&lt;'a, S:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Seek for &amp;'a mut S</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/impls.rs.html#150-153' title='goto source code'>[src]</a></div><code>impl&lt;S:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Seek.html" title="trait sgx_tstd::io::Seek">Seek</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Seek for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;S&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#315-319' title='goto source code'>[src]</a></div><code>impl Seek for <a class="struct" href="../../sgx_tstd/untrusted/fs/struct.File.html" title="struct sgx_tstd::untrusted::fs::File">File</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#339-343' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Seek for &amp;'a <a class="struct" href="../../sgx_tstd/untrusted/fs/struct.File.html" title="struct sgx_tstd::untrusted::fs::File">File</a></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/sgx_tstd/io/trait.Seek.js">
                  </script></section>
@@ -98,20 +108,22 @@ That position can be used later with <a href="enum.SeekFrom.html#variant.Start">
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

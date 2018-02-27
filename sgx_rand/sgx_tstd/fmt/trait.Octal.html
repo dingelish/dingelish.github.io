@@ -10,8 +10,11 @@
     <title>sgx_tstd::fmt::Octal - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait Octal</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.fmt">fmt</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>fmt</a></p><script>window.sidebarCurrent = {name: 'Octal', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -97,21 +107,21 @@ negative values are formatted as the two’s complement representation.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u8</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/mod.rs.html#1564-1566' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Octal for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/fmt/trait.Octal.html" title="trait sgx_tstd::fmt::Octal">Octal</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u16</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u32</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u8</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i16</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u16</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for isize</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for usize</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#71-75' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Octal for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/fmt/trait.Octal.html" title="trait sgx_tstd::fmt::Octal">Octal</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i64</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/mod.rs.html#1560-1562' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Octal for &amp;'a T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/fmt/trait.Octal.html" title="trait sgx_tstd::fmt::Octal">Octal</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i128</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u64</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/mod.rs.html#1564-1566' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Octal for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/fmt/trait.Octal.html" title="trait sgx_tstd::fmt::Octal">Octal</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i32</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/num/mod.rs.html#71-75' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Octal for <a class="struct" href="../../sgx_tstd/num/struct.Wrapping.html" title="struct sgx_tstd::num::Wrapping">Wrapping</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/fmt/trait.Octal.html" title="trait sgx_tstd::fmt::Octal">Octal</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/mod.rs.html#1560-1562' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Octal for &amp;'a T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/fmt/trait.Octal.html" title="trait sgx_tstd::fmt::Octal">Octal</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for isize</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i128</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i8</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for i64</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/fmt/num.rs.html#148-152' title='goto source code'>[src]</a></div><code>impl Octal for u128</code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/core/fmt/trait.Octal.js">
                  </script></section>
@@ -127,20 +137,22 @@ negative values are formatted as the two’s complement representation.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

@@ -10,8 +10,11 @@
     <title>sgx_tstd::ops::DerefMut - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait DerefMut</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.deref_mut">deref_mut</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'DerefMut', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -115,13 +125,13 @@ struct.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cell.rs.html#1140-1145' title='goto source code'>[src]</a></div><code>impl&lt;'b, T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/cell/struct.RefMut.html" title="struct sgx_tstd::cell::RefMut">RefMut</a>&lt;'b, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/mem.rs.html#1009-1016' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="union" href="../../sgx_tstd/mem/union.ManuallyDrop.html" title="union sgx_tstd::mem::ManuallyDrop">ManuallyDrop</a>&lt;T&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cell.rs.html#1140-1145' title='goto source code'>[src]</a></div><code>impl&lt;'b, T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/cell/struct.RefMut.html" title="struct sgx_tstd::cell::RefMut">RefMut</a>&lt;'b, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#173-175' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; DerefMut for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/mem.rs.html#1009-1016' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="union" href="../../sgx_tstd/mem/union.ManuallyDrop.html" title="union sgx_tstd::mem::ManuallyDrop">ManuallyDrop</a>&lt;T&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/binary_heap.rs.html#266-270' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/collections/binary_heap/struct.PeekMut.html" title="struct sgx_tstd::collections::binary_heap::PeekMut">PeekMut</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/cmp/trait.Ord.html" title="trait sgx_tstd::cmp::Ord">Ord</a>,&nbsp;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec.rs.html#1699-1707' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#724-728' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#695-699' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span></code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#1952-1957' title='goto source code'>[src]</a></div><code>impl DerefMut for <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec.rs.html#1699-1707' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#211-215' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; DerefMut for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/mutex.rs.html#512-516' title='goto source code'>[src]</a></div><code>impl&lt;'mutex, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; DerefMut for <a class="struct" href="../../sgx_tstd/sync/struct.SgxMutexGuard.html" title="struct sgx_tstd::sync::SgxMutexGuard">SgxMutexGuard</a>&lt;'mutex, T&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/rwlock.rs.html#701-705' title='goto source code'>[src]</a></div><code>impl&lt;'rwlock, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; DerefMut for <a class="struct" href="../../sgx_tstd/sync/struct.SgxRwLockWriteGuard.html" title="struct sgx_tstd::sync::SgxRwLockWriteGuard">SgxRwLockWriteGuard</a>&lt;'rwlock, T&gt;</code></li>
@@ -140,20 +150,22 @@ struct.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

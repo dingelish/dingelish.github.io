@@ -10,8 +10,11 @@
     <title>sgx_tstd - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../dark.css">
+    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
+    <script src="../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Crate sgx_tstd</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'sgx_tstd', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -49,7 +59,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/sgx_tstd/lib.rs.html#29-230' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/sgx_tstd/lib.rs.html#29-235' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><h1 id="the-rust-sgx-sdk-standard-library" class="section-header"><a href="#the-rust-sgx-sdk-standard-library">The Rust SGX SDK Standard Library</a></h1>
 <p>The Rust SGX standard library (previously named as <code>sgx_tstdc</code>) is
 the foundation of portable Rust SGX SDK, a
@@ -78,13 +88,6 @@ of any <code>'static</code> type through runtime reflection.</p>
                        <tr class=' module-item'>
                            <td><a class="mod" href="ascii/index.html"
                                   title='mod sgx_tstd::ascii'>ascii</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="backtrace/index.html"
-                                  title='mod sgx_tstd::backtrace'>backtrace</a></td>
                            <td class='docblock-short'>
                                 
                            </td>
@@ -141,7 +144,8 @@ of any <code>'static</code> type through runtime reflection.</p>
                            <td><a class="mod" href="collections/index.html"
                                   title='mod sgx_tstd::collections'>collections</a></td>
                            <td class='docblock-short'>
-                                
+                                <p>Collection types.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -217,14 +221,6 @@ of the <code>f64</code> floating point data type.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class="mod" href="fs/index.html"
-                                  title='mod sgx_tstd::fs'>fs</a></td>
-                           <td class='docblock-short'>
-                                <p>Filesystem manipulation operations.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
                            <td><a class="mod" href="hash/index.html"
                                   title='mod sgx_tstd::hash'>hash</a></td>
                            <td class='docblock-short'>
@@ -271,6 +267,14 @@ of the <code>f64</code> floating point data type.</p>
 
                            </td>
                        </tr>
+                       <tr class='unstable module-item'>
+                           <td><a class="mod" href="intrinsics/index.html"
+                                  title='mod sgx_tstd::intrinsics'>intrinsics</a></td>
+                           <td class='docblock-short'>
+                               [<div class='stab unstable'>Experimental</div>] <p>rustc compiler intrinsics.</p>
+
+                           </td>
+                       </tr>
                        <tr class=' module-item'>
                            <td><a class="mod" href="io/index.html"
                                   title='mod sgx_tstd::io'>io</a></td>
@@ -307,14 +311,6 @@ of the <code>f64</code> floating point data type.</p>
                                   title='mod sgx_tstd::mem'>mem</a></td>
                            <td class='docblock-short'>
                                 <p>Basic functions for dealing with memory.</p>
-
-                           </td>
-                       </tr>
-                       <tr class='unstable module-item'>
-                           <td><a class="mod" href="intrinsics/index.html"
-                                  title='mod sgx_tstd::intrinsics'>intrinsics</a></td>
-                           <td class='docblock-short'>
-                               [<div class='stab unstable'>Experimental</div>] <p>rustc compiler intrinsics.</p>
 
                            </td>
                        </tr>
@@ -507,6 +503,13 @@ Synchronization library supports, as well as the OCALLs that each API function n
                            <td class='docblock-short'>
                                 <p>The 64-bit unsigned integer type.</p>
 
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="untrusted/index.html"
+                                  title='mod sgx_tstd::untrusted'>untrusted</a></td>
+                           <td class='docblock-short'>
+                                
                            </td>
                        </tr>
                        <tr class=' module-item'>
@@ -782,20 +785,22 @@ the information about supported features.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

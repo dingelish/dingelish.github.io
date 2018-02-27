@@ -10,8 +10,11 @@
     <title>path.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -1845,6 +1855,14 @@
 <span id="1799">1799</span>
 <span id="1800">1800</span>
 <span id="1801">1801</span>
+<span id="1802">1802</span>
+<span id="1803">1803</span>
+<span id="1804">1804</span>
+<span id="1805">1805</span>
+<span id="1806">1806</span>
+<span id="1807">1807</span>
+<span id="1808">1808</span>
+<span id="1809">1809</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -1890,6 +1908,7 @@
 <span class="doccomment">//!</span>
 
 <span class="kw">use</span> <span class="ident">error</span>::<span class="ident">Error</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">fs</span>;
 <span class="kw">use</span> <span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">ffi</span>::{<span class="ident">OsStr</span>, <span class="ident">OsString</span>};
@@ -3362,6 +3381,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`fs::metadata`]: ../fs/fn.metadata.html</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">metadata</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">fs</span>::<span class="ident">Metadata</span><span class="op">&gt;</span> {
         <span class="ident">fs</span>::<span class="ident">metadata</span>(<span class="self">self</span>)
     }
@@ -3372,6 +3392,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`fs::symlink_metadata`]: ../fs/fn.symlink_metadata.html</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">symlink_metadata</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">fs</span>::<span class="ident">Metadata</span><span class="op">&gt;</span> {
         <span class="ident">fs</span>::<span class="ident">symlink_metadata</span>(<span class="self">self</span>)
     }
@@ -3383,6 +3404,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`fs::canonicalize`]: ../fs/fn.canonicalize.html</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">canonicalize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> {
         <span class="ident">fs</span>::<span class="ident">canonicalize</span>(<span class="self">self</span>)
     }
@@ -3393,6 +3415,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// [`fs::read_link`]: ../fs/fn.read_link.html</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">read_link</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span> {
         <span class="ident">fs</span>::<span class="ident">read_link</span>(<span class="self">self</span>)
     }
@@ -3405,6 +3428,7 @@
     <span class="doccomment">/// If you cannot access the directory containing the file, e.g. because of a</span>
     <span class="doccomment">/// permission error, this will return `false`.</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">exists</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="ident">fs</span>::<span class="ident">metadata</span>(<span class="self">self</span>).<span class="ident">is_ok</span>()
     }
@@ -3417,6 +3441,7 @@
     <span class="doccomment">/// If you cannot access the directory containing the file, e.g. because of a</span>
     <span class="doccomment">/// permission error, this will return `false`.</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_file</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="ident">fs</span>::<span class="ident">metadata</span>(<span class="self">self</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">m</span>.<span class="ident">is_file</span>()).<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
     }
@@ -3429,6 +3454,7 @@
     <span class="doccomment">/// If you cannot access the directory containing the file, e.g. because of a</span>
     <span class="doccomment">/// permission error, this will return `false`.</span>
     <span class="doccomment">///</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;untrusted_fs&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_dir</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="ident">fs</span>::<span class="ident">metadata</span>(<span class="self">self</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="ident">m</span>.<span class="ident">is_dir</span>()).<span class="ident">unwrap_or</span>(<span class="bool-val">false</span>)
     }
@@ -3661,20 +3687,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

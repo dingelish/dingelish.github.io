@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SgxMonotonicCounter` struct in crate `sgx_tservice`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SgxMonotonicCounter">
+
+    <title>sgx_tservice::sgxcounter::SgxMonotonicCounter - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Struct SgxMonotonicCounter</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.new_ex">new_ex</a><a href="#method.destory">destory</a><a href="#method.increment">increment</a><a href="#method.read">read</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Drop">Drop</a></div></div><p class='location'><a href='../index.html'>sgx_tservice</a>::<wbr><a href='index.html'>sgxcounter</a></p><script>window.sidebarCurrent = {name: 'SgxMonotonicCounter', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sgx_tservice</a>::<wbr><a href='index.html'>sgxcounter</a>::<wbr><a class="struct" href=''>SgxMonotonicCounter</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#33-36' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SgxMonotonicCounter { /* fields omitted */ }</pre><div class='docblock'><p>Monotonic counter ID</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#38-491' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(counter_value: &amp;mut u32) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#124-136' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>creates a monotonic counter with default owner policy and default user attribute mask.</p>
+<h1 id="description" class="section-header"><a href="#description">Description</a></h1>
+<p>Call new to create a monotonic counter with the default owner policy 0x1, which means enclaves
+with same signing key can access the monotonic counter and default owner_attribute_mask 0xFFFFFFFFFFFFFFCB.</p>
+<p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
+before calling this API.</p>
+<p>Creating a monotonic counter (MC) involves writing to the non-volatile memory available in the platform.
+Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.
+Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed
+the limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
+<p>Intel(R) SGX limits the number of MCs an enclave can create. To avoid exhausting the available quota,
+an SGX application should record the MC UUID that rsgx_create_monotonic_counter returns and destroy a MC
+when it is not needed any more. If an enclave reaches its quota and previously created MC UUIDs have not
+been recorded, you may restore the MC service after uninstalling the SGX PSW and installing it again.
+This procedure deletes all MCs created by any enclave in that system.</p>
+<h1 id="parameters" class="section-header"><a href="#parameters">Parameters</a></h1>
+<p><strong>counter_value</strong></p>
+<p>A pointer to the buffer that receives the monotonic counter value.</p>
+<h1 id="requirements" class="section-header"><a href="#requirements">Requirements</a></h1>
+<p>Header: sgx_tae_service.edl</p>
+<p>Library: libsgx_tservice.a</p>
+<h1 id="return-value" class="section-header"><a href="#return-value">Return value</a></h1>
+<p>Monotonic counter ID</p>
+<h1 id="errors" class="section-header"><a href="#errors">Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+<p>Any of the pointers is invalid.</p>
+<p><strong>SGX_ERROR_BUSY</strong></p>
+<p>The requested service is temporarily not available.</p>
+<p><strong>SGX_ERROR_MC_OVER_QUOTA</strong></p>
+<p>The enclave has reached the quota of Monotonic Counters it can maintain.</p>
+<p><strong>SGX_ERROR_MC_USED_UP</strong></p>
+<p>Monotonic counters are used out.</p>
+<p><strong>SGX_ERROR_AE_SESSION_INVALID</strong></p>
+<p>Session is not created or has been closed by architectural enclave service.</p>
+<p><strong>SGX_ERROR_SERVICE_UNAVAILABLE</strong></p>
+<p>The AE service did not respond or the requested service is not supported.</p>
+<p><strong>SGX_ERROR_SERVICE_TIMEOUT</strong></p>
+<p>A request to the AE service timed out.</p>
+<p><strong>SGX_ERROR_NETWORK_FAILURE</strong></p>
+<p>Network connecting or proxy setting issue was encountered.</p>
+<p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+<p>Not enough memory is available to complete this operation.</p>
+<p><strong>SGX_ERROR_OUT_OF_EPC</strong></p>
+<p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+<p>Indicates an unexpected error occurs.</p>
+</div><h4 id='method.new_ex' class="method"><span id='new_ex.v' class='invisible'><code>pub fn <a href='#method.new_ex' class='fnname'>new_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;owner_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;owner_attribute_mask: &amp;<a class="struct" href="../../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;counter_value: &amp;mut u32<br>) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#234-246' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>creates a monotonic counter.</p>
+<h1 id="description-1" class="section-header"><a href="#description-1">Description</a></h1>
+<p>Call new_ex to create a monotonic counter with the given owner_policy and owner_attribute_mask.</p>
+<p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
+before calling this API.</p>
+<p>Creating a monotonic counter (MC) involves writing to the non-volatile memory available in the platform.
+Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.
+Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed
+the limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
+<p>Intel(R) SGX limits the number of MCs an enclave can create. To avoid exhausting the available quota,
+an SGX application should record the MC UUID that rsgx_create_monotonic_counter_ex returns and destroy a MC
+when it is not needed any more. If an enclave reaches its quota and previously created MC UUIDs have not
+been recorded, you may restore the MC service after uninstalling the SGX PSW and installing it again.
+This procedure deletes all MCs created by any enclave in that system.</p>
+<h1 id="parameters-1" class="section-header"><a href="#parameters-1">Parameters</a></h1>
+<p><strong>owner_policy</strong></p>
+<p>The owner policy of the monotonic counter.</p>
+<ul>
+<li>0x1 means enclave with same signing key can access the monotonic counter</li>
+<li>0x2 means enclave with same measurement can access the monotonic counter</li>
+<li>0x3 means enclave with same measurement as well as signing key can access the monotonic counter.</li>
+<li>Owner policy values of 0x0 or any bits set beyond bits 0 and 1 will cause SGX_ERROR_INVALID_PARAMETER</li>
+</ul>
+<p><strong>owner_attribute_mask</strong></p>
+<p>Mask of owner attribute, in the format of sgx_attributes_t.</p>
+<p><strong>counter_value</strong></p>
+<p>A pointer to the buffer that receives the monotonic counter value.</p>
+<h1 id="requirements-1" class="section-header"><a href="#requirements-1">Requirements</a></h1>
+<p>Header: sgx_tae_service.edl</p>
+<p>Library: libsgx_tservice.a</p>
+<h1 id="return-value-1" class="section-header"><a href="#return-value-1">Return value</a></h1>
+<p>Monotonic counter ID</p>
+<h1 id="errors-1" class="section-header"><a href="#errors-1">Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+<p>Any of the pointers is invalid.</p>
+<p><strong>SGX_ERROR_BUSY</strong></p>
+<p>The requested service is temporarily not available.</p>
+<p><strong>SGX_ERROR_MC_OVER_QUOTA</strong></p>
+<p>The enclave has reached the quota of Monotonic Counters it can maintain.</p>
+<p><strong>SGX_ERROR_MC_USED_UP</strong></p>
+<p>Monotonic counters are used out.</p>
+<p><strong>SGX_ERROR_AE_SESSION_INVALID</strong></p>
+<p>Session is not created or has been closed by architectural enclave service.</p>
+<p><strong>SGX_ERROR_SERVICE_UNAVAILABLE</strong></p>
+<p>The AE service did not respond or the requested service is not supported.</p>
+<p><strong>SGX_ERROR_SERVICE_TIMEOUT</strong></p>
+<p>A request to the AE service timed out.</p>
+<p><strong>SGX_ERROR_NETWORK_FAILURE</strong></p>
+<p>Network connecting or proxy setting issue was encountered.</p>
+<p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+<p>Not enough memory is available to complete this operation.</p>
+<p><strong>SGX_ERROR_OUT_OF_EPC</strong></p>
+<p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+<p>Indicates an unexpected error occurs.</p>
+</div><h4 id='method.destory' class="method"><span id='destory.v' class='invisible'><code>pub fn <a href='#method.destory' class='fnname'>destory</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#318-331' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
+<h1 id="description-2" class="section-header"><a href="#description-2">Description</a></h1>
+<p>Calling destory after a monotonic counter is not needed anymore.</p>
+<p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
+before calling this API.</p>
+<p>destory fails if the calling enclave does not match the owner policy and the attributes specified in the
+call that created the monotonic counter.</p>
+<p>Destroying a Monotonic Counter (MC) involves writing to the non-volatile memory available in the platform.
+Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.
+Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed the
+limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
+<h1 id="requirements-2" class="section-header"><a href="#requirements-2">Requirements</a></h1>
+<p>Header: sgx_tae_service.edl</p>
+<p>Library: libsgx_tservice.a</p>
+<h1 id="errors-2" class="section-header"><a href="#errors-2">Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+<p>Any of the pointers is invalid.</p>
+<p><strong>SGX_ERROR_BUSY</strong></p>
+<p>The requested service is temporarily not available.</p>
+<p><strong>SGX_ERROR_MC_NOT_FOUND</strong></p>
+<p>The Monotonic Counter does not exist or has been invalidated.</p>
+<p><strong>SGX_ERROR_MC_NO_ACCESS_RIGHT</strong></p>
+<p>The enclave doesn't have the access right to specified Monotonic Counter.</p>
+<p><strong>SGX_ERROR_AE_SESSION_INVALID</strong></p>
+<p>Session is not created or has been closed by architectural enclave service.</p>
+<p><strong>SGX_ERROR_SERVICE_UNAVAILABLE</strong></p>
+<p>The AE service did not respond or the requested service is not supported.</p>
+<p><strong>SGX_ERROR_SERVICE_TIMEOUT</strong></p>
+<p>A request to the AE service timed out.</p>
+<p><strong>SGX_ERROR_NETWORK_FAILURE</strong></p>
+<p>Network connecting or proxy setting issue was encountered.</p>
+<p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+<p>Not enough memory is available to complete this operation.</p>
+<p><strong>SGX_ERROR_OUT_OF_EPC</strong></p>
+<p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+<p>Indicates an unexpected error occurs.</p>
+</div><h4 id='method.increment' class="method"><span id='increment.v' class='invisible'><code>pub fn <a href='#method.increment' class='fnname'>increment</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#403-415' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>increments a monotonic counter value by 1.</p>
+<h1 id="description-3" class="section-header"><a href="#description-3">Description</a></h1>
+<p>Call increment to increase a monotonic counter value by 1.</p>
+<p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
+before calling this API.</p>
+<p>increment fails if the calling enclave does not match the owner policy and the attributes specified in the
+call that created the monotonic counter.</p>
+<p>Incrementing a monotonic counter (MC) involves writing to the non-volatile memory available in the platform.
+Repeated write operations could cause the memory to wear out during the normal lifecycle of the platform.
+Intel(R) SGX prevents this by limiting the rate at which MC operations can be performed. If you exceed the limit,
+the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
+<h1 id="requirements-3" class="section-header"><a href="#requirements-3">Requirements</a></h1>
+<p>Header: sgx_tae_service.edl</p>
+<p>Library: libsgx_tservice.a</p>
+<h1 id="errors-3" class="section-header"><a href="#errors-3">Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+<p>Any of the pointers is invalid.</p>
+<p><strong>SGX_ERROR_BUSY</strong></p>
+<p>The requested service is temporarily not available.</p>
+<p><strong>SGX_ERROR_MC_NOT_FOUND</strong></p>
+<p>The Monotonic Counter does not exist or has been invalidated.</p>
+<p><strong>SGX_ERROR_MC_NO_ACCESS_RIGHT</strong></p>
+<p>The enclave doesn't have the access right to specified Monotonic Counter.</p>
+<p><strong>SGX_ERROR_AE_SESSION_INVALID</strong></p>
+<p>Session is not created or has been closed by architectural enclave service.</p>
+<p><strong>SGX_ERROR_SERVICE_UNAVAILABLE</strong></p>
+<p>The AE service did not respond or the requested service is not supported.</p>
+<p><strong>SGX_ERROR_SERVICE_TIMEOUT</strong></p>
+<p>A request to the AE service timed out.</p>
+<p><strong>SGX_ERROR_NETWORK_FAILURE</strong></p>
+<p>Network connecting or proxy setting issue was encountered.</p>
+<p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+<p>Not enough memory is available to complete this operation.</p>
+<p><strong>SGX_ERROR_OUT_OF_EPC</strong></p>
+<p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+<p>Indicates an unexpected error occurs.</p>
+</div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>pub fn <a href='#method.read' class='fnname'>read</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#478-490' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>returns the value of a monotonic counter.</p>
+<h1 id="description-4" class="section-header"><a href="#description-4">Description</a></h1>
+<p>Call read to read the value of a monotonic counter.</p>
+<p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
+before calling this API.</p>
+<p>read fails if the calling enclave does not match the owner policy and the attributes specified in the
+call that created the monotonic counter.</p>
+<h1 id="requirements-4" class="section-header"><a href="#requirements-4">Requirements</a></h1>
+<p>Header: sgx_tae_service.edl</p>
+<p>Library: libsgx_tservice.a</p>
+<h1 id="return-value-2" class="section-header"><a href="#return-value-2">Return value</a></h1>
+<p>Monotonic counter value</p>
+<h1 id="errors-4" class="section-header"><a href="#errors-4">Errors</a></h1>
+<p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
+<p>Any of the pointers is invalid.</p>
+<p><strong>SGX_ERROR_MC_NOT_FOUND</strong></p>
+<p>The Monotonic Counter does not exist or has been invalidated.</p>
+<p><strong>SGX_ERROR_AE_SESSION_INVALID</strong></p>
+<p>Session is not created or has been closed by architectural enclave service.</p>
+<p><strong>SGX_ERROR_SERVICE_UNAVAILABLE</strong></p>
+<p>The AE service did not respond or the requested service is not supported.</p>
+<p><strong>SGX_ERROR_SERVICE_TIMEOUT</strong></p>
+<p>A request to the AE service timed out.</p>
+<p><strong>SGX_ERROR_NETWORK_FAILURE</strong></p>
+<p>Network connecting or proxy setting issue was encountered.</p>
+<p><strong>SGX_ERROR_OUT_OF_MEMORY</strong></p>
+<p>Not enough memory is available to complete this operation.</p>
+<p><strong>SGX_ERROR_OUT_OF_EPC</strong></p>
+<p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
+<p><strong>SGX_ERROR_UNEXPECTED</strong></p>
+<p>Indicates an unexpected error occurs.</p>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#493-500' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#497-499' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt><kbd>?</kbd></dt>
+                    <dd>Show this help dialog</dd>
+                    <dt><kbd>S</kbd></dt>
+                    <dd>Focus the search field</dd>
+                    <dt><kbd>↑</kbd></dt>
+                    <dd>Move up in search results</dd>
+                    <dt><kbd>↓</kbd></dt>
+                    <dd>Move down in search results</dd>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
+                    <dd>Go to active search result</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "sgx_tservice";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

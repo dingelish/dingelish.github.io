@@ -10,8 +10,11 @@
     <title>unwind::_Unwind_GetGR - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../dark.css">
+    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
+    <script src="../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'><a href='index.html'>unwind</a></p><script>window.sidebarCurrent = {name: '_Unwind_GetGR', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -49,7 +59,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/unwind/libunwind.rs.html#111' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../src/unwind/libunwind.rs.html#110' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub unsafe extern &quot;C&quot; fn _Unwind_GetGR(<br>&nbsp;&nbsp;&nbsp;&nbsp;ctx: *mut <a class="enum" href="../unwind/enum._Unwind_Context.html" title="enum unwind::_Unwind_Context">_Unwind_Context</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;reg_index: <a class="type" href="../sgx_types/type.c_int.html" title="type sgx_types::c_int">c_int</a><br>) -&gt; <a class="type" href="../unwind/type._Unwind_Word.html" title="type unwind::_Unwind_Word">_Unwind_Word</a></pre><div class='stability'><div class='stab unstable'><span class=microscope>🔬</span> This is a nightly-only experimental API.  (<code>panic_unwind</code>)</div></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -63,20 +73,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

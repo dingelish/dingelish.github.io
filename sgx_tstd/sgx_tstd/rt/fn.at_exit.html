@@ -10,8 +10,11 @@
     <title>sgx_tstd::rt::at_exit - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>rt</a></p><script>window.sidebarCurrent = {name: 'at_exit', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -49,7 +59,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../../src/sgx_tstd/sys_common/mod.rs.html#76-78' title='goto source code'>[src]</a></span></h1>
+               </span><a class='srclink' href='../../src/sgx_tstd/sys_common/mod.rs.html#77-79' title='goto source code'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn at_exit&lt;F:&nbsp;<a class="trait" href="../../sgx_tstd/ops/trait.FnOnce.html" title="trait sgx_tstd::ops::FnOnce">FnOnce</a>() + <a class="trait" href="../../sgx_tstd/marker/trait.Send.html" title="trait sgx_tstd::marker::Send">Send</a> + 'static&gt;(f: F) -&gt; <a class="enum" href="../../sgx_tstd/result/enum.Result.html" title="enum sgx_tstd::result::Result">Result</a>&lt;(), ()&gt;</pre><div class='docblock'><p>Enqueues a procedure to run when the main thread exits.</p>
 <p>Currently these closures are only run once the main <em>Rust</em> thread exits.
 Once the <code>at_exit</code> handlers begin running, more may be enqueued, but not
@@ -71,20 +81,22 @@ to be run.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

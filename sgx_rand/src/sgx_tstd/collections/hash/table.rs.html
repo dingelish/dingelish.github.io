@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `..-icode/sgx_tstd/src/collections/hash/table.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/ding/sgx/baidu/x-lab/rust-sgx-sdk/sgx_tstd/src/collections/hash/table.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>table.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css" id="themeStyle">
+    <script src="../../../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -1262,7 +1272,7 @@
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>::{<span class="ident">align_of</span>, <span class="ident">size_of</span>, <span class="ident">needs_drop</span>};
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ops</span>::{<span class="ident">Deref</span>, <span class="ident">DerefMut</span>};
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>::{<span class="self">self</span>, <span class="ident">Unique</span>, <span class="ident">Shared</span>};
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>::{<span class="self">self</span>, <span class="ident">Unique</span>, <span class="ident">NonNull</span>};
 
 <span class="kw">use</span> <span class="self">self</span>::<span class="ident">BucketState</span>::<span class="kw-2">*</span>;
 
@@ -2085,7 +2095,7 @@
                 <span class="ident">elems_left</span>: <span class="ident">elems_left</span>,
                 <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
             },
-            <span class="ident">table</span>: <span class="ident">Shared</span>::<span class="ident">from</span>(<span class="self">self</span>),
+            <span class="ident">table</span>: <span class="ident">NonNull</span>::<span class="ident">from</span>(<span class="self">self</span>),
             <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
         }
     }
@@ -2232,7 +2242,7 @@
 
 <span class="doccomment">/// Iterator over the entries in a table, clearing the table.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Drain</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>: <span class="lifetime">&#39;a</span>, <span class="ident">V</span>: <span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
-    <span class="ident">table</span>: <span class="ident">Shared</span><span class="op">&lt;</span><span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">table</span>: <span class="ident">NonNull</span><span class="op">&lt;</span><span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;&gt;</span>,
     <span class="ident">iter</span>: <span class="ident">RawBuckets</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>,
     <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;&gt;</span>,
 }
@@ -2421,20 +2431,22 @@
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

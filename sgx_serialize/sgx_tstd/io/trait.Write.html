@@ -10,8 +10,11 @@
     <title>sgx_tstd::io::Write - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait Write</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.write">write</a><a href="#tymethod.flush">flush</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.write_all">write_all</a><a href="#method.write_fmt">write_fmt</a><a href="#method.by_ref">by_ref</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>io</a></p><script>window.sidebarCurrent = {name: 'Write', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -142,8 +152,6 @@ current writer.</p>
         <ul class='item-list' id='implementors-list'>
     <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sgxfs.rs.html#179-184' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/sgxfs/struct.SgxFile.html" title="struct sgx_tstd::sgxfs::SgxFile">SgxFile</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sgxfs.rs.html#203-208' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/sgxfs/struct.SgxFile.html" title="struct sgx_tstd::sgxfs::SgxFile">SgxFile</a></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#306-311' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/fs/struct.File.html" title="struct sgx_tstd::fs::File">File</a></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#330-335' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/fs/struct.File.html" title="struct sgx_tstd::fs::File">File</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#333-350' title='goto source code'>[src]</a></div><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a>&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.BufWriter.html" title="struct sgx_tstd::io::BufWriter">BufWriter</a>&lt;W&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/buffered.rs.html#476-518' title='goto source code'>[src]</a></div><code>impl&lt;W:&nbsp;<a class="trait" href="../../sgx_tstd/io/trait.Write.html" title="trait sgx_tstd::io::Write">Write</a>&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.LineWriter.html" title="struct sgx_tstd::io::LineWriter">LineWriter</a>&lt;W&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/cursor.rs.html#165-171' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.Cursor.html" title="struct sgx_tstd::io::Cursor">Cursor</a>&lt;&amp;'a mut [u8]&gt;</code></li>
@@ -159,8 +167,8 @@ current writer.</p>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#351-358' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.StdoutLock.html" title="struct sgx_tstd::io::StdoutLock">StdoutLock</a>&lt;'a&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#422-435' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/io/struct.Stderr.html" title="struct sgx_tstd::io::Stderr">Stderr</a></code></li>
 <li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/io/stdio.rs.html#437-444' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for <a class="struct" href="../../sgx_tstd/io/struct.StderrLock.html" title="struct sgx_tstd::io::StderrLock">StderrLock</a>&lt;'a&gt;</code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/tcp.rs.html#227-230' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/net/struct.TcpStream.html" title="struct sgx_tstd::net::TcpStream">TcpStream</a></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/net/tcp.rs.html#241-244' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/net/struct.TcpStream.html" title="struct sgx_tstd::net::TcpStream">TcpStream</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#308-313' title='goto source code'>[src]</a></div><code>impl Write for <a class="struct" href="../../sgx_tstd/untrusted/fs/struct.File.html" title="struct sgx_tstd::untrusted::fs::File">File</a></code></li>
+<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/fs.rs.html#332-337' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Write for &amp;'a <a class="struct" href="../../sgx_tstd/untrusted/fs/struct.File.html" title="struct sgx_tstd::untrusted::fs::File">File</a></code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/sgx_tstd/io/trait.Write.js">
                  </script></section>
@@ -176,20 +184,22 @@ current writer.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 

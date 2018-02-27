@@ -10,8 +10,11 @@
     <title>sgx_tstd::str::pattern::Searcher - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
+    <script src="../../../storage.js"></script>
     
 
     
@@ -33,6 +36,13 @@
         <p class='location'>Trait Searcher</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.haystack">haystack</a><a href="#tymethod.next">next</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.next_match">next_match</a><a href="#method.next_reject">next_reject</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../../index.html'>sgx_tstd</a>::<wbr><a href='../index.html'>str</a>::<wbr><a href='index.html'>pattern</a></p><script>window.sidebarCurrent = {name: 'Searcher', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -111,10 +121,10 @@ of this and next_match will overlap.</p>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#279-351' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSearcher.html" title="struct sgx_tstd::str::pattern::CharSearcher">CharSearcher</a>&lt;'a&gt;</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#793-872' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.StrSearcher.html" title="struct sgx_tstd::str::pattern::StrSearcher">StrSearcher</a>&lt;'a, 'b&gt;</code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#645-647' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSliceSearcher.html" title="struct sgx_tstd::str::pattern::CharSliceSearcher">CharSliceSearcher</a>&lt;'a, 'b&gt;</code></li>
+    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#645-647' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSliceSearcher.html" title="struct sgx_tstd::str::pattern::CharSliceSearcher">CharSliceSearcher</a>&lt;'a, 'b&gt;</code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#279-351' title='goto source code'>[src]</a></div><code>impl&lt;'a&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharSearcher.html" title="struct sgx_tstd::str::pattern::CharSearcher">CharSearcher</a>&lt;'a&gt;</code></li>
 <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#679-683' title='goto source code'>[src]</a></div><code>impl&lt;'a, F&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.CharPredicateSearcher.html" title="struct sgx_tstd::str::pattern::CharPredicateSearcher">CharPredicateSearcher</a>&lt;'a, F&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="../../../sgx_tstd/ops/trait.FnMut.html" title="trait sgx_tstd::ops::FnMut">FnMut</a>(char) -&gt; bool,&nbsp;</span></code></li>
+<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/str/pattern.rs.html#793-872' title='goto source code'>[src]</a></div><code>impl&lt;'a, 'b&gt; Searcher&lt;'a&gt; for <a class="struct" href="../../../sgx_tstd/str/pattern/struct.StrSearcher.html" title="struct sgx_tstd::str::pattern::StrSearcher">StrSearcher</a>&lt;'a, 'b&gt;</code></li>
 </ul><script type="text/javascript" async
                          src="../../../implementors/core/str/pattern/trait.Searcher.js">
                  </script></section>
@@ -130,20 +140,22 @@ of this and next_match will overlap.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>↑</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>↓</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>↹</dt>
+                    <dt><kbd>↹</kbd></dt>
                     <dd>Switch tab</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt style="width:31px;">+ / -</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 
