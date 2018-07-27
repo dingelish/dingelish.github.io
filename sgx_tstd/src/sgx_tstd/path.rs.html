@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/path.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>path.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/path.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>path.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1863,6 +1807,68 @@
 <span id="1807">1807</span>
 <span id="1808">1808</span>
 <span id="1809">1809</span>
+<span id="1810">1810</span>
+<span id="1811">1811</span>
+<span id="1812">1812</span>
+<span id="1813">1813</span>
+<span id="1814">1814</span>
+<span id="1815">1815</span>
+<span id="1816">1816</span>
+<span id="1817">1817</span>
+<span id="1818">1818</span>
+<span id="1819">1819</span>
+<span id="1820">1820</span>
+<span id="1821">1821</span>
+<span id="1822">1822</span>
+<span id="1823">1823</span>
+<span id="1824">1824</span>
+<span id="1825">1825</span>
+<span id="1826">1826</span>
+<span id="1827">1827</span>
+<span id="1828">1828</span>
+<span id="1829">1829</span>
+<span id="1830">1830</span>
+<span id="1831">1831</span>
+<span id="1832">1832</span>
+<span id="1833">1833</span>
+<span id="1834">1834</span>
+<span id="1835">1835</span>
+<span id="1836">1836</span>
+<span id="1837">1837</span>
+<span id="1838">1838</span>
+<span id="1839">1839</span>
+<span id="1840">1840</span>
+<span id="1841">1841</span>
+<span id="1842">1842</span>
+<span id="1843">1843</span>
+<span id="1844">1844</span>
+<span id="1845">1845</span>
+<span id="1846">1846</span>
+<span id="1847">1847</span>
+<span id="1848">1848</span>
+<span id="1849">1849</span>
+<span id="1850">1850</span>
+<span id="1851">1851</span>
+<span id="1852">1852</span>
+<span id="1853">1853</span>
+<span id="1854">1854</span>
+<span id="1855">1855</span>
+<span id="1856">1856</span>
+<span id="1857">1857</span>
+<span id="1858">1858</span>
+<span id="1859">1859</span>
+<span id="1860">1860</span>
+<span id="1861">1861</span>
+<span id="1862">1862</span>
+<span id="1863">1863</span>
+<span id="1864">1864</span>
+<span id="1865">1865</span>
+<span id="1866">1866</span>
+<span id="1867">1867</span>
+<span id="1868">1868</span>
+<span id="1869">1869</span>
+<span id="1870">1870</span>
+<span id="1871">1871</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -1915,12 +1921,13 @@
 <span class="kw">use</span> <span class="ident">sys</span>::<span class="ident">path</span>::{<span class="ident">is_sep_byte</span>, <span class="ident">is_verbatim_sep</span>, <span class="ident">MAIN_SEP_STR</span>, <span class="ident">parse_prefix</span>};
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">borrow</span>::{<span class="ident">Borrow</span>, <span class="ident">Cow</span>};
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">rc</span>::<span class="ident">Rc</span>;
-<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">arc</span>::<span class="ident">Arc</span>;
+<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">sync</span>::<span class="ident">Arc</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">cmp</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">fmt</span>;
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">hash</span>::{<span class="ident">Hash</span>, <span class="ident">Hasher</span>};
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">iter</span>::{<span class="self">self</span>, <span class="ident">FusedIterator</span>};
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ops</span>::{<span class="self">self</span>, <span class="ident">Deref</span>};
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">str</span>::<span class="ident">FromStr</span>;
 
 
 <span class="comment">////////////////////////////////////////////////////////////////////////////////</span>
@@ -1999,7 +2006,7 @@
                     <span class="number">0</span>
                 }
             },
-            <span class="ident">VerbatimDisk</span>(_) <span class="op">=&gt;</span> <span class="number">6</span>,
+            <span class="ident">VerbatimDisk</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="number">6</span>,
             <span class="ident">UNC</span>(<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=&gt;</span> {
                 <span class="number">2</span> <span class="op">+</span> <span class="ident">os_str_len</span>(<span class="ident">x</span>) <span class="op">+</span>
                 <span class="kw">if</span> <span class="ident">os_str_len</span>(<span class="ident">y</span>) <span class="op">&gt;</span> <span class="number">0</span> {
@@ -2009,7 +2016,7 @@
                 }
             },
             <span class="ident">DeviceNS</span>(<span class="ident">x</span>) <span class="op">=&gt;</span> <span class="number">4</span> <span class="op">+</span> <span class="ident">os_str_len</span>(<span class="ident">x</span>),
-            <span class="ident">Disk</span>(_) <span class="op">=&gt;</span> <span class="number">2</span>,
+            <span class="ident">Disk</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="number">2</span>,
         }
 
     }
@@ -2020,16 +2027,16 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_verbatim</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="kw">use</span> <span class="self">self</span>::<span class="ident">Prefix</span>::<span class="kw-2">*</span>;
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Verbatim</span>(_) <span class="op">|</span> <span class="ident">VerbatimDisk</span>(_) <span class="op">|</span> <span class="ident">VerbatimUNC</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            _ <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">Verbatim</span>(<span class="kw">_</span>) <span class="op">|</span> <span class="ident">VerbatimDisk</span>(<span class="kw">_</span>) <span class="op">|</span> <span class="ident">VerbatimUNC</span>(..) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">is_drive</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
-            <span class="ident">Prefix</span>::<span class="ident">Disk</span>(_) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
-            _ <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="ident">Prefix</span>::<span class="ident">Disk</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
@@ -2071,10 +2078,10 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">iter_next</span> <span class="op">=</span> <span class="ident">iter</span>.<span class="ident">clone</span>();
         <span class="kw">match</span> (<span class="ident">iter_next</span>.<span class="ident">next</span>(), <span class="ident">prefix</span>.<span class="ident">next</span>()) {
             (<span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">x</span>), <span class="prelude-val">Some</span>(<span class="kw-2">ref</span> <span class="ident">y</span>)) <span class="kw">if</span> <span class="ident">x</span> <span class="op">==</span> <span class="ident">y</span> <span class="op">=&gt;</span> (),
-            (<span class="prelude-val">Some</span>(_), <span class="prelude-val">Some</span>(_)) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
-            (<span class="prelude-val">Some</span>(_), <span class="prelude-val">None</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">iter</span>),
+            (<span class="prelude-val">Some</span>(<span class="kw">_</span>), <span class="prelude-val">Some</span>(<span class="kw">_</span>)) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+            (<span class="prelude-val">Some</span>(<span class="kw">_</span>), <span class="prelude-val">None</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">iter</span>),
             (<span class="prelude-val">None</span>, <span class="prelude-val">None</span>) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">iter</span>),
-            (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(_)) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+            (<span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="kw">_</span>)) <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
         }
         <span class="ident">iter</span> <span class="op">=</span> <span class="ident">iter_next</span>;
     }
@@ -2234,10 +2241,10 @@
     <span class="doccomment">/// It represents a separator that designates that a path starts from root.</span>
     <span class="ident">RootDir</span>,
 
-    <span class="doccomment">/// A reference to the current directory, i.e. `.`. </span>
+    <span class="doccomment">/// A reference to the current directory, i.e. `.`.</span>
     <span class="ident">CurDir</span>,
 
-    <span class="doccomment">/// A reference to the parent directory, i.e. `..`. </span>
+    <span class="doccomment">/// A reference to the parent directory, i.e. `..`.</span>
     <span class="ident">ParentDir</span>,
 
     <span class="doccomment">/// A normal component, e.g. `a` and `b` in `a/b`.</span>
@@ -2417,7 +2424,7 @@
         <span class="kw">match</span> (<span class="ident">iter</span>.<span class="ident">next</span>(), <span class="ident">iter</span>.<span class="ident">next</span>()) {
             (<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="string">b&#39;.&#39;</span>), <span class="prelude-val">None</span>) <span class="op">=&gt;</span> <span class="bool-val">true</span>,
             (<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="string">b&#39;.&#39;</span>), <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="ident">b</span>)) <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">is_sep_byte</span>(<span class="ident">b</span>),
-            _ <span class="op">=&gt;</span> <span class="bool-val">false</span>,
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="bool-val">false</span>,
         }
     }
 
@@ -2430,7 +2437,7 @@
                           <span class="comment">// separately via `include_cur_dir`</span>
             <span class="string">b&quot;..&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">Component</span>::<span class="ident">ParentDir</span>),
             <span class="string">b&quot;&quot;</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">Component</span>::<span class="ident">Normal</span>(<span class="kw">unsafe</span> { <span class="ident">u8_slice_as_os_str</span>(<span class="ident">comp</span>) })),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">Component</span>::<span class="ident">Normal</span>(<span class="kw">unsafe</span> { <span class="ident">u8_slice_as_os_str</span>(<span class="ident">comp</span>) })),
         }
     }
 
@@ -2668,6 +2675,31 @@
     }
 }
 
+<span class="doccomment">/// An iterator over [`Path`] and its ancestors.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This `struct` is created by the [`ancestors`] method on [`Path`].</span>
+<span class="doccomment">/// See its documentation for more.</span>
+<span class="doccomment">///</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Ancestors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">next</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Path</span><span class="op">&gt;</span>,
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">Ancestors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Path</span>;
+
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="ident">next</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">next</span>;
+        <span class="self">self</span>.<span class="ident">next</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">next</span> {
+            <span class="prelude-val">Some</span>(<span class="ident">path</span>) <span class="op">=&gt;</span> <span class="ident">path</span>.<span class="ident">parent</span>(),
+            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+        };
+        <span class="ident">next</span>
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FusedIterator</span> <span class="kw">for</span> <span class="ident">Ancestors</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {}
+
 <span class="comment">////////////////////////////////////////////////////////////////////////////////</span>
 <span class="comment">// Basic types and traits</span>
 <span class="comment">////////////////////////////////////////////////////////////////////////////////</span>
@@ -2893,6 +2925,28 @@
 <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">PathBuf</span> {
     <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">s</span>: <span class="ident">String</span>) <span class="op">-&gt;</span> <span class="ident">PathBuf</span> {
         <span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="ident">OsString</span>::<span class="ident">from</span>(<span class="ident">s</span>))
+    }
+}
+
+<span class="doccomment">/// Error returned from [`PathBuf::from_str`][`from_str`].</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Note that parsing a path will never fail. This error is just a placeholder</span>
+<span class="doccomment">/// for implementing `FromStr` for `PathBuf`.</span>
+<span class="doccomment">///</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">ParsePathError</span> {}
+
+<span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="ident">ParsePathError</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {}
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">FromStr</span> <span class="kw">for</span> <span class="ident">PathBuf</span> {
+    <span class="kw">type</span> <span class="prelude-val">Err</span> <span class="op">=</span> <span class="ident">ParsePathError</span>;
+
+    <span class="kw">fn</span> <span class="ident">from_str</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="self">Self</span>::<span class="prelude-val">Err</span><span class="op">&gt;</span> {
+        <span class="prelude-val">Ok</span>(<span class="ident">PathBuf</span>::<span class="ident">from</span>(<span class="ident">s</span>))
     }
 }
 
@@ -3132,7 +3186,7 @@
     <span class="doccomment">/// Return `false` if the `Path` is relative, i.e. not absolute.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// See [`is_absolute`]&#39;s documentation for more details.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_relative</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">bool</span> {
         <span class="op">!</span><span class="self">self</span>.<span class="ident">is_absolute</span>()
     }
@@ -3165,12 +3219,26 @@
         <span class="kw">let</span> <span class="ident">comp</span> <span class="op">=</span> <span class="ident">comps</span>.<span class="ident">next_back</span>();
         <span class="ident">comp</span>.<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> {
             <span class="kw">match</span> <span class="ident">p</span> {
-                <span class="ident">Component</span>::<span class="ident">Normal</span>(_) <span class="op">|</span>
+                <span class="ident">Component</span>::<span class="ident">Normal</span>(<span class="kw">_</span>) <span class="op">|</span>
                 <span class="ident">Component</span>::<span class="ident">CurDir</span> <span class="op">|</span>
                 <span class="ident">Component</span>::<span class="ident">ParentDir</span> <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">comps</span>.<span class="ident">as_path</span>()),
-                _ <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
             }
         })
+    }
+
+    <span class="doccomment">/// Produces an iterator over `Path` and its ancestors.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The iterator will yield the `Path` that is returned if the [`parent`] method is used zero</span>
+    <span class="doccomment">/// or more times. That means, the iterator will yield `&amp;self`, `&amp;self.parent().unwrap()`,</span>
+    <span class="doccomment">/// `&amp;self.parent().unwrap().parent().unwrap()` and so on. If the [`parent`] method returns</span>
+    <span class="doccomment">/// [`None`], the iterator will do likewise. The iterator will always yield at least one value,</span>
+    <span class="doccomment">/// namely `&amp;self`.</span>
+    <span class="doccomment">///</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">ancestors</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Ancestors</span> {
+        <span class="ident">Ancestors</span> {
+            <span class="ident">next</span>: <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span><span class="self">self</span>),
+        }
     }
 
     <span class="doccomment">/// Returns the final component of the `Path`, if there is one.</span>
@@ -3186,7 +3254,7 @@
         <span class="self">self</span>.<span class="ident">components</span>().<span class="ident">next_back</span>().<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">p</span><span class="op">|</span> {
             <span class="kw">match</span> <span class="ident">p</span> {
                 <span class="ident">Component</span>::<span class="ident">Normal</span>(<span class="ident">p</span>) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">p</span>.<span class="ident">as_ref</span>()),
-                _ <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
+                <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">None</span>,
             }
         })
     }
@@ -3674,68 +3742,4 @@
     <span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> { <span class="string">&quot;prefix not found&quot;</span> }
 }
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_tstd";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_tstd";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

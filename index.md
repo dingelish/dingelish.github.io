@@ -17,6 +17,8 @@ We provide documents for our [Rust SGX SDK](https://github.com/baidu/rust-sgx-sd
 * [sgx_rand](https://dingelish.github.io/sgx_rand/sgx_rand/index.html), [sgx_rand_derive](https://dingelish.github.io/sgx_rand_derive/sgx_rand_derive/index.html) provides Rust style PRNG interface in SGX.
 * [sgx_serialize](https://dingelish.github.io/sgx_serialize/sgx_serialize/index.html), [sgx_serialize_derive](https://dingelish.github.io/sgx_serialize_derive/sgx_serialize_derive/index.html) and [sgx_serialize_derive_internals](https://dingelish.github.io/sgx_serialize_derive_internals/sgx_serialize_derive_internals/index.html) provides Rust style data serialization and deserialization in SGX.
 * [sgx_urts](https://dingelish.github.io/sgx_urts/sgx_urts/index.html) is the untrusted library for programming untrusted part in Rust.
+* [sgx_tprotected_fs](https://dingelish.github.io/sgx_tprotected_fs/sgx_tprotected_fs/index.html) supports the [protected file-system](https://github.com/intel/linux-sgx/tree/master/sdk/protected_fs/sgx_tprotected_fs) provided by Intel.
+* [sgx_build_helper](https://dingelish.github.io/build_helper/sgx_build_helper/index.html) helps the building process of sgx_tstd.
 
 ## A summary of Rust SGX SDK APIs
 For quick search, we provide a list of Rust SGX SDK APIs [here](https://dingelish.github.io/summary/index.html), demonstrating stable APIs and unstable APIs.

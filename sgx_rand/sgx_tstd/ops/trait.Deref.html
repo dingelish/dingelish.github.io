@@ -1,70 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `Deref` trait in crate `sgx_tstd`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, Deref">
-
-    <title>sgx_tstd::ops::Deref - Rust</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc trait">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        <p class='location'>Trait Deref</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Target">Target</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.deref">deref</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'Deref', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a>::<wbr><a class="trait" href=''>Deref</a></span><span class='out-of-band'><span class='since' title='Stable since Rust version 1.0.0'>1.0.0</span><span id='render-detail'>
-                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                       [<span class='inner'>&#x2212;</span>]
-                   </a>
-               </span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#72-80' title='goto source code'>[src]</a></span></h1>
-<pre class='rust trait'><div class="docblock attributes">#[lang = "deref"]
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `Deref` trait in crate `sgx_tstd`."><meta name="keywords" content="rust, rustlang, rust-lang, Deref"><title>sgx_tstd::ops::Deref - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Trait Deref</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Target">Target</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.deref">deref</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a></p><script>window.sidebarCurrent = {name: 'Deref', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>sgx_tstd</a>::<wbr><a href='index.html'>ops</a>::<wbr><a class="trait" href=''>Deref</a></span><span class='out-of-band'><span class='since' title='Stable since Rust version 1.0.0'>1.0.0</span><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#74-83' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust trait'><div class="docblock attributes">#[lang = "deref"]
 </div>pub trait Deref {
     type <a href='#associatedtype.Target' class="type">Target</a>: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>;
-    fn <a href='#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;Self::<a class="type" href="../../sgx_tstd/ops/trait.Deref.html#associatedtype.Target" title="type sgx_tstd::ops::Deref::Target">Target</a>;
-}</pre><div class='docblock'><p>Used for immutable dereferencing operations, like <code>*v</code>.</p>
+    <div class="docblock attributes">#[must_use]
+</div>fn <a href='#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;Self::<a class="type" href="../../sgx_tstd/ops/trait.Deref.html#associatedtype.Target" title="type sgx_tstd::ops::Deref::Target">Target</a>;
+}</pre></div><div class='docblock'><p>Used for immutable dereferencing operations, like <code>*v</code>.</p>
 <p>In addition to being used for explicit dereferencing operations with the
 (unary) <code>*</code> operator in immutable contexts, <code>Deref</code> is also used implicitly
 by the compiler in many circumstances. This mechanism is called
@@ -117,96 +56,35 @@ struct.</p>
               Required Methods<a href='#required-methods' class='anchor'></a>
             </h2>
             <div class='methods'>
-        <h3 id='tymethod.deref' class='method'><span id='deref.v' class='invisible'><code>fn <a href='#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;Self::<a class="type" href="../../sgx_tstd/ops/trait.Deref.html#associatedtype.Target" title="type sgx_tstd::ops::Deref::Target">Target</a></code></span></h3><div class='docblock'><p>Dereferences the value.</p>
+        <h3 id='tymethod.deref' class='method'><span id='deref.v' class='invisible'><code><div class="docblock attributes">#[must_use]
+</div>fn <a href='#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;Self::<a class="type" href="../../sgx_tstd/ops/trait.Deref.html#associatedtype.Target" title="type sgx_tstd::ops::Deref::Target">Target</a></code></span></h3><div class='docblock'><p>Dereferences the value.</p>
 </div></div>
         <h2 id='implementors' class='small-section-header'>
           Implementors<a href='#implementors' class='anchor'></a>
         </h2>
         <ul class='item-list' id='implementors-list'>
-    <li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#83-87' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Deref for &amp;'a T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cell.rs.html#989-996' title='goto source code'>[src]</a></div><code>impl&lt;'b, T&gt; Deref for <a class="struct" href="../../sgx_tstd/cell/struct.Ref.html" title="struct sgx_tstd::cell::Ref">Ref</a>&lt;'b, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#90-94' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Deref for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/mem.rs.html#998-1006' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Deref for <a class="union" href="../../sgx_tstd/mem/union.ManuallyDrop.html" title="union sgx_tstd::mem::ManuallyDrop">ManuallyDrop</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cell.rs.html#1130-1137' title='goto source code'>[src]</a></div><code>impl&lt;'b, T&gt; Deref for <a class="struct" href="../../sgx_tstd/cell/struct.RefMut.html" title="struct sgx_tstd::cell::RefMut">RefMut</a>&lt;'b, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec.rs.html#1686-1696' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = [T];</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/arc.rs.html#735-742' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.Arc.html" title="struct sgx_tstd::sync::Arc">Arc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#1942-1949' title='goto source code'>[src]</a></div><code>impl Deref for <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = str;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#686-692' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/rc.rs.html#797-804' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/rc/struct.Rc.html" title="struct sgx_tstd::rc::Rc">Rc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/binary_heap.rs.html#258-263' title='goto source code'>[src]</a></div><code>impl&lt;'a, T&gt; Deref for <a class="struct" href="../../sgx_tstd/collections/binary_heap/struct.PeekMut.html" title="struct sgx_tstd::collections::binary_heap::PeekMut">PeekMut</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/cmp/trait.Ord.html" title="trait sgx_tstd::cmp::Ord">Ord</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#262-273' title='goto source code'>[src]</a></div><code>impl&lt;'a, B&gt; Deref for <a class="enum" href="../../sgx_tstd/borrow/enum.Cow.html" title="enum sgx_tstd::borrow::Cow">Cow</a>&lt;'a, B&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="../../sgx_tstd/borrow/trait.ToOwned.html" title="trait sgx_tstd::borrow::ToOwned">ToOwned</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = B;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_trts/c_str.rs.html#256-263' title='goto source code'>[src]</a></div><code>impl Deref for <a class="struct" href="../../sgx_tstd/ffi/struct.CString.html" title="struct sgx_tstd::ffi::CString">CString</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../sgx_tstd/ffi/struct.CStr.html" title="struct sgx_tstd::ffi::CStr">CStr</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/ffi/os_str.rs.html#161-168' title='goto source code'>[src]</a></div><code>impl Deref for <a class="struct" href="../../sgx_tstd/ffi/struct.OsString.html" title="struct sgx_tstd::ffi::OsString">OsString</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#203-209' title='goto source code'>[src]</a></div><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/path.rs.html#1055-1061' title='goto source code'>[src]</a></div><code>impl Deref for <a class="struct" href="../../sgx_tstd/path/struct.PathBuf.html" title="struct sgx_tstd::path::PathBuf">PathBuf</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/mutex.rs.html#504-510' title='goto source code'>[src]</a></div><code>impl&lt;'mutex, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxMutexGuard.html" title="struct sgx_tstd::sync::SgxMutexGuard">SgxMutexGuard</a>&lt;'mutex, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#355-361' title='goto source code'>[src]</a></div><code>impl&lt;'mutex, T&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutexGuard.html" title="struct sgx_tstd::sync::SgxReentrantMutexGuard">SgxReentrantMutexGuard</a>&lt;'mutex, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/rwlock.rs.html#685-691' title='goto source code'>[src]</a></div><code>impl&lt;'rwlock, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxRwLockReadGuard.html" title="struct sgx_tstd::sync::SgxRwLockReadGuard">SgxRwLockReadGuard</a>&lt;'rwlock, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-<li><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/rwlock.rs.html#693-699' title='goto source code'>[src]</a></div><code>impl&lt;'rwlock, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxRwLockWriteGuard.html" title="struct sgx_tstd::sync::SgxRwLockWriteGuard">SgxRwLockWriteGuard</a>&lt;'rwlock, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code></li>
-</ul><script type="text/javascript" async
+    <li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="union" href="../../sgx_tstd/mem/union.ManuallyDrop.html" title="union sgx_tstd::mem::ManuallyDrop">ManuallyDrop</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/mem.rs.html#1010-1018' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'a, T&gt; Deref for &amp;'a mut T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#93-97' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'a, T&gt; Deref for <a class="struct" href="../../sgx_tstd/mem/struct.PinMut.html" title="struct sgx_tstd::mem::PinMut">PinMut</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/mem.rs.html#1194-1200' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'a, T&gt; Deref for &amp;'a T <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/ops/deref.rs.html#86-90' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'b, T&gt; Deref for <a class="struct" href="../../sgx_tstd/cell/struct.RefMut.html" title="struct sgx_tstd::cell::RefMut">RefMut</a>&lt;'b, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cell.rs.html#1312-1319' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'b, T&gt; Deref for <a class="struct" href="../../sgx_tstd/cell/struct.Ref.html" title="struct sgx_tstd::cell::Ref">Ref</a>&lt;'b, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cell.rs.html#1083-1090' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl Deref for <a class="struct" href="../../sgx_tstd/string/struct.String.html" title="struct sgx_tstd::string::String">String</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = str;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/string.rs.html#2038-2045' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/boxed/struct.Box.html" title="struct sgx_tstd::boxed::Box">Box</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#538-544' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/rc/struct.Rc.html" title="struct sgx_tstd::rc::Rc">Rc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/rc.rs.html#791-798' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.Arc.html" title="struct sgx_tstd::sync::Arc">Arc</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/sync.rs.html#740-747' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'a, B&gt; Deref for <a class="enum" href="../../sgx_tstd/borrow/enum.Cow.html" title="enum sgx_tstd::borrow::Cow">Cow</a>&lt;'a, B&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="../../sgx_tstd/borrow/trait.ToOwned.html" title="trait sgx_tstd::borrow::ToOwned">ToOwned</a> + ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = B;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/borrow.rs.html#263-274' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/vec/struct.Vec.html" title="struct sgx_tstd::vec::Vec">Vec</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = [T];</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/vec.rs.html#1734-1744' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'a, T&gt; Deref for <a class="struct" href="../../sgx_tstd/collections/binary_heap/struct.PeekMut.html" title="struct sgx_tstd::collections::binary_heap::PeekMut">PeekMut</a>&lt;'a, T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="../../sgx_tstd/cmp/trait.Ord.html" title="trait sgx_tstd::cmp::Ord">Ord</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/collections/binary_heap.rs.html#258-263' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/boxed/struct.PinBox.html" title="struct sgx_tstd::boxed::PinBox">PinBox</a>&lt;T&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: ?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>,&nbsp;</span><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='https://doc.rust-lang.org/nightly/src/alloc/boxed.rs.html#872-878' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl Deref for <a class="struct" href="../../sgx_tstd/ffi/struct.CString.html" title="struct sgx_tstd::ffi::CString">CString</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../sgx_tstd/ffi/struct.CStr.html" title="struct sgx_tstd::ffi::CStr">CStr</a>;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_trts/c_str.rs.html#256-263' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl Deref for <a class="struct" href="../../sgx_tstd/ffi/struct.OsString.html" title="struct sgx_tstd::ffi::OsString">OsString</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../sgx_tstd/ffi/struct.OsStr.html" title="struct sgx_tstd::ffi::OsStr">OsStr</a>;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/ffi/os_str.rs.html#174-181' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;T&gt; Deref for <a class="struct" href="../../sgx_tstd/panic/struct.AssertUnwindSafe.html" title="struct sgx_tstd::panic::AssertUnwindSafe">AssertUnwindSafe</a>&lt;T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/panic.rs.html#203-209' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl Deref for <a class="struct" href="../../sgx_tstd/path/struct.PathBuf.html" title="struct sgx_tstd::path::PathBuf">PathBuf</a><span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../sgx_tstd/path/struct.Path.html" title="struct sgx_tstd::path::Path">Path</a>;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/path.rs.html#1103-1109' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'mutex, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxMutexGuard.html" title="struct sgx_tstd::sync::SgxMutexGuard">SgxMutexGuard</a>&lt;'mutex, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/mutex.rs.html#504-510' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'mutex, T&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxReentrantMutexGuard.html" title="struct sgx_tstd::sync::SgxReentrantMutexGuard">SgxReentrantMutexGuard</a>&lt;'mutex, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/remutex.rs.html#355-361' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'rwlock, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxRwLockReadGuard.html" title="struct sgx_tstd::sync::SgxRwLockReadGuard">SgxRwLockReadGuard</a>&lt;'rwlock, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/rwlock.rs.html#685-691' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+<li><table class='table-display'><tbody><tr><td><code>impl&lt;'rwlock, T:&nbsp;?<a class="trait" href="../../sgx_tstd/marker/trait.Sized.html" title="trait sgx_tstd::marker::Sized">Sized</a>&gt; Deref for <a class="struct" href="../../sgx_tstd/sync/struct.SgxRwLockWriteGuard.html" title="struct sgx_tstd::sync::SgxRwLockWriteGuard">SgxRwLockWriteGuard</a>&lt;'rwlock, T&gt;<span class="where fmt-newline">  type <a href='#associatedtype.Target' class="type">Target</a> = T;</span></code><td><div class='out-of-band'><a class='srclink' href='../../src/sgx_tstd/sync/rwlock.rs.html#693-699' title='goto source code'>[src]</a></div></td></tr></tbody></table></li>
+</ul><script type="text/javascript">window.inlined_types=new Set([]);</script><script type="text/javascript" async
                          src="../../implementors/core/ops/deref/trait.Deref.js">
-                 </script></section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_tstd";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+                 </script></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_tstd";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

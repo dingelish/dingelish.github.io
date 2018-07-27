@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/enclave.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>enclave.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/enclave.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>enclave.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -460,7 +404,7 @@
 <span class="doccomment">/// urts_sim.a exposes an identical interface which can only load a simulation</span>
 <span class="doccomment">/// enclave. Running in simulation mode does not require Intel(R) SGX hardware/</span>
 <span class="doccomment">/// driver. However, it does not provide hardware protection.</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// The randomization of the load address of the enclave is dependent on the</span>
 <span class="doccomment">/// operating system. The address of the heap and stack is not randomized and is</span>
 <span class="doccomment">/// at a constant offset from the enclave base address. A compromised loader or</span>
@@ -485,7 +429,7 @@
 <span class="doccomment">/// inside an enclave created in debug mode is accessible by the debugger or</span>
 <span class="doccomment">/// other software outside of the enclave and thus is not under the same memory</span>
 <span class="doccomment">/// access protections as an enclave created in non-debug mode.</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// Enclaves should only be created in debug mode for debug purposes. A helper</span>
 <span class="doccomment">/// macro SGX_DEBUG_FLAG is provided to create an enclave in debug mode. In</span>
 <span class="doccomment">/// release builds, the value of SGX_DEBUG_FLAG is 0. In debug and pre-release</span>
@@ -618,19 +562,19 @@
                            <span class="ident">launch_token</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_launch_token_t</span>,
                            <span class="ident">launch_token_updated</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">i32</span>,
                            <span class="ident">misc_attr</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_misc_attribute_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_enclave_id_t</span><span class="op">&gt;</span> {
-    
+
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">enclave_id</span>: <span class="ident">sgx_enclave_id_t</span> <span class="op">=</span> <span class="number">0</span>;
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">sgx_create_enclave</span>(<span class="ident">file_name</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">c_schar</span>, 
-                           <span class="ident">debug</span> <span class="kw">as</span> <span class="ident">int32_t</span>, 
-                           <span class="ident">launch_token</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_launch_token_t</span>, 
-                           <span class="ident">launch_token_updated</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">int32_t</span>, 
-                           <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">enclave_id</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_enclave_id_t</span>, 
+        <span class="ident">sgx_create_enclave</span>(<span class="ident">file_name</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">c_schar</span>,
+                           <span class="ident">debug</span> <span class="kw">as</span> <span class="ident">int32_t</span>,
+                           <span class="ident">launch_token</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_launch_token_t</span>,
+                           <span class="ident">launch_token_updated</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">int32_t</span>,
+                           <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">enclave_id</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_enclave_id_t</span>,
                            <span class="ident">misc_attr</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_misc_attribute_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">enclave_id</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -641,9 +585,9 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// The rsgx_destroy_enclave function destroys an enclave and releases its</span>
 <span class="doccomment">/// associated resources and invalidates the enclave ID or handle.</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// The function will block until no other threads are executing inside the enclave.</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// It is highly recommended that the sgx_destroy_enclave function be</span>
 <span class="doccomment">/// called after the application has finished using the enclave to avoid possible</span>
 <span class="doccomment">/// deadlocks.</span>
@@ -672,7 +616,7 @@
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_destroy_enclave</span>(<span class="ident">enclave_id</span>) };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -697,16 +641,16 @@
 
         <span class="kw">let</span> <span class="ident">path</span>: <span class="ident">CString</span> <span class="op">=</span> <span class="ident">cstr</span>(<span class="ident">file_name</span>
                                     .<span class="ident">as_ref</span>())
-                                    .<span class="ident">map_err</span>(<span class="op">|</span>_<span class="op">|</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ENCLAVE</span>)<span class="question-mark">?</span>;
+                                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_ENCLAVE</span>)<span class="question-mark">?</span>;
 
-        <span class="kw">let</span> <span class="ident">enclave</span> <span class="op">=</span> <span class="ident">rsgx_create_enclave</span>(<span class="ident">path</span>.<span class="ident">as_c_str</span>(), 
-                                          <span class="ident">debug</span>, 
-                                          <span class="ident">launch_token</span>, 
-                                          <span class="ident">launch_token_updated</span>, 
+        <span class="kw">let</span> <span class="ident">enclave</span> <span class="op">=</span> <span class="ident">rsgx_create_enclave</span>(<span class="ident">path</span>.<span class="ident">as_c_str</span>(),
+                                          <span class="ident">debug</span>,
+                                          <span class="ident">launch_token</span>,
+                                          <span class="ident">launch_token_updated</span>,
                                           <span class="ident">misc_attr</span>)
                         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">eid</span><span class="op">|</span> <span class="ident">SgxEnclave</span> {
-                                    <span class="ident">id</span>: <span class="ident">eid</span>, 
-                                    <span class="ident">debug</span>: <span class="ident">debug</span>, 
+                                    <span class="ident">id</span>: <span class="ident">eid</span>,
+                                    <span class="ident">debug</span>: <span class="ident">debug</span>,
                                     <span class="ident">path</span>: <span class="ident">file_name</span>.<span class="ident">as_ref</span>().<span class="ident">to_owned</span>()})<span class="question-mark">?</span>;
 
         <span class="ident">enclave</span>.<span class="ident">init</span>();
@@ -731,11 +675,11 @@
                 <span class="kw">fn</span> <span class="ident">t_global_exit_ecall</span>(<span class="ident">eid</span>: <span class="ident">sgx_enclave_id_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
             }
             <span class="kw">unsafe</span> {
-                <span class="kw">let</span> _ <span class="op">=</span> <span class="ident">t_global_exit_ecall</span>(<span class="self">self</span>.<span class="ident">id</span>);
+                <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">t_global_exit_ecall</span>(<span class="self">self</span>.<span class="ident">id</span>);
             }
-        } 
+        }
     }
-    
+
     <span class="kw">fn</span> <span class="ident">init</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
 
         <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;global_init&quot;</span>)]</span>
@@ -744,7 +688,7 @@
                 <span class="kw">fn</span> <span class="ident">t_global_init_ecall</span>(<span class="ident">eid</span>: <span class="ident">sgx_enclave_id_t</span>, <span class="ident">id</span>: <span class="ident">u64</span>, <span class="ident">path</span>: <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">len</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span>;
             }
             <span class="kw">unsafe</span> {
-                <span class="kw">let</span> _ <span class="op">=</span> <span class="ident">t_global_init_ecall</span>(<span class="self">self</span>.<span class="ident">id</span>,
+                <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">t_global_init_ecall</span>(<span class="self">self</span>.<span class="ident">id</span>,
                                             <span class="self">self</span>.<span class="ident">id</span>,
                                             <span class="self">self</span>.<span class="ident">path</span>.<span class="ident">as_path</span>().<span class="ident">as_os_str</span>().<span class="ident">as_bytes</span>().<span class="ident">as_ptr</span>(),
                                             <span class="self">self</span>.<span class="ident">path</span>.<span class="ident">as_path</span>().<span class="ident">as_os_str</span>().<span class="ident">len</span>());
@@ -756,71 +700,7 @@
 <span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">SgxEnclave</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
         <span class="self">self</span>.<span class="ident">exit</span>();
-        <span class="kw">let</span> _ <span class="op">=</span> <span class="ident">rsgx_destroy_enclave</span>(<span class="self">self</span>.<span class="ident">id</span>);
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">rsgx_destroy_enclave</span>(<span class="self">self</span>.<span class="ident">id</span>);
     }
 }</pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_urts";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_urts";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

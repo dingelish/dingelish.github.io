@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/sync/mutex.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>mutex.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../../main.css" id="themeStyle">
-    <script src="../../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/sync/mutex.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mutex.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -631,14 +575,14 @@
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK already supports mutex and conditional </span>
-<span class="doccomment">//! variable synchronization mechanisms by means of the following APIand data types </span>
-<span class="doccomment">//! defined in the Types and Enumerations section. Some functions included in the </span>
+<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK already supports mutex and conditional</span>
+<span class="doccomment">//! variable synchronization mechanisms by means of the following APIand data types</span>
+<span class="doccomment">//! defined in the Types and Enumerations section. Some functions included in the</span>
 <span class="doccomment">//! trusted Thread Synchronization library may make calls outside the enclave (OCALLs).</span>
 <span class="doccomment">//! If you use any of the APIs below, you must first import the needed OCALL functions</span>
 <span class="doccomment">//! from sgx_tstdc.edl. Otherwise, you will get a linker error when the enclave is</span>
-<span class="doccomment">//! being built; see Calling Functions outside the Enclave for additional details. </span>
-<span class="doccomment">//! The table below illustrates the primitives that the Intel(R) SGX Thread </span>
+<span class="doccomment">//! being built; see Calling Functions outside the Enclave for additional details.</span>
+<span class="doccomment">//! The table below illustrates the primitives that the Intel(R) SGX Thread</span>
 <span class="doccomment">//! Synchronization library supports, as well as the OCALLs that each API function needs.</span>
 <span class="doccomment">//!</span>
 <span class="kw">use</span> <span class="ident">sgx_types</span>::{<span class="self">self</span>, <span class="ident">SysError</span>, <span class="ident">sgx_thread_mutex_t</span>, <span class="ident">sgx_thread_mutexattr_t</span>};
@@ -653,7 +597,7 @@
 <span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">boxed</span>::<span class="ident">Box</span>;
 
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">raw_mutex</span>(<span class="ident">lock</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span> {
-    <span class="ident">lock</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> _
+    <span class="ident">lock</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="kw">_</span>
 }
 
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
@@ -664,25 +608,25 @@
 }
 
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_mutex_destroy</span>(<span class="ident">mutex</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
-    
+
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_mutex_destroy</span>(<span class="ident">raw_mutex</span>(<span class="ident">mutex</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_mutex_lock</span>(<span class="ident">mutex</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
-    
+
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_mutex_lock</span>(<span class="ident">raw_mutex</span>(<span class="ident">mutex</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_mutex_trylock</span>(<span class="ident">mutex</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
-    
+
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_mutex_trylock</span>(<span class="ident">raw_mutex</span>(<span class="ident">mutex</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
 
 <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">rsgx_thread_mutex_unlock</span>(<span class="ident">mutex</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_thread_mutex_t</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
-    
+
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_types</span>::<span class="ident">sgx_thread_mutex_unlock</span>(<span class="ident">raw_mutex</span>(<span class="ident">mutex</span>));
     <span class="kw">if</span> <span class="ident">ret</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">Ok</span>(()) } <span class="kw">else</span> { <span class="prelude-val">Err</span>(<span class="ident">ret</span>) }
 }
@@ -696,12 +640,12 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">SgxThreadMutex</span> {}
 
 <span class="kw">impl</span> <span class="ident">SgxThreadMutex</span> {
-    
+
     <span class="doccomment">///</span>
     <span class="doccomment">/// The function initializes a trusted mutex object within the enclave.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// When a thread creates a mutex within an enclave, sgx_thread_mutex_</span>
     <span class="doccomment">/// init simply initializes the various fields of the mutex object to indicate that</span>
     <span class="doccomment">/// the mutex is available. rsgx_thread_mutex_init creates a non-recursive</span>
@@ -711,9 +655,9 @@
     <span class="doccomment">/// trusted mutex, it is recommended statically initializing the mutex with the</span>
     <span class="doccomment">/// macro SGX_THREAD_MUTEX_INITIALIZER, SGX_THREAD_NON_RECURSIVE_MUTEX_INITIALIZER ,</span>
     <span class="doccomment">/// of, or SGX_THREAD_RECURSIVE_MUTEX_INITIALIZER instead.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tstdc.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Return value</span>
@@ -723,12 +667,12 @@
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
         <span class="ident">SgxThreadMutex</span>{ <span class="ident">lock</span>: <span class="ident">UnsafeCell</span>::<span class="ident">new</span>(<span class="ident">sgx_types</span>::<span class="ident">SGX_THREAD_NONRECURSIVE_MUTEX_INITIALIZER</span>) }
     }
-    
+
     <span class="doccomment">///</span>
     <span class="doccomment">/// The function locks a trusted mutex object within an enclave.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// To acquire a mutex, a thread first needs to acquire the corresponding spin</span>
     <span class="doccomment">/// lock. After the spin lock is acquired, the thread checks whether the mutex is</span>
     <span class="doccomment">/// available. If the queue is empty or the thread is at the head of the queue the</span>
@@ -748,27 +692,27 @@
     <span class="doccomment">/// A thread should not exit an enclave returning from a root ECALL after acquiring</span>
     <span class="doccomment">/// the ownership of a mutex. Do not split the critical section protected by a</span>
     <span class="doccomment">/// mutex across root ECALLs.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tstdc.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **EINVAL**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The trusted mutex object is invalid.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">lock</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SysError</span> {
         <span class="ident">rsgx_thread_mutex_lock</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">lock</span>.<span class="ident">get</span>())
     }
-    
+
     <span class="doccomment">///</span>
     <span class="doccomment">/// The function tries to lock a trusted mutex object within an enclave.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// A thread may check the status of the mutex, which implies acquiring the spin</span>
     <span class="doccomment">/// lock and verifying that the mutex is available and that the queue is empty or</span>
     <span class="doccomment">/// the thread is at the head of the queue. When this happens, the thread</span>
@@ -781,19 +725,19 @@
     <span class="doccomment">/// A thread should not exit an enclave returning from a root ECALL after acquiring</span>
     <span class="doccomment">/// the ownership of a mutex. Do not split the critical section protected by a</span>
     <span class="doccomment">/// mutex across root ECALLs.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tstdc.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **EINVAL**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The trusted mutex object is invalid.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **EBUSY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The mutex is locked by another thread or has pending threads to acquire the mutex</span>
     <span class="doccomment">///</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -805,26 +749,26 @@
     <span class="doccomment">/// The function unlocks a trusted mutex object within an enclave.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Before a thread releases a mutex, it has to verify it is the owner of the mutex. If</span>
     <span class="doccomment">/// that is the case, the thread decreases the refcount by 1 and then may either</span>
     <span class="doccomment">/// continue normal execution or wakeup the first thread in the queue. Note that</span>
     <span class="doccomment">/// to ensure the state of the mutex remains consistent, the thread that is</span>
     <span class="doccomment">/// awakened by the thread releasing the mutex will then try to acquire the</span>
     <span class="doccomment">/// mutex almost as in the initial call to the rsgx_thread_mutex_lock routine.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tstdc.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **EINVAL**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The trusted mutex object is invalid or it is not locked by any thread.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **EPERM**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The mutex is locked by another thread.</span>
     <span class="doccomment">///</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -836,11 +780,11 @@
     <span class="doccomment">/// The function destroys a trusted mutex object within an enclave.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Description</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// rsgx_thread_mutex_destroy resets the mutex, which brings it to its initial</span>
     <span class="doccomment">/// status. In this process, certain fields are checked to prevent releasing a mutex</span>
     <span class="doccomment">/// that is still owned by a thread or on which threads are still waiting.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **Note**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Locking or unlocking a mutex after it has been destroyed results in undefined</span>
@@ -848,17 +792,17 @@
     <span class="doccomment">/// used again.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Requirements</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// Library: libsgx_tstdc.a</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Errors</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// **EINVAL**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The trusted mutex object is invalid.</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// **EBUSY**</span>
-    <span class="doccomment">/// </span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// The mutex is locked by another thread or has pending threads to acquire the mutex.</span>
     <span class="doccomment">///</span>
     <span class="attribute">#[<span class="ident">inline</span>]</span>
@@ -978,8 +922,8 @@
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_lock</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">TryLockResult</span><span class="op">&lt;</span><span class="ident">SgxMutexGuard</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;&gt;</span> {
         <span class="kw">unsafe</span> {
             <span class="kw">match</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">try_lock</span>() {
-                <span class="prelude-val">Ok</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxMutexGuard</span>::<span class="ident">new</span>(<span class="self">self</span>)<span class="question-mark">?</span>),
-                <span class="prelude-val">Err</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">TryLockError</span>::<span class="ident">WouldBlock</span>),
+                <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">SgxMutexGuard</span>::<span class="ident">new</span>(<span class="self">self</span>)<span class="question-mark">?</span>),
+                <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">TryLockError</span>::<span class="ident">WouldBlock</span>),
             }
         }
     }
@@ -1011,7 +955,7 @@
             <span class="ident">inner</span>.<span class="ident">destroy</span>();
             <span class="ident">drop</span>(<span class="ident">inner</span>);
 
-            <span class="ident">poison</span>::<span class="ident">map_result</span>(<span class="ident">poison</span>.<span class="ident">borrow</span>(), <span class="op">|</span>_<span class="op">|</span> <span class="ident">data</span>.<span class="ident">into_inner</span>())
+            <span class="ident">poison</span>::<span class="ident">map_result</span>(<span class="ident">poison</span>.<span class="ident">borrow</span>(), <span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">data</span>.<span class="ident">into_inner</span>())
         }
     }
 
@@ -1025,9 +969,9 @@
     <span class="doccomment">/// If another user of this mutex panicked while holding the mutex, then</span>
     <span class="doccomment">/// this call will return an error instead.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">LockResult</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">T</span><span class="op">&gt;</span> {
-      
+
         <span class="kw">let</span> <span class="ident">data</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">data</span>.<span class="ident">get</span>() };
-        <span class="ident">poison</span>::<span class="ident">map_result</span>(<span class="self">self</span>.<span class="ident">poison</span>.<span class="ident">borrow</span>(), <span class="op">|</span>_<span class="op">|</span> <span class="ident">data</span>)
+        <span class="ident">poison</span>::<span class="ident">map_result</span>(<span class="self">self</span>.<span class="ident">poison</span>.<span class="ident">borrow</span>(), <span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">data</span>)
     }
 }
 
@@ -1150,68 +1094,4 @@
     <span class="kw-2">&amp;</span><span class="ident">guard</span>.<span class="ident">__lock</span>.<span class="ident">poison</span>
 }
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../../";
-        window.currentCrate = "sgx_tstd";
-    </script>
-    <script src="../../../main.js"></script>
-    <script defer src="../../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "sgx_tstd";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script defer src="../../../search-index.js"></script></body></html>

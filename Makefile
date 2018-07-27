@@ -15,7 +15,8 @@ RUST_SGX_LIBS = sgx_types\
                 sgx_serialize_derive_internals \
                 sgx_tprotected_fs \
                 sgx_urts \
-                sgx_tunittest
+                sgx_tunittest \
+                build_helper
 
 
 UNAME = $(shell uname)

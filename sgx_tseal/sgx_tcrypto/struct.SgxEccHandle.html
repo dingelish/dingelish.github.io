@@ -1,66 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `SgxEccHandle` struct in crate `sgx_tcrypto`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, SgxEccHandle">
-
-    <title>sgx_tcrypto::SgxEccHandle - Rust</title>
-
-    <link rel="stylesheet" type="text/css" href="../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../dark.css">
-    <link rel="stylesheet" type="text/css" href="../main.css" id="themeStyle">
-    <script src="../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc struct">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        <p class='location'>Struct SgxEccHandle</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.open">open</a><a href="#method.create_key_pair">create_key_pair</a><a href="#method.check_point">check_point</a><a href="#method.compute_shared_dhkey">compute_shared_dhkey</a><a href="#method.ecdsa_sign_msg">ecdsa_sign_msg</a><a href="#method.ecdsa_sign_slice">ecdsa_sign_slice</a><a href="#method.ecdsa_verify_msg">ecdsa_verify_msg</a><a href="#method.ecdsa_verify_slice">ecdsa_verify_slice</a><a href="#method.close">close</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Default">Default</a><a href="#impl-Drop">Drop</a></div></div><p class='location'><a href='index.html'>sgx_tcrypto</a></p><script>window.sidebarCurrent = {name: 'SgxEccHandle', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sgx_tcrypto</a>::<wbr><a class="struct" href=''>SgxEccHandle</a></span><span class='out-of-band'><span id='render-detail'>
-                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                       [<span class='inner'>&#x2212;</span>]
-                   </a>
-               </span><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1441-1444' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct SgxEccHandle { /* fields omitted */ }</pre><div class='docblock'><p>ECC GF(p) context state.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `SgxEccHandle` struct in crate `sgx_tcrypto`."><meta name="keywords" content="rust, rustlang, rust-lang, SgxEccHandle"><title>sgx_tcrypto::SgxEccHandle - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script></head><body class="rustdoc struct"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Struct SgxEccHandle</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.open">open</a><a href="#method.create_key_pair">create_key_pair</a><a href="#method.check_point">check_point</a><a href="#method.compute_shared_dhkey">compute_shared_dhkey</a><a href="#method.ecdsa_sign_msg">ecdsa_sign_msg</a><a href="#method.ecdsa_sign_slice">ecdsa_sign_slice</a><a href="#method.ecdsa_verify_msg">ecdsa_verify_msg</a><a href="#method.ecdsa_verify_slice">ecdsa_verify_slice</a><a href="#method.close">close</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Default">Default</a><a href="#impl-Drop">Drop</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">!Send</a><a href="#impl-Sync">!Sync</a></div></div><p class='location'><a href='index.html'>sgx_tcrypto</a></p><script>window.sidebarCurrent = {name: 'SgxEccHandle', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>sgx_tcrypto</a>::<wbr><a class="struct" href=''>SgxEccHandle</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1441-1444' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct SgxEccHandle { /* fields omitted */ }</pre></div><div class='docblock'><p>ECC GF(p) context state.</p>
 <p>This is a handle to the ECC GF(p) context state allocated and initialized used to perform
 elliptic curve cryptosystem standard functions. The algorithm stores the intermediate results
 of calculations performed using this context.</p>
@@ -68,11 +6,8 @@ of calculations performed using this context.</p>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1446-2034' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1451-1456' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Constructs a new, empty SgxEccHandle.</p>
-</div><h4 id='method.open' class="method"><span id='open.v' class='invisible'><code>pub fn <a href='#method.open' class='fnname'>open</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1514-1528' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>open returns an allocated and initialized context for the elliptic curve cryptosystem
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1446-2034' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1451-1456' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Constructs a new, empty SgxEccHandle.</p>
+</div><h4 id='method.open' class="method"><span id='open.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.open' class='fnname'>open</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1514-1528' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>open returns an allocated and initialized context for the elliptic curve cryptosystem
 over a prime finite field, GF(p).</p>
 <p>This context must be created prior to calling create_key_pair or compute_shared_dhkey.
 When the calling code has completed its set of ECC operations, close should be called to
@@ -111,8 +46,7 @@ requires less computation processing volumes.</p>
 <p>Not enough memory is available to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>The ECC context state was not initialized properly due to an internal cryptography library failure.</p>
-</div><h4 id='method.create_key_pair' class="method"><span id='create_key_pair.v' class='invisible'><code>pub fn <a href='#method.create_key_pair' class='fnname'>create_key_pair</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;(<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a>, <a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>)&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1585-1599' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>create_key_pair generates a private/public key pair on the ECC curve for the given
+</div><h4 id='method.create_key_pair' class="method"><span id='create_key_pair.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.create_key_pair' class='fnname'>create_key_pair</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self<br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;(<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a>, <a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>)&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1585-1599' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>create_key_pair generates a private/public key pair on the ECC curve for the given
 cryptographic system.</p>
 <p>open must be called to allocate and initialize the ECC context prior to making this call.</p>
 <h1 id="description-1" class="section-header"><a href="#description-1">Description</a></h1>
@@ -144,8 +78,7 @@ of the elliptic curve base point.</p>
 <p>Not enough memory is available to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>The key creation process failed due to an internal cryptography library failure.</p>
-</div><h4 id='method.check_point' class="method"><span id='check_point.v' class='invisible'><code>pub fn <a href='#method.check_point' class='fnname'>check_point</a>(&amp;self, point: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;bool&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1648-1668' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>check_point checks whether the input point is a valid point on the ECC curve for the given cryptographic system.</p>
+</div><h4 id='method.check_point' class="method"><span id='check_point.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.check_point' class='fnname'>check_point</a>(&amp;self, point: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;bool&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1648-1668' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>check_point checks whether the input point is a valid point on the ECC curve for the given cryptographic system.</p>
 <p>open context must be called to allocate and initialize the ECC context prior to making this call.</p>
 <h1 id="description-2" class="section-header"><a href="#description-2">Description</a></h1>
 <p>check_point validates whether the input point is a valid point on the ECC curve for the given cryptographic system.</p>
@@ -168,8 +101,7 @@ of the elliptic curve base point.</p>
 <p>Not enough memory is available to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>An internal cryptography library failure occurred.</p>
-</div><h4 id='method.compute_shared_dhkey' class="method"><span id='compute_shared_dhkey.v' class='invisible'><code>pub fn <a href='#method.compute_shared_dhkey' class='fnname'>compute_shared_dhkey</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;private_b: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;public_ga: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_dh_shared_t.html" title="struct sgx_types::types::sgx_ec256_dh_shared_t">sgx_ec256_dh_shared_t</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1760-1772' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>compute_shared_dhkey generates a secret key shared between two participants of the cryptosystem.</p>
+</div><h4 id='method.compute_shared_dhkey' class="method"><span id='compute_shared_dhkey.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.compute_shared_dhkey' class='fnname'>compute_shared_dhkey</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;private_b: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;public_ga: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_dh_shared_t.html" title="struct sgx_types::types::sgx_ec256_dh_shared_t">sgx_ec256_dh_shared_t</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1760-1772' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>compute_shared_dhkey generates a secret key shared between two participants of the cryptosystem.</p>
 <h1 id="description-3" class="section-header"><a href="#description-3">Description</a></h1>
 <p>This function computes the Diffie-Hellman shared key based on the enclave’s
 own (local) private key and remote enclave’s public Ga Key.</p>
@@ -237,8 +169,7 @@ function: open.</p>
 <p>Not enough memory is available to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>The key creation process failed due to an internal cryptography library failure.</p>
-</div><h4 id='method.ecdsa_sign_msg' class="method"><span id='ecdsa_sign_msg.v' class='invisible'><code>pub fn <a href='#method.ecdsa_sign_msg' class='fnname'>ecdsa_sign_msg</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;T, <br>&nbsp;&nbsp;&nbsp;&nbsp;private: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1850-1863' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>ecdsa_sign_msg computes a digital signature with a given private key over an input dataset.</p>
+</div><h4 id='method.ecdsa_sign_msg' class="method"><span id='ecdsa_sign_msg.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.ecdsa_sign_msg' class='fnname'>ecdsa_sign_msg</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;T, <br>&nbsp;&nbsp;&nbsp;&nbsp;private: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1850-1863' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>ecdsa_sign_msg computes a digital signature with a given private key over an input dataset.</p>
 <h1 id="description-4" class="section-header"><a href="#description-4">Description</a></h1>
 <p>This function computes a digital signature over the input dataset based on the
 put private key.</p>
@@ -269,10 +200,8 @@ elliptic curve of the DSA scheme.</p>
 <p>Not enough memory is available to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>The signature generation process failed due to an internal cryptography library failure.</p>
-</div><h4 id='method.ecdsa_sign_slice' class="method"><span id='ecdsa_sign_slice.v' class='invisible'><code>pub fn <a href='#method.ecdsa_sign_slice' class='fnname'>ecdsa_sign_slice</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;[T], <br>&nbsp;&nbsp;&nbsp;&nbsp;private: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1868-1881' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>ecdsa_sign_slice computes a digital signature with a given private key over an input dataset.</p>
-</div><h4 id='method.ecdsa_verify_msg' class="method"><span id='ecdsa_verify_msg.v' class='invisible'><code>pub fn <a href='#method.ecdsa_verify_msg' class='fnname'>ecdsa_verify_msg</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;T, <br>&nbsp;&nbsp;&nbsp;&nbsp;public: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;signature: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;bool&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1943-1964' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>ecdsa_verify_msg verifies the input digital signature with a given public key over an input dataset.</p>
+</div><h4 id='method.ecdsa_sign_slice' class="method"><span id='ecdsa_sign_slice.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.ecdsa_sign_slice' class='fnname'>ecdsa_sign_slice</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;[T], <br>&nbsp;&nbsp;&nbsp;&nbsp;private: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_private_t.html" title="struct sgx_types::types::sgx_ec256_private_t">sgx_ec256_private_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a>&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1868-1881' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>ecdsa_sign_slice computes a digital signature with a given private key over an input dataset.</p>
+</div><h4 id='method.ecdsa_verify_msg' class="method"><span id='ecdsa_verify_msg.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.ecdsa_verify_msg' class='fnname'>ecdsa_verify_msg</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;T, <br>&nbsp;&nbsp;&nbsp;&nbsp;public: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;signature: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;bool&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1943-1964' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>ecdsa_verify_msg verifies the input digital signature with a given public key over an input dataset.</p>
 <h1 id="description-5" class="section-header"><a href="#description-5">Description</a></h1>
 <p>This function verifies the signature for the given data set based on the input public key.</p>
 <p>A digital signature over a message consists of a pair of large numbers, 256-bits
@@ -303,10 +232,8 @@ curve of the DSA scheme.</p>
 <p>Not enough memory is available to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>The verification process failed due to an internal cryptography library failure.</p>
-</div><h4 id='method.ecdsa_verify_slice' class="method"><span id='ecdsa_verify_slice.v' class='invisible'><code>pub fn <a href='#method.ecdsa_verify_slice' class='fnname'>ecdsa_verify_slice</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;[T], <br>&nbsp;&nbsp;&nbsp;&nbsp;public: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;signature: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;bool&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1969-1990' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>ecdsa_verify_slice verifies the input digital signature with a given public key over an input dataset.</p>
-</div><h4 id='method.close' class="method"><span id='close.v' class='invisible'><code>pub fn <a href='#method.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2010-2033' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>close cleans up and deallocates the ECC 256 GF(p) state that was allocated in function open.</p>
+</div><h4 id='method.ecdsa_verify_slice' class="method"><span id='ecdsa_verify_slice.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.ecdsa_verify_slice' class='fnname'>ecdsa_verify_slice</a>&lt;T&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;data: &amp;[T], <br>&nbsp;&nbsp;&nbsp;&nbsp;public: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_public_t.html" title="struct sgx_types::types::sgx_ec256_public_t">sgx_ec256_public_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;signature: &amp;<a class="struct" href="../sgx_types/types/struct.sgx_ec256_signature_t.html" title="struct sgx_types::types::sgx_ec256_signature_t">sgx_ec256_signature_t</a><br>) -&gt; <a class="type" href="../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;bool&gt; <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="../sgx_types/marker/trait.ContiguousMemory.html" title="trait sgx_types::marker::ContiguousMemory">ContiguousMemory</a>,&nbsp;</span></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#1969-1990' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>ecdsa_verify_slice verifies the input digital signature with a given public key over an input dataset.</p>
+</div><h4 id='method.close' class="method"><span id='close.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.close' class='fnname'>close</a>(&amp;self) -&gt; <a class="type" href="../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2010-2033' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>close cleans up and deallocates the ECC 256 GF(p) state that was allocated in function open.</p>
 <h1 id="description-6" class="section-header"><a href="#description-6">Description</a></h1>
 <p>close is used by calling code to deallocate memory used for storing the ECC 256 GF(p) state used
 in ECC cryptographic calculations.</p>
@@ -316,77 +243,14 @@ in ECC cryptographic calculations.</p>
 <p><strong>SGX_ERROR_INVALID_PARAMETER</strong></p>
 <p>The input handle is invalid.</p>
 </div></div>
-            <h2 id='implementations' class='small-section-header'>
-              Trait Implementations<a href='#implementations' class='anchor'></a>
-            </h2>
-        <h3 id='impl-Default' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl-Default' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2036-2040' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2037-2039' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
-</div></div><h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2042-2049' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2046-2048' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>close cleans up and deallocates the ECC 256 GF(p) state that was allocated in function open.</p>
-</div></div></section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../";
-        window.currentCrate = "sgx_tcrypto";
-    </script>
-    <script src="../main.js"></script>
-    <script defer src="../search-index.js"></script>
-</body>
-</html>
+                <h2 id='implementations' class='small-section-header'>
+                  Trait Implementations<a href='#implementations' class='anchor'></a>
+                </h2>
+                <div id='implementations-list'><h3 id='impl-Default' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl-Default' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2036-2040' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; Self</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2037-2039' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
+</div></div><h3 id='impl-Drop' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl-Drop' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2042-2049' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/sgx_tcrypto/crypto.rs.html#2046-2048' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>close cleans up and deallocates the ECC 256 GF(p) state that was allocated in function open.</p>
+</div></div></div>
+                <h2 id='synthetic-implementations' class='small-section-header'>
+                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+                </h2>
+                <div id='synthetic-implementations-list'>
+            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../sgx_tcrypto/struct.SgxEccHandle.html" title="struct sgx_tcrypto::SgxEccHandle">SgxEccHandle</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "sgx_tcrypto";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

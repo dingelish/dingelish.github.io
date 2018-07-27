@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["SgxRng","A random number generator "]]});
+initSidebarItems({"struct":[["SgxRng","A random number generator"]]});

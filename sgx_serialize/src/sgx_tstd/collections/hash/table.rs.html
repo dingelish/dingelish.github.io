@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/ding/sgx/baidu/x-lab/rust-sgx-sdk/sgx_tstd/src/collections/hash/table.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>table.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../../../main.css" id="themeStyle">
-    <script src="../../../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `../sgx_tstd/src/collections/hash/table.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>table.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script src="../../../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../../../settings.html"><img src="../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1205,36 +1149,6 @@
 <span id="1149">1149</span>
 <span id="1150">1150</span>
 <span id="1151">1151</span>
-<span id="1152">1152</span>
-<span id="1153">1153</span>
-<span id="1154">1154</span>
-<span id="1155">1155</span>
-<span id="1156">1156</span>
-<span id="1157">1157</span>
-<span id="1158">1158</span>
-<span id="1159">1159</span>
-<span id="1160">1160</span>
-<span id="1161">1161</span>
-<span id="1162">1162</span>
-<span id="1163">1163</span>
-<span id="1164">1164</span>
-<span id="1165">1165</span>
-<span id="1166">1166</span>
-<span id="1167">1167</span>
-<span id="1168">1168</span>
-<span id="1169">1169</span>
-<span id="1170">1170</span>
-<span id="1171">1171</span>
-<span id="1172">1172</span>
-<span id="1173">1173</span>
-<span id="1174">1174</span>
-<span id="1175">1175</span>
-<span id="1176">1176</span>
-<span id="1177">1177</span>
-<span id="1178">1178</span>
-<span id="1179">1179</span>
-<span id="1180">1180</span>
-<span id="1181">1181</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -1264,15 +1178,15 @@
 <span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
 <span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 
-<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">heap</span>::{<span class="ident">Heap</span>, <span class="ident">Alloc</span>, <span class="ident">Layout</span>};
-
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">cmp</span>;
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">hash</span>::{<span class="ident">BuildHasher</span>, <span class="ident">Hash</span>, <span class="ident">Hasher</span>};
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">marker</span>;
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>::{<span class="ident">align_of</span>, <span class="ident">size_of</span>, <span class="ident">needs_drop</span>};
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">mem</span>;
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ops</span>::{<span class="ident">Deref</span>, <span class="ident">DerefMut</span>};
-<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">ptr</span>::{<span class="self">self</span>, <span class="ident">Unique</span>, <span class="ident">NonNull</span>};
+<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">alloc</span>::{<span class="ident">Global</span>, <span class="ident">Alloc</span>, <span class="ident">Layout</span>, <span class="ident">LayoutErr</span>, <span class="ident">handle_alloc_error</span>};
+<span class="kw">use</span> <span class="ident">alloc</span>::<span class="ident">collections</span>::<span class="ident">CollectionAllocErr</span>;
+<span class="kw">use</span> <span class="ident">hash</span>::{<span class="ident">BuildHasher</span>, <span class="ident">Hash</span>, <span class="ident">Hasher</span>};
+<span class="kw">use</span> <span class="ident">marker</span>;
+<span class="kw">use</span> <span class="ident">mem</span>::{<span class="ident">size_of</span>, <span class="ident">needs_drop</span>};
+<span class="kw">use</span> <span class="ident">mem</span>;
+<span class="kw">use</span> <span class="ident">ops</span>::{<span class="ident">Deref</span>, <span class="ident">DerefMut</span>};
+<span class="kw">use</span> <span class="ident">ptr</span>::{<span class="self">self</span>, <span class="ident">Unique</span>, <span class="ident">NonNull</span>};
+<span class="kw">use</span> <span class="ident">core</span>::<span class="ident">hint</span>;
 
 <span class="kw">use</span> <span class="self">self</span>::<span class="ident">BucketState</span>::<span class="kw-2">*</span>;
 
@@ -1336,7 +1250,7 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// Essential invariants of this structure:</span>
 <span class="doccomment">///</span>
-<span class="doccomment">///   - if t.hashes[i] == EMPTY_BUCKET, then `Bucket::at_index(&amp;t, i).raw`</span>
+<span class="doccomment">///   - if `t.hashes[i] == EMPTY_BUCKET`, then `Bucket::at_index(&amp;t, i).raw`</span>
 <span class="doccomment">///     points to &#39;undefined&#39; contents. Don&#39;t read from it. This invariant is</span>
 <span class="doccomment">///     enforced outside this module with the `EmptyBucket`, `FullBucket`,</span>
 <span class="doccomment">///     and `SafeHash` types.</span>
@@ -1472,6 +1386,20 @@
     <span class="ident">SafeHash</span>::<span class="ident">new</span>(<span class="ident">state</span>.<span class="ident">finish</span>())
 }
 
+<span class="comment">// `replace` casts a `*HashUint` to a `*SafeHash`. Since we statically</span>
+<span class="comment">// ensure that a `FullBucket` points to an index with a non-zero hash,</span>
+<span class="comment">// and a `SafeHash` is just a `HashUint` with a different name, this is</span>
+<span class="comment">// safe.</span>
+<span class="comment">//</span>
+<span class="comment">// This test ensures that a `SafeHash` really IS the same size as a</span>
+<span class="comment">// `HashUint`. If you need to change the size of `SafeHash` (and</span>
+<span class="comment">// consequently made this test fail), `replace` needs to be</span>
+<span class="comment">// modified to no longer assume this.</span>
+<span class="attribute">#[<span class="ident">test</span>]</span>
+<span class="kw">fn</span> <span class="ident">can_alias_safehash_as_hash</span>() {
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">SafeHash</span><span class="op">&gt;</span>(), <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>())
+}
+
 <span class="comment">// RawBucket methods are unsafe as it&#39;s possible to</span>
 <span class="comment">// make a RawBucket point to invalid memory using safe code.</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> <span class="ident">RawBucket</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
@@ -1592,14 +1520,14 @@
         <span class="kw">let</span> <span class="ident">ib_index</span> <span class="op">=</span> <span class="ident">ib_index</span> <span class="op">&amp;</span> <span class="ident">table</span>.<span class="ident">capacity_mask</span>;
         <span class="ident">Bucket</span> {
             <span class="ident">raw</span>: <span class="ident">table</span>.<span class="ident">raw_bucket_at</span>(<span class="ident">ib_index</span>),
-            <span class="ident">table</span>: <span class="ident">table</span>,
+            <span class="ident">table</span>,
         }
     }
 
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">first</span>(<span class="ident">table</span>: <span class="ident">M</span>) <span class="op">-&gt;</span> <span class="ident">Bucket</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span>, <span class="ident">M</span><span class="op">&gt;</span> {
         <span class="ident">Bucket</span> {
             <span class="ident">raw</span>: <span class="ident">table</span>.<span class="ident">raw_bucket_at</span>(<span class="number">0</span>),
-            <span class="ident">table</span>: <span class="ident">table</span>,
+            <span class="ident">table</span>,
         }
     }
 
@@ -1649,7 +1577,7 @@
                     <span class="ident">table</span>: <span class="self">self</span>.<span class="ident">table</span>,
                 })
             }
-            _ <span class="op">=&gt;</span> {
+            <span class="kw">_</span> <span class="op">=&gt;</span> {
                 <span class="ident">Full</span>(<span class="ident">FullBucket</span> {
                     <span class="ident">raw</span>: <span class="self">self</span>.<span class="ident">raw</span>,
                     <span class="ident">table</span>: <span class="self">self</span>.<span class="ident">table</span>,
@@ -1694,7 +1622,7 @@
         <span class="kw">match</span> <span class="self">self</span>.<span class="ident">next</span>().<span class="ident">peek</span>() {
             <span class="ident">Full</span>(<span class="ident">bucket</span>) <span class="op">=&gt;</span> {
                 <span class="prelude-val">Ok</span>(<span class="ident">GapThenFull</span> {
-                    <span class="ident">gap</span>: <span class="ident">gap</span>,
+                    <span class="ident">gap</span>,
                     <span class="ident">full</span>: <span class="ident">bucket</span>,
                 })
             }
@@ -1720,21 +1648,6 @@
 
             <span class="self">self</span>.<span class="ident">table</span>.<span class="ident">borrow_table_mut</span>().<span class="ident">size</span> <span class="op">+=</span> <span class="number">1</span>;
         }
-
-        <span class="ident">FullBucket</span> {
-            <span class="ident">raw</span>: <span class="self">self</span>.<span class="ident">raw</span>,
-            <span class="ident">table</span>: <span class="self">self</span>.<span class="ident">table</span>,
-        }
-    }
-
-    <span class="doccomment">/// Puts given key, remain value uninitialized.</span>
-    <span class="doccomment">/// It is only used for inplacement insertion.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">put_key</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">hash</span>: <span class="ident">SafeHash</span>, <span class="ident">key</span>: <span class="ident">K</span>) <span class="op">-&gt;</span> <span class="ident">FullBucket</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span>, <span class="ident">M</span><span class="op">&gt;</span> {
-        <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">raw</span>.<span class="ident">hash</span>() <span class="op">=</span> <span class="ident">hash</span>.<span class="ident">inspect</span>();
-        <span class="kw">let</span> <span class="ident">pair_ptr</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">raw</span>.<span class="ident">pair</span>();
-        <span class="ident">ptr</span>::<span class="ident">write</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> (<span class="kw-2">*</span><span class="ident">pair_ptr</span>).<span class="number">0</span>, <span class="ident">key</span>);
-
-        <span class="self">self</span>.<span class="ident">table</span>.<span class="ident">borrow_table_mut</span>().<span class="ident">size</span> <span class="op">+=</span> <span class="number">1</span>;
 
         <span class="ident">FullBucket</span> {
             <span class="ident">raw</span>: <span class="self">self</span>.<span class="ident">raw</span>,
@@ -1815,17 +1728,6 @@
             <span class="ident">k</span>,
             <span class="ident">v</span>)
         }
-    }
-
-    <span class="doccomment">/// Remove this bucket&#39;s `key` from the hashtable.</span>
-    <span class="doccomment">/// Only used for inplacement insertion.</span>
-    <span class="doccomment">/// NOTE: `Value` is uninitialized when this function is called, don&#39;t try to drop the `Value`.</span>
-    <span class="kw">pub</span> <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">remove_key</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="self">self</span>.<span class="ident">table</span>.<span class="ident">size</span> <span class="op">-=</span> <span class="number">1</span>;
-
-        <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">raw</span>.<span class="ident">hash</span>() <span class="op">=</span> <span class="ident">EMPTY_BUCKET</span>;
-        <span class="kw">let</span> <span class="ident">pair_ptr</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">raw</span>.<span class="ident">pair</span>();
-        <span class="ident">ptr</span>::<span class="ident">drop_in_place</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> (<span class="kw-2">*</span><span class="ident">pair_ptr</span>).<span class="number">0</span>); <span class="comment">// only drop key</span>
     }
 }
 
@@ -1920,124 +1822,114 @@
     }
 }
 
-
-<span class="doccomment">/// Rounds up to a multiple of a power of two. Returns the closest multiple</span>
-<span class="doccomment">/// of `target_alignment` that is higher or equal to `unrounded`.</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// # Panics</span>
-<span class="doccomment">///</span>
-<span class="doccomment">/// Panics if `target_alignment` is not a power of two.</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">round_up_to_next</span>(<span class="ident">unrounded</span>: <span class="ident">usize</span>, <span class="ident">target_alignment</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
-    <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">target_alignment</span>.<span class="ident">is_power_of_two</span>());
-    (<span class="ident">unrounded</span> <span class="op">+</span> <span class="ident">target_alignment</span> <span class="op">-</span> <span class="number">1</span>) <span class="op">&amp;</span> <span class="op">!</span>(<span class="ident">target_alignment</span> <span class="op">-</span> <span class="number">1</span>)
+<span class="comment">// Returns a Layout which describes the allocation required for a hash table,</span>
+<span class="comment">// and the offset of the array of (key, value) pairs in the allocation.</span>
+<span class="kw">fn</span> <span class="ident">calculate_layout</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(<span class="ident">Layout</span>, <span class="ident">usize</span>), <span class="ident">LayoutErr</span><span class="op">&gt;</span> {
+    <span class="kw">let</span> <span class="ident">hashes</span> <span class="op">=</span> <span class="ident">Layout</span>::<span class="ident">array</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>(<span class="ident">capacity</span>)<span class="question-mark">?</span>;
+    <span class="kw">let</span> <span class="ident">pairs</span> <span class="op">=</span> <span class="ident">Layout</span>::<span class="ident">array</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>(<span class="ident">capacity</span>)<span class="question-mark">?</span>;
+    <span class="ident">hashes</span>.<span class="ident">extend</span>(<span class="ident">pairs</span>).<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">layout</span>, <span class="kw">_</span>)<span class="op">|</span> {
+        <span class="comment">// LLVM seems to have trouble properly const-propagating pairs.align(),</span>
+        <span class="comment">// possibly due to the use of NonZeroUsize. This little hack allows it</span>
+        <span class="comment">// to generate optimal code.</span>
+        <span class="comment">//</span>
+        <span class="comment">// See https://github.com/rust-lang/rust/issues/51346 for more details.</span>
+        (
+            <span class="ident">layout</span>,
+            <span class="ident">hashes</span>.<span class="ident">size</span>() <span class="op">+</span> <span class="ident">hashes</span>.<span class="ident">padding_needed_for</span>(<span class="ident">mem</span>::<span class="ident">align_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>()),
+        )
+    })
 }
 
-<span class="comment">// Returns a tuple of (pairs_offset, end_of_pairs_offset),</span>
-<span class="comment">// from the start of a mallocated array.</span>
-<span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">fn</span> <span class="ident">calculate_offsets</span>(<span class="ident">hashes_size</span>: <span class="ident">usize</span>,
-                     <span class="ident">pairs_size</span>: <span class="ident">usize</span>,
-                     <span class="ident">pairs_align</span>: <span class="ident">usize</span>)
-                     <span class="op">-&gt;</span> (<span class="ident">usize</span>, <span class="ident">usize</span>, <span class="ident">bool</span>) {
-    <span class="kw">let</span> <span class="ident">pairs_offset</span> <span class="op">=</span> <span class="ident">round_up_to_next</span>(<span class="ident">hashes_size</span>, <span class="ident">pairs_align</span>);
-    <span class="kw">let</span> (<span class="ident">end_of_pairs</span>, <span class="ident">oflo</span>) <span class="op">=</span> <span class="ident">pairs_offset</span>.<span class="ident">overflowing_add</span>(<span class="ident">pairs_size</span>);
-
-    (<span class="ident">pairs_offset</span>, <span class="ident">end_of_pairs</span>, <span class="ident">oflo</span>)
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">Fallibility</span> {
+    <span class="ident">Fallible</span>,
+    <span class="ident">Infallible</span>,
 }
 
-<span class="comment">// Returns a tuple of (minimum required malloc alignment,</span>
-<span class="comment">// array_size), from the start of a mallocated array.</span>
-<span class="kw">fn</span> <span class="ident">calculate_allocation</span>(<span class="ident">hash_size</span>: <span class="ident">usize</span>,
-                        <span class="ident">hash_align</span>: <span class="ident">usize</span>,
-                        <span class="ident">pairs_size</span>: <span class="ident">usize</span>,
-                        <span class="ident">pairs_align</span>: <span class="ident">usize</span>)
-                        <span class="op">-&gt;</span> (<span class="ident">usize</span>, <span class="ident">usize</span>, <span class="ident">bool</span>) {
-    <span class="kw">let</span> (_, <span class="ident">end_of_pairs</span>, <span class="ident">oflo</span>) <span class="op">=</span> <span class="ident">calculate_offsets</span>(<span class="ident">hash_size</span>, <span class="ident">pairs_size</span>, <span class="ident">pairs_align</span>);
-
-    <span class="kw">let</span> <span class="ident">align</span> <span class="op">=</span> <span class="ident">cmp</span>::<span class="ident">max</span>(<span class="ident">hash_align</span>, <span class="ident">pairs_align</span>);
-
-    (<span class="ident">align</span>, <span class="ident">end_of_pairs</span>, <span class="ident">oflo</span>)
-}
+<span class="kw">use</span> <span class="self">self</span>::<span class="ident">Fallibility</span>::<span class="kw-2">*</span>;
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> <span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
     <span class="doccomment">/// Does not initialize the buckets. The caller should ensure they,</span>
     <span class="doccomment">/// at the very least, set every hash to EMPTY_BUCKET.</span>
-    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new_uninitialized</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Returns an error if it cannot allocate or capacity overflows.</span>
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new_uninitialized_internal</span>(
+        <span class="ident">capacity</span>: <span class="ident">usize</span>,
+        <span class="ident">fallibility</span>: <span class="ident">Fallibility</span>,
+    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>, <span class="ident">CollectionAllocErr</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="ident">capacity</span> <span class="op">==</span> <span class="number">0</span> {
-            <span class="kw">return</span> <span class="ident">RawTable</span> {
+            <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">RawTable</span> {
                 <span class="ident">size</span>: <span class="number">0</span>,
                 <span class="ident">capacity_mask</span>: <span class="ident">capacity</span>.<span class="ident">wrapping_sub</span>(<span class="number">1</span>),
                 <span class="ident">hashes</span>: <span class="ident">TaggedHashUintPtr</span>::<span class="ident">new</span>(<span class="ident">EMPTY</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">HashUint</span>),
                 <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
-            };
+            });
         }
-
-        <span class="comment">// No need for `checked_mul` before a more restrictive check performed</span>
-        <span class="comment">// later in this method.</span>
-        <span class="kw">let</span> <span class="ident">hashes_size</span> <span class="op">=</span> <span class="ident">capacity</span>.<span class="ident">wrapping_mul</span>(<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>());
-        <span class="kw">let</span> <span class="ident">pairs_size</span> <span class="op">=</span> <span class="ident">capacity</span>.<span class="ident">wrapping_mul</span>(<span class="ident">size_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>());
 
         <span class="comment">// Allocating hashmaps is a little tricky. We need to allocate two</span>
         <span class="comment">// arrays, but since we know their sizes and alignments up front,</span>
         <span class="comment">// we just allocate a single array, and then have the subarrays</span>
         <span class="comment">// point into it.</span>
-        <span class="comment">//</span>
-        <span class="comment">// This is great in theory, but in practice getting the alignment</span>
-        <span class="comment">// right is a little subtle. Therefore, calculating offsets has been</span>
-        <span class="comment">// factored out into a different function.</span>
-        <span class="kw">let</span> (<span class="ident">alignment</span>, <span class="ident">size</span>, <span class="ident">oflo</span>) <span class="op">=</span> <span class="ident">calculate_allocation</span>(<span class="ident">hashes_size</span>,
-                                                           <span class="ident">align_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>(),
-                                                           <span class="ident">pairs_size</span>,
-                                                           <span class="ident">align_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>());
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="op">!</span><span class="ident">oflo</span>, <span class="string">&quot;capacity overflow&quot;</span>);
+        <span class="kw">let</span> (<span class="ident">layout</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">calculate_layout</span>::<span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="ident">capacity</span>)<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">Global</span>.<span class="ident">alloc</span>(<span class="ident">layout</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">fallibility</span> {
+            <span class="ident">Infallible</span> <span class="op">=&gt;</span> <span class="ident">handle_alloc_error</span>(<span class="ident">layout</span>),
+            <span class="ident">Fallible</span> <span class="op">=&gt;</span> <span class="ident">e</span>,
+        })<span class="question-mark">?</span>;
 
-        <span class="comment">// One check for overflow that covers calculation and rounding of size.</span>
-        <span class="kw">let</span> <span class="ident">size_of_bucket</span> <span class="op">=</span> <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>().<span class="ident">checked_add</span>(<span class="ident">size_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>()).<span class="ident">unwrap</span>();
-        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">size</span> <span class="op">&gt;=</span>
-                <span class="ident">capacity</span>.<span class="ident">checked_mul</span>(<span class="ident">size_of_bucket</span>)
-                    .<span class="ident">expect</span>(<span class="string">&quot;capacity overflow&quot;</span>),
-                <span class="string">&quot;capacity overflow&quot;</span>);
-
-        <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="ident">Heap</span>.<span class="ident">alloc</span>(<span class="ident">Layout</span>::<span class="ident">from_size_align</span>(<span class="ident">size</span>, <span class="ident">alignment</span>).<span class="ident">unwrap</span>())
-            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">Heap</span>.<span class="ident">oom</span>(<span class="ident">e</span>));
-
-        <span class="kw">let</span> <span class="ident">hashes</span> <span class="op">=</span> <span class="ident">buffer</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">HashUint</span>;
-
-        <span class="ident">RawTable</span> {
+        <span class="prelude-val">Ok</span>(<span class="ident">RawTable</span> {
             <span class="ident">capacity_mask</span>: <span class="ident">capacity</span>.<span class="ident">wrapping_sub</span>(<span class="number">1</span>),
             <span class="ident">size</span>: <span class="number">0</span>,
-            <span class="ident">hashes</span>: <span class="ident">TaggedHashUintPtr</span>::<span class="ident">new</span>(<span class="ident">hashes</span>),
+            <span class="ident">hashes</span>: <span class="ident">TaggedHashUintPtr</span>::<span class="ident">new</span>(<span class="ident">buffer</span>.<span class="ident">cast</span>().<span class="ident">as_ptr</span>()),
             <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
+        })
+    }
+
+    <span class="doccomment">/// Does not initialize the buckets. The caller should ensure they,</span>
+    <span class="doccomment">/// at the very least, set every hash to EMPTY_BUCKET.</span>
+    <span class="kw">unsafe</span> <span class="kw">fn</span> <span class="ident">new_uninitialized</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
+        <span class="kw">match</span> <span class="self">Self</span>::<span class="ident">new_uninitialized_internal</span>(<span class="ident">capacity</span>, <span class="ident">Infallible</span>) {
+            <span class="prelude-val">Err</span>(<span class="ident">CollectionAllocErr</span>::<span class="ident">CapacityOverflow</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;capacity overflow&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="ident">CollectionAllocErr</span>::<span class="ident">AllocErr</span>) <span class="op">=&gt;</span> <span class="macro">unreachable</span><span class="macro">!</span>(),
+            <span class="prelude-val">Ok</span>(<span class="ident">table</span>) <span class="op">=&gt;</span> { <span class="ident">table</span> }
         }
     }
 
     <span class="kw">fn</span> <span class="ident">raw_bucket_at</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">index</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">RawBucket</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
-        <span class="kw">let</span> <span class="ident">hashes_size</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">capacity</span>() <span class="op">*</span> <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>();
-        <span class="kw">let</span> <span class="ident">pairs_size</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">capacity</span>() <span class="op">*</span> <span class="ident">size_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>();
-
-        <span class="kw">let</span> (<span class="ident">pairs_offset</span>, _, <span class="ident">oflo</span>) <span class="op">=</span>
-            <span class="ident">calculate_offsets</span>(<span class="ident">hashes_size</span>, <span class="ident">pairs_size</span>, <span class="ident">align_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>());
-        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="op">!</span><span class="ident">oflo</span>, <span class="string">&quot;capacity overflow&quot;</span>);
-
+        <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">pairs_offset</span>) <span class="op">=</span> <span class="ident">calculate_layout</span>::<span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="self">self</span>.<span class="ident">capacity</span>())
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">hint</span>::<span class="ident">unreachable_unchecked</span>() });
         <span class="kw">let</span> <span class="ident">buffer</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">hashes</span>.<span class="ident">ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>;
         <span class="kw">unsafe</span> {
             <span class="ident">RawBucket</span> {
                 <span class="ident">hash_start</span>: <span class="ident">buffer</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">HashUint</span>,
-                <span class="ident">pair_start</span>: <span class="ident">buffer</span>.<span class="ident">offset</span>(<span class="ident">pairs_offset</span> <span class="kw">as</span> <span class="ident">isize</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> (<span class="ident">K</span>, <span class="ident">V</span>),
+                <span class="ident">pair_start</span>: <span class="ident">buffer</span>.<span class="ident">add</span>(<span class="ident">pairs_offset</span>) <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> (<span class="ident">K</span>, <span class="ident">V</span>),
                 <span class="ident">idx</span>: <span class="ident">index</span>,
                 <span class="ident">_marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
             }
         }
     }
 
+    <span class="kw">fn</span> <span class="ident">new_internal</span>(
+        <span class="ident">capacity</span>: <span class="ident">usize</span>,
+        <span class="ident">fallibility</span>: <span class="ident">Fallibility</span>,
+    ) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>, <span class="ident">CollectionAllocErr</span><span class="op">&gt;</span> {
+        <span class="kw">unsafe</span> {
+            <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">RawTable</span>::<span class="ident">new_uninitialized_internal</span>(<span class="ident">capacity</span>, <span class="ident">fallibility</span>)<span class="question-mark">?</span>;
+            <span class="ident">ptr</span>::<span class="ident">write_bytes</span>(<span class="ident">ret</span>.<span class="ident">hashes</span>.<span class="ident">ptr</span>(), <span class="number">0</span>, <span class="ident">capacity</span>);
+            <span class="prelude-val">Ok</span>(<span class="ident">ret</span>)
+        }
+    }
+
+    <span class="doccomment">/// Tries to create a new raw table from a given capacity. If it cannot allocate,</span>
+    <span class="doccomment">/// it returns with AllocErr.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_new</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>, <span class="ident">CollectionAllocErr</span><span class="op">&gt;</span> {
+        <span class="self">Self</span>::<span class="ident">new_internal</span>(<span class="ident">capacity</span>, <span class="ident">Fallible</span>)
+    }
+
     <span class="doccomment">/// Creates a new raw table from a given capacity. All buckets are</span>
     <span class="doccomment">/// initially empty.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">capacity</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="ident">RawTable</span><span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
-        <span class="kw">unsafe</span> {
-            <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">RawTable</span>::<span class="ident">new_uninitialized</span>(<span class="ident">capacity</span>);
-            <span class="ident">ptr</span>::<span class="ident">write_bytes</span>(<span class="ident">ret</span>.<span class="ident">hashes</span>.<span class="ident">ptr</span>(), <span class="number">0</span>, <span class="ident">capacity</span>);
-            <span class="ident">ret</span>
+        <span class="kw">match</span> <span class="self">Self</span>::<span class="ident">new_internal</span>(<span class="ident">capacity</span>, <span class="ident">Infallible</span>) {
+            <span class="prelude-val">Err</span>(<span class="ident">CollectionAllocErr</span>::<span class="ident">CapacityOverflow</span>) <span class="op">=&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;capacity overflow&quot;</span>),
+            <span class="prelude-val">Err</span>(<span class="ident">CollectionAllocErr</span>::<span class="ident">AllocErr</span>) <span class="op">=&gt;</span> <span class="macro">unreachable</span><span class="macro">!</span>(),
+            <span class="prelude-val">Ok</span>(<span class="ident">table</span>) <span class="op">=&gt;</span> { <span class="ident">table</span> }
         }
     }
 
@@ -2078,8 +1970,8 @@
         <span class="comment">// Replace the marker regardless of lifetime bounds on parameters.</span>
         <span class="ident">IntoIter</span> {
             <span class="ident">iter</span>: <span class="ident">RawBuckets</span> {
-                <span class="ident">raw</span>: <span class="ident">raw</span>,
-                <span class="ident">elems_left</span>: <span class="ident">elems_left</span>,
+                <span class="ident">raw</span>,
+                <span class="ident">elems_left</span>,
                 <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
             },
             <span class="ident">table</span>: <span class="self">self</span>,
@@ -2091,8 +1983,8 @@
         <span class="comment">// Replace the marker regardless of lifetime bounds on parameters.</span>
         <span class="ident">Drain</span> {
             <span class="ident">iter</span>: <span class="ident">RawBuckets</span> {
-                <span class="ident">raw</span>: <span class="ident">raw</span>,
-                <span class="ident">elems_left</span>: <span class="ident">elems_left</span>,
+                <span class="ident">raw</span>,
+                <span class="ident">elems_left</span>,
                 <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span>,
             },
             <span class="ident">table</span>: <span class="ident">NonNull</span>::<span class="ident">from</span>(<span class="self">self</span>),
@@ -2143,7 +2035,7 @@
     <span class="ident">marker</span>: <span class="ident">marker</span>::<span class="ident">PhantomData</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> ()<span class="op">&gt;</span>,
 }
 
-<span class="comment">// FIXME(#19839) Remove in favor of `#[derive(Clone)]`</span>
+<span class="comment">// FIXME(#26925) Remove in favor of `#[derive(Clone)]`</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">RawBuckets</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">RawBuckets</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
         <span class="ident">RawBuckets</span> {
@@ -2194,7 +2086,7 @@
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>: <span class="ident">Sync</span>, <span class="ident">V</span>: <span class="ident">Sync</span><span class="op">&gt;</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">Iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {}
 <span class="kw">unsafe</span> <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>: <span class="ident">Sync</span>, <span class="ident">V</span>: <span class="ident">Sync</span><span class="op">&gt;</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">Iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {}
 
-<span class="comment">// FIXME(#19839) Remove in favor of `#[derive(Clone)]`</span>
+<span class="comment">// FIXME(#26925) Remove in favor of `#[derive(Clone)]`</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> <span class="ident">Clone</span> <span class="kw">for</span> <span class="ident">Iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Iter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
         <span class="ident">Iter</span> {
@@ -2351,7 +2243,7 @@
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>: <span class="lifetime">&#39;a</span>, <span class="ident">V</span>: <span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Drain</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span> {
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="kw">for</span> _ <span class="kw">in</span> <span class="self">self</span> {}
+        <span class="self">self</span>.<span class="ident">for_each</span>(<span class="ident">drop</span>);
     }
 }
 
@@ -2400,86 +2292,14 @@
             }
         }
 
-        <span class="kw">let</span> <span class="ident">hashes_size</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">capacity</span>() <span class="op">*</span> <span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>();
-        <span class="kw">let</span> <span class="ident">pairs_size</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">capacity</span>() <span class="op">*</span> <span class="ident">size_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>();
-        <span class="kw">let</span> (<span class="ident">align</span>, <span class="ident">size</span>, <span class="ident">oflo</span>) <span class="op">=</span> <span class="ident">calculate_allocation</span>(<span class="ident">hashes_size</span>,
-                                                       <span class="ident">align_of</span>::<span class="op">&lt;</span><span class="ident">HashUint</span><span class="op">&gt;</span>(),
-                                                       <span class="ident">pairs_size</span>,
-                                                       <span class="ident">align_of</span>::<span class="op">&lt;</span>(<span class="ident">K</span>, <span class="ident">V</span>)<span class="op">&gt;</span>());
-
-        <span class="macro">debug_assert</span><span class="macro">!</span>(<span class="op">!</span><span class="ident">oflo</span>, <span class="string">&quot;should be impossible&quot;</span>);
-
+        <span class="kw">let</span> (<span class="ident">layout</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">calculate_layout</span>::<span class="op">&lt;</span><span class="ident">K</span>, <span class="ident">V</span><span class="op">&gt;</span>(<span class="self">self</span>.<span class="ident">capacity</span>())
+            .<span class="ident">unwrap_or_else</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">hint</span>::<span class="ident">unreachable_unchecked</span>() });
         <span class="kw">unsafe</span> {
-            <span class="ident">Heap</span>.<span class="ident">dealloc</span>(<span class="self">self</span>.<span class="ident">hashes</span>.<span class="ident">ptr</span>() <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">u8</span>,
-                         <span class="ident">Layout</span>::<span class="ident">from_size_align</span>(<span class="ident">size</span>, <span class="ident">align</span>).<span class="ident">unwrap</span>());
+            <span class="ident">Global</span>.<span class="ident">dealloc</span>(<span class="ident">NonNull</span>::<span class="ident">new_unchecked</span>(<span class="self">self</span>.<span class="ident">hashes</span>.<span class="ident">ptr</span>()).<span class="ident">cast</span>(), <span class="ident">layout</span>);
             <span class="comment">// Remember how everything was allocated out of one buffer</span>
             <span class="comment">// during initialization? We only need one call to free here.</span>
         }
     }
 }
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../../../";
-        window.currentCrate = "sgx_tstd";
-    </script>
-    <script src="../../../../main.js"></script>
-    <script defer src="../../../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../../";window.currentCrate = "sgx_tstd";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script defer src="../../../../search-index.js"></script></body></html>

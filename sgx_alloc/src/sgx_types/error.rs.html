@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/ding/sgx/baidu/x-lab/rust-sgx-sdk/sgx_types/src/error.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>error.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `../sgx_types/src/error.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>error.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -307,6 +251,55 @@
 <span id="251">251</span>
 <span id="252">252</span>
 <span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -400,7 +393,14 @@
         <span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span>     <span class="op">=</span> <span class="number">0x00004012</span>,   <span class="comment">/* EPID Provisioning failed due to platform not recognized by backend server*/</span>
 
         <span class="ident">SGX_ERROR_NO_PRIVILEGE</span>              <span class="op">=</span> <span class="number">0x00005002</span>,   <span class="comment">/* Not enough privilege to perform the operation */</span>
-    
+
+        <span class="comment">/* SGX Protected Code Loader Error codes*/</span>
+        <span class="ident">SGX_ERROR_PCL_ENCRYPTED</span>             <span class="op">=</span> <span class="number">0x00006001</span>,   <span class="comment">/* trying to encrypt an already encrypted enclave */</span>
+        <span class="ident">SGX_ERROR_PCL_NOT_ENCRYPTED</span>         <span class="op">=</span> <span class="number">0x00006002</span>,   <span class="comment">/* trying to load a plain enclave using sgx_create_encrypted_enclave */</span>
+        <span class="ident">SGX_ERROR_PCL_MAC_MISMATCH</span>          <span class="op">=</span> <span class="number">0x00006003</span>,   <span class="comment">/* section mac result does not match build time mac */</span>
+        <span class="ident">SGX_ERROR_PCL_SHA_MISMATCH</span>          <span class="op">=</span> <span class="number">0x00006004</span>,   <span class="comment">/* Unsealed key MAC does not match MAC of key hardcoded in enclave binary */</span>
+        <span class="ident">SGX_ERROR_PCL_GUID_MISMATCH</span>         <span class="op">=</span> <span class="number">0x00006005</span>,   <span class="comment">/* GUID in sealed blob does not match GUID hardcoded in enclave binary */</span>
+
         <span class="comment">/* SGX errors are only used in the file API when there is no appropriate EXXX (EINVAL, EIO etc.) error code */</span>
         <span class="ident">SGX_ERROR_FILE_BAD_STATUS</span>               <span class="op">=</span> <span class="number">0x00007001</span>,	<span class="comment">/* The file is in bad status, run sgx_clearerr to try and fix it */</span>
         <span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span>                <span class="op">=</span> <span class="number">0x00007002</span>,	<span class="comment">/* The Key ID field is all zeros, can&#39;t re-generate the encryption key */</span>
@@ -411,6 +411,16 @@
         <span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span>          <span class="op">=</span> <span class="number">0x00007007</span>,	<span class="comment">/* When openeing the file, recovery is needed, but the recovery process failed */</span>
         <span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span>             <span class="op">=</span> <span class="number">0x00007008</span>,	<span class="comment">/* fflush operation (to disk) failed (only used when no EXXX is returned) */</span>
         <span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span>             <span class="op">=</span> <span class="number">0x00007009</span>,	<span class="comment">/* fclose operation (to disk) failed (only used when no EXXX is returned) */</span>
+
+        <span class="ident">SGX_INTERNAL_ERROR_ENCLAVE_CREATE_INTERRUPTED</span> <span class="op">=</span> <span class="number">0x0000F001</span>, <span class="comment">/* The ioctl for enclave_create unexpectedly failed with EINTR. */</span> 
+
+        <span class="ident">SGX_ERROR_WASM_BUFFER_TOO_SHORT</span>         <span class="op">=</span> <span class="number">0x0F00F001</span>,   <span class="comment">/* sgxwasm output buffer not long enough */</span>
+        <span class="ident">SGX_ERROR_WASM_INTERPRETER_ERROR</span>        <span class="op">=</span> <span class="number">0x0F00F002</span>,   <span class="comment">/* sgxwasm interpreter error */</span>
+        <span class="ident">SGX_ERROR_WASM_LOAD_MODULE_ERROR</span>        <span class="op">=</span> <span class="number">0x0F00F003</span>,   <span class="comment">/* sgxwasm loadmodule error */</span>
+        <span class="ident">SGX_ERROR_WASM_TRY_LOAD_ERROR</span>           <span class="op">=</span> <span class="number">0x0F00F004</span>,   <span class="comment">/* sgxwasm tryload error */</span>
+        <span class="ident">SGX_ERROR_WASM_REGISTER_ERROR</span>           <span class="op">=</span> <span class="number">0x0F00F005</span>,   <span class="comment">/* sgxwasm register error */</span>
+        <span class="ident">SGX_ERROR_FAAS_BUFFER_TOO_SHORT</span>         <span class="op">=</span> <span class="number">0x0F00E001</span>,   <span class="comment">/* faas output buffer not long enough */</span>
+        <span class="ident">SGX_ERROR_FAAS_INTERNAL_ERROR</span>           <span class="op">=</span> <span class="number">0x0F00E002</span>,   <span class="comment">/* faas exec internal error */</span>
     }
 }
 
@@ -470,6 +480,12 @@
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span> <span class="op">=&gt;</span> <span class="string">&quot;EPID Provisioning failed due to platform not recognized by backend server.&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NO_PRIVILEGE</span> <span class="op">=&gt;</span> <span class="string">&quot;Not enough privilege to perform the operation.&quot;</span>,
 
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_ENCRYPTED</span> <span class="op">=&gt;</span> <span class="string">&quot;Trying to encrypt an already encrypted enclave.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_NOT_ENCRYPTED</span> <span class="op">=&gt;</span> <span class="string">&quot;Trying to load a plain enclave using sgx_create_encrypted_enclave.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_MAC_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;Section mac result does not match build time mac.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_SHA_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;Unsealed key MAC does not match MAC of key hardcoded in enclave binary.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_GUID_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;GUID in sealed blob does not match GUID hardcoded in enclave binary.&quot;</span>,
+
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_BAD_STATUS</span> <span class="op">=&gt;</span> <span class="string">&quot;The file is in bad status.&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span> <span class="op">=&gt;</span> <span class="string">&quot;The Key ID field is all zeros, can&#39;t regenerate the encryption key.&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NAME_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;The current file name is different then the original file name.&quot;</span>,
@@ -479,6 +495,16 @@
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span> <span class="op">=&gt;</span> <span class="string">&quot;When openeing the file, recovery is needed, but the recovery process failed.&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;fflush operation failed.&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;fclose operation failed.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_INTERNAL_ERROR_ENCLAVE_CREATE_INTERRUPTED</span> <span class="op">=&gt;</span> <span class="string">&quot;The ioctl for enclave_create unexpectedly failed with EINTR.&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_BUFFER_TOO_SHORT</span> <span class="op">=&gt;</span> <span class="string">&quot;sgx wasm output buffer too small.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_INTERPRETER_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;sgx wasm interpreter error.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_LOAD_MODULE_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;sgxwasm loadmodule error.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_TRY_LOAD_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;sgxwasm tryload error.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_REGISTER_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;sgxwasm register error.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FAAS_BUFFER_TOO_SHORT</span> <span class="op">=&gt;</span> <span class="string">&quot;faas output buffer too short.&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FAAS_INTERNAL_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;faas exec internal error.&quot;</span>,
         }
     }
 
@@ -537,6 +563,12 @@
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_UNRECOGNIZED_PLATFORM</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_UNRECOGNIZED_PLATFORM&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_NO_PRIVILEGE</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_NO_PRIVILEGE&quot;</span>,
 
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_ENCRYPTED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_PCL_ENCRYPTED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_NOT_ENCRYPTED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_PCL_NOT_ENCRYPTED&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_MAC_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_PCL_MAC_MISMATCH&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_SHA_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_PCL_SHA_MISMATCH&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_PCL_GUID_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_PCL_GUID_MISMATCH&quot;</span>,
+
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_BAD_STATUS</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_BAD_STATUS&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NO_KEY_ID</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_NO_KEY_ID&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_NAME_MISMATCH</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_NAME_MISMATCH&quot;</span>,
@@ -546,6 +578,16 @@
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_RECOVERY_NEEDED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_RECOVERY_NEEDED&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_FLUSH_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_FLUSH_FAILED&quot;</span>,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FILE_CLOSE_FAILED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FILE_CLOSE_FAILED&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_INTERNAL_ERROR_ENCLAVE_CREATE_INTERRUPTED</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_INTERNAL_ERROR_ENCLAVE_CREATE_INTERRUPTED&quot;</span>,
+
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_BUFFER_TOO_SHORT</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_WASM_BUFFER_TOO_SHORT&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_INTERPRETER_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_WASM_INTERPRETER_ERROR&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_LOAD_MODULE_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_WASM_LOAD_MODULE_ERROR&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_TRY_LOAD_ERROR</span>    <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_WASM_TRY_LOAD_ERROR&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_WASM_REGISTER_ERROR</span>    <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_WASM_REGISTER_ERROR&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FAAS_BUFFER_TOO_SHORT</span>   <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FAAS_BUFFER_TOO_SHORT&quot;</span>,
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_FAAS_INTERNAL_ERROR</span> <span class="op">=&gt;</span> <span class="string">&quot;SGX_ERROR_FAAS_INTERNAL_ERROR&quot;</span>,
         }
     }
 }
@@ -562,68 +604,4 @@
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SysResult</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">result</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">sys_error_t</span><span class="op">&gt;</span>;
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SysError</span> <span class="op">=</span> <span class="ident">result</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">sys_error_t</span><span class="op">&gt;</span>;
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_types";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_types";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

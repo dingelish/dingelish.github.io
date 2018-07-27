@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/crypto.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>crypto.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/crypto.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>crypto.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -2321,6 +2265,447 @@
 <span id="2265">2265</span>
 <span id="2266">2266</span>
 <span id="2267">2267</span>
+<span id="2268">2268</span>
+<span id="2269">2269</span>
+<span id="2270">2270</span>
+<span id="2271">2271</span>
+<span id="2272">2272</span>
+<span id="2273">2273</span>
+<span id="2274">2274</span>
+<span id="2275">2275</span>
+<span id="2276">2276</span>
+<span id="2277">2277</span>
+<span id="2278">2278</span>
+<span id="2279">2279</span>
+<span id="2280">2280</span>
+<span id="2281">2281</span>
+<span id="2282">2282</span>
+<span id="2283">2283</span>
+<span id="2284">2284</span>
+<span id="2285">2285</span>
+<span id="2286">2286</span>
+<span id="2287">2287</span>
+<span id="2288">2288</span>
+<span id="2289">2289</span>
+<span id="2290">2290</span>
+<span id="2291">2291</span>
+<span id="2292">2292</span>
+<span id="2293">2293</span>
+<span id="2294">2294</span>
+<span id="2295">2295</span>
+<span id="2296">2296</span>
+<span id="2297">2297</span>
+<span id="2298">2298</span>
+<span id="2299">2299</span>
+<span id="2300">2300</span>
+<span id="2301">2301</span>
+<span id="2302">2302</span>
+<span id="2303">2303</span>
+<span id="2304">2304</span>
+<span id="2305">2305</span>
+<span id="2306">2306</span>
+<span id="2307">2307</span>
+<span id="2308">2308</span>
+<span id="2309">2309</span>
+<span id="2310">2310</span>
+<span id="2311">2311</span>
+<span id="2312">2312</span>
+<span id="2313">2313</span>
+<span id="2314">2314</span>
+<span id="2315">2315</span>
+<span id="2316">2316</span>
+<span id="2317">2317</span>
+<span id="2318">2318</span>
+<span id="2319">2319</span>
+<span id="2320">2320</span>
+<span id="2321">2321</span>
+<span id="2322">2322</span>
+<span id="2323">2323</span>
+<span id="2324">2324</span>
+<span id="2325">2325</span>
+<span id="2326">2326</span>
+<span id="2327">2327</span>
+<span id="2328">2328</span>
+<span id="2329">2329</span>
+<span id="2330">2330</span>
+<span id="2331">2331</span>
+<span id="2332">2332</span>
+<span id="2333">2333</span>
+<span id="2334">2334</span>
+<span id="2335">2335</span>
+<span id="2336">2336</span>
+<span id="2337">2337</span>
+<span id="2338">2338</span>
+<span id="2339">2339</span>
+<span id="2340">2340</span>
+<span id="2341">2341</span>
+<span id="2342">2342</span>
+<span id="2343">2343</span>
+<span id="2344">2344</span>
+<span id="2345">2345</span>
+<span id="2346">2346</span>
+<span id="2347">2347</span>
+<span id="2348">2348</span>
+<span id="2349">2349</span>
+<span id="2350">2350</span>
+<span id="2351">2351</span>
+<span id="2352">2352</span>
+<span id="2353">2353</span>
+<span id="2354">2354</span>
+<span id="2355">2355</span>
+<span id="2356">2356</span>
+<span id="2357">2357</span>
+<span id="2358">2358</span>
+<span id="2359">2359</span>
+<span id="2360">2360</span>
+<span id="2361">2361</span>
+<span id="2362">2362</span>
+<span id="2363">2363</span>
+<span id="2364">2364</span>
+<span id="2365">2365</span>
+<span id="2366">2366</span>
+<span id="2367">2367</span>
+<span id="2368">2368</span>
+<span id="2369">2369</span>
+<span id="2370">2370</span>
+<span id="2371">2371</span>
+<span id="2372">2372</span>
+<span id="2373">2373</span>
+<span id="2374">2374</span>
+<span id="2375">2375</span>
+<span id="2376">2376</span>
+<span id="2377">2377</span>
+<span id="2378">2378</span>
+<span id="2379">2379</span>
+<span id="2380">2380</span>
+<span id="2381">2381</span>
+<span id="2382">2382</span>
+<span id="2383">2383</span>
+<span id="2384">2384</span>
+<span id="2385">2385</span>
+<span id="2386">2386</span>
+<span id="2387">2387</span>
+<span id="2388">2388</span>
+<span id="2389">2389</span>
+<span id="2390">2390</span>
+<span id="2391">2391</span>
+<span id="2392">2392</span>
+<span id="2393">2393</span>
+<span id="2394">2394</span>
+<span id="2395">2395</span>
+<span id="2396">2396</span>
+<span id="2397">2397</span>
+<span id="2398">2398</span>
+<span id="2399">2399</span>
+<span id="2400">2400</span>
+<span id="2401">2401</span>
+<span id="2402">2402</span>
+<span id="2403">2403</span>
+<span id="2404">2404</span>
+<span id="2405">2405</span>
+<span id="2406">2406</span>
+<span id="2407">2407</span>
+<span id="2408">2408</span>
+<span id="2409">2409</span>
+<span id="2410">2410</span>
+<span id="2411">2411</span>
+<span id="2412">2412</span>
+<span id="2413">2413</span>
+<span id="2414">2414</span>
+<span id="2415">2415</span>
+<span id="2416">2416</span>
+<span id="2417">2417</span>
+<span id="2418">2418</span>
+<span id="2419">2419</span>
+<span id="2420">2420</span>
+<span id="2421">2421</span>
+<span id="2422">2422</span>
+<span id="2423">2423</span>
+<span id="2424">2424</span>
+<span id="2425">2425</span>
+<span id="2426">2426</span>
+<span id="2427">2427</span>
+<span id="2428">2428</span>
+<span id="2429">2429</span>
+<span id="2430">2430</span>
+<span id="2431">2431</span>
+<span id="2432">2432</span>
+<span id="2433">2433</span>
+<span id="2434">2434</span>
+<span id="2435">2435</span>
+<span id="2436">2436</span>
+<span id="2437">2437</span>
+<span id="2438">2438</span>
+<span id="2439">2439</span>
+<span id="2440">2440</span>
+<span id="2441">2441</span>
+<span id="2442">2442</span>
+<span id="2443">2443</span>
+<span id="2444">2444</span>
+<span id="2445">2445</span>
+<span id="2446">2446</span>
+<span id="2447">2447</span>
+<span id="2448">2448</span>
+<span id="2449">2449</span>
+<span id="2450">2450</span>
+<span id="2451">2451</span>
+<span id="2452">2452</span>
+<span id="2453">2453</span>
+<span id="2454">2454</span>
+<span id="2455">2455</span>
+<span id="2456">2456</span>
+<span id="2457">2457</span>
+<span id="2458">2458</span>
+<span id="2459">2459</span>
+<span id="2460">2460</span>
+<span id="2461">2461</span>
+<span id="2462">2462</span>
+<span id="2463">2463</span>
+<span id="2464">2464</span>
+<span id="2465">2465</span>
+<span id="2466">2466</span>
+<span id="2467">2467</span>
+<span id="2468">2468</span>
+<span id="2469">2469</span>
+<span id="2470">2470</span>
+<span id="2471">2471</span>
+<span id="2472">2472</span>
+<span id="2473">2473</span>
+<span id="2474">2474</span>
+<span id="2475">2475</span>
+<span id="2476">2476</span>
+<span id="2477">2477</span>
+<span id="2478">2478</span>
+<span id="2479">2479</span>
+<span id="2480">2480</span>
+<span id="2481">2481</span>
+<span id="2482">2482</span>
+<span id="2483">2483</span>
+<span id="2484">2484</span>
+<span id="2485">2485</span>
+<span id="2486">2486</span>
+<span id="2487">2487</span>
+<span id="2488">2488</span>
+<span id="2489">2489</span>
+<span id="2490">2490</span>
+<span id="2491">2491</span>
+<span id="2492">2492</span>
+<span id="2493">2493</span>
+<span id="2494">2494</span>
+<span id="2495">2495</span>
+<span id="2496">2496</span>
+<span id="2497">2497</span>
+<span id="2498">2498</span>
+<span id="2499">2499</span>
+<span id="2500">2500</span>
+<span id="2501">2501</span>
+<span id="2502">2502</span>
+<span id="2503">2503</span>
+<span id="2504">2504</span>
+<span id="2505">2505</span>
+<span id="2506">2506</span>
+<span id="2507">2507</span>
+<span id="2508">2508</span>
+<span id="2509">2509</span>
+<span id="2510">2510</span>
+<span id="2511">2511</span>
+<span id="2512">2512</span>
+<span id="2513">2513</span>
+<span id="2514">2514</span>
+<span id="2515">2515</span>
+<span id="2516">2516</span>
+<span id="2517">2517</span>
+<span id="2518">2518</span>
+<span id="2519">2519</span>
+<span id="2520">2520</span>
+<span id="2521">2521</span>
+<span id="2522">2522</span>
+<span id="2523">2523</span>
+<span id="2524">2524</span>
+<span id="2525">2525</span>
+<span id="2526">2526</span>
+<span id="2527">2527</span>
+<span id="2528">2528</span>
+<span id="2529">2529</span>
+<span id="2530">2530</span>
+<span id="2531">2531</span>
+<span id="2532">2532</span>
+<span id="2533">2533</span>
+<span id="2534">2534</span>
+<span id="2535">2535</span>
+<span id="2536">2536</span>
+<span id="2537">2537</span>
+<span id="2538">2538</span>
+<span id="2539">2539</span>
+<span id="2540">2540</span>
+<span id="2541">2541</span>
+<span id="2542">2542</span>
+<span id="2543">2543</span>
+<span id="2544">2544</span>
+<span id="2545">2545</span>
+<span id="2546">2546</span>
+<span id="2547">2547</span>
+<span id="2548">2548</span>
+<span id="2549">2549</span>
+<span id="2550">2550</span>
+<span id="2551">2551</span>
+<span id="2552">2552</span>
+<span id="2553">2553</span>
+<span id="2554">2554</span>
+<span id="2555">2555</span>
+<span id="2556">2556</span>
+<span id="2557">2557</span>
+<span id="2558">2558</span>
+<span id="2559">2559</span>
+<span id="2560">2560</span>
+<span id="2561">2561</span>
+<span id="2562">2562</span>
+<span id="2563">2563</span>
+<span id="2564">2564</span>
+<span id="2565">2565</span>
+<span id="2566">2566</span>
+<span id="2567">2567</span>
+<span id="2568">2568</span>
+<span id="2569">2569</span>
+<span id="2570">2570</span>
+<span id="2571">2571</span>
+<span id="2572">2572</span>
+<span id="2573">2573</span>
+<span id="2574">2574</span>
+<span id="2575">2575</span>
+<span id="2576">2576</span>
+<span id="2577">2577</span>
+<span id="2578">2578</span>
+<span id="2579">2579</span>
+<span id="2580">2580</span>
+<span id="2581">2581</span>
+<span id="2582">2582</span>
+<span id="2583">2583</span>
+<span id="2584">2584</span>
+<span id="2585">2585</span>
+<span id="2586">2586</span>
+<span id="2587">2587</span>
+<span id="2588">2588</span>
+<span id="2589">2589</span>
+<span id="2590">2590</span>
+<span id="2591">2591</span>
+<span id="2592">2592</span>
+<span id="2593">2593</span>
+<span id="2594">2594</span>
+<span id="2595">2595</span>
+<span id="2596">2596</span>
+<span id="2597">2597</span>
+<span id="2598">2598</span>
+<span id="2599">2599</span>
+<span id="2600">2600</span>
+<span id="2601">2601</span>
+<span id="2602">2602</span>
+<span id="2603">2603</span>
+<span id="2604">2604</span>
+<span id="2605">2605</span>
+<span id="2606">2606</span>
+<span id="2607">2607</span>
+<span id="2608">2608</span>
+<span id="2609">2609</span>
+<span id="2610">2610</span>
+<span id="2611">2611</span>
+<span id="2612">2612</span>
+<span id="2613">2613</span>
+<span id="2614">2614</span>
+<span id="2615">2615</span>
+<span id="2616">2616</span>
+<span id="2617">2617</span>
+<span id="2618">2618</span>
+<span id="2619">2619</span>
+<span id="2620">2620</span>
+<span id="2621">2621</span>
+<span id="2622">2622</span>
+<span id="2623">2623</span>
+<span id="2624">2624</span>
+<span id="2625">2625</span>
+<span id="2626">2626</span>
+<span id="2627">2627</span>
+<span id="2628">2628</span>
+<span id="2629">2629</span>
+<span id="2630">2630</span>
+<span id="2631">2631</span>
+<span id="2632">2632</span>
+<span id="2633">2633</span>
+<span id="2634">2634</span>
+<span id="2635">2635</span>
+<span id="2636">2636</span>
+<span id="2637">2637</span>
+<span id="2638">2638</span>
+<span id="2639">2639</span>
+<span id="2640">2640</span>
+<span id="2641">2641</span>
+<span id="2642">2642</span>
+<span id="2643">2643</span>
+<span id="2644">2644</span>
+<span id="2645">2645</span>
+<span id="2646">2646</span>
+<span id="2647">2647</span>
+<span id="2648">2648</span>
+<span id="2649">2649</span>
+<span id="2650">2650</span>
+<span id="2651">2651</span>
+<span id="2652">2652</span>
+<span id="2653">2653</span>
+<span id="2654">2654</span>
+<span id="2655">2655</span>
+<span id="2656">2656</span>
+<span id="2657">2657</span>
+<span id="2658">2658</span>
+<span id="2659">2659</span>
+<span id="2660">2660</span>
+<span id="2661">2661</span>
+<span id="2662">2662</span>
+<span id="2663">2663</span>
+<span id="2664">2664</span>
+<span id="2665">2665</span>
+<span id="2666">2666</span>
+<span id="2667">2667</span>
+<span id="2668">2668</span>
+<span id="2669">2669</span>
+<span id="2670">2670</span>
+<span id="2671">2671</span>
+<span id="2672">2672</span>
+<span id="2673">2673</span>
+<span id="2674">2674</span>
+<span id="2675">2675</span>
+<span id="2676">2676</span>
+<span id="2677">2677</span>
+<span id="2678">2678</span>
+<span id="2679">2679</span>
+<span id="2680">2680</span>
+<span id="2681">2681</span>
+<span id="2682">2682</span>
+<span id="2683">2683</span>
+<span id="2684">2684</span>
+<span id="2685">2685</span>
+<span id="2686">2686</span>
+<span id="2687">2687</span>
+<span id="2688">2688</span>
+<span id="2689">2689</span>
+<span id="2690">2690</span>
+<span id="2691">2691</span>
+<span id="2692">2692</span>
+<span id="2693">2693</span>
+<span id="2694">2694</span>
+<span id="2695">2695</span>
+<span id="2696">2696</span>
+<span id="2697">2697</span>
+<span id="2698">2698</span>
+<span id="2699">2699</span>
+<span id="2700">2700</span>
+<span id="2701">2701</span>
+<span id="2702">2702</span>
+<span id="2703">2703</span>
+<span id="2704">2704</span>
+<span id="2705">2705</span>
+<span id="2706">2706</span>
+<span id="2707">2707</span>
+<span id="2708">2708</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -2413,10 +2798,10 @@
     }
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">hash</span> <span class="op">=</span> <span class="ident">sgx_sha256_hash_t</span>::<span class="ident">default</span>();
-    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_sha256_msg</span>(<span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">hash</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sha256_hash_t</span>) };
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_sha256_msg</span>(<span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">hash</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sha256_hash_t</span>) };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">hash</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -2438,14 +2823,14 @@
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">sgx_sha256_msg</span>(<span class="ident">src</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">hash</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sha256_hash_t</span>) };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">hash</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
 <span class="kw">fn</span> <span class="ident">rsgx_sha256_init</span>(<span class="ident">sha_handle</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_sha_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
 
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_sha256_init</span>(<span class="ident">sha_handle</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sha_state_handle_t</span>)
+        <span class="ident">sgx_sha256_init</span>(<span class="ident">sha_handle</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_sha_state_handle_t</span>)
     }
 }
 
@@ -2461,7 +2846,7 @@
     }
 
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_sha256_update</span>(<span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="ident">sha_handle</span>)
+        <span class="ident">sgx_sha256_update</span>(<span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="ident">sha_handle</span>)
     }
 }
 
@@ -2558,7 +2943,7 @@
                 <span class="self">self</span>.<span class="ident">initflag</span>.<span class="ident">set</span>(<span class="bool-val">true</span>);
                 <span class="prelude-val">Ok</span>(())
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -2611,7 +2996,7 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_sha256_update_msg</span>(<span class="ident">src</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -2628,7 +3013,7 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_sha256_update_slice</span>(<span class="ident">src</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -2672,7 +3057,7 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_sha256_get_hash</span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">hash</span>);
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">hash</span>),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -2715,7 +3100,7 @@
                 <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
                 <span class="prelude-val">Ok</span>(())
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 }
@@ -2732,7 +3117,7 @@
     <span class="doccomment">/// drop cleans up and deallocates the SHA256 state that was allocated in function init.</span>
     <span class="doccomment">///</span>
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="kw">let</span> _ <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>();
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>();
     }
 }
 
@@ -2861,7 +3246,7 @@
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -2993,7 +3378,7 @@
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -3055,13 +3440,13 @@
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">mac</span> <span class="op">=</span> <span class="ident">sgx_cmac_128bit_tag_t</span>::<span class="ident">default</span>();
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
         <span class="ident">sgx_rijndael128_cmac_msg</span>(<span class="ident">key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_cmac_128bit_key_t</span>,
-                                 <span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+                                 <span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                                  <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                                  <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">mac</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_cmac_128bit_tag_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">mac</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -3088,7 +3473,7 @@
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">mac</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -3096,7 +3481,7 @@
 
     <span class="kw">unsafe</span> {
         <span class="ident">sgx_cmac128_init</span>(<span class="ident">key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_cmac_128bit_key_t</span>,
-                         <span class="ident">cmac_handle</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_cmac_state_handle_t</span>)
+                         <span class="ident">cmac_handle</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_cmac_state_handle_t</span>)
     }
 }
 
@@ -3111,7 +3496,7 @@
         <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
     }
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_cmac128_update</span>(<span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="ident">cmac_handle</span>)
+        <span class="ident">sgx_cmac128_update</span>(<span class="ident">src</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="ident">cmac_handle</span>)
     }
 }
 
@@ -3126,7 +3511,7 @@
         <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
     }
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_cmac128_update</span>(<span class="ident">src</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="ident">cmac_handle</span>)
+        <span class="ident">sgx_cmac128_update</span>(<span class="ident">src</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, <span class="ident">cmac_handle</span>)
     }
 }
 
@@ -3216,7 +3601,7 @@
                 <span class="self">self</span>.<span class="ident">initflag</span>.<span class="ident">set</span>(<span class="bool-val">true</span>);
                 <span class="prelude-val">Ok</span>(())
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -3274,7 +3659,7 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_cmac128_update_msg</span>(<span class="ident">src</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -3291,7 +3676,7 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_cmac128_update_slice</span>(<span class="ident">src</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -3335,7 +3720,7 @@
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_cmac128_final</span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>(), <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">hash</span>);
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">hash</span>),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -3378,7 +3763,7 @@
                 <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
                 <span class="prelude-val">Ok</span>(())
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 }
@@ -3394,7 +3779,7 @@
     <span class="doccomment">/// drop cleans up and deallocates the CMAC algorithm context state that was allocated in function init.</span>
     <span class="doccomment">///</span>
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-       <span class="kw">let</span> _ <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>();
+       <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>();
     }
 }
 
@@ -3490,7 +3875,7 @@
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -3583,13 +3968,13 @@
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
 <span class="kw">fn</span> <span class="ident">rsgx_ecc256_open_context</span>(<span class="ident">ecc_handle</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
 
-    <span class="kw">unsafe</span> { <span class="ident">sgx_ecc256_open_context</span>(<span class="ident">ecc_handle</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ecc_state_handle_t</span>) }
+    <span class="kw">unsafe</span> { <span class="ident">sgx_ecc256_open_context</span>(<span class="ident">ecc_handle</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ecc_state_handle_t</span>) }
 }
 
 <span class="kw">fn</span> <span class="ident">rsgx_ecc256_close_context</span>(<span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
@@ -3617,8 +4002,8 @@
                                     <span class="ident">shared_key</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared_t</span>,
                                     <span class="ident">ecc_handle</span>: <span class="ident">sgx_ecc_state_handle_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_ecc256_compute_shared_dhkey</span>(<span class="ident">private_b</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
-                                        <span class="ident">public_ga</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_public_t</span>,
+        <span class="ident">sgx_ecc256_compute_shared_dhkey</span>(<span class="ident">private_b</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
+                                        <span class="ident">public_ga</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_public_t</span>,
                                         <span class="ident">shared_key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_dh_shared_t</span>,
                                         <span class="ident">ecc_handle</span>)
     }
@@ -3654,9 +4039,9 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     }
 
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_ecdsa_sign</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _  <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">sgx_ecdsa_sign</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span>  <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                        <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
-                       <span class="ident">private</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
+                       <span class="ident">private</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
                        <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
                        <span class="ident">ecc_handle</span>)
     }
@@ -3677,9 +4062,9 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     }
 
     <span class="kw">unsafe</span> {
-        <span class="ident">sgx_ecdsa_sign</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _  <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="ident">sgx_ecdsa_sign</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span>  <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                        <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
-                       <span class="ident">private</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
+                       <span class="ident">private</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_private_t</span>,
                        <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
                        <span class="ident">ecc_handle</span>)
     }
@@ -3703,10 +4088,10 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     <span class="kw">unsafe</span> {
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">verify</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_ecdsa_verify</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_ecdsa_verify</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                                    <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                                    <span class="ident">public</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_ec256_public_t</span>,
-                                   <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
+                                   <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
                                    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">verify</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span>,
                                    <span class="ident">ecc_handle</span>);
         <span class="kw">match</span> <span class="ident">ret</span> {
@@ -3714,7 +4099,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
                 <span class="kw">let</span> <span class="ident">ecresult</span> <span class="op">=</span> <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">from_repr</span>(<span class="ident">verify</span> <span class="kw">as</span> <span class="ident">u32</span>);
                 <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">ecresult</span>.<span class="ident">unwrap_or</span>(<span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_INVALID_SIGNATURE</span>);
             },
-            _ <span class="op">=&gt;</span> { <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_INVALID_SIGNATURE</span>; },
+            <span class="kw">_</span> <span class="op">=&gt;</span> { <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_INVALID_SIGNATURE</span>; },
         };
         <span class="ident">ret</span>
     }
@@ -3738,10 +4123,10 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     <span class="kw">unsafe</span> {
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">verify</span>: <span class="ident">u8</span> <span class="op">=</span> <span class="number">0</span>;
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_ecdsa_verify</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_ecdsa_verify</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                                    <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                                    <span class="ident">public</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_ec256_public_t</span>,
-                                   <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
+                                   <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_ec256_signature_t</span>,
                                    <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">verify</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span>,
                                    <span class="ident">ecc_handle</span>);
         <span class="kw">match</span> <span class="ident">ret</span> {
@@ -3749,7 +4134,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
                 <span class="kw">let</span> <span class="ident">ecresult</span> <span class="op">=</span> <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">from_repr</span>(<span class="ident">verify</span> <span class="kw">as</span> <span class="ident">u32</span>);
                 <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">ecresult</span>.<span class="ident">unwrap_or</span>(<span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_INVALID_SIGNATURE</span>);
             },
-            _ <span class="op">=&gt;</span> { <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_INVALID_SIGNATURE</span>; },
+            <span class="kw">_</span> <span class="op">=&gt;</span> { <span class="kw-2">*</span><span class="ident">result</span> <span class="op">=</span> <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_INVALID_SIGNATURE</span>; },
         };
         <span class="ident">ret</span>
     }
@@ -3847,7 +4232,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
                 <span class="self">self</span>.<span class="ident">initflag</span>.<span class="ident">set</span>(<span class="bool-val">true</span>);
                 <span class="prelude-val">Ok</span>(())
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -3918,7 +4303,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>((<span class="ident">private</span>, <span class="ident">public</span>)),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -3987,7 +4372,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
                     <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>)
                 }
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -4091,7 +4476,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_ecc256_compute_shared_dhkey</span>(<span class="ident">private_b</span>, <span class="ident">public_ga</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">shared_key</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">shared_key</span>),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -4182,7 +4567,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_ecdsa_sign_msg</span>(<span class="ident">data</span>, <span class="ident">private</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">signature</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">signature</span>),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -4200,7 +4585,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_ecdsa_sign_slice</span>(<span class="ident">data</span>, <span class="ident">private</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">signature</span>, <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow</span>());
         <span class="kw">match</span> <span class="ident">ret</span> {
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">signature</span>),
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -4280,10 +4665,10 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
                 <span class="kw">match</span> <span class="ident">result</span> {
                     <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_VALID</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>),
-                    _ <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
+                    <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
                 }
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -4306,10 +4691,10 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
                 <span class="kw">match</span> <span class="ident">result</span> {
                     <span class="ident">sgx_generic_ecresult_t</span>::<span class="ident">SGX_EC_VALID</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>),
-                    _ <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
+                    <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
                 }
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 
@@ -4352,7 +4737,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
                 <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">handle</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
                 <span class="prelude-val">Ok</span>(())
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 }
@@ -4368,7 +4753,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     <span class="doccomment">/// close cleans up and deallocates the ECC 256 GF(p) state that was allocated in function open.</span>
     <span class="doccomment">///</span>
     <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
-        <span class="kw">let</span> _ <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>();
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">close</span>();
     }
 }
 
@@ -4376,16 +4761,16 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 <span class="doccomment">/// The rsgx_rsa3072_sign_msg computes a digital signature for a given dataset based on RSA 3072 private key.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// This function computes a digital signature over the input dataset based on the RSA 3072 private key.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A message digest is a fixed size number derived from the original message with an applied hash function </span>
+<span class="doccomment">/// A message digest is a fixed size number derived from the original message with an applied hash function</span>
 <span class="doccomment">/// over the binary code of the message. (SHA256 in this case)</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The signer&#39;s private key and the message digest are used to create a signature.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// The scheme used for computing a digital signature is of the RSASSA-PKCS1-v1_5 scheme.</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **data**</span>
@@ -4420,7 +4805,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 <span class="doccomment">///</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_sign_msg</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>, <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_key_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_rsa3072_signature_t</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span> {
-    
+
     <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>();
     <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
@@ -4431,14 +4816,14 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sign</span> <span class="op">=</span> <span class="ident">sgx_rsa3072_signature_t</span>::<span class="ident">default</span>();
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, 
-                         <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, 
+        <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+                         <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                          <span class="ident">key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_key_t</span>,
                          <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sign</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa3072_signature_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">sign</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -4447,7 +4832,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 <span class="doccomment">///</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_sign_slice</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>], <span class="ident">key</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_key_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">sgx_rsa3072_signature_t</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span> {
-    
+
     <span class="kw">let</span> <span class="ident">size</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of_val</span>(<span class="ident">data</span>);
     <span class="kw">if</span> <span class="ident">size</span> <span class="op">==</span> <span class="number">0</span> {
         <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
@@ -4458,14 +4843,14 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 
     <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">sign</span> <span class="op">=</span> <span class="ident">sgx_rsa3072_signature_t</span>::<span class="ident">default</span>();
     <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
-        <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>, 
-                         <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>, 
+        <span class="ident">sgx_rsa3072_sign</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+                         <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                          <span class="ident">key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_key_t</span>,
                          <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sign</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa3072_signature_t</span>)
     };
     <span class="kw">match</span> <span class="ident">ret</span> {
         <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="ident">sign</span>),
-        _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
     }
 }
 
@@ -4473,12 +4858,12 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 <span class="doccomment">/// rsgx_rsa3072_verify_msg verifies the input digital signature for the given data- set based on the RSA 3072 public key.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// # Description</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// This function verifies the signature for the given data set based on the input RSA 3072 public key.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A digital signature over a message is a buffer of 384-bytes, which could be created by function: rsgx_rsa3072_sign. </span>
+<span class="doccomment">/// A digital signature over a message is a buffer of 384-bytes, which could be created by function: rsgx_rsa3072_sign.</span>
 <span class="doccomment">/// The scheme used for computing a digital signature is of the RSASSA-PKCS1-v1_5 scheme.</span>
-<span class="doccomment">/// </span>
+<span class="doccomment">///</span>
 <span class="doccomment">/// # Parameters</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// **data**</span>
@@ -4521,8 +4906,8 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 <span class="doccomment">///</span>
 <span class="doccomment">/// The verification process failed due to an internal cryptography library failure.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_verify_msg</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>, 
-                                  <span class="ident">public</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_public_key_t</span>, 
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_verify_msg</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span><span class="ident">T</span>,
+                                  <span class="ident">public</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_public_key_t</span>,
                                   <span class="ident">signature</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_signature_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span> {
 
@@ -4537,7 +4922,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     <span class="kw">unsafe</span> {
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">verify</span> <span class="op">=</span> <span class="ident">sgx_rsa_result_t</span>::<span class="ident">SGX_RSA_INVALID_SIGNATURE</span>;
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_rsa3072_verify</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_rsa3072_verify</span>(<span class="ident">data</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                                      <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                                      <span class="ident">public</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_public_key_t</span>,
                                      <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_signature_t</span>,
@@ -4546,10 +4931,10 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
                 <span class="kw">match</span> <span class="ident">verify</span> {
                     <span class="ident">sgx_rsa_result_t</span>::<span class="ident">SGX_RSA_VALID</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>),
-                    _ <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
+                    <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
                 }
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
 }
@@ -4557,8 +4942,8 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
 <span class="doccomment">///</span>
 <span class="doccomment">/// rsgx_rsa3072_verify_slice verifies the input digital signature for the given data- set based on the RSA 3072 public key.</span>
 <span class="doccomment">///</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_verify_slice</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>], 
-                                    <span class="ident">public</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_public_key_t</span>, 
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_rsa3072_verify_slice</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">T</span>],
+                                    <span class="ident">public</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_public_key_t</span>,
                                     <span class="ident">signature</span>: <span class="kw-2">&amp;</span><span class="ident">sgx_rsa3072_signature_t</span>) <span class="op">-&gt;</span> <span class="ident">SgxResult</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>
     <span class="kw">where</span> <span class="ident">T</span>: <span class="ident">Copy</span> <span class="op">+</span> <span class="ident">ContiguousMemory</span> {
 
@@ -4573,7 +4958,7 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
     <span class="kw">unsafe</span> {
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">verify</span> <span class="op">=</span> <span class="ident">sgx_rsa_result_t</span>::<span class="ident">SGX_RSA_INVALID_SIGNATURE</span>;
-        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_rsa3072_verify</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> _ <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">sgx_rsa3072_verify</span>(<span class="ident">data</span>.<span class="ident">as_ptr</span>() <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="kw">_</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">u8</span>,
                                      <span class="ident">size</span> <span class="kw">as</span> <span class="ident">u32</span>,
                                      <span class="ident">public</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_public_key_t</span>,
                                      <span class="ident">signature</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw">const</span> <span class="ident">sgx_rsa3072_signature_t</span>,
@@ -4582,75 +4967,453 @@ fn rsgx_ecc256_compute_shared_dhkey512(private_b: &amp;sgx_ec256_private_t,
             <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
                 <span class="kw">match</span> <span class="ident">verify</span> {
                     <span class="ident">sgx_rsa_result_t</span>::<span class="ident">SGX_RSA_VALID</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>),
-                    _ <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
+                    <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>),
                 }
             },
-            _ <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
         }
     }
-}</pre>
-</section>
-    <section id='search' class="content hidden"></section>
+}
 
-    <section class="footer"></section>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_create_rsa_key_pair</span>(<span class="ident">n_byte_size</span>: <span class="ident">i32</span>,
+                                <span class="ident">e_byte_size</span>: <span class="ident">i32</span>,
+                                <span class="ident">n</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">d</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">e</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">p</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">q</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">dmp1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">dmq1</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">iqmp</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
 
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
+    <span class="kw">if</span> (<span class="ident">n_byte_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">e_byte_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">n</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">n</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">d</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">d</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">e</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">e</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">p</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">p</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">q</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">q</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">dmp1</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">dmp1</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">dmq1</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">dmq1</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">iqmp</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">iqmp</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
 
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+        <span class="ident">sgx_create_rsa_key_pair</span>(<span class="ident">n_byte_size</span>,
+                                <span class="ident">e_byte_size</span>,
+                                <span class="ident">n</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">d</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">e</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">p</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">q</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">dmp1</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">dmq1</span>.<span class="ident">as_mut_ptr</span>(),
+                                <span class="ident">iqmp</span>.<span class="ident">as_mut_ptr</span>())
+    };
+    <span class="kw">match</span> <span class="ident">ret</span> {
+        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+    }
+}
 
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
+<span class="kw">fn</span> <span class="ident">rsgx_create_rsa_priv_key</span>(<span class="ident">mod_size</span>: <span class="ident">i32</span>,
+                            <span class="ident">exp_size</span>: <span class="ident">i32</span>,
+                            <span class="ident">e</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                            <span class="ident">p</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                            <span class="ident">q</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                            <span class="ident">dmp1</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                            <span class="ident">dmq1</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                            <span class="ident">iqmp</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                            <span class="ident">new_pri_key</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_rsa_key_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
 
-            <div class="infos">
-                <h2>Search Tricks</h2>
+    <span class="kw">if</span> (<span class="ident">mod_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">exp_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">e</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">e</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">p</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">p</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">q</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">q</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">dmp1</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">dmp1</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">dmq1</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">dmq1</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">iqmp</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">iqmp</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
 
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
+    <span class="kw">unsafe</span> {
+        <span class="ident">sgx_create_rsa_priv2_key</span>(<span class="ident">mod_size</span>,
+                                 <span class="ident">exp_size</span>,
+                                 <span class="ident">e</span>.<span class="ident">as_ptr</span>(),
+                                 <span class="ident">p</span>.<span class="ident">as_ptr</span>(),
+                                 <span class="ident">q</span>.<span class="ident">as_ptr</span>(),
+                                 <span class="ident">dmp1</span>.<span class="ident">as_ptr</span>(),
+                                 <span class="ident">dmq1</span>.<span class="ident">as_ptr</span>(),
+                                 <span class="ident">iqmp</span>.<span class="ident">as_ptr</span>(),
+                                 <span class="ident">new_pri_key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa_key_t</span>)
+    }
+}
 
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
+<span class="kw">fn</span> <span class="ident">rsgx_create_rsa_pub_key</span>(<span class="ident">mod_size</span>: <span class="ident">i32</span>,
+                           <span class="ident">exp_size</span>: <span class="ident">i32</span>,
+                           <span class="ident">n</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                           <span class="ident">e</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                           <span class="ident">new_pub_key</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">sgx_rsa_key_t</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
 
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
+    <span class="kw">if</span> (<span class="ident">mod_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">exp_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">n</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">n</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> (<span class="ident">e</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">e</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
 
+    <span class="kw">unsafe</span> {
+        <span class="ident">sgx_create_rsa_pub1_key</span>(<span class="ident">mod_size</span>,
+                                <span class="ident">exp_size</span>,
+                                <span class="ident">n</span>.<span class="ident">as_ptr</span>(),
+                                <span class="ident">e</span>.<span class="ident">as_ptr</span>(),
+                                <span class="ident">new_pub_key</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">sgx_rsa_key_t</span>)
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">rsgx_free_rsa_key</span>(<span class="ident">rsa_key</span>: <span class="ident">sgx_rsa_key_t</span>,
+                     <span class="ident">key_type</span>: <span class="ident">sgx_rsa_key_type_t</span>,
+                     <span class="ident">mod_size</span>: <span class="ident">i32</span>,
+                     <span class="ident">exp_size</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
+
+    <span class="kw">if</span> (<span class="ident">mod_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">exp_size</span> <span class="op">&lt;=</span> <span class="number">0</span>) {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+
+    <span class="kw">unsafe</span> {
+        <span class="ident">sgx_free_rsa_key</span>(<span class="ident">rsa_key</span>, <span class="ident">key_type</span>, <span class="ident">mod_size</span>, <span class="ident">exp_size</span>)
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">rsgx_rsa_priv_decrypt_sha256</span>(<span class="ident">rsa_key</span>: <span class="ident">sgx_rsa_key_t</span>,
+                                <span class="ident">out_data</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                                <span class="ident">out_len</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">usize</span>,
+                                <span class="ident">in_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
+
+    <span class="kw">if</span> <span class="ident">in_data</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span> {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> <span class="op">*</span> <span class="ident">out_len</span> <span class="op">!=</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="ident">out_data</span>.<span class="ident">len</span>() <span class="op">!=</span> <span class="op">*</span> <span class="ident">out_len</span> {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+
+    <span class="kw">unsafe</span> {
+         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">p_out_data</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span> <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
+        <span class="kw">if</span> <span class="op">*</span> <span class="ident">out_len</span> <span class="op">!=</span> <span class="number">0</span> {
+            <span class="ident">p_out_data</span> <span class="op">=</span> <span class="ident">out_data</span>.<span class="ident">as_mut_ptr</span>();
+        }
+        <span class="ident">sgx_rsa_priv_decrypt_sha256</span>(<span class="ident">rsa_key</span>,
+                                    <span class="ident">p_out_data</span>,
+                                    <span class="ident">out_len</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">usize</span>,
+                                    <span class="ident">in_data</span>.<span class="ident">as_ptr</span>(),
+                                    <span class="ident">in_data</span>.<span class="ident">len</span>())
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">rsgx_rsa_pub_encrypt_sha256</span>(<span class="ident">rsa_key</span>: <span class="ident">sgx_rsa_key_t</span>,
+                               <span class="ident">out_data</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                               <span class="ident">out_len</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">usize</span>,
+                               <span class="ident">in_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">sgx_status_t</span> {
+
+    <span class="kw">if</span> <span class="ident">in_data</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span> {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
+    <span class="kw">if</span> <span class="op">*</span> <span class="ident">out_len</span> <span class="op">!=</span> <span class="number">0</span> <span class="op">&amp;&amp;</span> <span class="ident">out_data</span>.<span class="ident">len</span>() <span class="op">!=</span> <span class="op">*</span> <span class="ident">out_len</span> {
+        <span class="kw">return</span> <span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>;
+    }
     
+    <span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">p_out_data</span>: <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">u8</span> <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
+        <span class="kw">if</span> <span class="op">*</span> <span class="ident">out_len</span> <span class="op">!=</span> <span class="number">0</span> {
+            <span class="ident">p_out_data</span> <span class="op">=</span> <span class="ident">out_data</span>.<span class="ident">as_mut_ptr</span>();
+        }
+        <span class="ident">sgx_rsa_pub_encrypt_sha256</span>(<span class="ident">rsa_key</span>,
+                                   <span class="ident">p_out_data</span>,
+                                   <span class="ident">out_len</span> <span class="kw">as</span> <span class="op">*</span> <span class="kw-2">mut</span> <span class="ident">usize</span>,
+                                   <span class="ident">in_data</span>.<span class="ident">as_ptr</span>(),
+                                   <span class="ident">in_data</span>.<span class="ident">len</span>())
+    }
+}
 
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_tcrypto";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxRsaPrivKey</span> {
+    <span class="ident">key</span>: <span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">sgx_rsa_key_t</span><span class="op">&gt;</span>,
+    <span class="ident">mod_size</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>,
+    <span class="ident">exp_size</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>,
+    <span class="ident">createflag</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">SgxRsaPrivKey</span> {
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="ident">SgxRsaPrivKey</span> {
+            <span class="ident">key</span>: <span class="ident">RefCell</span>::<span class="ident">new</span>(<span class="ident">ptr</span>::<span class="ident">null_mut</span>() <span class="kw">as</span> <span class="ident">sgx_rsa_key_t</span>),
+            <span class="ident">mod_size</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="number">0</span>),
+            <span class="ident">exp_size</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="number">0</span>),
+            <span class="ident">createflag</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="bool-val">false</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, 
+                  <span class="ident">mod_size</span>: <span class="ident">i32</span>,
+                  <span class="ident">exp_size</span>: <span class="ident">i32</span>,
+                  <span class="ident">e</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                  <span class="ident">p</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                  <span class="ident">q</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                  <span class="ident">dmp1</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                  <span class="ident">dmq1</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                  <span class="ident">iqmp</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+        
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">true</span> {
+            <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
+        }
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_create_rsa_priv_key</span>(<span class="ident">mod_size</span>,
+                                           <span class="ident">exp_size</span>,
+                                           <span class="ident">e</span>,
+                                           <span class="ident">p</span>,
+                                           <span class="ident">q</span>,
+                                           <span class="ident">dmp1</span>,
+                                           <span class="ident">dmq1</span>,
+                                           <span class="ident">iqmp</span>,
+                                           <span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow_mut</span>().<span class="ident">deref_mut</span>());
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">mod_size</span>.<span class="ident">set</span>(<span class="ident">mod_size</span>);
+                <span class="self">self</span>.<span class="ident">exp_size</span>.<span class="ident">set</span>(<span class="ident">exp_size</span>);
+                <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">set</span>(<span class="bool-val">true</span>);
+                <span class="prelude-val">Ok</span>(())
+            },
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">decrypt_sha256</span>(<span class="kw-2">&amp;</span><span class="self">self</span>,
+                          <span class="ident">out_data</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                          <span class="ident">out_len</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">usize</span>,
+                          <span class="ident">in_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">false</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_STATE</span>);
+        }
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_rsa_priv_decrypt_sha256</span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow</span>(),
+                                               <span class="ident">out_data</span>,
+                                               <span class="ident">out_len</span>,
+                                               <span class="ident">in_data</span>);
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
+                <span class="prelude-val">Ok</span>(())
+            },
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">free</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">false</span> {
+            <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
+        }
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> {
+            <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow</span>();
+            <span class="kw">if</span> <span class="ident">key</span>.<span class="ident">is_null</span>() <span class="op">==</span> <span class="bool-val">true</span> {
+                <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span>
+            } <span class="kw">else</span> {
+                <span class="ident">rsgx_free_rsa_key</span>(<span class="ident">key</span>, 
+                                  <span class="ident">sgx_rsa_key_type_t</span>::<span class="ident">SGX_RSA_PRIVATE_KEY</span>, 
+                                  <span class="self">self</span>.<span class="ident">mod_size</span>.<span class="ident">get</span>(),
+                                  <span class="self">self</span>.<span class="ident">exp_size</span>.<span class="ident">get</span>())
+            }
+        };
+
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">set</span>(<span class="bool-val">false</span>);
+                <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
+                <span class="prelude-val">Ok</span>(())
+            },
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxRsaPrivKey</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="self">Self</span>::<span class="ident">new</span>()
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">SgxRsaPrivKey</span> {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">free</span>();
+    }
+}
+
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SgxRsaPubKey</span> {
+    <span class="ident">key</span>: <span class="ident">RefCell</span><span class="op">&lt;</span><span class="ident">sgx_rsa_key_t</span><span class="op">&gt;</span>,
+    <span class="ident">mod_size</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>,
+    <span class="ident">exp_size</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>,
+    <span class="ident">createflag</span>: <span class="ident">Cell</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">SgxRsaPubKey</span> {
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="ident">SgxRsaPubKey</span> {
+            <span class="ident">key</span>: <span class="ident">RefCell</span>::<span class="ident">new</span>(<span class="ident">ptr</span>::<span class="ident">null_mut</span>() <span class="kw">as</span> <span class="ident">sgx_rsa_key_t</span>),
+            <span class="ident">mod_size</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="number">0</span>),
+            <span class="ident">exp_size</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="number">0</span>),
+            <span class="ident">createflag</span>: <span class="ident">Cell</span>::<span class="ident">new</span>(<span class="bool-val">false</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, 
+                  <span class="ident">mod_size</span>: <span class="ident">i32</span>,
+                  <span class="ident">exp_size</span>: <span class="ident">i32</span>,
+                  <span class="ident">n</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                  <span class="ident">e</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+        
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">true</span> {
+            <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
+        }
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_create_rsa_pub_key</span>(<span class="ident">mod_size</span>,
+                                          <span class="ident">exp_size</span>,
+                                          <span class="ident">n</span>,
+                                          <span class="ident">e</span>,
+                                          <span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow_mut</span>().<span class="ident">deref_mut</span>());
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">mod_size</span>.<span class="ident">set</span>(<span class="ident">mod_size</span>);
+                <span class="self">self</span>.<span class="ident">exp_size</span>.<span class="ident">set</span>(<span class="ident">exp_size</span>);
+                <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">set</span>(<span class="bool-val">true</span>);
+                <span class="prelude-val">Ok</span>(())
+            },
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">encrypt_sha256</span>(<span class="kw-2">&amp;</span><span class="self">self</span>,
+                          <span class="ident">out_data</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>],
+                          <span class="ident">out_len</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">usize</span>, 
+                          <span class="ident">in_data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">false</span> {
+            <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_STATE</span>);
+        }
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="ident">rsgx_rsa_pub_encrypt_sha256</span>(<span class="kw-2">*</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow</span>(),
+                                              <span class="ident">out_data</span>,
+                                              <span class="ident">out_len</span>,
+                                              <span class="ident">in_data</span>);
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
+                <span class="prelude-val">Ok</span>(())
+            },
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        }
+    }
+
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">free</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">get</span>() <span class="op">==</span> <span class="bool-val">false</span> {
+            <span class="kw">return</span> <span class="prelude-val">Ok</span>(());
+        }
+
+        <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> {
+            <span class="kw">let</span> <span class="ident">key</span> <span class="op">=</span> <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow</span>();
+            <span class="kw">if</span> <span class="ident">key</span>.<span class="ident">is_null</span>() <span class="op">==</span> <span class="bool-val">true</span> {
+                <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span>
+            } <span class="kw">else</span> {
+                <span class="ident">rsgx_free_rsa_key</span>(<span class="ident">key</span>, 
+                                  <span class="ident">sgx_rsa_key_type_t</span>::<span class="ident">SGX_RSA_PUBLIC_KEY</span>, 
+                                  <span class="self">self</span>.<span class="ident">mod_size</span>.<span class="ident">get</span>(),
+                                  <span class="self">self</span>.<span class="ident">exp_size</span>.<span class="ident">get</span>())
+            }
+        };
+
+        <span class="kw">match</span> <span class="ident">ret</span> {
+            <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> {
+                <span class="self">self</span>.<span class="ident">createflag</span>.<span class="ident">set</span>(<span class="bool-val">false</span>);
+                <span class="kw-2">*</span><span class="self">self</span>.<span class="ident">key</span>.<span class="ident">borrow_mut</span>() <span class="op">=</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>();
+                <span class="prelude-val">Ok</span>(())
+            },
+            <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+        }
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">SgxRsaPubKey</span> {
+    <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="self">Self</span>::<span class="ident">new</span>()
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">SgxRsaPubKey</span> {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">free</span>();
+    }
+}
+
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">rsgx_calculate_ecdsa_priv_key</span>(<span class="ident">hash_drg</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                                    <span class="ident">sgx_nistp256_r_m1</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                                    <span class="ident">out_key</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SgxError</span> {
+
+    <span class="kw">if</span> (<span class="ident">hash_drg</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">hash_drg</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">sgx_nistp256_r_m1</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">sgx_nistp256_r_m1</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+    <span class="kw">if</span> (<span class="ident">out_key</span>.<span class="ident">len</span>() <span class="op">==</span> <span class="number">0</span>) <span class="op">||</span> (<span class="ident">out_key</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="ident">i32</span>::<span class="ident">max_value</span>() <span class="kw">as</span> <span class="ident">usize</span>) {
+        <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">sgx_status_t</span>::<span class="ident">SGX_ERROR_INVALID_PARAMETER</span>);
+    }
+
+    <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">unsafe</span> {
+        <span class="ident">sgx_calculate_ecdsa_priv_key</span>(<span class="ident">hash_drg</span>.<span class="ident">as_ptr</span>(),
+                                     <span class="ident">hash_drg</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+                                     <span class="ident">sgx_nistp256_r_m1</span>.<span class="ident">as_ptr</span>(),
+                                     <span class="ident">sgx_nistp256_r_m1</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+                                     <span class="ident">out_key</span>.<span class="ident">as_mut_ptr</span>(),
+                                     <span class="ident">out_key</span>.<span class="ident">len</span>() <span class="kw">as</span> <span class="ident">i32</span>)
+    };
+
+    <span class="kw">match</span> <span class="ident">ret</span> {
+        <span class="ident">sgx_status_t</span>::<span class="ident">SGX_SUCCESS</span> <span class="op">=&gt;</span> <span class="prelude-val">Ok</span>(()),
+        <span class="kw">_</span> <span class="op">=&gt;</span> <span class="prelude-val">Err</span>(<span class="ident">ret</span>),
+    }
+}
+</pre>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_tcrypto";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

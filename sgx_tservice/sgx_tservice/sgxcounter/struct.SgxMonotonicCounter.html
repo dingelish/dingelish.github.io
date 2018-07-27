@@ -1,73 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `SgxMonotonicCounter` struct in crate `sgx_tservice`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, SgxMonotonicCounter">
-
-    <title>sgx_tservice::sgxcounter::SgxMonotonicCounter - Rust</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc struct">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        <p class='location'>Struct SgxMonotonicCounter</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.new_ex">new_ex</a><a href="#method.destory">destory</a><a href="#method.increment">increment</a><a href="#method.read">read</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Drop">Drop</a></div></div><p class='location'><a href='../index.html'>sgx_tservice</a>::<wbr><a href='index.html'>sgxcounter</a></p><script>window.sidebarCurrent = {name: 'SgxMonotonicCounter', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content">
-<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sgx_tservice</a>::<wbr><a href='index.html'>sgxcounter</a>::<wbr><a class="struct" href=''>SgxMonotonicCounter</a></span><span class='out-of-band'><span id='render-detail'>
-                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                       [<span class='inner'>&#x2212;</span>]
-                   </a>
-               </span><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#33-36' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct SgxMonotonicCounter { /* fields omitted */ }</pre><div class='docblock'><p>Monotonic counter ID</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `SgxMonotonicCounter` struct in crate `sgx_tservice`."><meta name="keywords" content="rust, rustlang, rust-lang, SgxMonotonicCounter"><title>sgx_tservice::sgxcounter::SgxMonotonicCounter - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc struct"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Struct SgxMonotonicCounter</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.new">new</a><a href="#method.new_ex">new_ex</a><a href="#method.destory">destory</a><a href="#method.increment">increment</a><a href="#method.read">read</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Drop">Drop</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">!Sync</a></div></div><p class='location'><a href='../index.html'>sgx_tservice</a>::<wbr><a href='index.html'>sgxcounter</a></p><script>window.sidebarCurrent = {name: 'SgxMonotonicCounter', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>sgx_tservice</a>::<wbr><a href='index.html'>sgxcounter</a>::<wbr><a class="struct" href=''>SgxMonotonicCounter</a></span><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#33-36' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust struct'>pub struct SgxMonotonicCounter { /* fields omitted */ }</pre></div><div class='docblock'><p>Monotonic counter ID</p>
 </div>
                     <h2 id='methods' class='small-section-header'>
                       Methods<a href='#methods' class='anchor'></a>
                     </h2>
-                <h3 id='impl' class='impl'><span class='in-band'><code>impl <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#38-491' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>pub fn <a href='#method.new' class='fnname'>new</a>(counter_value: &amp;mut u32) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#124-136' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>creates a monotonic counter with default owner policy and default user attribute mask.</p>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#38-491' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new' class='fnname'>new</a>(counter_value: &amp;mut u32) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#124-136' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>creates a monotonic counter with default owner policy and default user attribute mask.</p>
 <h1 id="description" class="section-header"><a href="#description">Description</a></h1>
 <p>Call new to create a monotonic counter with the default owner policy 0x1, which means enclaves
 with same signing key can access the monotonic counter and default owner_attribute_mask 0xFFFFFFFFFFFFFFCB.</p>
@@ -113,8 +49,7 @@ This procedure deletes all MCs created by any enclave in that system.</p>
 <p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.new_ex' class="method"><span id='new_ex.v' class='invisible'><code>pub fn <a href='#method.new_ex' class='fnname'>new_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;owner_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;owner_attribute_mask: &amp;<a class="struct" href="../../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;counter_value: &amp;mut u32<br>) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#234-246' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>creates a monotonic counter.</p>
+</div><h4 id='method.new_ex' class="method"><span id='new_ex.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.new_ex' class='fnname'>new_ex</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;owner_policy: u16, <br>&nbsp;&nbsp;&nbsp;&nbsp;owner_attribute_mask: &amp;<a class="struct" href="../../sgx_types/types/struct.sgx_attributes_t.html" title="struct sgx_types::types::sgx_attributes_t">sgx_attributes_t</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;counter_value: &amp;mut u32<br>) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;Self&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#234-246' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>creates a monotonic counter.</p>
 <h1 id="description-1" class="section-header"><a href="#description-1">Description</a></h1>
 <p>Call new_ex to create a monotonic counter with the given owner_policy and owner_attribute_mask.</p>
 <p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
@@ -169,8 +104,7 @@ This procedure deletes all MCs created by any enclave in that system.</p>
 <p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.destory' class="method"><span id='destory.v' class='invisible'><code>pub fn <a href='#method.destory' class='fnname'>destory</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#318-331' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
+</div><h4 id='method.destory' class="method"><span id='destory.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.destory' class='fnname'>destory</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxError.html" title="type sgx_types::error::SgxError">SgxError</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#318-331' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
 <h1 id="description-2" class="section-header"><a href="#description-2">Description</a></h1>
 <p>Calling destory after a monotonic counter is not needed anymore.</p>
 <p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
@@ -207,8 +141,7 @@ limit, the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
 <p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.increment' class="method"><span id='increment.v' class='invisible'><code>pub fn <a href='#method.increment' class='fnname'>increment</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#403-415' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>increments a monotonic counter value by 1.</p>
+</div><h4 id='method.increment' class="method"><span id='increment.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.increment' class='fnname'>increment</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#403-415' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>increments a monotonic counter value by 1.</p>
 <h1 id="description-3" class="section-header"><a href="#description-3">Description</a></h1>
 <p>Call increment to increase a monotonic counter value by 1.</p>
 <p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
@@ -245,8 +178,7 @@ the MC operation may return SGX_ERROR_BUSY for several minutes.</p>
 <p>There is not enough EPC memory to load one of the Architecture Enclaves needed to complete this operation.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>Indicates an unexpected error occurs.</p>
-</div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><code>pub fn <a href='#method.read' class='fnname'>read</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#478-490' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>returns the value of a monotonic counter.</p>
+</div><h4 id='method.read' class="method"><span id='read.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.read' class='fnname'>read</a>(&amp;self) -&gt; <a class="type" href="../../sgx_types/error/type.SgxResult.html" title="type sgx_types::error::SgxResult">SgxResult</a>&lt;u32&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#478-490' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>returns the value of a monotonic counter.</p>
 <h1 id="description-4" class="section-header"><a href="#description-4">Description</a></h1>
 <p>Call read to read the value of a monotonic counter.</p>
 <p>The caller should call rsgx_create_pse_session to establish a session with the platform service enclave
@@ -278,74 +210,13 @@ call that created the monotonic counter.</p>
 <p><strong>SGX_ERROR_UNEXPECTED</strong></p>
 <p>Indicates an unexpected error occurs.</p>
 </div></div>
-            <h2 id='implementations' class='small-section-header'>
-              Trait Implementations<a href='#implementations' class='anchor'></a>
-            </h2>
-        <h3 id='impl-Drop' class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl-Drop' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#493-500' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#497-499' title='goto source code'>[src]</a></span></h4>
-<div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
-</div></div></section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_tservice";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+                <h2 id='implementations' class='small-section-header'>
+                  Trait Implementations<a href='#implementations' class='anchor'></a>
+                </h2>
+                <div id='implementations-list'><h3 id='impl-Drop' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html" title="trait core::ops::drop::Drop">Drop</a> for <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl-Drop' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#493-500' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/sgx_tservice/sgxcounter.rs.html#497-499' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>destroys a monotonic counter created by new or new_ex.</p>
+</div></div></div>
+                <h2 id='synthetic-implementations' class='small-section-header'>
+                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+                </h2>
+                <div id='synthetic-implementations-list'>
+            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../sgx_tservice/sgxcounter/struct.SgxMonotonicCounter.html" title="struct sgx_tservice::sgxcounter::SgxMonotonicCounter">SgxMonotonicCounter</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_tservice";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

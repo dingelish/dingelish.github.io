@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["rsgx_oom",""],["set_panic_handler","Set a custom handler for out-of-memory conditions"]]});
+initSidebarItems({"fn":[["rsgx_oom",""],["rust_oom",""],["set_panic_handler","Set a custom handler for out-of-memory conditions"]]});

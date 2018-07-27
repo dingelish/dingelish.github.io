@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/lib.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>lib.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -157,6 +101,8 @@
 <span id="101">101</span>
 <span id="102">102</span>
 <span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
 </pre><pre class="rust ">
 <span class="comment">// Copyright (C) 2017-2018 Baidu, Inc. All Rights Reserved.</span>
 <span class="comment">//</span>
@@ -188,7 +134,7 @@
 
 <span class="doccomment">//! # Trusted Runtime System</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK. </span>
+<span class="doccomment">//! The Intel(R) SGX trusted runtime system (tRTS) is a key component of the Intel(R) Software Guard Extensions SDK.</span>
 <span class="doccomment">//! It provides the enclave entry point logic as well as other functions to be used by enclave developers.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Intel(R) Software Guard Extensions Helper Functions**</span>
@@ -196,8 +142,8 @@
 <span class="doccomment">//! **CustomExceptionHandling**</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # Intel(R) Software Guard Extensions Helper Functions</span>
-<span class="doccomment">//! </span>
-<span class="doccomment">//! The tRTS provides the helper functions for you to determine whether a given address is within or outside </span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The tRTS provides the helper functions for you to determine whether a given address is within or outside</span>
 <span class="doccomment">//! enclave memory.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! The tRTS provides a wrapper to the RDRAND instruction to generate a true random number from hardware.</span>
@@ -205,17 +151,17 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! # CustomExceptionHandling</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers, </span>
-<span class="doccomment">//! to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within </span>
-<span class="doccomment">//! the enclave, the registered exception handlers will be called in a specific order until an exception handler reports </span>
-<span class="doccomment">//! that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault </span>
-<span class="doccomment">//! (Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type </span>
-<span class="doccomment">//! sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R) </span>
+<span class="doccomment">//! The Intel(R) Software Guard Extensions SDK provides an API to allow you to register functions, or exception handlers,</span>
+<span class="doccomment">//! to handle a limited set of hardware exceptions. When one of the enclave supported hardware exceptions occurs within</span>
+<span class="doccomment">//! the enclave, the registered exception handlers will be called in a specific order until an exception handler reports</span>
+<span class="doccomment">//! that it has handled the exception. For example, issuing a CPUID instruction inside an Enclave will result in a #UD fault</span>
+<span class="doccomment">//! (Invalid Opcode Exception). ISV enclave code can call rsgx_register_exception_handler to register a function of type</span>
+<span class="doccomment">//! sgx_exception_handler_t to respond to this exception. To check a list of enclave supported exceptions, see Intel(R)</span>
 <span class="doccomment">//! Software Guard Extensions Programming Reference.</span>
-<span class="doccomment">//! </span>
+<span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode, </span>
+<span class="doccomment">//! Custom exception handling is only supported in HW mode. Although the exception handlers can be registered in simulation mode,</span>
 <span class="doccomment">//! the exceptions cannot be caught and handled within the enclave.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
@@ -224,7 +170,7 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching </span>
+<span class="doccomment">//! Custom exception handing only saves general purpose registers in sgx_ exception_info_t. You should be careful when touching</span>
 <span class="doccomment">//! other registers in the exception handlers.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! **Note**</span>
@@ -240,6 +186,8 @@
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">fused</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">const_atomic_ptr_new</span>)]</span>
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">ascii_ctype</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">asm</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">lang_items</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_upper_case_globals</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">overflowing_literals</span>)]</span>
@@ -262,68 +210,4 @@
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ascii</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">c_str</span>;
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "sgx_trts";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "sgx_trts";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
